@@ -98,6 +98,10 @@
     <Compile Include="ModelXpo\ProdModelCode\Location.Designer.cs">
       <DependentUpon>Location.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\ProductList.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\ProductList.Designer.cs">
+      <DependentUpon>ProductList.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelXpo\ProdModelCode\SalesItem.cs" />
     <Compile Include="ModelXpo\ProdModelCode\SalesItem.Designer.cs">
       <DependentUpon>SalesItem.cs</DependentUpon>

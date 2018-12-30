@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace ProductionReports.View
 {
@@ -33,10 +34,22 @@ namespace ProductionReports.View
         }
         private void retrieveBI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            DateTime fromDate, toDate;
+            fromDate = (DateTime)fromBI.EditValue;
+            toDate = (DateTime)toBI.EditValue;
             //unitOfWork1.ConnectionString = ProductionReports.ModelXpo.OmarERP.ConnectionHelper.ConnectionString;
-            string filter = $"[TransDate] Between(#{DateTime.Today.Date}#, #{DateTime.Today.Date}#)";
+            string filter = $"[TransDate] Between(#{fromDate.Date}#, #{toDate.Date}#)";
             journalXPC.CriteriaString = filter;
-            journalXPC.Load();
+            journalXPC.LoadingEnabled = true;
+          
+
+            journalGV.RefreshData();
+        }
+
+        private void journalGV_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            var gv = (GridView)sender;
+            gv.ShowEditForm();
         }
     }
 }

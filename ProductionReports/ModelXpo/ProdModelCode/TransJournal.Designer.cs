@@ -55,8 +55,6 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fDecription; }
             set { SetPropertyValue<string>("Decription", ref fDecription, value); }
         }
-        [Association(@"TransJournalEmployeesReferencesTransJournal")]
-        public XPCollection<TransJournalEmployees> TransJournalEmployeesCollection { get { return GetCollection<TransJournalEmployees>("TransJournalEmployeesCollection"); } }
         [Association(@"TransJournalLineReferencesTransJournal")]
         public XPCollection<TransJournalLine> TransJournalLines { get { return GetCollection<TransJournalLine>("TransJournalLines"); } }
     }

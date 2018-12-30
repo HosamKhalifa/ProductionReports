@@ -32,11 +32,13 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fJournalId; }
             set { SetPropertyValue<TransJournal>("JournalId", ref fJournalId, value); }
         }
-        EquipmentProducts fProductId;
-        public EquipmentProducts ProductId
+        ProductList fProductId;
+        [ExplicitLoading(1)]
+        [Association(@"TransJournalLineReferencesProductList")]
+        public ProductList ProductId
         {
             get { return fProductId; }
-            set { SetPropertyValue<EquipmentProducts>("ProductId", ref fProductId, value); }
+            set { SetPropertyValue<ProductList>("ProductId", ref fProductId, value); }
         }
         decimal fQuantity;
         public decimal Quantity
