@@ -62,6 +62,8 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fFixedAccountId; }
             set { SetPropertyValue<string>("FixedAccountId", ref fFixedAccountId, value); }
         }
+        [Association(@"TransJournalLineReferencesEquipment")]
+        public XPCollection<TransJournalLine> TransJournalLines { get { return GetCollection<TransJournalLine>("TransJournalLines"); } }
     }
 
 }

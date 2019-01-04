@@ -11,6 +11,8 @@ using System.Data.Entity;
 using DevExpress.XtraEditors;
 using ProductionReports.Models;
 using ProductionReports.ModelXpo.OmarERP;
+using DevExpress.XtraGrid.Views.Grid;
+
 namespace ProductionReports
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
@@ -74,6 +76,16 @@ namespace ProductionReports
                 XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
             }
             
+        }
+
+        private void GV_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            (sender as GridView).ShowEditForm();
+        }
+
+        private void GV_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            e.Valid = unitOfWork1.SaveLine();
         }
     }
 }

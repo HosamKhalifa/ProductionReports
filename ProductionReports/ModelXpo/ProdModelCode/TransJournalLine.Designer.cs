@@ -53,6 +53,13 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fLineDescription; }
             set { SetPropertyValue<string>("LineDescription", ref fLineDescription, value); }
         }
+        Equipment fEquipmentId;
+        [Association(@"TransJournalLineReferencesEquipment")]
+        public Equipment EquipmentId
+        {
+            get { return fEquipmentId; }
+            set { SetPropertyValue<Equipment>("EquipmentId", ref fEquipmentId, value); }
+        }
     }
 
 }

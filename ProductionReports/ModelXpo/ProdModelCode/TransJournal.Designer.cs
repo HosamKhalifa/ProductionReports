@@ -24,11 +24,12 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fJournalId; }
             set { SetPropertyValue<int>("JournalId", ref fJournalId, value); }
         }
-        int fShiftId;
-        public int ShiftId
+        Shift fShiftId;
+        [Association(@"TransJournalReferencesShift")]
+        public Shift ShiftId
         {
             get { return fShiftId; }
-            set { SetPropertyValue<int>("ShiftId", ref fShiftId, value); }
+            set { SetPropertyValue<Shift>("ShiftId", ref fShiftId, value); }
         }
         DateTime fTransDate;
         public DateTime TransDate

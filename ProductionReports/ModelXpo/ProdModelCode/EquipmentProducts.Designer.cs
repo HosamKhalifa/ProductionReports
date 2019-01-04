@@ -24,19 +24,20 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fProductId; }
             set { SetPropertyValue<int>("ProductId", ref fProductId, value); }
         }
-        int fEquipmentId;
-        [Indexed(@"SalesAccountID", Name = @"IX_PRD_EquipmentProductsTable", Unique = true)]
-        public int EquipmentId
-        {
-            get { return fEquipmentId; }
-            set { SetPropertyValue<int>("EquipmentId", ref fEquipmentId, value); }
-        }
         string fSalesAccountID;
+        [Indexed(Name = @"IX_PRD_EquipmentProductsTable", Unique = true)]
         [Size(7)]
         public string SalesAccountID
         {
             get { return fSalesAccountID; }
             set { SetPropertyValue<string>("SalesAccountID", ref fSalesAccountID, value); }
+        }
+        string fProductName;
+        [Size(200)]
+        public string ProductName
+        {
+            get { return fProductName; }
+            set { SetPropertyValue<string>("ProductName", ref fProductName, value); }
         }
     }
 

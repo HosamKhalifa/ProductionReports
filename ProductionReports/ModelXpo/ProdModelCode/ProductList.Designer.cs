@@ -24,38 +24,12 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fProductId; }
             set { SetPropertyValue<int>("ProductId", ref fProductId, value); }
         }
-        string fEquipmentName;
-        [Size(250)]
-        public string EquipmentName
-        {
-            get { return fEquipmentName; }
-            set { SetPropertyValue<string>("EquipmentName", ref fEquipmentName, value); }
-        }
         string fItemName;
         [Size(250)]
         public string ItemName
         {
             get { return fItemName; }
             set { SetPropertyValue<string>("ItemName", ref fItemName, value); }
-        }
-        string fLocationName;
-        [Size(50)]
-        public string LocationName
-        {
-            get { return fLocationName; }
-            set { SetPropertyValue<string>("LocationName", ref fLocationName, value); }
-        }
-        DateTime fStartDate;
-        public DateTime StartDate
-        {
-            get { return fStartDate; }
-            set { SetPropertyValue<DateTime>("StartDate", ref fStartDate, value); }
-        }
-        DateTime fEndDate;
-        public DateTime EndDate
-        {
-            get { return fEndDate; }
-            set { SetPropertyValue<DateTime>("EndDate", ref fEndDate, value); }
         }
         [Association(@"TransJournalLineReferencesProductList")]
         public XPCollection<TransJournalLine> TransJournalLines { get { return GetCollection<TransJournalLine>("TransJournalLines"); } }

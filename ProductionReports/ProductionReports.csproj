@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v16.1" />
     <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.1" />
     <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v16.1" />
@@ -43,6 +44,7 @@
     <Reference Include="DevExpress.Printing.v16.1.Core" />
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -94,6 +96,11 @@
     <Compile Include="ModelXpo\ProdModelCode\EquipmentProducts.Designer.cs">
       <DependentUpon>EquipmentProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\JournalLineReport.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\JournalLineReport.Designer.cs">
+      <DependentUpon>JournalLineReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\JournalLineRpt.cs" />
     <Compile Include="ModelXpo\ProdModelCode\Location.cs" />
     <Compile Include="ModelXpo\ProdModelCode\Location.Designer.cs">
       <DependentUpon>Location.cs</DependentUpon>
@@ -127,11 +134,18 @@
     <Compile Include="SharedExt\DbContextExtensions.cs" />
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
     <Compile Include="SharedExt\ObjectContextExtensions.cs" />
+    <Compile Include="SharedExt\UnitOfWorkExtensions.cs" />
     <Compile Include="View\JournalXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\JournalXUC.Designer.cs">
       <DependentUpon>JournalXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PivotJournalXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\PivotJournalXUC.Designer.cs">
+      <DependentUpon>PivotJournalXUC.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -148,6 +162,9 @@
     </Compile>
     <EmbeddedResource Include="View\JournalXUC.resx">
       <DependentUpon>JournalXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PivotJournalXUC.resx">
+      <DependentUpon>PivotJournalXUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="ModelXpo\ProdModel.xpo" />

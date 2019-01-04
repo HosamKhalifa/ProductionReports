@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
@@ -35,18 +36,18 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.locationGC = new DevExpress.XtraGrid.GridControl();
-            this.locationXPC = new DevExpress.Xpo.XPCollection();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
+            this.locationXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.locationGV = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colLocationId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLocationName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.shiftXPC = new DevExpress.Xpo.XPCollection();
+            this.shiftXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colShiftId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colShiftName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.saveBI = new DevExpress.XtraBars.BarButtonItem();
             this.retrieveBI = new DevExpress.XtraBars.BarButtonItem();
@@ -57,12 +58,12 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.equipmentXPC = new DevExpress.Xpo.XPCollection();
-            this.persistentRepository1 = new DevExpress.XtraEditors.Repository.PersistentRepository();
+            this.equipmentXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.persistentRepository1 = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.locationList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.equipmentList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.salesItemList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.salesItemXPC = new DevExpress.Xpo.XPCollection();
+            this.salesItemXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.employeeList = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colEmployeeAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -82,13 +83,15 @@
             this.colFixedAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.productsXPC = new DevExpress.Xpo.XPCollection();
+            this.productsXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProductId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEquipmentId1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSalesAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.journalXUC1 = new ProductionReports.View.JournalXUC();
+            this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.pivotJournalXUC1 = new ProductionReports.View.PivotJournalXUC();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.settingsNavPage.SuspendLayout();
@@ -119,18 +122,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.productsXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.navigationPage2.SuspendLayout();
+            this.navigationPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navigationPane1
             // 
             this.navigationPane1.Controls.Add(this.settingsNavPage);
             this.navigationPane1.Controls.Add(this.navigationPage2);
+            this.navigationPane1.Controls.Add(this.navigationPage1);
             this.navigationPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navigationPane1.Location = new System.Drawing.Point(0, 26);
             this.navigationPane1.Name = "navigationPane1";
             this.navigationPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.settingsNavPage,
-            this.navigationPage2});
+            this.navigationPage2,
+            this.navigationPage1});
             this.navigationPane1.RegularSize = new System.Drawing.Size(669, 322);
             this.navigationPane1.SelectedPage = this.settingsNavPage;
             this.navigationPane1.Size = new System.Drawing.Size(669, 322);
@@ -183,6 +189,7 @@
             // 
             // locationXPC
             // 
+            this.locationXPC.DeleteObjectOnRemove = true;
             this.locationXPC.DisplayableProperties = "LocationId;LocationName;Equipments";
             this.locationXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Location);
             this.locationXPC.Session = this.unitOfWork1;
@@ -200,6 +207,9 @@
             this.colLocationName});
             this.locationGV.GridControl = this.locationGC;
             this.locationGV.Name = "locationGV";
+            this.locationGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
+            this.locationGV.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
+            this.locationGV.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
             // 
             // colLocationId
             // 
@@ -238,6 +248,7 @@
             // 
             // shiftXPC
             // 
+            this.shiftXPC.DeleteObjectOnRemove = true;
             this.shiftXPC.DisplayableProperties = "ShiftId;ShiftName;TransJournals";
             this.shiftXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Shift);
             this.shiftXPC.Session = this.unitOfWork1;
@@ -249,6 +260,9 @@
             this.colShiftName});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
+            this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
             // 
             // colShiftId
             // 
@@ -372,6 +386,7 @@
             // 
             // equipmentXPC
             // 
+            this.equipmentXPC.DeleteObjectOnRemove = true;
             this.equipmentXPC.DisplayableProperties = "EquipmentId;EquipmentName;StartDate;EndDate;LocationId;Active;FixedAccountId";
             this.equipmentXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Equipment);
             this.equipmentXPC.Session = this.unitOfWork1;
@@ -523,6 +538,9 @@
             this.colFixedAccountId});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
+            this.gridView2.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
+            this.gridView2.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
             // 
             // colEquipmentId
             // 
@@ -599,6 +617,7 @@
             // 
             // productsXPC
             // 
+            this.productsXPC.DeleteObjectOnRemove = true;
             this.productsXPC.DisplayableProperties = "ProductId;EquipmentId;SalesAccountID";
             this.productsXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.EquipmentProducts);
             this.productsXPC.Session = this.unitOfWork1;
@@ -611,10 +630,13 @@
             this.colSalesAccountID});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
             this.gridView3.OptionsView.ColumnAutoWidth = false;
             this.gridView3.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView3.OptionsView.ShowAutoFilterRow = true;
             this.gridView3.OptionsView.ShowFooter = true;
+            this.gridView3.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
+            this.gridView3.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
             // 
             // colProductId
             // 
@@ -655,6 +677,21 @@
             this.journalXUC1.Name = "journalXUC1";
             this.journalXUC1.Size = new System.Drawing.Size(606, 262);
             this.journalXUC1.TabIndex = 0;
+            // 
+            // navigationPage1
+            // 
+            this.navigationPage1.Caption = "Report";
+            this.navigationPage1.Controls.Add(this.pivotJournalXUC1);
+            this.navigationPage1.Name = "navigationPage1";
+            this.navigationPage1.Size = new System.Drawing.Size(606, 262);
+            // 
+            // pivotJournalXUC1
+            // 
+            this.pivotJournalXUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pivotJournalXUC1.Location = new System.Drawing.Point(0, 0);
+            this.pivotJournalXUC1.Name = "pivotJournalXUC1";
+            this.pivotJournalXUC1.Size = new System.Drawing.Size(606, 262);
+            this.pivotJournalXUC1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -698,6 +735,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.productsXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.navigationPage2.ResumeLayout(false);
+            this.navigationPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -764,6 +802,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colJobName;
         private DevExpress.Xpo.XPCollection salesItemXPC;
         private View.JournalXUC journalXUC1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
+        private View.PivotJournalXUC pivotJournalXUC1;
     }
 }
 

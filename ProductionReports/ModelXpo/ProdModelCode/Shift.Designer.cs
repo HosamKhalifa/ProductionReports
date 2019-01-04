@@ -31,6 +31,8 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fShiftName; }
             set { SetPropertyValue<string>("ShiftName", ref fShiftName, value); }
         }
+        [Association(@"TransJournalReferencesShift")]
+        public XPCollection<TransJournal> TransJournals { get { return GetCollection<TransJournal>("TransJournals"); } }
     }
 
 }
