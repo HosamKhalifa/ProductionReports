@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PivotJournalXUC));
             this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
-            this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.fieldThis1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldRecId1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldLocationId1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldLocationName1 = new DevExpress.XtraPivotGrid.PivotGridField();
@@ -49,6 +46,7 @@
             this.fieldDescription1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldQuantity1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldLineDescription1 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.fromBI = new DevExpress.XtraBars.BarEditItem();
@@ -61,22 +59,25 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.rptDS = new ProductionReports.View.RptDS();
+            this.pRD_TransJournalLinesViewTableAdapter = new ProductionReports.View.RptDSTableAdapters.PRD_TransJournalLinesViewTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptDS)).BeginInit();
             this.SuspendLayout();
             // 
             // pivotGridControl1
             // 
-            this.pivotGridControl1.DataSource = this.xpCollection1;
+            this.pivotGridControl1.DataSource = this.bindingSource1;
             this.pivotGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pivotGridControl1.Fields.AddRange(new DevExpress.XtraPivotGrid.PivotGridField[] {
-            this.fieldThis1,
             this.fieldRecId1,
             this.fieldLocationId1,
             this.fieldLocationName1,
@@ -97,32 +98,15 @@
             this.pivotGridControl1.Size = new System.Drawing.Size(545, 364);
             this.pivotGridControl1.TabIndex = 0;
             // 
-            // xpCollection1
-            // 
-            this.xpCollection1.ObjectType = typeof(ProductionReports.ModelXpo.ProdModelCode.JournalLineRpt);
-            this.xpCollection1.Session = this.unitOfWork1;
-            // 
-            // unitOfWork1
-            // 
-            this.unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.None;
-            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
-            this.unitOfWork1.TrackPropertiesModifications = false;
-            // 
-            // fieldThis1
-            // 
-            this.fieldThis1.AreaIndex = 0;
-            this.fieldThis1.FieldName = "This";
-            this.fieldThis1.Name = "fieldThis1";
-            // 
             // fieldRecId1
             // 
-            this.fieldRecId1.AreaIndex = 1;
+            this.fieldRecId1.AreaIndex = 0;
             this.fieldRecId1.FieldName = "RecId";
             this.fieldRecId1.Name = "fieldRecId1";
             // 
             // fieldLocationId1
             // 
-            this.fieldLocationId1.AreaIndex = 2;
+            this.fieldLocationId1.AreaIndex = 1;
             this.fieldLocationId1.FieldName = "LocationId";
             this.fieldLocationId1.Name = "fieldLocationId1";
             // 
@@ -136,7 +120,7 @@
             // 
             // fieldShiftId1
             // 
-            this.fieldShiftId1.AreaIndex = 10;
+            this.fieldShiftId1.AreaIndex = 9;
             this.fieldShiftId1.FieldName = "ShiftId";
             this.fieldShiftId1.Name = "fieldShiftId1";
             // 
@@ -156,7 +140,7 @@
             // 
             // fieldProductId1
             // 
-            this.fieldProductId1.AreaIndex = 3;
+            this.fieldProductId1.AreaIndex = 2;
             this.fieldProductId1.FieldName = "ProductId";
             this.fieldProductId1.Name = "fieldProductId1";
             // 
@@ -169,31 +153,31 @@
             // 
             // fieldJournalId1
             // 
-            this.fieldJournalId1.AreaIndex = 4;
+            this.fieldJournalId1.AreaIndex = 3;
             this.fieldJournalId1.FieldName = "JournalId";
             this.fieldJournalId1.Name = "fieldJournalId1";
             // 
             // fieldTransDate1
             // 
-            this.fieldTransDate1.AreaIndex = 5;
+            this.fieldTransDate1.AreaIndex = 4;
             this.fieldTransDate1.FieldName = "TransDate";
             this.fieldTransDate1.Name = "fieldTransDate1";
             // 
             // fieldWorkingHours1
             // 
-            this.fieldWorkingHours1.AreaIndex = 6;
+            this.fieldWorkingHours1.AreaIndex = 5;
             this.fieldWorkingHours1.FieldName = "WorkingHours";
             this.fieldWorkingHours1.Name = "fieldWorkingHours1";
             // 
             // fieldFaultsHours1
             // 
-            this.fieldFaultsHours1.AreaIndex = 7;
+            this.fieldFaultsHours1.AreaIndex = 6;
             this.fieldFaultsHours1.FieldName = "FaultsHours";
             this.fieldFaultsHours1.Name = "fieldFaultsHours1";
             // 
             // fieldDescription1
             // 
-            this.fieldDescription1.AreaIndex = 8;
+            this.fieldDescription1.AreaIndex = 7;
             this.fieldDescription1.FieldName = "Description";
             this.fieldDescription1.Name = "fieldDescription1";
             // 
@@ -208,9 +192,15 @@
             // 
             // fieldLineDescription1
             // 
-            this.fieldLineDescription1.AreaIndex = 9;
+            this.fieldLineDescription1.AreaIndex = 8;
             this.fieldLineDescription1.FieldName = "LineDescription";
             this.fieldLineDescription1.Name = "fieldLineDescription1";
+            // 
+            // unitOfWork1
+            // 
+            this.unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.None;
+            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
+            this.unitOfWork1.TrackPropertiesModifications = false;
             // 
             // barManager1
             // 
@@ -331,6 +321,20 @@
             this.barDockControlRight.Location = new System.Drawing.Point(545, 28);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 364);
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "PRD_TransJournalLinesView";
+            this.bindingSource1.DataSource = this.rptDS;
+            // 
+            // rptDS
+            // 
+            this.rptDS.DataSetName = "RptDS";
+            this.rptDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pRD_TransJournalLinesViewTableAdapter
+            // 
+            this.pRD_TransJournalLinesViewTableAdapter.ClearBeforeFill = true;
+            // 
             // PivotJournalXUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,13 +347,14 @@
             this.Name = "PivotJournalXUC";
             this.Size = new System.Drawing.Size(545, 414);
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,7 +375,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraPivotGrid.PivotGridField fieldThis1;
         private DevExpress.XtraPivotGrid.PivotGridField fieldRecId1;
         private DevExpress.XtraPivotGrid.PivotGridField fieldLocationId1;
         private DevExpress.XtraPivotGrid.PivotGridField fieldLocationName1;
@@ -386,7 +390,9 @@
         private DevExpress.XtraPivotGrid.PivotGridField fieldDescription1;
         private DevExpress.XtraPivotGrid.PivotGridField fieldQuantity1;
         private DevExpress.XtraPivotGrid.PivotGridField fieldLineDescription1;
-        private DevExpress.Xpo.XPCollection xpCollection1;
         private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private RptDS rptDS;
+        private RptDSTableAdapters.PRD_TransJournalLinesViewTableAdapter pRD_TransJournalLinesViewTableAdapter;
     }
 }

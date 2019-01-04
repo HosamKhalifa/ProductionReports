@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-
+﻿using DevExpress.XtraEditors;
+using System;
+using System.Configuration;
+using ProductionReports.SharedExt;
 namespace ProductionReports.View
 {
     public partial class PivotJournalXUC : DevExpress.XtraEditors.XtraUserControl
@@ -20,18 +13,22 @@ namespace ProductionReports.View
 
         private void retrieveBI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DateTime fromDate, toDate;
-            fromDate = (DateTime)fromBI.EditValue;
-            toDate = (DateTime)toBI.EditValue;
-            //unitOfWork1.ConnectionString = ProductionReports.ModelXpo.OmarERP.ConnectionHelper.ConnectionString;
-            string filter = $"[TransDate] Between(#{fromDate.Date}#, #{toDate.Date}#)";
+            try
+            {
+                DateTime fromDate, toDate;
 
-            xpCollection1.CriteriaString = filter;
+                fromDate = (DateTime)fromBI.EditValue;
+                toDate = (DateTime)toBI.EditValue;
+                pRD_TransJournalLinesViewTableAdapter.Connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["SQLCA"].ConnectionString);
+                pRD_TransJournalLinesViewTableAdapter.Fill(rptDS.PRD_TransJournalLinesView, fromDate.Date, toDate.Date);
 
-            xpCollection1.LoadingEnabled = true;
+                pivotGridControl1.RefreshData();
 
-
-            pivotGridControl1.RefreshData();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
+            }
         }
     }
 }

@@ -43,11 +43,12 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fEndDate; }
             set { SetPropertyValue<DateTime>("EndDate", ref fEndDate, value); }
         }
-        int fLocationId;
-        public int LocationId
+        Location fLocationId;
+        [Association(@"EquipmentReferencesLocation")]
+        public Location LocationId
         {
             get { return fLocationId; }
-            set { SetPropertyValue<int>("LocationId", ref fLocationId, value); }
+            set { SetPropertyValue<Location>("LocationId", ref fLocationId, value); }
         }
         bool fActive;
         public bool Active

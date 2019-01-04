@@ -25,14 +25,12 @@ namespace ProductionReports.ModelXpo.OmarERP
             set { SetPropertyValue<int>("ProductId", ref fProductId, value); }
         }
         string fItemName;
-        [Size(250)]
+        [Size(451)]
         public string ItemName
         {
             get { return fItemName; }
             set { SetPropertyValue<string>("ItemName", ref fItemName, value); }
         }
-        [Association(@"TransJournalLineReferencesProductList")]
-        public XPCollection<TransJournalLine> TransJournalLines { get { return GetCollection<TransJournalLine>("TransJournalLines"); } }
     }
 
 }

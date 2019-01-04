@@ -86,7 +86,7 @@
             this.productsXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProductId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEquipmentId1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSalesAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.journalXUC1 = new ProductionReports.View.JournalXUC();
@@ -618,7 +618,6 @@
             // productsXPC
             // 
             this.productsXPC.DeleteObjectOnRemove = true;
-            this.productsXPC.DisplayableProperties = "ProductId;EquipmentId;SalesAccountID";
             this.productsXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.EquipmentProducts);
             this.productsXPC.Session = this.unitOfWork1;
             // 
@@ -626,7 +625,7 @@
             // 
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colProductId,
-            this.colEquipmentId1,
+            this.colProductName,
             this.colSalesAccountID});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
@@ -635,6 +634,8 @@
             this.gridView3.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView3.OptionsView.ShowAutoFilterRow = true;
             this.gridView3.OptionsView.ShowFooter = true;
+            this.gridView3.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colSalesAccountID, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView3.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
             this.gridView3.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
             // 
@@ -645,14 +646,14 @@
             this.colProductId.Visible = true;
             this.colProductId.VisibleIndex = 0;
             // 
-            // colEquipmentId1
+            // colProductName
             // 
-            this.colEquipmentId1.ColumnEdit = this.equipmentList;
-            this.colEquipmentId1.FieldName = "EquipmentId";
-            this.colEquipmentId1.Name = "colEquipmentId1";
-            this.colEquipmentId1.Visible = true;
-            this.colEquipmentId1.VisibleIndex = 1;
-            this.colEquipmentId1.Width = 224;
+            this.colProductName.Caption = "ProductName";
+            this.colProductName.FieldName = "ProductName";
+            this.colProductName.Name = "colProductName";
+            this.colProductName.Visible = true;
+            this.colProductName.VisibleIndex = 2;
+            this.colProductName.Width = 232;
             // 
             // colSalesAccountID
             // 
@@ -660,7 +661,7 @@
             this.colSalesAccountID.FieldName = "SalesAccountID";
             this.colSalesAccountID.Name = "colSalesAccountID";
             this.colSalesAccountID.Visible = true;
-            this.colSalesAccountID.VisibleIndex = 2;
+            this.colSalesAccountID.VisibleIndex = 1;
             this.colSalesAccountID.Width = 246;
             // 
             // navigationPage2
@@ -787,7 +788,6 @@
         private DevExpress.Xpo.XPCollection productsXPC;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Columns.GridColumn colProductId;
-        private DevExpress.XtraGrid.Columns.GridColumn colEquipmentId1;
         private DevExpress.XtraGrid.Columns.GridColumn colSalesAccountID;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit equipmentList;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit salesItemList;
@@ -804,6 +804,7 @@
         private View.JournalXUC journalXUC1;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
         private View.PivotJournalXUC pivotJournalXUC1;
+        private DevExpress.XtraGrid.Columns.GridColumn colProductName;
     }
 }
 

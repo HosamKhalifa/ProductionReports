@@ -31,6 +31,8 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fLocationName; }
             set { SetPropertyValue<string>("LocationName", ref fLocationName, value); }
         }
+        [Association(@"EquipmentReferencesLocation")]
+        public XPCollection<Equipment> Equipments { get { return GetCollection<Equipment>("Equipments"); } }
     }
 
 }

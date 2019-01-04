@@ -56,6 +56,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -129,6 +130,10 @@
     <Compile Include="ModelXpo\ProdModelCode\TransJournalLine.Designer.cs">
       <DependentUpon>TransJournalLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\TransJournalLines.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\TransJournalLines.Designer.cs">
+      <DependentUpon>TransJournalLines.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedExt\DbContextExtensions.cs" />
@@ -146,6 +151,11 @@
     </Compile>
     <Compile Include="View\PivotJournalXUC.Designer.cs">
       <DependentUpon>PivotJournalXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RptDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptDS.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -182,6 +192,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="View\RptDS.xsc">
+      <DependentUpon>RptDS.xsd</DependentUpon>
+    </None>
+    <None Include="View\RptDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RptDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="View\RptDS.xss">
+      <DependentUpon>RptDS.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
