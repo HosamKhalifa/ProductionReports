@@ -14,18 +14,17 @@ using System.ComponentModel;
 namespace ProductionReports.ModelXpo.OmarERP
 {
 
-    [Persistent(@"PRD_LocationTable")]
-    public partial class Location : XPLiteObject
+    public partial class LocationsTable : XPLiteObject
     {
-        int fLocationId;
+        int fLocationID;
         [Key]
-        public int LocationId
+        public int LocationID
         {
-            get { return fLocationId; }
-            set { SetPropertyValue<int>("LocationId", ref fLocationId, value); }
+            get { return fLocationID; }
+            set { SetPropertyValue<int>("LocationID", ref fLocationID, value); }
         }
         string fLocationName;
-        [Size(150)]
+        [Size(50)]
         public string LocationName
         {
             get { return fLocationName; }
@@ -38,8 +37,6 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fPOSAccountID; }
             set { SetPropertyValue<string>("POSAccountID", ref fPOSAccountID, value); }
         }
-        [Association(@"EquipmentReferencesLocation")]
-        public XPCollection<Equipment> Equipments { get { return GetCollection<Equipment>("Equipments"); } }
     }
 
 }

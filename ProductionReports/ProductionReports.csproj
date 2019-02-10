@@ -76,6 +76,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRecord.cs" />
+    <Compile Include="LoginXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginXtraForm.Designer.cs">
+      <DependentUpon>LoginXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginXUC.Designer.cs">
+      <DependentUpon>LoginXUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\EquipmentProduct.cs" />
     <Compile Include="Models\Location.cs" />
@@ -106,6 +119,10 @@
     <Compile Include="ModelXpo\ProdModelCode\Location.Designer.cs">
       <DependentUpon>Location.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\LocationsTable.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\LocationsTable.Designer.cs">
+      <DependentUpon>LocationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelXpo\ProdModelCode\ProductList.cs" />
     <Compile Include="ModelXpo\ProdModelCode\ProductList.Designer.cs">
       <DependentUpon>ProductList.cs</DependentUpon>
@@ -113,6 +130,10 @@
     <Compile Include="ModelXpo\ProdModelCode\SalesItem.cs" />
     <Compile Include="ModelXpo\ProdModelCode\SalesItem.Designer.cs">
       <DependentUpon>SalesItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\SecurityAccessType.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\SecurityAccessType.Designer.cs">
+      <DependentUpon>SecurityAccessType.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelXpo\ProdModelCode\Shift.cs" />
     <Compile Include="ModelXpo\ProdModelCode\Shift.Designer.cs">
@@ -134,8 +155,29 @@
     <Compile Include="ModelXpo\ProdModelCode\TransJournalLines.Designer.cs">
       <DependentUpon>TransJournalLines.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\TransJournalVendor.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\TransJournalVendor.Designer.cs">
+      <DependentUpon>TransJournalVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\Vendor.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\Vendor.Designer.cs">
+      <DependentUpon>Vendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\VendorAccount_EV.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\VendorAccount_EV.Designer.cs">
+      <DependentUpon>VendorAccount_EV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\VendorList.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\VendorList.Designer.cs">
+      <DependentUpon>VendorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\ProdModelCode\VendorTransType.cs" />
+    <Compile Include="ModelXpo\ProdModelCode\VendorTransType.Designer.cs">
+      <DependentUpon>VendorTransType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityUser.cs" />
     <Compile Include="SharedExt\DbContextExtensions.cs" />
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
     <Compile Include="SharedExt\ObjectContextExtensions.cs" />
@@ -159,6 +201,12 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginXtraForm.resx">
+      <DependentUpon>LoginXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginXUC.resx">
+      <DependentUpon>LoginXUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -207,7 +255,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CoreLib\CoreLib.csproj">
+      <Project>{8bdbc7aa-1508-4f8f-b4e9-0ca1dae20a57}</Project>
+      <Name>CoreLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

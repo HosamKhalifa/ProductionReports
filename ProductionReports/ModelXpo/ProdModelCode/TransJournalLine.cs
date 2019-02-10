@@ -13,10 +13,18 @@ namespace ProductionReports.ModelXpo.OmarERP
         public TransJournalLine(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
-        public static explicit operator TransJournalLine(DataRow v)
+        protected override void OnSaving()
         {
-            throw new NotImplementedException();
-         
+            var jour = this.JournalId;
+            if (jour.IsApproved == 1 || !SecurityUser.IsCreator())
+            {
+                this.Reload();
+                throw new Exception("This is a Read only record  ");
+
+            }
+            base.OnSaving();
+            jour.ModifiedBy = SecurityUser.CurrentUser.UserId;
+            jour.ModifiedAt = DateTime.Now;
         }
     }
 

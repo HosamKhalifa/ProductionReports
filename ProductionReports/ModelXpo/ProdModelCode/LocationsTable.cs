@@ -6,13 +6,13 @@ using System.ComponentModel;
 namespace ProductionReports.ModelXpo.OmarERP
 {
 
-    public partial class Equipment
+    public partial class LocationsTable
     {
-        public Equipment(Session session) : base(session) { }
+        public LocationsTable(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
         protected override void OnSaving()
         {
-            if (!SecurityUser.IsCreator())
+            if ( !SecurityUser.IsCreator())
             {
                 this.Reload();
                 throw new Exception("This is a Read only record  ");

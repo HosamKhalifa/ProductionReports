@@ -56,6 +56,44 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fDecription; }
             set { SetPropertyValue<string>("Decription", ref fDecription, value); }
         }
+        LocationsTable fLocationId;
+        public LocationsTable LocationId
+        {
+            get { return fLocationId; }
+            set { SetPropertyValue<LocationsTable>("LocationId", ref fLocationId, value); }
+        }
+        string fCreatedBy;
+        [Size(30)]
+        public string CreatedBy
+        {
+            get { return fCreatedBy; }
+            set { SetPropertyValue<string>("CreatedBy", ref fCreatedBy, value); }
+        }
+        DateTime fCreatedAt;
+        public DateTime CreatedAt
+        {
+            get { return fCreatedAt; }
+            set { SetPropertyValue<DateTime>("CreatedAt", ref fCreatedAt, value); }
+        }
+        string fModifiedBy;
+        [Size(30)]
+        public string ModifiedBy
+        {
+            get { return fModifiedBy; }
+            set { SetPropertyValue<string>("ModifiedBy", ref fModifiedBy, value); }
+        }
+        DateTime fModifiedAt;
+        public DateTime ModifiedAt
+        {
+            get { return fModifiedAt; }
+            set { SetPropertyValue<DateTime>("ModifiedAt", ref fModifiedAt, value); }
+        }
+        int fIsApproved;
+        public int IsApproved
+        {
+            get { return fIsApproved; }
+            set { SetPropertyValue<int>("IsApproved", ref fIsApproved, value); }
+        }
         [Association(@"TransJournalLineReferencesTransJournal")]
         public XPCollection<TransJournalLine> TransJournalLines { get { return GetCollection<TransJournalLine>("TransJournalLines"); } }
     }

@@ -26,17 +26,28 @@ namespace ProductionReports.View
 
         private void InitObj()
         {
-            fromBI.EditValue = DateTime.Today.Date;
+
+            var d = DateTime.Today.Date;
+            fromBI.EditValue = new DateTime(d.Year,d.Month,1);
             toBI.EditValue = DateTime.Today.Date;
             unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.None;
             unitOfWork1.ConnectionString = ProductionReports.ModelXpo.OmarERP.ConnectionHelper.ConnectionString;
             unitOfWork1.Connect();
             journalXPC.CollectionChanged += JournalXPC_CollectionChanged;
+
+            journalGV.FocusedRowChanged += (s, e) =>
+            {
+                var gv = (s as GridView);
+                var rec = gv.GetFocusedRow() as XPLiteObject;
+                FormRecord.CurrentRecord = rec;
+            };
         }
 
         private void RetrieveLines(int journalId)
         {
             TransJournal journal = unitOfWork1.FindObject<TransJournal>(CriteriaOperator.Parse($" JournalId = {journalId}"));
+          
+
             journalLinesGV.InitNewRow += (s, e) =>
             {
                 var gv = (s as GridView);
@@ -48,6 +59,17 @@ namespace ProductionReports.View
             
             journalLinesXPC.LoadingEnabled = true;
             journalLinesXPC.Load();
+            //Rebind to journal header
+            if(journalLinesXPC != null && this.textEdit4.DataBindings.Count == 0)
+            {
+                this.textEdit4.DataBindings.Add(new Binding("EditValue", this.journalXPC, "Decription", true));
+                this.textEdit3.DataBindings.Add(new Binding("EditValue", this.journalXPC, "LocationId.LocationName", true));
+                this.textEdit2.DataBindings.Add(new Binding("EditValue", this.journalXPC, "TransDate", true));
+                this.textEdit1.DataBindings.Add(new Binding("EditValue", this.journalXPC, "ShiftId.ShiftName", true));
+            }
+
+
+
         }
 
         private void JournalXPC_CollectionChanged(object sender, DevExpress.Xpo.XPCollectionChangedEventArgs e)
@@ -114,6 +136,55 @@ namespace ProductionReports.View
         {
             
             e.Valid = unitOfWork1.SaveLine();
+        }
+
+        private void galleryDropDown1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            MessageBox.Show(e.Item.Caption);
+        }
+
+        private void approveBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TransJournal line;
+
+            if(FormRecord.CurrentRecord == null || !SecurityUser.IsApprover())
+            {
+                XtraMessageBox.Show("Missing record or you need to be approver");
+                return;
+            }
+            else
+            {
+                line = (TransJournal)FormRecord.CurrentRecord;
+            }
+            DialogResult userSelection = XtraMessageBox.Show("Do you want to approve", "Approve", MessageBoxButtons.YesNo);
+            if(userSelection == DialogResult.Yes)
+            {
+                line.IsApproved = 1;
+                line.Save();
+                unitOfWork1.CommitChanges();
+            }
+        }
+
+        private void reopenBI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TransJournal line;
+
+            if (FormRecord.CurrentRecord == null || !SecurityUser.IsApprover())
+            {
+                XtraMessageBox.Show("Missing record or you need to be approver");
+                return;
+            }
+            else
+            {
+                line = (TransJournal)FormRecord.CurrentRecord;
+            }
+            DialogResult userSelection = XtraMessageBox.Show("Do you want to reopen this record", "Reopen", MessageBoxButtons.YesNo);
+            if (userSelection == DialogResult.Yes)
+            {
+                line.IsApproved = 0;
+                line.Save();
+                unitOfWork1.CommitChanges();
+            }
         }
     }
 }

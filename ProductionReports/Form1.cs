@@ -87,5 +87,12 @@ namespace ProductionReports
         {
             e.Valid = unitOfWork1.SaveLine();
         }
+
+        private void sIDBI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var usr = System.Security.Principal.WindowsIdentity.GetCurrent().User;
+            
+            XtraMessageBox.Show(usr.Value);
+        }
     }
 }

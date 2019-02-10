@@ -10,6 +10,16 @@ namespace ProductionReports.ModelXpo.OmarERP
     {
         public TransJournalEmployees(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
+        protected override void OnSaving()
+        {
+            if ( this.JournalId.IsApproved == 1 ||!SecurityUser.IsCreator())
+            {
+                this.Reload();
+                throw new Exception("This is a Read only record  ");
+
+            }
+            base.OnSaving();
+        }
     }
 
 }
