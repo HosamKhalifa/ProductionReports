@@ -11,6 +11,7 @@
     <AssemblyName>CoreLib</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,14 +31,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.UI, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -50,16 +65,165 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormRecord.cs" />
+    <Compile Include="GlobalMethods.cs" />
+    <Compile Include="Grid\AppService\AppServicesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\ChartConfigurationBarXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid\AppService\ChartConfigurationBarXUC.Designer.cs">
+      <DependentUpon>ChartConfigurationBarXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\ExpressionColumnOptionsXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grid\AppService\ExpressionColumnOptionsXtraForm.Designer.cs">
+      <DependentUpon>ExpressionColumnOptionsXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\PreviewXtraGrid.cs" />
+    <Compile Include="Grid\AppService\PreviewXtraGridHeaderXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grid\AppService\PreviewXtraGridHeaderXtraForm.Designer.cs">
+      <DependentUpon>PreviewXtraGridHeaderXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridColumnInfoDS.cs">
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridColumnInfoDS.Designer.cs">
+      <DependentUpon>XtraGridColumnInfoDS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridColumnInfoDS1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridPopupMenu_ColumnsReorderXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridPopupMenu_ColumnsReorderXtraForm.Designer.cs">
+      <DependentUpon>XtraGridPopupMenu_ColumnsReorderXtraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridPopupMenu_PivotXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grid\AppService\XtraGridPopupMenu_PivotXtraForm.Designer.cs">
+      <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Grid\MyGrid1.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Label\JsonLabelDict.cs" />
+    <Compile Include="Label\LabelEditorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Label\LabelEditorFrm.Designer.cs">
+      <DependentUpon>LabelEditorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Label\UILabel.cs" />
+    <Compile Include="Grid\UserProfile\UIMarkerIcons.cs" />
+    <Compile Include="Grid\UserProfile\UIMaster.cs" />
+    <Compile Include="Grid\UserProfile\UIParams.cs" />
+    <Compile Include="Grid\UserProfile\UIProfile.cs" />
+    <Compile Include="Grid\UserProfile\UIProfileLine.cs" />
+    <Compile Include="Label\UIObjectBase.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyEditor\MyDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyEditor\MyXtraUserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyEditor\MyXtraUserControlBase.Designer.cs">
+      <DependentUpon>MyXtraUserControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyEnums.cs" />
+    <Compile Include="MyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForm.Designer.cs">
+      <DependentUpon>MyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyFormLayoutPersist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SharedExt\ExceptionExtensions.cs" />
+    <Compile Include="SharedExt\UnitOfWorkExtensions.cs" />
+    <Compile Include="Xpo\XPCollectionExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Xpo\XPLiteObjectExt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Grid\AppService\ChartConfigurationBarXUC.resx">
+      <DependentUpon>ChartConfigurationBarXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid\AppService\ExpressionColumnOptionsXtraForm.resx">
+      <DependentUpon>ExpressionColumnOptionsXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid\AppService\PreviewXtraGridHeaderXtraForm.resx">
+      <DependentUpon>PreviewXtraGridHeaderXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid\AppService\XtraGridPopupMenu_ColumnsReorderXtraForm.resx">
+      <DependentUpon>XtraGridPopupMenu_ColumnsReorderXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid\AppService\XtraGridPopupMenu_PivotXtraForm.resx">
+      <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Label\LabelEditorFrm.resx">
+      <DependentUpon>LabelEditorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyEditor\MyXtraUserControlBase.resx">
+      <DependentUpon>MyXtraUserControlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Grid\AppService\" />
+    <None Include="app.config" />
+    <None Include="Grid\AppService\AppServicesDataSet.xsc">
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Grid\AppService\AppServicesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppServicesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Grid\AppService\AppServicesDataSet.xss">
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Grid\AppService\XtraGridColumnInfoDS.xsc">
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </None>
+    <None Include="Grid\AppService\XtraGridColumnInfoDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>XtraGridColumnInfoDS1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Grid\AppService\XtraGridColumnInfoDS.xss">
+      <DependentUpon>XtraGridColumnInfoDS.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

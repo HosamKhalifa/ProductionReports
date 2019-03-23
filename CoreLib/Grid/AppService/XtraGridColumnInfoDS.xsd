@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XtraGridColumnInfoDS" targetNamespace="http://tempuri.org/XtraGridColumnInfoDS.xsd" xmlns:mstns="http://tempuri.org/XtraGridColumnInfoDS.xsd" xmlns="http://tempuri.org/XtraGridColumnInfoDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="XtraGridColumnInfoDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="XtraGridColumnInfoDS" msprop:Generator_UserDSName="XtraGridColumnInfoDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GridViewColumns" msprop:Generator_TableClassName="GridViewColumnsDataTable" msprop:Generator_TableVarName="tableGridViewColumns" msprop:Generator_RowChangedName="GridViewColumnsRowChanged" msprop:Generator_TablePropName="GridViewColumns" msprop:Generator_RowDeletingName="GridViewColumnsRowDeleting" msprop:Generator_RowChangingName="GridViewColumnsRowChanging" msprop:Generator_RowEvHandlerName="GridViewColumnsRowChangeEventHandler" msprop:Generator_RowDeletedName="GridViewColumnsRowDeleted" msprop:Generator_RowClassName="GridViewColumnsRow" msprop:Generator_UserTableName="GridViewColumns" msprop:Generator_RowEvArgName="GridViewColumnsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ColumnName" msprop:Generator_ColumnVarNameInTable="columnColumnName" msprop:Generator_ColumnPropNameInRow="ColumnName" msprop:Generator_ColumnPropNameInTable="ColumnNameColumn" msprop:Generator_UserColumnName="ColumnName" type="xs:string" />
+              <xs:element name="FieldName" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="FieldName" msprop:Generator_ColumnVarNameInTable="columnFieldName" msprop:Generator_ColumnPropNameInTable="FieldNameColumn" msprop:Generator_UserColumnName="FieldName" type="xs:string" minOccurs="0" />
+              <xs:element name="Caption" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Caption" msprop:Generator_ColumnVarNameInTable="columnCaption" msprop:Generator_ColumnPropNameInTable="CaptionColumn" msprop:Generator_UserColumnName="Caption" type="xs:string" minOccurs="0" />
+              <xs:element name="UnBoundType" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="UnBoundType" msprop:Generator_ColumnVarNameInTable="columnUnBoundType" msprop:Generator_ColumnPropNameInTable="UnBoundTypeColumn" msprop:Generator_UserColumnName="UnBoundType" type="xs:string" minOccurs="0" />
+              <xs:element name="UnBoundExpression" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="UnBoundExpression" msprop:Generator_ColumnVarNameInTable="columnUnBoundExpression" msprop:Generator_ColumnPropNameInTable="UnBoundExpressionColumn" msprop:Generator_UserColumnName="UnBoundExpression" type="xs:string" minOccurs="0" />
+              <xs:element name="SortOrder" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="SortOrder" msprop:Generator_ColumnVarNameInTable="columnSortOrder" msprop:Generator_ColumnPropNameInTable="SortOrderColumn" msprop:Generator_UserColumnName="SortOrder" type="xs:string" minOccurs="0" />
+              <xs:element name="VisibleIndex" msprop:Generator_ColumnVarNameInTable="columnVisibleIndex" msprop:Generator_ColumnPropNameInRow="VisibleIndex" msprop:Generator_ColumnPropNameInTable="VisibleIndexColumn" msprop:Generator_UserColumnName="VisibleIndex" type="xs:int" minOccurs="0" />
+              <xs:element name="IsExpressionColumn" msprop:Generator_ColumnVarNameInTable="columnIsExpressionColumn" msprop:Generator_ColumnPropNameInRow="IsExpressionColumn" msprop:Generator_ColumnPropNameInTable="IsExpressionColumnColumn" msprop:Generator_UserColumnName="IsExpressionColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsVisible" msprop:Generator_ColumnVarNameInTable="columnIsVisible" msprop:Generator_ColumnPropNameInRow="IsVisible" msprop:Generator_ColumnPropNameInTable="IsVisibleColumn" msprop:Generator_UserColumnName="IsVisible" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MonthNamesList" msprop:Generator_TableClassName="MonthNamesListDataTable" msprop:Generator_TableVarName="tableMonthNamesList" msprop:Generator_TablePropName="MonthNamesList" msprop:Generator_RowDeletingName="MonthNamesListRowDeleting" msprop:Generator_RowChangingName="MonthNamesListRowChanging" msprop:Generator_RowEvHandlerName="MonthNamesListRowChangeEventHandler" msprop:Generator_RowDeletedName="MonthNamesListRowDeleted" msprop:Generator_UserTableName="MonthNamesList" msprop:Generator_RowChangedName="MonthNamesListRowChanged" msprop:Generator_RowEvArgName="MonthNamesListRowChangeEvent" msprop:Generator_RowClassName="MonthNamesListRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MonthKey" msprop:Generator_ColumnVarNameInTable="columnMonthKey" msprop:Generator_ColumnPropNameInRow="MonthKey" msprop:Generator_ColumnPropNameInTable="MonthKeyColumn" msprop:Generator_UserColumnName="MonthKey" type="xs:int" />
+              <xs:element name="MonthName" msprop:Generator_ColumnVarNameInTable="columnMonthName" msprop:Generator_ColumnPropNameInRow="MonthName" msprop:Generator_ColumnPropNameInTable="MonthNameColumn" msprop:Generator_UserColumnName="MonthName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GridColumns" msprop:Generator_TableClassName="GridColumnsDataTable" msprop:Generator_TableVarName="tableGridColumns" msprop:Generator_RowChangedName="GridColumnsRowChanged" msprop:Generator_TablePropName="GridColumns" msprop:Generator_RowDeletingName="GridColumnsRowDeleting" msprop:Generator_RowChangingName="GridColumnsRowChanging" msprop:Generator_RowEvHandlerName="GridColumnsRowChangeEventHandler" msprop:Generator_RowDeletedName="GridColumnsRowDeleted" msprop:Generator_RowClassName="GridColumnsRow" msprop:Generator_UserTableName="GridColumns" msprop:Generator_RowEvArgName="GridColumnsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ColName" msprop:Generator_ColumnVarNameInTable="columnColName" msprop:Generator_ColumnPropNameInRow="ColName" msprop:Generator_ColumnPropNameInTable="ColNameColumn" msprop:Generator_UserColumnName="ColName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ColCaption" msprop:Generator_ColumnVarNameInTable="columnColCaption" msprop:Generator_ColumnPropNameInRow="ColCaption" msprop:Generator_ColumnPropNameInTable="ColCaptionColumn" msprop:Generator_UserColumnName="ColCaption" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ColFieldName" msprop:Generator_ColumnVarNameInTable="columnColFieldName" msprop:Generator_ColumnPropNameInRow="ColFieldName" msprop:Generator_ColumnPropNameInTable="ColFieldNameColumn" msprop:Generator_UserColumnName="ColFieldName" type="xs:string" minOccurs="0" />
+              <xs:element name="VisibleIndex" msprop:Generator_ColumnVarNameInTable="columnVisibleIndex" msprop:Generator_ColumnPropNameInRow="VisibleIndex" msprop:Generator_ColumnPropNameInTable="VisibleIndexColumn" msprop:Generator_UserColumnName="VisibleIndex" type="xs:int" minOccurs="0" />
+              <xs:element name="DataType" msprop:Generator_ColumnVarNameInTable="columnDataType" msprop:Generator_ColumnPropNameInRow="DataType" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInTable="DataTypeColumn" msprop:Generator_UserColumnName="DataType" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DualTable" msprop:Generator_TableClassName="DualTableDataTable" msprop:Generator_TableVarName="tableDualTable" msprop:Generator_TablePropName="DualTable" msprop:Generator_RowDeletingName="DualTableRowDeleting" msprop:Generator_RowChangingName="DualTableRowChanging" msprop:Generator_RowEvHandlerName="DualTableRowChangeEventHandler" msprop:Generator_RowDeletedName="DualTableRowDeleted" msprop:Generator_UserTableName="DualTable" msprop:Generator_RowChangedName="DualTableRowChanged" msprop:Generator_RowEvArgName="DualTableRowChangeEvent" msprop:Generator_RowClassName="DualTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="X" msprop:Generator_ColumnVarNameInTable="columnX" msprop:Generator_ColumnPropNameInRow="X" msprop:Generator_ColumnPropNameInTable="XColumn" msprop:Generator_UserColumnName="X" type="xs:string" default="X" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GridViewColumns" />
+      <xs:field xpath="mstns:ColumnName" />
+    </xs:unique>
+    <xs:unique name="MonthNamesList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MonthNamesList" />
+      <xs:field xpath="mstns:MonthKey" />
+    </xs:unique>
+    <xs:unique name="GridColumns_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GridColumns" />
+      <xs:field xpath="mstns:ColName" />
+    </xs:unique>
+    <xs:unique name="DualTable_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DualTable" />
+      <xs:field xpath="mstns:X" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

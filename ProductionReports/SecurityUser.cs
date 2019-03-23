@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 using System.Configuration;
 using DevExpress.Xpo;
 using ProductionReports.ModelXpo.OmarERP;
+using DevExpress.Xpo.DB;
+
 namespace ProductionReports
 {
    public class SecurityUser
     {
+        private const string SP_NEXT_TASK_LINE = "dbo.sp_Sys_GetNewTaskLine";
         public string UserId { get; set; }
         public string Pwd { get; set; }
         public string PwdSuffix { get { return "!@#$%^&*()"; }   }
+
         public string ConnectionString { get; set; }
 
 
@@ -46,6 +50,20 @@ namespace ProductionReports
             string filter = $"SELECT * FROM SecurityAccessTypeTable where AccessDegree = {accessTypeId}";
             var accessType = XpoDefault.Session.GetObjectsFromQuery<SecurityAccessType>(filter).FirstOrDefault();
             return accessType;
+        }
+        public static int NextLineVal(Session unitOfWork)
+        {
+            int returnIndex = 0;
+            var outputParm = new DevExpress.Xpo.DB.SprocParameter()
+            {   ParameterName = "@NewID",
+                Direction = DevExpress.Xpo.DB.SprocParameterDirection.Output,
+                DbType = DevExpress.Xpo.DB.DBColumnType.Int32 };
+            var data = unitOfWork.ExecuteSprocParametrized(SP_NEXT_TASK_LINE, outputParm);
+            SelectStatementResultRow row = data.ResultSet[1].Rows[0];
+            
+            returnIndex = (int)row.Values[1];// data.ResultSet[1].Rows[1].Values[1];
+           
+            return returnIndex;
         }
 
         public static bool IsCreator()

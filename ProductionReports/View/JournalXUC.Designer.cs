@@ -45,6 +45,14 @@
             this.locationList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.locationXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.isApproved = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.employeeSearchLookup = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.employeeXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmployeeNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDegreeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colJobName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.fromBI = new DevExpress.XtraBars.BarEditItem();
@@ -75,6 +83,8 @@
             this.colModifiedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedAt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsApproved = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colShiftSupervisor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colShiftSupervisorName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.journalPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.journalLinesPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -110,6 +120,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.locationList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.isApproved)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeSearchLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -208,7 +221,8 @@
             this.productListSLookup,
             this.equipmentList,
             this.locationList,
-            this.isApproved});
+            this.isApproved,
+            this.employeeSearchLookup});
             // 
             // shiftList
             // 
@@ -275,6 +289,78 @@
             this.isApproved.Name = "isApproved";
             this.isApproved.ValueChecked = 1;
             this.isApproved.ValueUnchecked = 0;
+            // 
+            // employeeSearchLookup
+            // 
+            this.employeeSearchLookup.AutoHeight = false;
+            this.employeeSearchLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.employeeSearchLookup.DataSource = this.employeeXPC;
+            this.employeeSearchLookup.DisplayMember = "EmployeeNumber";
+            this.employeeSearchLookup.KeyMember = "AccountID";
+            this.employeeSearchLookup.Name = "employeeSearchLookup";
+            this.employeeSearchLookup.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.employeeSearchLookup.ValueMember = "AccountID";
+            this.employeeSearchLookup.View = this.gridView1;
+            // 
+            // employeeXPC
+            // 
+            this.employeeXPC.CriteriaString = "[IsRetired] = 0s";
+            this.employeeXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Employee);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colAccountID,
+            this.colEmployeeNumber,
+            this.colName,
+            this.colDegreeName,
+            this.colJobName});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colEmployeeNumber, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // colAccountID
+            // 
+            this.colAccountID.FieldName = "AccountID";
+            this.colAccountID.Name = "colAccountID";
+            // 
+            // colEmployeeNumber
+            // 
+            this.colEmployeeNumber.FieldName = "EmployeeNumber";
+            this.colEmployeeNumber.Name = "colEmployeeNumber";
+            this.colEmployeeNumber.Visible = true;
+            this.colEmployeeNumber.VisibleIndex = 0;
+            // 
+            // colName
+            // 
+            this.colName.FieldName = "Name";
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 1;
+            this.colName.Width = 194;
+            // 
+            // colDegreeName
+            // 
+            this.colDegreeName.FieldName = "DegreeName";
+            this.colDegreeName.Name = "colDegreeName";
+            this.colDegreeName.Visible = true;
+            this.colDegreeName.VisibleIndex = 3;
+            this.colDegreeName.Width = 130;
+            // 
+            // colJobName
+            // 
+            this.colJobName.FieldName = "JobName";
+            this.colJobName.Name = "colJobName";
+            this.colJobName.Visible = true;
+            this.colJobName.VisibleIndex = 2;
+            this.colJobName.Width = 244;
             // 
             // barManager1
             // 
@@ -453,7 +539,9 @@
             this.colCreatedAt,
             this.colModifiedBy,
             this.colModifiedAt,
-            this.colIsApproved});
+            this.colIsApproved,
+            this.colShiftSupervisor,
+            this.colShiftSupervisorName});
             this.journalGV.GridControl = this.gridControl1;
             this.journalGV.Name = "journalGV";
             this.journalGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
@@ -587,6 +675,25 @@
             this.colIsApproved.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.colIsApproved.Visible = true;
             this.colIsApproved.VisibleIndex = 11;
+            // 
+            // colShiftSupervisor
+            // 
+            this.colShiftSupervisor.Caption = "Supervisor id";
+            this.colShiftSupervisor.ColumnEdit = this.employeeSearchLookup;
+            this.colShiftSupervisor.FieldName = "ShiftSupervisor!Key";
+            this.colShiftSupervisor.Name = "colShiftSupervisor";
+            this.colShiftSupervisor.OptionsEditForm.VisibleIndex = 70;
+            this.colShiftSupervisor.Visible = true;
+            this.colShiftSupervisor.VisibleIndex = 12;
+            // 
+            // colShiftSupervisorName
+            // 
+            this.colShiftSupervisorName.Caption = "Supervisor name";
+            this.colShiftSupervisorName.FieldName = "ShiftSupervisor.Name";
+            this.colShiftSupervisorName.Name = "colShiftSupervisorName";
+            this.colShiftSupervisorName.OptionsEditForm.VisibleIndex = 80;
+            this.colShiftSupervisorName.Visible = true;
+            this.colShiftSupervisorName.VisibleIndex = 13;
             // 
             // xtraTabControl1
             // 
@@ -865,6 +972,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.locationList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.isApproved)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeSearchLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
@@ -968,5 +1078,15 @@
         private DevExpress.XtraBars.BarButtonItem approveBtn;
         private DevExpress.XtraBars.BarToolbarsListItem barToolbarsListItem1;
         private DevExpress.XtraBars.BarButtonItem reopenBI;
+        private DevExpress.XtraGrid.Columns.GridColumn colShiftSupervisor;
+        private DevExpress.XtraGrid.Columns.GridColumn colShiftSupervisorName;
+        private DevExpress.Xpo.XPCollection employeeXPC;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit employeeSearchLookup;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colAccountID;
+        private DevExpress.XtraGrid.Columns.GridColumn colEmployeeNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn colName;
+        private DevExpress.XtraGrid.Columns.GridColumn colDegreeName;
+        private DevExpress.XtraGrid.Columns.GridColumn colJobName;
     }
 }

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AppServicesDataSet" targetNamespace="http://tempuri.org/AppServicesDataSet.xsd" xmlns:mstns="http://tempuri.org/AppServicesDataSet.xsd" xmlns="http://tempuri.org/AppServicesDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="FinERPConnection" IsAppSettingsProperty="true" Modifier="Assembly" Name="FinERPConnection (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CoreLib.Properties.Settings.GlobalReference.Default.FinERPConnection" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AppServicesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AppServicesDataSet" msprop:Generator_UserDSName="AppServicesDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ChartPaletteDataTable" msprop:Generator_TableClassName="ChartPaletteDataTableDataTable" msprop:Generator_TableVarName="tableChartPaletteDataTable" msprop:Generator_RowChangedName="ChartPaletteDataTableRowChanged" msprop:Generator_TablePropName="ChartPaletteDataTable" msprop:Generator_RowDeletingName="ChartPaletteDataTableRowDeleting" msprop:Generator_RowChangingName="ChartPaletteDataTableRowChanging" msprop:Generator_RowEvHandlerName="ChartPaletteDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ChartPaletteDataTableRowDeleted" msprop:Generator_RowClassName="ChartPaletteDataTableRow" msprop:Generator_UserTableName="ChartPaletteDataTable" msprop:Generator_RowEvArgName="ChartPaletteDataTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PaletteName" msprop:Generator_ColumnVarNameInTable="columnPaletteName" msprop:Generator_ColumnPropNameInRow="PaletteName" msprop:Generator_ColumnPropNameInTable="PaletteNameColumn" msprop:Generator_UserColumnName="PaletteName" type="xs:string" />
+              <xs:element name="PaletteDisplayName" msprop:Generator_ColumnVarNameInTable="columnPaletteDisplayName" msprop:Generator_ColumnPropNameInRow="PaletteDisplayName" msprop:Generator_ColumnPropNameInTable="PaletteDisplayNameColumn" msprop:Generator_UserColumnName="PaletteDisplayName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FormParams" msprop:Generator_TableClassName="FormParamsDataTable" msprop:Generator_TableVarName="tableFormParams" msprop:Generator_RowChangedName="FormParamsRowChanged" msprop:Generator_TablePropName="FormParams" msprop:Generator_RowDeletingName="FormParamsRowDeleting" msprop:Generator_RowChangingName="FormParamsRowChanging" msprop:Generator_RowEvHandlerName="FormParamsRowChangeEventHandler" msprop:Generator_RowDeletedName="FormParamsRowDeleted" msprop:Generator_RowClassName="FormParamsRow" msprop:Generator_UserTableName="FormParams" msprop:Generator_RowEvArgName="FormParamsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ParamName" msprop:Generator_ColumnVarNameInTable="columnParamName" msprop:Generator_ColumnPropNameInRow="ParamName" msprop:Generator_ColumnPropNameInTable="ParamNameColumn" msprop:Generator_UserColumnName="ParamName" type="xs:string" />
+              <xs:element name="ParamValue" msprop:Generator_ColumnVarNameInTable="columnParamValue" msprop:Generator_ColumnPropNameInRow="ParamValue" msprop:Generator_ColumnPropNameInTable="ParamValueColumn" msprop:Generator_UserColumnName="ParamValue" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ChartPaletteDataTable" />
+      <xs:field xpath="mstns:PaletteName" />
+    </xs:unique>
+    <xs:unique name="FormParams_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FormParams" />
+      <xs:field xpath="mstns:ParamName" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

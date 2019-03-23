@@ -22,6 +22,7 @@ namespace ProductionReports
         {
             InitializeComponent();
             InitEF();
+            
          
         }
 
@@ -31,10 +32,11 @@ namespace ProductionReports
 
             // Instantiate a new DBContext
             dbContext = new ProductionReports.Models.ProdContext();
+
             
             unitOfWork1.ConnectionString = ConnectionHelper.ConnectionString;
-            
-       
+
+            taskMastersXUC1.InitObj();
 
 
 
@@ -93,6 +95,34 @@ namespace ProductionReports
             var usr = System.Security.Principal.WindowsIdentity.GetCurrent().User;
             
             XtraMessageBox.Show(usr.Value);
+        }
+
+        public void AddCat(int id)
+        {
+            ArticalCategory c = new ArticalCategory(unitOfWork1);
+            c.LineID = id;
+            c.CategoryName = $"Test {id}";
+            c.CreatedBy = SecurityUser.CurrentUser.UserId;
+            c.CreatedAt = DateTime.Now;
+            c.ModifiedBy = SecurityUser.CurrentUser.UserId;
+            c.ModifiedAt = DateTime.Now;
+            c.Save();
+
+        }
+
+        private void categoryBI_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+
+                AddCat(10);
+                unitOfWork1.CommitChanges();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

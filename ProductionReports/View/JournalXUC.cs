@@ -14,6 +14,7 @@ using DevExpress.Xpo;
 using ProductionReports.ModelXpo.OmarERP;
 using DevExpress.Data.Filtering;
 
+
 namespace ProductionReports.View
 {
     public partial class JournalXUC : DevExpress.XtraEditors.XtraUserControl
@@ -39,7 +40,7 @@ namespace ProductionReports.View
             {
                 var gv = (s as GridView);
                 var rec = gv.GetFocusedRow() as XPLiteObject;
-                FormRecord.CurrentRecord = rec;
+                CoreLib.FormRecord.CurrentRecord = rec;
             };
         }
 
@@ -147,14 +148,14 @@ namespace ProductionReports.View
         {
             TransJournal line;
 
-            if(FormRecord.CurrentRecord == null || !SecurityUser.IsApprover())
+            if(CoreLib.FormRecord.CurrentRecord == null || !SecurityUser.IsApprover())
             {
                 XtraMessageBox.Show("Missing record or you need to be approver");
                 return;
             }
             else
             {
-                line = (TransJournal)FormRecord.CurrentRecord;
+                line = (TransJournal)CoreLib.FormRecord.CurrentRecord;
             }
             DialogResult userSelection = XtraMessageBox.Show("Do you want to approve", "Approve", MessageBoxButtons.YesNo);
             if(userSelection == DialogResult.Yes)
@@ -169,14 +170,14 @@ namespace ProductionReports.View
         {
             TransJournal line;
 
-            if (FormRecord.CurrentRecord == null || !SecurityUser.IsApprover())
+            if (CoreLib.FormRecord.CurrentRecord == null || !SecurityUser.IsApprover())
             {
                 XtraMessageBox.Show("Missing record or you need to be approver");
                 return;
             }
             else
             {
-                line = (TransJournal)FormRecord.CurrentRecord;
+                line = (TransJournal)CoreLib.FormRecord.CurrentRecord;
             }
             DialogResult userSelection = XtraMessageBox.Show("Do you want to reopen this record", "Reopen", MessageBoxButtons.YesNo);
             if (userSelection == DialogResult.Yes)

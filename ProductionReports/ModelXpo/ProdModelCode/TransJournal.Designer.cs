@@ -94,6 +94,13 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fIsApproved; }
             set { SetPropertyValue<int>("IsApproved", ref fIsApproved, value); }
         }
+        Employee fShiftSupervisor;
+        [Size(7)]
+        public Employee ShiftSupervisor
+        {
+            get { return fShiftSupervisor; }
+            set { SetPropertyValue<Employee>("ShiftSupervisor", ref fShiftSupervisor, value); }
+        }
         [Association(@"TransJournalLineReferencesTransJournal")]
         public XPCollection<TransJournalLine> TransJournalLines { get { return GetCollection<TransJournalLine>("TransJournalLines"); } }
     }

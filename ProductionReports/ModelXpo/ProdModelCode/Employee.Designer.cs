@@ -14,16 +14,17 @@ using System.ComponentModel;
 namespace ProductionReports.ModelXpo.OmarERP
 {
 
-    [NonPersistent]
+    [Persistent(@"EmployeeFullDataView")]
     public partial class Employee : XPLiteObject
     {
-        string fEmployeeAccountID;
+        string fAccountID;
         [Key]
         [Size(7)]
-        public string EmployeeAccountID
+        [Persistent(@"EmployeeAccountID")]
+        public string AccountID
         {
-            get { return fEmployeeAccountID; }
-            set { SetPropertyValue<string>("EmployeeAccountID", ref fEmployeeAccountID, value); }
+            get { return fAccountID; }
+            set { SetPropertyValue<string>("AccountID", ref fAccountID, value); }
         }
         int fEmployeeNumber;
         public int EmployeeNumber
@@ -38,33 +39,24 @@ namespace ProductionReports.ModelXpo.OmarERP
             get { return fName; }
             set { SetPropertyValue<string>("Name", ref fName, value); }
         }
-        string fDeptName;
-        [Size(250)]
-        public string DeptName
-        {
-            get { return fDeptName; }
-            set { SetPropertyValue<string>("DeptName", ref fDeptName, value); }
-        }
         string fDegreeName;
-        [Size(178)]
         public string DegreeName
         {
             get { return fDegreeName; }
             set { SetPropertyValue<string>("DegreeName", ref fDegreeName, value); }
         }
-        string fCostName;
-        [Size(250)]
-        public string CostName
-        {
-            get { return fCostName; }
-            set { SetPropertyValue<string>("CostName", ref fCostName, value); }
-        }
         string fJobName;
-        [Size(128)]
+        [Size(150)]
         public string JobName
         {
             get { return fJobName; }
             set { SetPropertyValue<string>("JobName", ref fJobName, value); }
+        }
+        short fIsRetired;
+        public short IsRetired
+        {
+            get { return fIsRetired; }
+            set { SetPropertyValue<short>("IsRetired", ref fIsRetired, value); }
         }
     }
 

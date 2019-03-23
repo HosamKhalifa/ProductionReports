@@ -14,7 +14,7 @@ using System.ComponentModel;
 namespace ProductionReports.ModelXpo.OmarERP
 {
 
-    [NonPersistent]
+    [Persistent(@"VendorAccountEntityView")]
     public partial class VendorAccount_EV : XPLiteObject
     {
         string fAccountID;

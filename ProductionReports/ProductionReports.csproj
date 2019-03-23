@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v16.1" />
     <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.1" />
     <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -44,6 +45,7 @@
     <Reference Include="DevExpress.Printing.v16.1.Core" />
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -76,7 +78,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRecord.cs" />
     <Compile Include="LoginXtraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,12 @@
     </Compile>
     <Compile Include="LoginXUC.Designer.cs">
       <DependentUpon>LoginXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\EquipmentProduct.cs" />
@@ -175,6 +182,30 @@
     <Compile Include="ModelXpo\ProdModelCode\VendorTransType.Designer.cs">
       <DependentUpon>VendorTransType.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelXpo\TaskMgrModelCode\ArticalCategory.cs" />
+    <Compile Include="ModelXpo\TaskMgrModelCode\ArticalCategory.Designer.cs">
+      <DependentUpon>ArticalCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\TaskMgrModelCode\Line.cs" />
+    <Compile Include="ModelXpo\TaskMgrModelCode\Line.Designer.cs">
+      <DependentUpon>Line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\TaskMgrModelCode\Project.cs" />
+    <Compile Include="ModelXpo\TaskMgrModelCode\Project.Designer.cs">
+      <DependentUpon>Project.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\TaskMgrModelCode\Task.cs" />
+    <Compile Include="ModelXpo\TaskMgrModelCode\Task.Designer.cs">
+      <DependentUpon>Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\TaskMgrModelCode\TaskLog.cs" />
+    <Compile Include="ModelXpo\TaskMgrModelCode\TaskLog.Designer.cs">
+      <DependentUpon>TaskLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelXpo\TaskMgrModelCode\Tracker.cs" />
+    <Compile Include="ModelXpo\TaskMgrModelCode\Tracker.Designer.cs">
+      <DependentUpon>Tracker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityUser.cs" />
@@ -199,6 +230,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RptDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="View\Task\TaskMastersXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Task\TaskMastersXUC.Designer.cs">
+      <DependentUpon>TaskMastersXUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginXUC.resx">
       <DependentUpon>LoginXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -224,10 +264,17 @@
     <EmbeddedResource Include="View\PivotJournalXUC.resx">
       <DependentUpon>PivotJournalXUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Task\TaskMastersXUC.resx">
+      <DependentUpon>TaskMastersXUC.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="ModelXpo\ProdModel.xpo" />
     <None Include="ModelXpo\ProdModel.xpo.diagram">
       <DependentUpon>ProdModel.xpo</DependentUpon>
+    </None>
+    <None Include="ModelXpo\TaskMgrModel.xpo" />
+    <None Include="ModelXpo\TaskMgrModel.xpo.diagram">
+      <DependentUpon>TaskMgrModel.xpo</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ProductionReports.Models.Location.datasource" />

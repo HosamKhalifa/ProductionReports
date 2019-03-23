@@ -14,10 +14,10 @@ namespace ProductionReports.ModelXpo.OmarERP
         }
         public override void AfterConstruction()
         {
-            this.CreatedBy = Environment.UserName;
+            this.CreatedBy = SecurityUser.CurrentUser.UserId;
             this.CreatedAt = DateTime.Now;
 
-            this.ModifiedBy = Environment.UserName;
+            this.ModifiedBy = SecurityUser.CurrentUser.UserId;
             this.ModifiedAt = DateTime.Now;
 
             base.AfterConstruction();

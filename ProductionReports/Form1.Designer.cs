@@ -34,12 +34,13 @@
             this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
             this.settingsNavPage = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.locationGC = new DevExpress.XtraGrid.GridControl();
-            this.locationXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.vendorTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.vendorGC = new CoreLib.Grid.MyGridControl();
+            this.vendorXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.persistentRepository1 = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.locationList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.locationXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.equipmentList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.equipmentXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.salesItemList = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -55,16 +56,12 @@
             this.colJobName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.POSAccountListLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.POSAccountListXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.locationGV = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colLocationId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLocationName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPOSAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.shiftXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colShiftId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colShiftName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.activeCheckBox = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.vendorGV = new CoreLib.Grid.MyGridView();
+            this.colAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colVendorName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colActive1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.saveBI = new DevExpress.XtraBars.BarButtonItem();
@@ -76,6 +73,18 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.locationGC = new DevExpress.XtraGrid.GridControl();
+            this.locationGV = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colLocationId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLocationName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPOSAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.shiftXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colShiftId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colShiftName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -94,23 +103,33 @@
             this.colProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSalesAccountID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.failureTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.vendorTransTypeGC = new CoreLib.Grid.MyGridControl();
+            this.vendorTransTypeXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.vendorTransTypeGV = new CoreLib.Grid.MyGridView();
+            this.colTransType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTransTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.journalXUC1 = new ProductionReports.View.JournalXUC();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.pivotJournalXUC1 = new ProductionReports.View.PivotJournalXUC();
+            this.taskSettingsNavPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.taskMastersXUC1 = new ProductionReports.View.Task.TaskMastersXUC();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.categoryBI = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.settingsNavPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.locationGC)).BeginInit();
+            this.vendorTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.locationList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesItemList)).BeginInit();
@@ -119,12 +138,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POSAccountListLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POSAccountListXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activeCheckBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.locationGC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationGV)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shiftXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -132,11 +155,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            this.failureTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorTransTypeGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorTransTypeXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorTransTypeGV)).BeginInit();
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage5.SuspendLayout();
             this.navigationPage1.SuspendLayout();
+            this.taskSettingsNavPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // navigationPane1
@@ -144,13 +172,15 @@
             this.navigationPane1.Controls.Add(this.settingsNavPage);
             this.navigationPane1.Controls.Add(this.navigationPage2);
             this.navigationPane1.Controls.Add(this.navigationPage1);
+            this.navigationPane1.Controls.Add(this.taskSettingsNavPage3);
             this.navigationPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navigationPane1.Location = new System.Drawing.Point(0, 24);
             this.navigationPane1.Name = "navigationPane1";
             this.navigationPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPage2,
             this.navigationPage1,
-            this.settingsNavPage});
+            this.settingsNavPage,
+            this.taskSettingsNavPage3});
             this.navigationPane1.RegularSize = new System.Drawing.Size(669, 324);
             this.navigationPane1.SelectedPage = this.navigationPage2;
             this.navigationPane1.Size = new System.Drawing.Size(669, 324);
@@ -163,7 +193,7 @@
             this.settingsNavPage.Controls.Add(this.xtraTabControl1);
             this.settingsNavPage.Image = ((System.Drawing.Image)(resources.GetObject("settingsNavPage.Image")));
             this.settingsNavPage.Name = "settingsNavPage";
-            this.settingsNavPage.Size = new System.Drawing.Size(590, 261);
+            this.settingsNavPage.Size = new System.Drawing.Size(625, 261);
             this.settingsNavPage.Enter += new System.EventHandler(this.settingsNavPage_Enter);
             // 
             // xtraTabControl1
@@ -171,35 +201,61 @@
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(590, 261);
+            this.xtraTabControl1.SelectedTabPage = this.vendorTabPage6;
+            this.xtraTabControl1.Size = new System.Drawing.Size(625, 261);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.vendorTabPage6,
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage4});
+            this.xtraTabPage4,
+            this.failureTabPage6});
             // 
-            // xtraTabPage1
+            // vendorTabPage6
             // 
-            this.xtraTabPage1.Controls.Add(this.locationGC);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(585, 235);
-            this.xtraTabPage1.Text = "Locations";
+            this.vendorTabPage6.Controls.Add(this.vendorGC);
+            this.vendorTabPage6.Name = "vendorTabPage6";
+            this.vendorTabPage6.Size = new System.Drawing.Size(620, 235);
+            this.vendorTabPage6.Text = "Vendors";
             // 
-            // locationGC
+            // vendorGC
             // 
-            this.locationGC.DataSource = this.locationXPC;
-            this.locationGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.locationGC.ExternalRepository = this.persistentRepository1;
-            this.locationGC.Location = new System.Drawing.Point(0, 0);
-            this.locationGC.MainView = this.locationGV;
-            this.locationGC.Name = "locationGC";
-            this.locationGC.Size = new System.Drawing.Size(585, 235);
-            this.locationGC.TabIndex = 0;
-            this.locationGC.UseEmbeddedNavigator = true;
-            this.locationGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.locationGV});
+            this.vendorGC.DataSource = this.vendorXPC;
+            this.vendorGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendorGC.ExternalRepository = this.persistentRepository1;
+            this.vendorGC.Location = new System.Drawing.Point(0, 0);
+            this.vendorGC.MainView = this.vendorGV;
+            this.vendorGC.MenuManager = this.barManager1;
+            this.vendorGC.Name = "vendorGC";
+            this.vendorGC.Size = new System.Drawing.Size(620, 235);
+            this.vendorGC.TabIndex = 0;
+            this.vendorGC.UseEmbeddedNavigator = true;
+            this.vendorGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.vendorGV});
+            // 
+            // vendorXPC
+            // 
+            this.vendorXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Vendor);
+            // 
+            // persistentRepository1
+            // 
+            this.persistentRepository1.Items.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.locationList,
+            this.equipmentList,
+            this.salesItemList,
+            this.employeeList,
+            this.POSAccountListLookUp,
+            this.activeCheckBox});
+            // 
+            // locationList
+            // 
+            this.locationList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.locationList.DataSource = this.locationXPC;
+            this.locationList.DisplayMember = "LocationName";
+            this.locationList.Name = "locationList";
+            this.locationList.ValueMember = "LocationId";
             // 
             // locationXPC
             // 
@@ -213,24 +269,6 @@
             this.unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.None;
             this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
             this.unitOfWork1.TrackPropertiesModifications = false;
-            // 
-            // persistentRepository1
-            // 
-            this.persistentRepository1.Items.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.locationList,
-            this.equipmentList,
-            this.salesItemList,
-            this.employeeList,
-            this.POSAccountListLookUp});
-            // 
-            // locationList
-            // 
-            this.locationList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.locationList.DataSource = this.locationXPC;
-            this.locationList.DisplayMember = "LocationName";
-            this.locationList.Name = "locationList";
-            this.locationList.ValueMember = "LocationId";
             // 
             // equipmentList
             // 
@@ -378,93 +416,59 @@
             this.POSAccountListXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.LocationsTable);
             this.POSAccountListXPC.Session = this.unitOfWork1;
             // 
-            // locationGV
+            // activeCheckBox
             // 
-            this.locationGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colLocationId,
-            this.colLocationName,
-            this.colPOSAccountID});
-            this.locationGV.GridControl = this.locationGC;
-            this.locationGV.Name = "locationGV";
-            this.locationGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
-            this.locationGV.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
-            this.locationGV.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
+            this.activeCheckBox.AutoHeight = false;
+            this.activeCheckBox.Name = "activeCheckBox";
+            this.activeCheckBox.ValueChecked = 1;
+            this.activeCheckBox.ValueUnchecked = 0;
             // 
-            // colLocationId
+            // vendorGV
             // 
-            this.colLocationId.FieldName = "LocationId";
-            this.colLocationId.Name = "colLocationId";
-            this.colLocationId.Visible = true;
-            this.colLocationId.VisibleIndex = 0;
+            this.vendorGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colAccountID,
+            this.colVendorName,
+            this.colDescription,
+            this.colActive1});
+            this.vendorGV.GridControl = this.vendorGC;
+            this.vendorGV.Name = "vendorGV";
+            this.vendorGV.OptionsView.ColumnAutoWidth = false;
             // 
-            // colLocationName
+            // colAccountID
             // 
-            this.colLocationName.FieldName = "LocationName";
-            this.colLocationName.Name = "colLocationName";
-            this.colLocationName.Visible = true;
-            this.colLocationName.VisibleIndex = 1;
+            this.colAccountID.Caption = "ID";
+            this.colAccountID.FieldName = "AccountID!Key";
+            this.colAccountID.Name = "colAccountID";
+            this.colAccountID.Visible = true;
+            this.colAccountID.VisibleIndex = 0;
+            this.colAccountID.Width = 74;
             // 
-            // colPOSAccountID
+            // colVendorName
             // 
-            this.colPOSAccountID.Caption = "Master Location";
-            this.colPOSAccountID.ColumnEdit = this.POSAccountListLookUp;
-            this.colPOSAccountID.FieldName = "POSAccountID";
-            this.colPOSAccountID.Name = "colPOSAccountID";
-            this.colPOSAccountID.Visible = true;
-            this.colPOSAccountID.VisibleIndex = 2;
+            this.colVendorName.Caption = "Vendor name";
+            this.colVendorName.FieldName = "AccountID.Name";
+            this.colVendorName.Name = "colVendorName";
+            this.colVendorName.OptionsColumn.AllowEdit = false;
+            this.colVendorName.Visible = true;
+            this.colVendorName.VisibleIndex = 1;
+            this.colVendorName.Width = 239;
             // 
-            // xtraTabPage2
+            // colDescription
             // 
-            this.xtraTabPage2.Controls.Add(this.gridControl1);
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(585, 235);
-            this.xtraTabPage2.Text = "Shifts";
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 2;
+            this.colDescription.Width = 248;
             // 
-            // gridControl1
+            // colActive1
             // 
-            this.gridControl1.DataSource = this.shiftXPC;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.barManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(585, 235);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.UseEmbeddedNavigator = true;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // shiftXPC
-            // 
-            this.shiftXPC.DeleteObjectOnRemove = true;
-            this.shiftXPC.DisplayableProperties = "ShiftId;ShiftName;TransJournals";
-            this.shiftXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Shift);
-            this.shiftXPC.Session = this.unitOfWork1;
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colShiftId,
-            this.colShiftName});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
-            this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
-            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
-            // 
-            // colShiftId
-            // 
-            this.colShiftId.FieldName = "ShiftId";
-            this.colShiftId.Name = "colShiftId";
-            this.colShiftId.Visible = true;
-            this.colShiftId.VisibleIndex = 0;
-            // 
-            // colShiftName
-            // 
-            this.colShiftName.FieldName = "ShiftName";
-            this.colShiftName.Name = "colShiftName";
-            this.colShiftName.Visible = true;
-            this.colShiftName.VisibleIndex = 1;
+            this.colActive1.ColumnEdit = this.activeCheckBox;
+            this.colActive1.FieldName = "Active";
+            this.colActive1.Name = "colActive1";
+            this.colActive1.Visible = true;
+            this.colActive1.VisibleIndex = 3;
+            this.colActive1.Width = 514;
             // 
             // barManager1
             // 
@@ -480,8 +484,9 @@
             this.saveBI,
             this.retrieveBI,
             this.sIDBI,
-            this.skinBarSubItem1});
-            this.barManager1.MaxItemId = 4;
+            this.skinBarSubItem1,
+            this.categoryBI});
+            this.barManager1.MaxItemId = 5;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -494,7 +499,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.saveBI),
             new DevExpress.XtraBars.LinkPersistInfo(this.retrieveBI),
             new DevExpress.XtraBars.LinkPersistInfo(this.sIDBI),
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.categoryBI)});
             this.bar1.Text = "Tools";
             // 
             // saveBI
@@ -565,11 +571,120 @@
             this.barDockControlRight.Location = new System.Drawing.Point(669, 24);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 324);
             // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.locationGC);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(620, 235);
+            this.xtraTabPage1.Text = "Locations";
+            // 
+            // locationGC
+            // 
+            this.locationGC.DataSource = this.locationXPC;
+            this.locationGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.locationGC.ExternalRepository = this.persistentRepository1;
+            this.locationGC.Location = new System.Drawing.Point(0, 0);
+            this.locationGC.MainView = this.locationGV;
+            this.locationGC.Name = "locationGC";
+            this.locationGC.Size = new System.Drawing.Size(620, 235);
+            this.locationGC.TabIndex = 0;
+            this.locationGC.UseEmbeddedNavigator = true;
+            this.locationGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.locationGV});
+            // 
+            // locationGV
+            // 
+            this.locationGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colLocationId,
+            this.colLocationName,
+            this.colPOSAccountID});
+            this.locationGV.GridControl = this.locationGC;
+            this.locationGV.Name = "locationGV";
+            this.locationGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
+            this.locationGV.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
+            this.locationGV.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
+            // 
+            // colLocationId
+            // 
+            this.colLocationId.FieldName = "LocationId";
+            this.colLocationId.Name = "colLocationId";
+            this.colLocationId.Visible = true;
+            this.colLocationId.VisibleIndex = 0;
+            // 
+            // colLocationName
+            // 
+            this.colLocationName.FieldName = "LocationName";
+            this.colLocationName.Name = "colLocationName";
+            this.colLocationName.Visible = true;
+            this.colLocationName.VisibleIndex = 1;
+            // 
+            // colPOSAccountID
+            // 
+            this.colPOSAccountID.Caption = "Master Location";
+            this.colPOSAccountID.ColumnEdit = this.POSAccountListLookUp;
+            this.colPOSAccountID.FieldName = "POSAccountID";
+            this.colPOSAccountID.Name = "colPOSAccountID";
+            this.colPOSAccountID.Visible = true;
+            this.colPOSAccountID.VisibleIndex = 2;
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.gridControl1);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(620, 235);
+            this.xtraTabPage2.Text = "Shifts";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.DataSource = this.shiftXPC;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(620, 235);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.UseEmbeddedNavigator = true;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // shiftXPC
+            // 
+            this.shiftXPC.DeleteObjectOnRemove = true;
+            this.shiftXPC.DisplayableProperties = "ShiftId;ShiftName;TransJournals";
+            this.shiftXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.Shift);
+            this.shiftXPC.Session = this.unitOfWork1;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colShiftId,
+            this.colShiftName});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
+            this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GV_InitNewRow);
+            this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GV_ValidateRow);
+            // 
+            // colShiftId
+            // 
+            this.colShiftId.FieldName = "ShiftId";
+            this.colShiftId.Name = "colShiftId";
+            this.colShiftId.Visible = true;
+            this.colShiftId.VisibleIndex = 0;
+            // 
+            // colShiftName
+            // 
+            this.colShiftName.FieldName = "ShiftName";
+            this.colShiftName.Name = "colShiftName";
+            this.colShiftName.Visible = true;
+            this.colShiftName.VisibleIndex = 1;
+            // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(585, 235);
+            this.xtraTabPage3.Size = new System.Drawing.Size(620, 235);
             this.xtraTabPage3.Text = "Equipment";
             // 
             // gridControl2
@@ -584,7 +699,7 @@
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.MenuManager = this.barManager1;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(585, 235);
+            this.gridControl2.Size = new System.Drawing.Size(620, 235);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.UseEmbeddedNavigator = true;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -661,7 +776,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.gridControl3);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(585, 235);
+            this.xtraTabPage4.Size = new System.Drawing.Size(620, 235);
             this.xtraTabPage4.Text = "Products";
             // 
             // gridControl3
@@ -673,7 +788,7 @@
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.MenuManager = this.barManager1;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(585, 235);
+            this.gridControl3.Size = new System.Drawing.Size(620, 235);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.UseEmbeddedNavigator = true;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -740,6 +855,55 @@
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 3;
             // 
+            // failureTabPage6
+            // 
+            this.failureTabPage6.Controls.Add(this.vendorTransTypeGC);
+            this.failureTabPage6.Name = "failureTabPage6";
+            this.failureTabPage6.Size = new System.Drawing.Size(620, 235);
+            this.failureTabPage6.Text = "Failure list";
+            // 
+            // vendorTransTypeGC
+            // 
+            this.vendorTransTypeGC.DataSource = this.vendorTransTypeXPC;
+            this.vendorTransTypeGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vendorTransTypeGC.Location = new System.Drawing.Point(0, 0);
+            this.vendorTransTypeGC.MainView = this.vendorTransTypeGV;
+            this.vendorTransTypeGC.MenuManager = this.barManager1;
+            this.vendorTransTypeGC.Name = "vendorTransTypeGC";
+            this.vendorTransTypeGC.Size = new System.Drawing.Size(620, 235);
+            this.vendorTransTypeGC.TabIndex = 0;
+            this.vendorTransTypeGC.UseEmbeddedNavigator = true;
+            this.vendorTransTypeGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.vendorTransTypeGV});
+            // 
+            // vendorTransTypeXPC
+            // 
+            this.vendorTransTypeXPC.ObjectType = typeof(ProductionReports.ModelXpo.OmarERP.VendorTransType);
+            // 
+            // vendorTransTypeGV
+            // 
+            this.vendorTransTypeGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colTransType,
+            this.colTransTypeName});
+            this.vendorTransTypeGV.GridControl = this.vendorTransTypeGC;
+            this.vendorTransTypeGV.Name = "vendorTransTypeGV";
+            this.vendorTransTypeGV.OptionsView.ColumnAutoWidth = false;
+            // 
+            // colTransType
+            // 
+            this.colTransType.FieldName = "TransType";
+            this.colTransType.Name = "colTransType";
+            this.colTransType.Visible = true;
+            this.colTransType.VisibleIndex = 0;
+            // 
+            // colTransTypeName
+            // 
+            this.colTransTypeName.FieldName = "TransTypeName";
+            this.colTransTypeName.Name = "colTransTypeName";
+            this.colTransTypeName.Visible = true;
+            this.colTransTypeName.VisibleIndex = 1;
+            this.colTransTypeName.Width = 208;
+            // 
             // navigationPage2
             // 
             this.navigationPage2.Caption = "Journal";
@@ -791,9 +955,33 @@
             this.pivotJournalXUC1.Size = new System.Drawing.Size(625, 261);
             this.pivotJournalXUC1.TabIndex = 0;
             // 
+            // taskSettingsNavPage3
+            // 
+            this.taskSettingsNavPage3.Caption = "Task manager";
+            this.taskSettingsNavPage3.Controls.Add(this.taskMastersXUC1);
+            this.taskSettingsNavPage3.Image = ((System.Drawing.Image)(resources.GetObject("taskSettingsNavPage3.Image")));
+            this.taskSettingsNavPage3.Name = "taskSettingsNavPage3";
+            this.taskSettingsNavPage3.PageText = "";
+            this.taskSettingsNavPage3.Size = new System.Drawing.Size(625, 261);
+            // 
+            // taskMastersXUC1
+            // 
+            this.taskMastersXUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.taskMastersXUC1.Location = new System.Drawing.Point(0, 0);
+            this.taskMastersXUC1.Name = "taskMastersXUC1";
+            this.taskMastersXUC1.Size = new System.Drawing.Size(625, 261);
+            this.taskMastersXUC1.TabIndex = 0;
+            // 
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Blue";
+            // 
+            // categoryBI
+            // 
+            this.categoryBI.Caption = "Category";
+            this.categoryBI.Id = 4;
+            this.categoryBI.Name = "categoryBI";
+            this.categoryBI.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.categoryBI_ItemClick);
             // 
             // Form1
             // 
@@ -813,11 +1001,12 @@
             this.settingsNavPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.locationGC)).EndInit();
+            this.vendorTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vendorGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.locationList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.locationList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesItemList)).EndInit();
@@ -826,12 +1015,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POSAccountListLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POSAccountListXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activeCheckBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.locationGC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.locationGV)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shiftXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -839,11 +1032,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            this.failureTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vendorTransTypeGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorTransTypeXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorTransTypeGV)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage5.ResumeLayout(false);
             this.navigationPage1.ResumeLayout(false);
+            this.taskSettingsNavPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -921,6 +1119,24 @@
         private DevExpress.XtraBars.BarButtonItem sIDBI;
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraTab.XtraTabPage vendorTabPage6;
+        private CoreLib.Grid.MyGridControl vendorGC;
+        private CoreLib.Grid.MyGridView vendorGV;
+        private DevExpress.Xpo.XPCollection vendorXPC;
+        private DevExpress.XtraGrid.Columns.GridColumn colAccountID;
+        private DevExpress.XtraGrid.Columns.GridColumn colVendorName;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colActive1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit activeCheckBox;
+        private DevExpress.XtraTab.XtraTabPage failureTabPage6;
+        private DevExpress.Xpo.XPCollection vendorTransTypeXPC;
+        private CoreLib.Grid.MyGridControl vendorTransTypeGC;
+        private CoreLib.Grid.MyGridView vendorTransTypeGV;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransType;
+        private DevExpress.XtraGrid.Columns.GridColumn colTransTypeName;
+        private DevExpress.XtraBars.Navigation.NavigationPage taskSettingsNavPage3;
+        private View.Task.TaskMastersXUC taskMastersXUC1;
+        private DevExpress.XtraBars.BarButtonItem categoryBI;
     }
 }
 
