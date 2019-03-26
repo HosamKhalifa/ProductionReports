@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
+            this.components = new System.ComponentModel.Container();
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
             this.myGridView1 = new CoreLib.Grid.MyGridView();
@@ -36,7 +37,7 @@
             this.colTableDBName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTableName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTableDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTABLE_TYPE = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTableType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastIndex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGenerateKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSequId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,15 +78,13 @@
             this.colTableDBName,
             this.colTableName,
             this.colTableDescription,
-            this.colTABLE_TYPE,
+            this.colTableType,
             this.colLastIndex,
             this.colGenerateKey,
             this.colSequId});
             this.myGridView1.GridControl = this.myGridControl1;
             this.myGridView1.Name = "myGridView1";
             this.myGridView1.OptionsView.ColumnAutoWidth = false;
-            this.myGridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTableId, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.myGridView1.UnitOfWorkXpo = this.unitOfWork1;
             // 
             // colTableId
@@ -100,16 +99,14 @@
             this.colTableDBName.FieldName = "TableDBName";
             this.colTableDBName.Name = "colTableDBName";
             this.colTableDBName.Visible = true;
-            this.colTableDBName.VisibleIndex = 2;
-            this.colTableDBName.Width = 141;
+            this.colTableDBName.VisibleIndex = 1;
             // 
             // colTableName
             // 
             this.colTableName.FieldName = "TableName";
             this.colTableName.Name = "colTableName";
             this.colTableName.Visible = true;
-            this.colTableName.VisibleIndex = 1;
-            this.colTableName.Width = 145;
+            this.colTableName.VisibleIndex = 2;
             // 
             // colTableDescription
             // 
@@ -117,15 +114,13 @@
             this.colTableDescription.Name = "colTableDescription";
             this.colTableDescription.Visible = true;
             this.colTableDescription.VisibleIndex = 3;
-            this.colTableDescription.Width = 169;
             // 
-            // colTABLE_TYPE
+            // colTableType
             // 
-            this.colTABLE_TYPE.FieldName = "TABLE_TYPE";
-            this.colTABLE_TYPE.Name = "colTABLE_TYPE";
-            this.colTABLE_TYPE.Visible = true;
-            this.colTABLE_TYPE.VisibleIndex = 4;
-            this.colTABLE_TYPE.Width = 107;
+            this.colTableType.FieldName = "TableType";
+            this.colTableType.Name = "colTableType";
+            this.colTableType.Visible = true;
+            this.colTableType.VisibleIndex = 4;
             // 
             // colLastIndex
             // 
@@ -140,7 +135,6 @@
             this.colGenerateKey.Name = "colGenerateKey";
             this.colGenerateKey.Visible = true;
             this.colGenerateKey.VisibleIndex = 6;
-            this.colGenerateKey.Width = 94;
             // 
             // colSequId
             // 
@@ -148,7 +142,6 @@
             this.colSequId.Name = "colSequId";
             this.colSequId.Visible = true;
             this.colSequId.VisibleIndex = 7;
-            this.colSequId.Width = 109;
             // 
             // TableBaseFrm
             // 
@@ -156,6 +149,7 @@
             this.ClientSize = new System.Drawing.Size(582, 311);
             this.Controls.Add(this.myGridControl1);
             this.Name = "TableBaseFrm";
+            this.Text = "Table base";
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).EndInit();
@@ -173,7 +167,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTableDBName;
         private DevExpress.XtraGrid.Columns.GridColumn colTableName;
         private DevExpress.XtraGrid.Columns.GridColumn colTableDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn colTABLE_TYPE;
+        private DevExpress.XtraGrid.Columns.GridColumn colTableType;
         private DevExpress.XtraGrid.Columns.GridColumn colLastIndex;
         private DevExpress.XtraGrid.Columns.GridColumn colGenerateKey;
         private DevExpress.XtraGrid.Columns.GridColumn colSequId;

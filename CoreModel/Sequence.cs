@@ -78,7 +78,12 @@ namespace CoreModel
             get { return fWFStatusCreation; }
             set { SetPropertyValue<byte>("WFStatusCreation", ref fWFStatusCreation, value); }
         }
+        #region Associations
         [Association(@"Sequence_SequenceValues")]
         public XPCollection<SequenceValues> SEQU_VALUES_s { get { return GetCollection<SequenceValues>("SequenceValues"); } }
+
+        [Association(@"SEQU_JOURNAL_FK")]
+        public XPCollection<JournalBase> Journals { get { return GetCollection<JournalBase>("Journals"); } }
+        #endregion
     }
 }

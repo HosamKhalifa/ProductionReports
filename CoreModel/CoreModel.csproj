@@ -61,6 +61,19 @@
     <Compile Include="AccountRef1.cs" />
     <Compile Include="AccountRef2.cs" />
     <Compile Include="AccountGroup.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="CombinationHeader.cs" />
+    <Compile Include="CombinationTable.cs" />
+    <Compile Include="Currency.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="DocumentBase.cs" />
+    <Compile Include="DocumentLineBase.cs" />
+    <Compile Include="DocumentLineTypeBase.cs" />
+    <Compile Include="DocumentType.cs" />
+    <Compile Include="DocumentLineTypeInventory.cs" />
+    <Compile Include="JournalBase.cs" />
+    <Compile Include="MainAccount.cs" />
+    <Compile Include="MainAccountType.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="MyEnums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +81,11 @@
     <Compile Include="SecurityUser.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="SequenceValues.cs" />
+    <Compile Include="SysSequence.cs" />
     <Compile Include="TableBase.cs" />
-    <Compile Include="XPLiteObjectExt.cs" />
+    <Compile Include="TaxAgency.cs" />
+    <Compile Include="TaxGroup.cs" />
+    <Compile Include="Workflow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoreLib\CoreLib.csproj">

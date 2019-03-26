@@ -10,6 +10,7 @@ using System;
 using DevExpress.Xpo;
 using DevExpress.Data.Filtering;
 using System.Collections.Generic;
+using CoreLib.Xpo;
 //using System.ComponentModel;
 namespace CoreModel
 {
@@ -25,7 +26,7 @@ namespace CoreModel
 
             this.ModifiedBy = SecurityUser.CurrentUser.UserId;
             this.ModifiedAt = DateTime.Now;
-            this.LineId = SecurityUser.NextLineVal(Session);
+            this.LineId = SysSequence.NextVal(Session,MyEnums.SysSequence.LINE_ID_SEQU,(10 * 1000 * 1000));
 
             base.AfterConstruction();
         }

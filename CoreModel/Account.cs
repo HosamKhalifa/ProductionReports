@@ -16,6 +16,7 @@ namespace CoreModel
         {
             base.AfterConstruction();
         }
+        #region Fields
         string fDimensionValue;
         [Size(9)]
         [Persistent(@"DIM_VAL")]
@@ -49,12 +50,12 @@ namespace CoreModel
             get { return fDescription; }
             set { SetPropertyValue<string>("Description", ref fDescription, value); }
         }
-        byte fActive;
+        bool fActive;
         [Persistent(@"ACTIVE")]
-        public byte Active
+        public bool Active
         {
             get { return fActive; }
-            set { SetPropertyValue<byte>("Active", ref fActive, value); }
+            set { SetPropertyValue<bool>("Active", ref fActive, value); }
         }
         AccountRef1 fReferenceNumber1;
         [Persistent(@"REF_NO1")]
@@ -88,6 +89,11 @@ namespace CoreModel
             get { return fReferenceNumber; }
             set { SetPropertyValue<string>("ReferenceNumber", ref fReferenceNumber, value); }
         }
+        #endregion
+
+
+        [Association(@"Account-Addresses")]
+        public XPCollection<Address> AccountAddresses { get { return GetCollection<Address>("AccountAddresses"); } }
 
     }
 }

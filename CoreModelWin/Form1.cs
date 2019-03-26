@@ -50,17 +50,18 @@ namespace CoreModelWin
                 SecurityUser.IsConnected = true;
 
 
-                Session s = new Session();
-                List<XPClassInfo> lst = new List<XPClassInfo>()
-                {
-                    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIMaster)),
-                    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIParams)),
-                    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIProfile)),
-                    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIProfileLine))
+                #region OldCode
+                //List<XPClassInfo> lst = new List<XPClassInfo>()
+                //{
+                //    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIMaster)),
+                //    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIParams)),
+                //    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIProfile)),
+                //    Session.DefaultSession.GetClassInfo(typeof(CoreLib.Grid.UserProfile.UIProfileLine))
 
-                };
+                //};
                 //s.UpdateSchema();
-                
+                #endregion
+                Session s = new Session();
                 Assembly a = Assembly.GetAssembly(typeof(CoreLib.MyForm));
                 var asseblyLst = AppDomain.CurrentDomain.GetAssemblies().
                     Where(x => x.FullName.Contains("Model") || x == a);
@@ -68,8 +69,7 @@ namespace CoreModelWin
                 {
                     s.UpdateSchema(item);
                 }
-                
-                
+               
 
 
 
@@ -97,13 +97,13 @@ namespace CoreModelWin
             {
                 uILabelLink.LinkClicked += (s, e) => //LabelEditor
                 {
-                    CoreLib.Label.LabelEditorFrm frm = new CoreLib.Label.LabelEditorFrm("CoreLib;CoreModel") { MdiParent = this };
+                    CoreLib.Label.LabelEditorFrm frm = new CoreLib.Label.LabelEditorFrm("CoreLib;CoreModel") { MdiParent = this, WindowState = FormWindowState.Maximized };
                     frm.Show();
                 };
                 tableBaseLink.LinkClicked += (s, e) => //TableBase 
                 {
                   
-                        TableBaseFrm frm = new TableBaseFrm() { MdiParent = this };
+                        TableBaseFrm frm = new TableBaseFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
                         frm.Show();
                   
                 };

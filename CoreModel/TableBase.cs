@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using CoreLib.Xpo;
 namespace CoreModel
 {
     [Persistent(@"TABLE_BASE")]
@@ -56,20 +56,23 @@ namespace CoreModel
             get { return fTableType; }
             set { SetPropertyValue<MyEnums.TableType>("TableType", ref fTableType, value); }
         }
-        int fLastIndex;
 
+        string fDimensionPrefix;
+        [Persistent(@"DIM_PREFIX"),Size(2)]
+        public string DimensionPrefix
+        {
+            get { return fDimensionPrefix; }
+            set { SetPropertyValue<string>("DimensionPrefix", ref fDimensionPrefix, value); }
+        }
+
+        int fLastIndex;
+        [Persistent(@"LAST_INDEX")]
         public int LastIndex
         {
             get { return fLastIndex; }
             set { SetPropertyValue<int>("LastIndex", ref fLastIndex, value); }
         }
-        byte fGenerateKey;
-        [Persistent(@"GENEREATE_KEY")]
-        public byte GenerateKey
-        {
-            get { return fGenerateKey; }
-            set { SetPropertyValue<byte>("GenerateKey", ref fGenerateKey, value); }
-        }
+        
         long fSequId;
         [Persistent("SEQU_ID")]
         public long SequId
@@ -77,6 +80,9 @@ namespace CoreModel
             get { return fSequId; }
             set { SetPropertyValue<long>("SequId", ref fSequId, value); }
         }
+
+
+
         #endregion
 
         [Association("TableBase-Line")]
@@ -100,14 +106,19 @@ namespace CoreModel
             List<TableInfo> tables = new List<TableInfo>()
             {
                 new TableInfo() {TableId=1111,Name=typeof(AccountGroup).Name,DBName = AccountGroup.TABLE_NAME ,TableType=MyEnums.TableType.Master},
-                new TableInfo() {TableId=1112,Name=typeof(Sequence).Name,DBName=Sequence.TABLE_NAME,TableType=MyEnums.TableType.System }
+                new TableInfo() {TableId=1112,Name=typeof(Sequence).Name,DBName=Sequence.TABLE_NAME,TableType=MyEnums.TableType.System },
+                new TableInfo() {TableId=1113,Name=typeof(AccountRef1).Name,DBName=AccountRef1.TABLE_NAME,TableType=MyEnums.TableType.Master },
+                new TableInfo() {TableId=1114,Name=typeof(AccountRef2).Name,DBName=AccountRef2.TABLE_NAME,TableType=MyEnums.TableType.Master},
+                new TableInfo() {TableId=1115,Name=typeof(Customer).Name,DBName=Customer.TABLE_NAME,TableType=MyEnums.TableType.Master}
             };
             return tables;
 
         }
-        public static void TableBaseRowsBuilder(Session session)//Create ddb rows for each Persistent calss 
+        public static void TableBaseRowsBuilder(UnitOfWork session)//Create ddb rows for each Persistent calss 
         {
-            foreach (var tab in GetTablesBasicInfo())
+
+            var tabList = GetTablesBasicInfo();
+            foreach (var tab in tabList)
             {
                 //Search if Table is existed in DB
                 var dbTabRow = session.GetObjectByKey<TableBase>(tab.TableId);
@@ -115,13 +126,15 @@ namespace CoreModel
                 {
                     TableBase t = new TableBase(session)
                     {
-                        TableId = dbTabRow.TableId,
-                        TableName = dbTabRow.TableName,
-                        TableDBName = dbTabRow.TableDBName,
-                        TableType = dbTabRow.TableType
+                        TableId = tab.TableId,
+                        TableName = tab.Name,
+                        TableDBName = tab.DBName,
+                        TableType = tab.TableType
                     };
+                    t.Save();
                 }
             }
+            session.CommitTransaction();
         }
         #endregion
 

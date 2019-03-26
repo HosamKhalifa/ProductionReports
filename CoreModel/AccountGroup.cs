@@ -17,7 +17,7 @@ namespace CoreModel
         public override void AfterConstruction()
         {
             TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
-            
+
             base.AfterConstruction();
         }
 
@@ -47,6 +47,8 @@ namespace CoreModel
         #region Associations 
         [Association(@"ACT_GRP_ACCOUNTS")]
         public XPCollection<Account> Accounts { get { return GetCollection<Account>("Accounts"); } }
+        [Association(@"DOC_TYPE_POST_PRO_GROUP_FK")]
+        public XPCollection<DocumentType> DocumentTypes { get { return GetCollection<DocumentType>("DocumentTypes"); } }
         #endregion
 
     }

@@ -16,8 +16,9 @@ namespace CoreLib.Label
 {
    public class UILabel : XPLiteObjectExt
     {
-        private const string UI_LABEL_ID_SEQU = "UI_LABEL_ID_SEQU";
+        //private const string UI_LABEL_ID_SEQU = "UI_LABEL_ID_SEQU";
         private const string SP_NEXT_TASK_LINE = "dbo.sp_Sys_NextValue";
+        enum SysSequence { LINE_ID_SEQU = 10, UI_LABEL_SEQU = 20, GL_COMB_ID_SEQU = 30, COMB_ID_SEQU = 40 }
         public UILabel(Session session) : base(session) { }
         public override void AfterConstruction()
         {
@@ -55,20 +56,38 @@ namespace CoreLib.Label
         }
         public static string NextLineVal(Session unitOfWork)
         {
-            int sequId = 0;
-            
-            var sequNameParm = new DevExpress.Xpo.DB.SprocParameter("@SequenceName", UI_LABEL_ID_SEQU);
+            #region EndCode
+            //int sequId = 0;
+
+            //var sequNameParm = new DevExpress.Xpo.DB.SprocParameter("@SequenceName", UI_LABEL_ID_SEQU);
+            //var outputParm = new DevExpress.Xpo.DB.SprocParameter()
+            //{
+            //    ParameterName = "@NewID",
+            //    Direction = DevExpress.Xpo.DB.SprocParameterDirection.Output,
+            //    DbType = DevExpress.Xpo.DB.DBColumnType.Int32
+            //};
+            //var data = unitOfWork.ExecuteSprocParametrized(SP_NEXT_TASK_LINE, sequNameParm, outputParm);
+            //SelectStatementResultRow row = data.ResultSet[1].Rows[0];
+
+            //sequId = (int)row.Values[1];// data.ResultSet[1].Rows[1].Values[1];
+            #endregion
+            long returnIndex = 0;
+            var sequIdParm = new DevExpress.Xpo.DB.SprocParameter("@SequenceId", SysSequence.UI_LABEL_SEQU);
+            var sequNameParm = new DevExpress.Xpo.DB.SprocParameter("@SequenceName", Enum.GetName(typeof(SysSequence), SysSequence.UI_LABEL_SEQU));
+            var startWithParm = new DevExpress.Xpo.DB.SprocParameter("@StartWith", 100*1000);
             var outputParm = new DevExpress.Xpo.DB.SprocParameter()
             {
                 ParameterName = "@NewID",
                 Direction = DevExpress.Xpo.DB.SprocParameterDirection.Output,
                 DbType = DevExpress.Xpo.DB.DBColumnType.Int32
             };
-            var data = unitOfWork.ExecuteSprocParametrized(SP_NEXT_TASK_LINE, sequNameParm, outputParm);
+            var data = unitOfWork.ExecuteSprocParametrized(SP_NEXT_TASK_LINE, sequIdParm, sequNameParm, startWithParm, outputParm);
             SelectStatementResultRow row = data.ResultSet[1].Rows[0];
 
-            sequId = (int)row.Values[1];// data.ResultSet[1].Rows[1].Values[1];
-            return ("@" + sequId.ToString().PadLeft(6, '0'));
+            returnIndex = (int)row.Values[1];// data.ResultSet[1].Rows[1].Values[1];
+
+            
+            return ("@" + returnIndex.ToString());
             
         }
 
