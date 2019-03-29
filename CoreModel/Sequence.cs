@@ -15,6 +15,7 @@ namespace CoreModel
         public Sequence(Session session) : base(session) { }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.Sequence);
             base.AfterConstruction();
         }
         string fSequName;

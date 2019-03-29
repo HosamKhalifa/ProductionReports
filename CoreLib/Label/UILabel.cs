@@ -24,6 +24,7 @@ namespace CoreLib.Label
         {
             this.fLabelType = MyEnums.UILabelType.FieldCaption;
             this.fLabelId = NextLineVal(this.Session);
+            this.fLookupMemberCharWidth = 10;//Default column width
             
             base.AfterConstruction();
         }
@@ -53,6 +54,26 @@ namespace CoreLib.Label
             
             var lblRow = GetLabelDictionery().Where(x => x.LabelId == lblId).FirstOrDefault();
             return lblRow != null ? lblRow.LabelName : "";
+        }
+        public string ChooseValueForCurrentLang()
+        {
+            string ret = "";
+            string lang = string.IsNullOrEmpty(CoreLib.GlobalMethods.UILang) ? "en" : CoreLib.GlobalMethods.UILang;
+            switch (lang.ToLower())
+            {
+                case "en":
+                    ret = this.Lang_en;
+                    break;
+                case "ar":
+                    ret = this.Lang_ar;
+                    break;
+                case "fr":
+                    ret = this.Lang_fr;
+                    break;
+                default:
+                    break;
+            }
+            return ret;
         }
         public static string NextLineVal(Session unitOfWork)
         {
@@ -124,7 +145,7 @@ namespace CoreLib.Label
         }
         
         MyEnums.UILabelType fLabelType;
-        [Indexed("FieldName", Unique =true)]
+        [Indexed("FieldName;ObjectName", Unique =true)]
         public MyEnums.UILabelType LabelType
         {
             get { return fLabelType; }
@@ -143,6 +164,19 @@ namespace CoreLib.Label
         {
             get { return fFieldName; }
             set { SetPropertyValue<string>("FieldName", ref fFieldName, value); }
+        }
+
+        MyEnums.AutoLookUp fLookupMember;
+        public MyEnums.AutoLookUp LookupMember
+        {
+            get { return fLookupMember; }
+            set { SetPropertyValue<MyEnums.AutoLookUp>("LookupMember", ref fLookupMember, value); }
+        }
+        int fLookupMemberCharWidth;
+        public int LookupMemberCharWidth
+        {
+            get { return fLookupMemberCharWidth; }
+            set { SetPropertyValue<int>("LookupMemberCharWidth", ref fLookupMemberCharWidth, value); }
         }
 
     }

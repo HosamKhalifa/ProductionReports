@@ -18,7 +18,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
+            
             base.AfterConstruction();
         }
 

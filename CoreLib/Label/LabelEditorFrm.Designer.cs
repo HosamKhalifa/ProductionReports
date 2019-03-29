@@ -28,21 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.labelsMyGV = new CoreLib.Grid.MyGridView();
-            this.colLabelId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LabelEdt = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.colLang_en = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLang_ar = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLang_fr = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLabelType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFieldName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
             this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
             this.objectMyGV = new CoreLib.Grid.MyGridView();
             this.colOid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,6 +41,16 @@
             this.syuncBtn = new DevExpress.XtraEditors.SimpleButton();
             this.buildClassListBtn = new DevExpress.XtraEditors.SimpleButton();
             this.buildMembersBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.colLabelId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLang_en = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLang_ar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLang_fr = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLabelType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFieldName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLookupMember = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLookupMemberCharWidth = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.labelsMyGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LabelEdt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
@@ -68,20 +69,13 @@
             this.colLabelType,
             this.gridColumn1,
             this.gridColumn2,
-            this.colFieldName});
+            this.colFieldName,
+            this.colLookupMember,
+            this.colLookupMemberCharWidth});
             this.labelsMyGV.GridControl = this.myGridControl1;
             this.labelsMyGV.Name = "labelsMyGV";
             this.labelsMyGV.OptionsEditForm.EditFormColumnCount = 2;
             this.labelsMyGV.UnitOfWorkXpo = this.unitOfWork1;
-            // 
-            // colLabelId
-            // 
-            this.colLabelId.ColumnEdit = this.LabelEdt;
-            this.colLabelId.FieldName = "LabelId";
-            this.colLabelId.Name = "colLabelId";
-            this.colLabelId.Visible = true;
-            this.colLabelId.VisibleIndex = 0;
-            this.colLabelId.Width = 92;
             // 
             // LabelEdt
             // 
@@ -89,63 +83,6 @@
             this.LabelEdt.Mask.EditMask = "@\\d{6}";
             this.LabelEdt.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.LabelEdt.Name = "LabelEdt";
-            // 
-            // colLang_en
-            // 
-            this.colLang_en.FieldName = "Lang_en";
-            this.colLang_en.Name = "colLang_en";
-            this.colLang_en.OptionsEditForm.VisibleIndex = 30;
-            this.colLang_en.Visible = true;
-            this.colLang_en.VisibleIndex = 3;
-            this.colLang_en.Width = 188;
-            // 
-            // colLang_ar
-            // 
-            this.colLang_ar.FieldName = "Lang_ar";
-            this.colLang_ar.Name = "colLang_ar";
-            this.colLang_ar.OptionsEditForm.VisibleIndex = 40;
-            this.colLang_ar.Visible = true;
-            this.colLang_ar.VisibleIndex = 4;
-            this.colLang_ar.Width = 220;
-            // 
-            // colLang_fr
-            // 
-            this.colLang_fr.FieldName = "Lang_fr";
-            this.colLang_fr.Name = "colLang_fr";
-            this.colLang_fr.OptionsEditForm.VisibleIndex = 50;
-            this.colLang_fr.Visible = true;
-            this.colLang_fr.VisibleIndex = 5;
-            this.colLang_fr.Width = 233;
-            // 
-            // colLabelType
-            // 
-            this.colLabelType.FieldName = "LabelType";
-            this.colLabelType.Name = "colLabelType";
-            this.colLabelType.Visible = true;
-            this.colLabelType.VisibleIndex = 2;
-            this.colLabelType.Width = 92;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.FieldName = "ObjectName!";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Width = 132;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.FieldName = "ObjectName!Key";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Width = 183;
-            // 
-            // colFieldName
-            // 
-            this.colFieldName.Caption = "FieldName";
-            this.colFieldName.FieldName = "FieldName";
-            this.colFieldName.Name = "colFieldName";
-            this.colFieldName.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
-            this.colFieldName.Visible = true;
-            this.colFieldName.VisibleIndex = 1;
-            this.colFieldName.Width = 117;
             // 
             // myGridControl1
             // 
@@ -246,6 +183,76 @@
             this.buildMembersBtn.Text = "Build members";
             this.buildMembersBtn.Click += new System.EventHandler(this.buildMembersBtn_Click);
             // 
+            // colLabelId
+            // 
+            this.colLabelId.FieldName = "LabelId";
+            this.colLabelId.Name = "colLabelId";
+            this.colLabelId.Visible = true;
+            this.colLabelId.VisibleIndex = 0;
+            // 
+            // colLang_en
+            // 
+            this.colLang_en.FieldName = "Lang_en";
+            this.colLang_en.Name = "colLang_en";
+            this.colLang_en.Visible = true;
+            this.colLang_en.VisibleIndex = 1;
+            // 
+            // colLang_ar
+            // 
+            this.colLang_ar.FieldName = "Lang_ar";
+            this.colLang_ar.Name = "colLang_ar";
+            this.colLang_ar.Visible = true;
+            this.colLang_ar.VisibleIndex = 2;
+            // 
+            // colLang_fr
+            // 
+            this.colLang_fr.FieldName = "Lang_fr";
+            this.colLang_fr.Name = "colLang_fr";
+            this.colLang_fr.Visible = true;
+            this.colLang_fr.VisibleIndex = 3;
+            // 
+            // colLabelType
+            // 
+            this.colLabelType.FieldName = "LabelType";
+            this.colLabelType.Name = "colLabelType";
+            this.colLabelType.Visible = true;
+            this.colLabelType.VisibleIndex = 4;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "ObjectName!";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 5;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.FieldName = "ObjectName!Key";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 6;
+            // 
+            // colFieldName
+            // 
+            this.colFieldName.FieldName = "FieldName";
+            this.colFieldName.Name = "colFieldName";
+            this.colFieldName.Visible = true;
+            this.colFieldName.VisibleIndex = 7;
+            // 
+            // colLookupMember
+            // 
+            this.colLookupMember.FieldName = "LookupMember";
+            this.colLookupMember.Name = "colLookupMember";
+            this.colLookupMember.Visible = true;
+            this.colLookupMember.VisibleIndex = 8;
+            // 
+            // colLookupMemberCharWidth
+            // 
+            this.colLookupMemberCharWidth.FieldName = "LookupMemberCharWidth";
+            this.colLookupMemberCharWidth.Name = "colLookupMemberCharWidth";
+            this.colLookupMemberCharWidth.Visible = true;
+            this.colLookupMemberCharWidth.VisibleIndex = 9;
+            // 
             // LabelEditorFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +284,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colOid;
         private DevExpress.XtraGrid.Columns.GridColumn colObjectName;
         private DevExpress.XtraGrid.Columns.GridColumn colAssemblyName;
+        private DevExpress.XtraEditors.SimpleButton buildClassListBtn;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit LabelEdt;
+        private DevExpress.XtraEditors.SimpleButton buildMembersBtn;
         private DevExpress.XtraGrid.Columns.GridColumn colLabelId;
         private DevExpress.XtraGrid.Columns.GridColumn colLang_en;
         private DevExpress.XtraGrid.Columns.GridColumn colLang_ar;
@@ -284,9 +294,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colLabelType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraEditors.SimpleButton buildClassListBtn;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit LabelEdt;
         private DevExpress.XtraGrid.Columns.GridColumn colFieldName;
-        private DevExpress.XtraEditors.SimpleButton buildMembersBtn;
+        private DevExpress.XtraGrid.Columns.GridColumn colLookupMember;
+        private DevExpress.XtraGrid.Columns.GridColumn colLookupMemberCharWidth;
     }
 }

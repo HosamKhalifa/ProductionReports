@@ -95,6 +95,11 @@ namespace CoreModelWin
         {
             try
             {
+                testBI.ItemClick += (s, e) => //Test
+                {
+                    TestFrm frm = new TestFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
+                    frm.Show();
+                };
                 uILabelLink.LinkClicked += (s, e) => //LabelEditor
                 {
                     CoreLib.Label.LabelEditorFrm frm = new CoreLib.Label.LabelEditorFrm("CoreLib;CoreModel") { MdiParent = this, WindowState = FormWindowState.Maximized };

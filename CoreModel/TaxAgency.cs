@@ -18,7 +18,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.TaxAgency);
             base.AfterConstruction();
         }
 
@@ -30,6 +30,6 @@ namespace CoreModel
         }
 
         [Association(@"TaxAgency-Address")]
-        public XPCollection<Address> Addresses { get { return GetCollection<Address>("Addresses"); } }
+        public XPCollection<AddressBook> Addresses { get { return GetCollection<AddressBook>("Addresses"); } }
     }
 }

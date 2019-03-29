@@ -8,6 +8,17 @@ namespace CoreModel
 {
    public class MyEnums
     {
+        public enum DefinitionType { All=0,Group=10, ReferenceNumber1 =20, ReferenceNumber2=30, SpecificRow =40}
+        public enum Module { GeneralLedger=10,AccountsPayable=20,AccountsReceivable=30,Inventory,Bank}
+        public enum DocType
+        {
+            JournalEntry = 10,PayrollSheet = 20,InventoryTrans = 30,
+            CustomerReceivable = 40,VendorPayment = 50,PurchaseOrder = 60,
+            PurchaseBillAccrual = 70, SalesBillAccrual = 80,
+            PurchaseBillCash = 90, SalesBillCash = 100
+            
+            
+        }
         public enum SysSequence { LINE_ID_SEQU=10, UI_LABEL_SEQU = 20 ,GL_COMB_ID_SEQU=30,COMB_ID_SEQU=40}
         public enum TableType
         {
@@ -19,7 +30,7 @@ namespace CoreModel
             Employee=10,Customer=20,Vendor=30,InventoryItem=40,
             MainAccount=50
         }
-        public enum DebitCredit { Debit=1,Credit=2}
+        public enum DebitCredit { Debit=1,Credit=-1}
         public enum InventoryDirection { Incoming=1,Outgoing= -1}
         public enum JournalType
         {

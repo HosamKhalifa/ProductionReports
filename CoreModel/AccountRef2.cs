@@ -16,7 +16,7 @@ namespace CoreModel
         public AccountRef2(Session session) : base(session) { }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.AccountRef2);
 
             base.AfterConstruction();
         }
@@ -47,8 +47,7 @@ namespace CoreModel
         #region Associations 
         [Association(@"ACT_REFNO2_ACCOUNTS_FK")]
         public XPCollection<Account> Accounts { get { return GetCollection<Account>("Accounts"); } }
-        [Association(@"DOC_TYPE_POST_PRO_REF_NO2_FK")]
-        public XPCollection<DocumentType> DocumentTypes { get { return GetCollection<DocumentType>("DocumentTypes"); } }
+      
         #endregion
 
     }

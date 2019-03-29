@@ -140,6 +140,12 @@
     <Compile Include="MyEditor\MyDateEdit.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MyEditor\MyLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyEditor\MySearchLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyEditor\MyXtraUserControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -339,7 +339,7 @@ namespace CoreLib.Grid.AppService
         {
             try
             {
-                if (sourceGridView.ActiveFilterCriteria != null)
+                if ( sourceGridView.ActiveFilterCriteria != null)
                 {
                     pivotGridControl1.Prefilter.Criteria = sourceGridView.ActiveFilterCriteria;
                 }

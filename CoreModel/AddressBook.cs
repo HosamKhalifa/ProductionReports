@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace CoreModel
 {
-    [Persistent(@"ADDR_TB")]
+    [Persistent(@"ADDR_BOOK_TB")]
     [MapInheritance(MapInheritanceType.OwnTable)]
-    public class Address : Line
+    public class AddressBook : Line
     {
-        public static string TABLE_NAME = "ADDR_TB";
-        public Address(Session session) : base(session) { }
+        public static string TABLE_NAME = "ADDR_BOOK_TB";
+        public AddressBook(Session session) : base(session) { }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.AddressBook);
 
             base.AfterConstruction();
         }

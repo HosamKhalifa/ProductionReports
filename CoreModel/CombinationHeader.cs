@@ -11,7 +11,9 @@ namespace CoreModel
     [Persistent(@"COMB_HEADER_TB")]
     public class CombinationHeader : XPLiteObjectExt
     {
-        
+        public static string TABLE_NAME = @"COMB_HEADER_TB";
+
+
         protected CombinationHeader(Session session) : base(session)
         {
         }

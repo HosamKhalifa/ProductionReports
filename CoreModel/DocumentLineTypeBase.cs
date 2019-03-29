@@ -4,9 +4,9 @@ using DevExpress.Data.Filtering;
 
 namespace CoreModel
 {
-    [Persistent(@"DOC_LINE_TYPE_BASE")]
+    [Persistent(@"LINE_TYPE")]
     [MapInheritance(MapInheritanceType.OwnTable)]
-    public class DocumentLineTypeBase : Line
+    public class DocumentLineTypeBase :CoreLib.Xpo.XPLiteObjectExt
     {
       
 
@@ -21,8 +21,16 @@ namespace CoreModel
         }
 
         #region Fields
+        int fLineType;
+        [Persistent(@"LINE_TYPE"),Key]
+        public int LineType
+        {
+            get { return fLineType; }
+            set { SetPropertyValue<int>("LineType",ref fLineType,value); }
+        }
+
         string fLineTypeName;
-        [Persistent(@"LINE_TYPE_NAME"),Size(100)]
+        [Persistent(@"LINE_TYPE_NAME"),Size(150)]
         [Indexed(Name ="LINE_TYPE_NAME_UQ",Unique =true)]
         public string LineTypeName
         {
@@ -45,6 +53,10 @@ namespace CoreModel
             set { SetPropertyValue<MyEnums.DebitCredit>("DebitOrCredit",ref fDebitOrCredit,value); }
         }
 
+        #endregion
+        #region Association
+        [Association(@"LINE_TYPE_DOC_TYPE_ACCOUNTS_FK")]
+        public XPCollection<DocumentTypeAccounts> LineTypeAccounts { get{ return GetCollection<DocumentTypeAccounts>("LineTypeAccounts"); } }
         #endregion
 
     }

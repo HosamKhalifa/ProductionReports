@@ -61,16 +61,19 @@
     <Compile Include="AccountRef1.cs" />
     <Compile Include="AccountRef2.cs" />
     <Compile Include="AccountGroup.cs" />
-    <Compile Include="Address.cs" />
+    <Compile Include="AddressBook.cs" />
     <Compile Include="CombinationHeader.cs" />
     <Compile Include="CombinationTable.cs" />
     <Compile Include="Currency.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DocumentBase.cs" />
     <Compile Include="DocumentLineBase.cs" />
-    <Compile Include="DocumentLineTypeBase.cs" />
-    <Compile Include="DocumentType.cs" />
+    <Compile Include="DocumentLineTypeBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DocumentLineTypeInventory.cs" />
+    <Compile Include="DocumentType.cs" />
+    <Compile Include="DocumentTypeAccounts.cs" />
     <Compile Include="JournalBase.cs" />
     <Compile Include="MainAccount.cs" />
     <Compile Include="MainAccountType.cs" />

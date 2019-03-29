@@ -1,10 +1,5 @@
 ﻿using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoreModel
 {
@@ -16,8 +11,7 @@ namespace CoreModel
         public AccountGroup(Session session) : base(session) { }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
-
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.AccountGroup);
             base.AfterConstruction();
         }
 
@@ -47,8 +41,8 @@ namespace CoreModel
         #region Associations 
         [Association(@"ACT_GRP_ACCOUNTS")]
         public XPCollection<Account> Accounts { get { return GetCollection<Account>("Accounts"); } }
-        [Association(@"DOC_TYPE_POST_PRO_GROUP_FK")]
-        public XPCollection<DocumentType> DocumentTypes { get { return GetCollection<DocumentType>("DocumentTypes"); } }
+        //[Association(@"DOC_TYPE_POST_PRO_GROUP_FK")]
+        //public XPCollection<DocumentType> DocumentTypes { get { return GetCollection<DocumentType>("DocumentTypes"); } }
         #endregion
 
     }

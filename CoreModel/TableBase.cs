@@ -17,6 +17,19 @@ namespace CoreModel
             base.AfterConstruction();
         }
         int fTableId;
+        #region Members
+        public enum TableEnum
+        {
+            AccountGroup=1111, Sequence=1112, AccountRef1=1113, AccountRef2=1114,
+            Customer=1115, MainAccountType=1116, MainAccount=1117, JournalBase=1118,
+            AddressBook=1119, CombinationHeader=1120, CombinationTable=1121, 
+            DocumentTypeAccounts=1122, SequenceValues=1123, TaxAgency=1124,TaxGroup=1125,
+            Workflow=1126,Vendor=1127,Employee=1128,Department=1129,Location=1130,
+            Project=1131,Purpose,Item=1132, Service =1133, Currency = 1134
+
+        }
+        #endregion
+
         #region Fields
 
 
@@ -95,21 +108,72 @@ namespace CoreModel
             public string Name { get; set; }
             public string DBName { get; set; }
             public MyEnums.TableType TableType { get; set; }
+            public string DimensionPrefix { get; set; }
         }
-
+        public class DimPrefixEnum
+        {
+            public static string EmptyDimPrefix { get { return "@"; } }
+            public static string MainAccount{ get { return "FA"; } }
+            public static string Customer { get { return "CU"; } }
+            public static string Vendor { get { return "VE"; } }
+            public static string Employee { get { return "EM"; } }
+            public static string Department { get { return "DT"; } }
+            public static string Location { get { return "LC"; } }
+            public static string Project { get { return "PJ"; } }
+            public static string Purpose { get { return "PR"; } }
+            public static string Item { get { return "IT"; } }
+            public static string Service { get { return "SR"; } }
+        }
         #endregion
 
 
         #region Methods
+        public static TableBase GetTable(Session session,TableEnum _table)
+        {
+            return  session.GetObjectByKey<TableBase>((int)_table);
+        }
+        public string NextDimValue()
+        {
+            if (string.IsNullOrEmpty(DimensionPrefix))
+            {
+                return "";
+            }
+            string dimVal = DimensionPrefix;
+            this.LastIndex += 1;
+            dimVal = dimVal + LastIndex.ToString().PadLeft((9 - this.DimensionPrefix.Length), '0');
+            return dimVal; 
+        }
         private static List<TableInfo> GetTablesBasicInfo()
         {
             List<TableInfo> tables = new List<TableInfo>()
             {
-                new TableInfo() {TableId=1111,Name=typeof(AccountGroup).Name,DBName = AccountGroup.TABLE_NAME ,TableType=MyEnums.TableType.Master},
-                new TableInfo() {TableId=1112,Name=typeof(Sequence).Name,DBName=Sequence.TABLE_NAME,TableType=MyEnums.TableType.System },
-                new TableInfo() {TableId=1113,Name=typeof(AccountRef1).Name,DBName=AccountRef1.TABLE_NAME,TableType=MyEnums.TableType.Master },
-                new TableInfo() {TableId=1114,Name=typeof(AccountRef2).Name,DBName=AccountRef2.TABLE_NAME,TableType=MyEnums.TableType.Master},
-                new TableInfo() {TableId=1115,Name=typeof(Customer).Name,DBName=Customer.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                new TableInfo() {TableId=(int)TableEnum.AccountGroup,Name=typeof(AccountGroup).Name,DBName=AccountGroup.TABLE_NAME,TableType=MyEnums.TableType.System,DimensionPrefix= DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.Sequence,Name=typeof(Sequence).Name,DBName=Sequence.TABLE_NAME,TableType=MyEnums.TableType.System,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.AccountRef1,Name=typeof(AccountRef1).Name,DBName=AccountRef1.TABLE_NAME,TableType=MyEnums.TableType.Master ,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.AccountRef2,Name=typeof(AccountRef2).Name,DBName=AccountRef2.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.Customer,Name=typeof(Customer).Name,DBName=Customer.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.Customer}
+                ,new TableInfo() {TableId=(int)TableEnum.MainAccountType,Name=typeof(MainAccountType).Name,DBName=MainAccountType.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.MainAccount,Name=typeof(MainAccount).Name,DBName=MainAccount.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.MainAccount}
+                ,new TableInfo() {TableId=(int)TableEnum.JournalBase,Name=typeof(JournalBase).Name,DBName=JournalBase.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.AddressBook,Name=typeof(AddressBook).Name,DBName=AddressBook.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.CombinationHeader,Name=typeof(CombinationHeader).Name,DBName=CombinationHeader.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.CombinationTable,Name=typeof(CombinationTable).Name,DBName=CombinationTable.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.Currency,Name=typeof(Currency).Name,DBName=Currency.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.DocumentTypeAccounts,Name=typeof(DocumentTypeAccounts).Name,DBName=DocumentTypeAccounts.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.SequenceValues,Name=typeof(SequenceValues).Name,DBName=SequenceValues.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.TaxAgency,Name=typeof(TaxAgency).Name,DBName=TaxAgency.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.TaxGroup,Name=typeof(TaxGroup).Name,DBName=TaxGroup.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                ,new TableInfo() {TableId=(int)TableEnum.Workflow,Name=typeof(Workflow).Name,DBName=Workflow.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+
+
+
             };
             return tables;
 
@@ -129,7 +193,8 @@ namespace CoreModel
                         TableId = tab.TableId,
                         TableName = tab.Name,
                         TableDBName = tab.DBName,
-                        TableType = tab.TableType
+                        TableType = tab.TableType,
+                        DimensionPrefix=tab.DimensionPrefix
                     };
                     t.Save();
                 }

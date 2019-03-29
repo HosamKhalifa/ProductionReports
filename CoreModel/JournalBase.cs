@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.Xpo;
+using DevExpress.Data.Filtering;
 
 namespace CoreModel
 {
     [Persistent(@"JOURNAL_BASE")]
     public class JournalBase : Line
     {
-
+        public static string TABLE_NAME = @"JOURNAL_BASE";
         public JournalBase(Session session) : base(session)
         {
         }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.JournalBase);
             base.AfterConstruction();
         }
         #region Fields

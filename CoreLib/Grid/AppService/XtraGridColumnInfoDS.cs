@@ -6,7 +6,7 @@
     {
     }
 }
-namespace FinERP.AppService {
+namespace CoreModelWin.AppService {
     
     
     public partial class XtraGridColumnInfoDS {

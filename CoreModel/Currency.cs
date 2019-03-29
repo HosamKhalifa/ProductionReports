@@ -10,12 +10,13 @@ namespace CoreModel
     [Persistent(@"CURRENCY_TB")]
     public class Currency : Line
     {
+        public static string TABLE_NAME = @"CURRENCY_TB";
         public Currency(Session session) : base(session)
         {
         }
         public override void AfterConstruction()
         {
-            
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.Currency);
             base.AfterConstruction();
         }
         string fIsoCode;

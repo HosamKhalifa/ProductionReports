@@ -38,8 +38,8 @@
             this.colTableName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTableDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTableType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDimensionPrefix = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastIndex = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGenerateKey = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSequId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).BeginInit();
@@ -79,11 +79,12 @@
             this.colTableName,
             this.colTableDescription,
             this.colTableType,
+            this.colDimensionPrefix,
             this.colLastIndex,
-            this.colGenerateKey,
             this.colSequId});
             this.myGridView1.GridControl = this.myGridControl1;
             this.myGridView1.Name = "myGridView1";
+            this.myGridView1.OptionsEditForm.EditFormColumnCount = 2;
             this.myGridView1.OptionsView.ColumnAutoWidth = false;
             this.myGridView1.UnitOfWorkXpo = this.unitOfWork1;
             // 
@@ -91,6 +92,8 @@
             // 
             this.colTableId.FieldName = "TableId";
             this.colTableId.Name = "colTableId";
+            this.colTableId.OptionsColumn.AllowEdit = false;
+            this.colTableId.OptionsColumn.ReadOnly = true;
             this.colTableId.Visible = true;
             this.colTableId.VisibleIndex = 0;
             // 
@@ -98,6 +101,8 @@
             // 
             this.colTableDBName.FieldName = "TableDBName";
             this.colTableDBName.Name = "colTableDBName";
+            this.colTableDBName.OptionsColumn.AllowEdit = false;
+            this.colTableDBName.OptionsColumn.ReadOnly = true;
             this.colTableDBName.Visible = true;
             this.colTableDBName.VisibleIndex = 1;
             // 
@@ -105,6 +110,8 @@
             // 
             this.colTableName.FieldName = "TableName";
             this.colTableName.Name = "colTableName";
+            this.colTableName.OptionsColumn.AllowEdit = false;
+            this.colTableName.OptionsColumn.ReadOnly = true;
             this.colTableName.Visible = true;
             this.colTableName.VisibleIndex = 2;
             // 
@@ -119,22 +126,28 @@
             // 
             this.colTableType.FieldName = "TableType";
             this.colTableType.Name = "colTableType";
+            this.colTableType.OptionsColumn.AllowEdit = false;
+            this.colTableType.OptionsColumn.ReadOnly = true;
             this.colTableType.Visible = true;
             this.colTableType.VisibleIndex = 4;
+            // 
+            // colDimensionPrefix
+            // 
+            this.colDimensionPrefix.FieldName = "DimensionPrefix";
+            this.colDimensionPrefix.Name = "colDimensionPrefix";
+            this.colDimensionPrefix.OptionsColumn.AllowEdit = false;
+            this.colDimensionPrefix.OptionsColumn.ReadOnly = true;
+            this.colDimensionPrefix.Visible = true;
+            this.colDimensionPrefix.VisibleIndex = 5;
             // 
             // colLastIndex
             // 
             this.colLastIndex.FieldName = "LastIndex";
             this.colLastIndex.Name = "colLastIndex";
+            this.colLastIndex.OptionsColumn.AllowEdit = false;
+            this.colLastIndex.OptionsColumn.ReadOnly = true;
             this.colLastIndex.Visible = true;
-            this.colLastIndex.VisibleIndex = 5;
-            // 
-            // colGenerateKey
-            // 
-            this.colGenerateKey.FieldName = "GenerateKey";
-            this.colGenerateKey.Name = "colGenerateKey";
-            this.colGenerateKey.Visible = true;
-            this.colGenerateKey.VisibleIndex = 6;
+            this.colLastIndex.VisibleIndex = 6;
             // 
             // colSequId
             // 
@@ -168,8 +181,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTableName;
         private DevExpress.XtraGrid.Columns.GridColumn colTableDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colTableType;
+        private DevExpress.XtraGrid.Columns.GridColumn colDimensionPrefix;
         private DevExpress.XtraGrid.Columns.GridColumn colLastIndex;
-        private DevExpress.XtraGrid.Columns.GridColumn colGenerateKey;
         private DevExpress.XtraGrid.Columns.GridColumn colSequId;
     }
 }

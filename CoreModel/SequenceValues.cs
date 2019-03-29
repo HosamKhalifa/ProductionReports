@@ -9,11 +9,13 @@ namespace CoreModel
 {
     [Persistent(@"SEQU_VALUES_TB")]
     [MapInheritance(MapInheritanceType.OwnTable)]
-    public class SequenceValues :Line
+    public class SequenceValues : Line
     {
+        public static string TABLE_NAME = @"SEQU_VALUES_TB";
         public SequenceValues(Session session) : base(session) { }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.SequenceValues);
             base.AfterConstruction();
         }
         Sequence fSequenceId;

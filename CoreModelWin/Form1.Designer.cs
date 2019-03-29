@@ -46,6 +46,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.testBI = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -59,11 +60,11 @@
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.tableBaseLink,
             this.uILabelLink});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 50);
+            this.navBarControl1.Location = new System.Drawing.Point(0, 52);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControl1.Size = new System.Drawing.Size(203, 367);
+            this.navBarControl1.Size = new System.Drawing.Size(203, 365);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -102,9 +103,10 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.statusBarTxt,
             this.skinBarSubItem1,
-            this.barWorkspaceMenuItem1});
+            this.barWorkspaceMenuItem1,
+            this.testBI});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 3;
+            this.barManager1.MaxItemId = 4;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -130,6 +132,8 @@
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.testBI)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -160,7 +164,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(772, 50);
+            this.barDockControlTop.Size = new System.Drawing.Size(772, 52);
             // 
             // barDockControlBottom
             // 
@@ -173,27 +177,33 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 50);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 367);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 365);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(772, 50);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 367);
+            this.barDockControlRight.Location = new System.Drawing.Point(772, 52);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 365);
             // 
             // barWorkspaceMenuItem1
             // 
             this.barWorkspaceMenuItem1.Caption = "Workspace";
             this.barWorkspaceMenuItem1.Id = 2;
             this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
+            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
             // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
-            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
+            // 
+            // testBI
+            // 
+            this.testBI.Caption = "Test";
+            this.testBI.Id = 3;
+            this.testBI.Name = "testBI";
             // 
             // Form1
             // 
@@ -234,6 +244,7 @@
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
         private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
+        private DevExpress.XtraBars.BarButtonItem testBI;
     }
 }
 

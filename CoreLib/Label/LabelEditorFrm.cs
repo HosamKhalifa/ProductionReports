@@ -100,9 +100,14 @@ namespace CoreLib.Label
                 foreach (XPClassInfo item in dict.Classes)
                 {
 
-                    if (item.BaseClass !=null && (item.BaseClass.FullName.Contains("XPLiteObjectExt")||
-                        item.BaseClass.FullName.Contains("XPLiteObject") ||
-                        item.BaseClass.FullName.Contains("XPObject")))
+                    //if (item.BaseClass !=null  &&
+                    //   (
+                    //    item.BaseClass.FullName.Contains("XPLiteObjectExt")||
+                    //    item.BaseClass.FullName.Contains("XPLiteObject") ||
+                    //    item.BaseClass.FullName.Contains("XPObject")      )
+                    //    )
+                    if(item.IsPersistent)
+
                     {
                         if(!(item.FullName.Contains("XPLiteObjectExt") || item.FullName.Contains("XPLiteObject") || item.FullName.Contains("XPObject")))
                         {
@@ -155,7 +160,7 @@ namespace CoreLib.Label
                 {
                     var objName = unitOfWork1.FindObject<UIObjectBase>(CriteriaOperator.Parse(" ObjectName = ? ", classInfo.FullName));
                     //Test if label already existed but not referenced in Xpo yet
-                    var labelLine = unitOfWork1.FindObject<UILabel>(CriteriaOperator.Parse(" [FieldName] = ? AND [LabelType] = ?  ", fieldName, MyEnums.UILabelType.FieldCaption));
+                    var labelLine = unitOfWork1.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName] = ? AND [FieldName] = ? AND [LabelType] = ?  ",objName, fieldName, MyEnums.UILabelType.FieldCaption));
                     if (objName != null && labelLine == null)
                     {
                         UILabel newLbl = new UILabel(unitOfWork1)

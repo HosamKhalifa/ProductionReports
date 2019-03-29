@@ -20,6 +20,7 @@ namespace CoreModel
         string fDimensionValue;
         [Size(9)]
         [Persistent(@"DIM_VAL")]
+        
         public string DimensionValue
         {
             get { return fDimensionValue; }
@@ -89,11 +90,30 @@ namespace CoreModel
             get { return fReferenceNumber; }
             set { SetPropertyValue<string>("ReferenceNumber", ref fReferenceNumber, value); }
         }
+
+        AddressBook fPrimaryAddress;
+        [Persistent(@"PRIMARY_ADDRESS")]
+
+        public AddressBook PrimaryAddress
+        {
+            get { return fPrimaryAddress; }
+            set { SetPropertyValue<AddressBook>("PrimaryAddress", ref fPrimaryAddress, value); }
+        }
         #endregion
 
-
+        #region Associations
         [Association(@"Account-Addresses")]
-        public XPCollection<Address> AccountAddresses { get { return GetCollection<Address>("AccountAddresses"); } }
+        public XPCollection<AddressBook> AccountAddresses { get { return GetCollection<AddressBook>("AccountAddresses"); } }
+        #endregion
+
+        #region Events
+        protected override void OnSaving()
+        {
+            if(TableId != null) { DimensionValue = TableId.NextDimValue(); }
+            
+            base.OnSaving();
+        }
+        #endregion
 
     }
 }

@@ -20,13 +20,13 @@ namespace CoreModel
         }
 
         #region Fields
-        DocumentType fDocumentType;
+        MyEnums.DocType fDocumentType;
         [Persistent(@"DOC_TYPE")]
-        [Association(@"DOC_TYPE_DOC_BASE_FK")]
-        public DocumentType DocumentType
+      
+        public MyEnums.DocType DocumentType
         {
             get { return fDocumentType; }
-            set { SetPropertyValue<DocumentType>("DocumentType", ref fDocumentType, value); }
+            set { SetPropertyValue<MyEnums.DocType>("DocumentType", ref fDocumentType, value); }
         }
 
         JournalBase fJournal;

@@ -18,7 +18,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.MainAccount);
             base.AfterConstruction();
         }
         #region Fields

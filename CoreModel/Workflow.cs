@@ -10,12 +10,14 @@ namespace CoreModel
     [Persistent(@"WFLOW")]
     public class Workflow : Line
     {
+        public static string TABLE_NAME = @"WFLOW";
         public Workflow(Session session) : base(session)
         {
 
         }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.Workflow);
             base.AfterConstruction();
         }
         string fWorkflowName;
