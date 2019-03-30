@@ -102,7 +102,7 @@ namespace CoreModelWin.AppLists
             return rowsCount;
         }
 
-        public void LinkListToColumn(DevExpress.XtraGrid.Columns.GridColumn col,Type tableType, string gridFilterString = "")
+        public void LinkListToColumn(DevExpress.XtraGrid.Columns.GridColumn col,Type tableType, string _valueMember="",string gridFilterString = "")
         {
             XPClassInfo classInfo = AppListSession.GetClassInfo(tableType);
             DataMemberXPCollection = new XPCollection(AppListSession, classInfo);
@@ -116,8 +116,9 @@ namespace CoreModelWin.AppLists
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             lookupGrd.Name = "lookupGrd";
             lookupGrd.View = lookupGrdView;
-
-            //SetupGridView()
+            lookupGrd.DisplayMember = DisplayMember;
+            lookupGrd.ValueMember = string.IsNullOrEmpty(_valueMember) ? ValueMember : _valueMember;
+            
             col.ColumnEdit = lookupGrd;
             
             ActiveColumnLinks.Add(col);

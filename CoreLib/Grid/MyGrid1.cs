@@ -133,7 +133,12 @@ namespace CoreLib.Grid
                 if (!this.DesignMode)
                 {
                     var ds = this.DataSource;
-                    if (ds is XPCollection) { ApplyLabel((XPCollectionExt)ds); }
+                    if (ds is XPCollection)
+                    {
+                        this.BeginInit();
+                        ApplyLabel((XPCollectionExt)ds);
+                        this.EndInit();
+                    }
 
                     //ApplyLabelToColumns();
                 }
@@ -487,13 +492,15 @@ namespace CoreLib.Grid
                 
                 return;
             }
+           
             var classInfo = ds.ObjectClassInfo;
+            var objectBaseLine = this.UnitOfWorkXpo.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", classInfo.FullName));
             foreach (var m in classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField)))
             {
                 
                 var caption = m.FindAttributeInfo("caption");
                 var help = m.FindAttributeInfo("help");
-                var c = this.Columns.ColumnByFieldName(m.MappingField);
+                var c = this.Columns.ColumnByFieldName(m.Name);
                 if(c != null)
                 {
                     if (caption != null)
@@ -501,7 +508,9 @@ namespace CoreLib.Grid
                         string lblId = ((CustomAttribute)caption).Value;
                         if (!string.IsNullOrEmpty(lblId))
                         {
-                            c.Caption = UILabel.ResolveLabelId(lblId);
+                            var lbl = this.UnitOfWorkXpo.GetObjectByKey<UILabel>(lblId);
+                            lbl.ApplyFieldSettings(this,c);
+                            //c.Caption = UILabel.ResolveLabelId(lblId);
                         }
                     }
                     else
@@ -509,10 +518,11 @@ namespace CoreLib.Grid
                         //Try to use FieldName to get label
                         string fieldName = $"{m.Owner.FullName}.{m.Name}";
                         //Test if label already existed but not referenced in Xpo yet
-                        var labelLine = this.UnitOfWorkXpo.FindObject<UILabel>(CriteriaOperator.Parse(" [FieldName] = ? AND [LabelType] = ?  ", fieldName, MyEnums.UILabelType.FieldCaption));
+                        var labelLine = this.UnitOfWorkXpo.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName!Key] = ? AND [FieldName] = ? AND [LabelType] = ?  ", objectBaseLine.Oid, fieldName, MyEnums.UILabelType.FieldCaption));
                         if (labelLine != null)
                         {
-                            c.Caption = UILabel.ResolveLabelId(labelLine.LabelId);
+                            labelLine.ApplyFieldSettings(this,c);
+                            //c.Caption = UILabel.ResolveLabelId(labelLine.LabelId);
                         }
                     }
                     if(help != null)
@@ -528,7 +538,7 @@ namespace CoreLib.Grid
                         //Try to use FieldName to get label
                         string fieldName = $"{m.Owner.FullName}.{m.Name}";
                         //Test if label already existed but not referenced in Xpo yet
-                        var labelLine = this.UnitOfWorkXpo.FindObject<UILabel>(CriteriaOperator.Parse(" [FieldName] = ? AND [LabelType] = ?  ", fieldName, MyEnums.UILabelType.FieldHelp));
+                        var labelLine = this.UnitOfWorkXpo.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName!Key] = ? AND [FieldName] = ? AND [LabelType] = ?  ", objectBaseLine.Oid, fieldName, MyEnums.UILabelType.FieldHelp));
                         if (labelLine != null)
                         {
                             c.ToolTip = UILabel.ResolveLabelId(labelLine.LabelId);

@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.fieldsSettingsLink = new DevExpress.XtraNavBar.NavBarItem();
             this.uILabelLink = new DevExpress.XtraNavBar.NavBarItem();
             this.tableBaseLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.testBI = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.statusBarTxt = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -46,7 +48,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.testBI = new DevExpress.XtraBars.BarButtonItem();
+            this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -59,12 +61,13 @@
             this.SystemSetupNavGrp});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.tableBaseLink,
-            this.uILabelLink});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 52);
+            this.uILabelLink,
+            this.fieldsSettingsLink});
+            this.navBarControl1.Location = new System.Drawing.Point(0, 54);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControl1.Size = new System.Drawing.Size(203, 365);
+            this.navBarControl1.Size = new System.Drawing.Size(203, 363);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -73,9 +76,16 @@
             this.SystemSetupNavGrp.Caption = "System setup";
             this.SystemSetupNavGrp.Expanded = true;
             this.SystemSetupNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.fieldsSettingsLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.uILabelLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.tableBaseLink)});
             this.SystemSetupNavGrp.Name = "SystemSetupNavGrp";
+            // 
+            // fieldsSettingsLink
+            // 
+            this.fieldsSettingsLink.Caption = "Fields settings";
+            this.fieldsSettingsLink.Name = "fieldsSettingsLink";
+            this.fieldsSettingsLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("fieldsSettingsLink.SmallImage")));
             // 
             // uILabelLink
             // 
@@ -104,9 +114,10 @@
             this.statusBarTxt,
             this.skinBarSubItem1,
             this.barWorkspaceMenuItem1,
-            this.testBI});
+            this.testBI,
+            this.refreshBI});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 5;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -116,7 +127,8 @@
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.refreshBI)});
             this.bar1.Text = "Tools";
             // 
             // skinBarSubItem1
@@ -137,6 +149,12 @@
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // testBI
+            // 
+            this.testBI.Caption = "Test";
+            this.testBI.Id = 3;
+            this.testBI.Name = "testBI";
             // 
             // bar3
             // 
@@ -164,7 +182,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(772, 52);
+            this.barDockControlTop.Size = new System.Drawing.Size(772, 54);
             // 
             // barDockControlBottom
             // 
@@ -177,15 +195,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 365);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 54);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 363);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(772, 52);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 365);
+            this.barDockControlRight.Location = new System.Drawing.Point(772, 54);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 363);
             // 
             // barWorkspaceMenuItem1
             // 
@@ -199,11 +217,14 @@
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
             // 
-            // testBI
+            // refreshBI
             // 
-            this.testBI.Caption = "Test";
-            this.testBI.Id = 3;
-            this.testBI.Name = "testBI";
+            this.refreshBI.Caption = "Refresh";
+            this.refreshBI.Glyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.Glyph")));
+            this.refreshBI.Id = 4;
+            this.refreshBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.LargeGlyph")));
+            this.refreshBI.Name = "refreshBI";
+            this.refreshBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // Form1
             // 
@@ -245,6 +266,8 @@
         private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraBars.BarButtonItem testBI;
+        private DevExpress.XtraNavBar.NavBarItem fieldsSettingsLink;
+        private DevExpress.XtraBars.BarButtonItem refreshBI;
     }
 }
 

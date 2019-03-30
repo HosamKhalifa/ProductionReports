@@ -11,6 +11,9 @@ using Newtonsoft.Json;
 using System.Windows.Forms;
 using CoreLib.SharedExt;
 using DevExpress.Xpo.DB;
+using DevExpress.XtraGrid.Columns;
+using System.Drawing;
+using CoreLib.Grid;
 
 namespace CoreLib.Label
 {
@@ -24,8 +27,10 @@ namespace CoreLib.Label
         {
             this.fLabelType = MyEnums.UILabelType.FieldCaption;
             this.fLabelId = NextLineVal(this.Session);
+            this.Width = 10;//Default column width
             this.fLookupMemberCharWidth = 10;//Default column width
-            
+
+
             base.AfterConstruction();
         }
         private static List<JsonLabelDict> jsonLabelDictionery;
@@ -74,6 +79,19 @@ namespace CoreLib.Label
                     break;
             }
             return ret;
+        }
+        public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol)
+        {
+            grdCol.Caption = ChooseValueForCurrentLang();
+            grdCol.OptionsColumn.ReadOnly = this.IsDisabled;
+            grdCol.OptionsEditForm.Visible = IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
+            gv.Columns[this.ColumnName].Visible = !IsHidden;
+            //grdCol.Visible = !IsHidden ;
+            Size columnSize = TextRenderer.MeasureText("".PadLeft(this.Width, 'A'), grdCol.AppearanceCell.Font);
+            grdCol.Width = columnSize.Width;
+            gv.Columns[this.ColumnName].VisibleIndex = IsHidden ? 0 : this.VisibleOrder;
+            //grdCol.VisibleIndex = IsHidden? 0 : this.VisibleOrder;
+
         }
         public static string NextLineVal(Session unitOfWork)
         {
@@ -178,6 +196,52 @@ namespace CoreLib.Label
             get { return fLookupMemberCharWidth; }
             set { SetPropertyValue<int>("LookupMemberCharWidth", ref fLookupMemberCharWidth, value); }
         }
+
+        UIObjectBase fLookupEditor; //Class name to be used as lookup for current field
+        public UIObjectBase LookupEditor
+        {
+            get { return fLookupEditor; }
+            set { SetPropertyValue<UIObjectBase>("LookupEditor", ref fLookupEditor, value); }
+        }
+        UILabel fLookupEditorAlernateValueMember;//To enfore value member instead default 
+        public UILabel LookupEditorAlernateValueMember
+        {
+            get { return fLookupEditorAlernateValueMember; }
+            set { SetPropertyValue<UILabel>("LookupEditorAlernateValueMember", ref fLookupEditorAlernateValueMember, value); }
+        }
+
+        bool fIsHidden;
+        public bool IsHidden
+        {
+            get { return fIsHidden; }
+            set { SetPropertyValue<bool>("IsHidden", ref fIsHidden, value); }
+        }
+
+        bool fIsDisabled;
+        public bool IsDisabled
+        {
+            get { return fIsDisabled; }
+            set { SetPropertyValue<bool>("IsDisabled", ref fIsDisabled, value); }
+        }
+        int fWidth;
+        public int Width
+        {
+            get { return fWidth; }
+            set { SetPropertyValue<int>("Width", ref fWidth, value); }
+        }
+        int fVisibleOrder;
+        public int VisibleOrder
+        {
+            get { return fVisibleOrder; }
+            set { SetPropertyValue<int>("VisibleOrder", ref fVisibleOrder, value); }
+        }
+        [NonPersistent]
+        public string ColumnName
+        {
+            get { return FieldName.Substring(FieldName.LastIndexOf('.') + 1); }
+        }
+
+
 
     }
 }

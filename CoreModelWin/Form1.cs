@@ -24,9 +24,21 @@ namespace CoreModelWin
             InitializeComponent();
             InitMyForm();
             InitConn();
+            InitBarButtons();
             SkinManage();
 
             InitSystemSetupEventHandlers();//System setup menu event handlers
+        }
+
+        private void InitBarButtons()
+        {
+            refreshBI.ItemClick += (s, e) => 
+            {
+                if(CoreLib.FormRecord.CurrentRecord != null)
+                {
+                    CoreLib.FormRecord.CurrentRecord.Reload();
+                }
+            };
         }
 
         private void InitMyForm()
@@ -95,11 +107,19 @@ namespace CoreModelWin
         {
             try
             {
+                
                 testBI.ItemClick += (s, e) => //Test
                 {
                     TestFrm frm = new TestFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
                     frm.Show();
                 };
+
+                fieldsSettingsLink.LinkClicked += (s, e)=>
+                {
+                    var frm = new CoreLib.Label.FieldsSettingsFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
+                    frm.Show();
+                };
+
                 uILabelLink.LinkClicked += (s, e) => //LabelEditor
                 {
                     CoreLib.Label.LabelEditorFrm frm = new CoreLib.Label.LabelEditorFrm("CoreLib;CoreModel") { MdiParent = this, WindowState = FormWindowState.Maximized };

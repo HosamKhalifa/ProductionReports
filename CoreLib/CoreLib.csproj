@@ -117,6 +117,12 @@
     <Compile Include="Grid\MyGrid1.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Label\FieldsSettingsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Label\FieldsSettingsFrm.Designer.cs">
+      <DependentUpon>FieldsSettingsFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Label\JsonLabelDict.cs" />
     <Compile Include="Label\LabelEditorFrm.cs">
       <SubType>Form</SubType>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Grid\AppService\XtraGridPopupMenu_PivotXtraForm.resx">
       <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Label\FieldsSettingsFrm.resx">
+      <DependentUpon>FieldsSettingsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Label\LabelEditorFrm.resx">
       <DependentUpon>LabelEditorFrm.cs</DependentUpon>

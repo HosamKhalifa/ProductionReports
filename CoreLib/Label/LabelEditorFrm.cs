@@ -168,7 +168,12 @@ namespace CoreLib.Label
                             LabelType = MyEnums.UILabelType.FieldCaption,
                             FieldName = fieldName,
                             ObjectName = objName,
-                            Lang_en = m.Name
+                            Lang_en = m.Name,
+                            LookupMemberCharWidth=10,
+                            Width=10,
+                            IsDisabled=false,
+                            IsHidden=false,
+                            VisibleOrder=0
                         };
                         newLbl.Save();
 
