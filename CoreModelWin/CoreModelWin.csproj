@@ -160,6 +160,7 @@
     <ProjectReference Include="..\CoreModel\CoreModel.csproj">
       <Project>{4a1bcc49-01a7-44e1-96d7-5e7eae76690d}</Project>
       <Name>CoreModel</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

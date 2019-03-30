@@ -214,7 +214,7 @@ namespace CoreModelWin.AppLists
         public void SetupGridView(DevExpress.XtraGrid.Views.Grid.GridView targetGV, XPBaseCollection _listXPC)
         {
             //DevExpress.XtraGrid.Views.Grid.GridView targetGV = col.Properties.View;
-            targetGV.GridControl.ForceInitialize();
+            targetGV.GridControl?.ForceInitialize();
             targetGV.Columns.Clear();
             targetGV.OptionsView.ColumnAutoWidth = false;
             targetGV.OptionsView.ShowAutoFilterRow = true;

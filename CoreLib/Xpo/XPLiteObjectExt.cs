@@ -12,7 +12,10 @@ namespace CoreLib.Xpo
     {
         protected XPLiteObjectExt() : base() { }
         protected XPLiteObjectExt(Session session) : base(session) { }
-        protected XPLiteObjectExt(Session session, DevExpress.Xpo.Metadata.XPClassInfo classInfo) : base(session, classInfo) { }
+        protected XPLiteObjectExt(Session session, DevExpress.Xpo.Metadata.XPClassInfo classInfo) : base(session, classInfo)
+        {
+            classInfo = Session.GetClassInfo(this);
+        }
         protected virtual bool Validate()
         {
             // This method should override in desctent objects for further validation logic

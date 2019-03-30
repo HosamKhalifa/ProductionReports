@@ -16,7 +16,7 @@ namespace CoreModel
 {
 
     [Persistent(@"LINE_BASE")]
-    public  class Line : XPLiteObjectExt
+    public  class Line : XPLiteObject
     {
         public Line(Session session) : base(session) { }
         public override void AfterConstruction()
@@ -30,7 +30,7 @@ namespace CoreModel
 
             base.AfterConstruction();
         }
-        protected override bool Validate()
+        protected virtual bool Validate()
         {
             //Not null column
             if (string.IsNullOrEmpty(ModifiedBy.Trim())) return false;
@@ -38,14 +38,17 @@ namespace CoreModel
             if (string.IsNullOrEmpty(CreatedBy.Trim())) return false;
             if (ModifiedAt == null) return false;
 
-            return base.Validate();
+            return true;
         }
         protected override void OnSaving()
         {
             this.ModifiedBy = SecurityUser.CurrentUser.UserId;
             this.ModifiedAt = DateTime.Now;
-
-            base.OnSaving();
+            if (Validate())
+            {
+                base.OnSaving();
+            }
+            
         }
         //Definition
         //====================================================================
