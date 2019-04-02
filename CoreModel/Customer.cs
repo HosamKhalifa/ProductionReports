@@ -12,13 +12,15 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class Customer: Account
     {
-        public static string TABLE_NAME = @"CUST_ACT_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.Customer;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"CUST_ACT_TB";
         public Customer(Session session) : base(session)
         {
         }
         public override void AfterConstruction()
         {
-            TableId = Session.FindObject<TableBase>(CriteriaOperator.Parse(" [TABLE_NAME] = ? ", TABLE_NAME));
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.Customer);
             
             base.AfterConstruction();
         }

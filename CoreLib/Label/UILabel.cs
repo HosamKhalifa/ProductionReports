@@ -60,37 +60,25 @@ namespace CoreLib.Label
             var lblRow = GetLabelDictionery().Where(x => x.LabelId == lblId).FirstOrDefault();
             return lblRow != null ? lblRow.LabelName : "";
         }
-        public string ChooseValueForCurrentLang()
+        public string ChooseValueForCurrentLang(MyEnums.UILabelType _uiLabelType)
         {
             string ret = "";
-            string lang = string.IsNullOrEmpty(CoreLib.GlobalMethods.UILang) ? "en" : CoreLib.GlobalMethods.UILang;
-            switch (lang.ToLower())
-            {
-                case "en":
-                    ret = this.Lang_en;
-                    break;
-                case "ar":
-                    ret = this.Lang_ar;
-                    break;
-                case "fr":
-                    ret = this.Lang_fr;
-                    break;
-                default:
-                    break;
-            }
+            //string lang = string.IsNullOrEmpty(CoreLib.GlobalMethods.UILang) ? "en" : CoreLib.GlobalMethods.UILang;
+            UILabelLang lblLang = Langs.Where(x => x.UILabelType == _uiLabelType).FirstOrDefault();
+            ret = lblLang.Lang;
             return ret;
         }
         public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol)
         {
-            grdCol.Caption = ChooseValueForCurrentLang();
-            grdCol.OptionsColumn.ReadOnly = this.IsDisabled;
-            grdCol.OptionsEditForm.Visible = IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
-            gv.Columns[this.ColumnName].Visible = !IsHidden;
-            //grdCol.Visible = !IsHidden ;
-            Size columnSize = TextRenderer.MeasureText("".PadLeft(this.Width, 'A'), grdCol.AppearanceCell.Font);
-            grdCol.Width = columnSize.Width;
-            gv.Columns[this.ColumnName].VisibleIndex = IsHidden ? 0 : this.VisibleOrder;
-            //grdCol.VisibleIndex = IsHidden? 0 : this.VisibleOrder;
+
+            gv.Columns[ColumnName].Caption = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldCaption);
+            gv.Columns[ColumnName].ToolTip = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldHelp);
+            
+            Size columnSize = TextRenderer.MeasureText("".PadLeft(Width, 'A'), grdCol.AppearanceCell.Font);
+            gv.Columns[ColumnName].Width = columnSize.Width;
+            gv.Columns[ColumnName].OptionsColumn.ReadOnly = this.IsDisabled;
+            gv.Columns[ColumnName].OptionsEditForm.Visible = IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
+            gv.Columns[ColumnName].Visible = !IsHidden;
 
         }
         public static string NextLineVal(Session unitOfWork)
@@ -129,6 +117,7 @@ namespace CoreLib.Label
             return ("@" + returnIndex.ToString());
             
         }
+                
 
         //=============================================================================================================================
         string fLabelId;
@@ -235,6 +224,12 @@ namespace CoreLib.Label
             get { return fVisibleOrder; }
             set { SetPropertyValue<int>("VisibleOrder", ref fVisibleOrder, value); }
         }
+
+        #region Associations
+        [Association(@"UILABLE_UILABEL_LANG_FK")]
+        public XPCollection<UILabelLang> Langs { get { return GetCollection<UILabelLang>("Langs"); } }
+        #endregion
+
         [NonPersistent]
         public string ColumnName
         {

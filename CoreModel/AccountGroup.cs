@@ -7,7 +7,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class AccountGroup:Line
     {
-        public static string TABLE_NAME = "ACT_GROUP_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.AccountGroup;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = "ACT_GROUP_TB";
         public AccountGroup(Session session) : base(session) { }
         public override void AfterConstruction()
         {

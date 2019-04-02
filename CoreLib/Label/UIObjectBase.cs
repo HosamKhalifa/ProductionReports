@@ -16,6 +16,26 @@ namespace CoreLib.Label
         {
             base.AfterConstruction();
         }
+        public UILabel FindOrCreateUILabel(string _fieldName)
+        {
+            UILabel l = ObjectLabels.Where(x => x.FieldName == _fieldName ).FirstOrDefault();
+            if(l == null) //Create new one
+            {
+                l = new UILabel(Session)
+                {
+                    FieldName = _fieldName
+                };
+                ObjectLabels.Add(l);
+
+                UILabelLang cap = new UILabelLang(Session) { Lang_en = _fieldName, UILabelType = MyEnums.UILabelType.FieldCaption };
+                UILabelLang hlp = new UILabelLang(Session) { Lang_en = _fieldName, UILabelType = MyEnums.UILabelType.FieldHelp };
+                l.Langs.Add(cap);
+                l.Langs.Add(hlp);
+                l.Save();
+                l.Session.CommitTransaction();
+            }
+            return l;         
+        }
 
         string fObjectName;
         [Size(150)]
@@ -31,6 +51,7 @@ namespace CoreLib.Label
             get { return fAssemblyName; }
             set { SetPropertyValue<string>("AssemblyName", ref fAssemblyName, value); }
         }
+     
         [Association("UIObjectBase-UILabels")]
         public XPCollection<UILabel> ObjectLabels { get { return GetCollection<UILabel>("ObjectLabels"); } }
 

@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoreLib.Xpo;
+using DevExpress.Xpo.Metadata;
+using System.Reflection;
+using CoreLib;
+
 namespace CoreModel
 {
     [Persistent(@"TABLE_BASE")]
@@ -93,7 +97,20 @@ namespace CoreModel
             get { return fSequId; }
             set { SetPropertyValue<long>("SequId", ref fSequId, value); }
         }
-
+        string fClassName;
+        [Persistent(@"CLASS_NAME")]
+        public string ClassName
+        {
+            get { return fClassName; }
+            set { SetPropertyValue<string>("ClassName", ref fClassName, value); }
+        }
+        string fAssemblyName;
+        [Persistent(@"ASSEMBLY_NAME")]
+        public string AssemblyName
+        {
+            get { return fAssemblyName; }
+            set { SetPropertyValue<string>("AssemblyName", ref fAssemblyName, value); }
+        }
 
 
         #endregion
@@ -107,11 +124,28 @@ namespace CoreModel
             public int TableId { get; set; }
             public string Name { get; set; }
             public string DBName { get; set; }
+            public string ClassName { get; set; }
+            public string AssemblyName { get; set; }
             public MyEnums.TableType TableType { get; set; }
             public string DimensionPrefix { get; set; }
         }
         public class DimPrefixEnum
         {
+            public static string GetTableDimPrefix(TableEnum _table)
+            {
+
+                var lst = typeof(DimPrefixEnum).GetFields(BindingFlags.Static).Where(x => x.Name == Enum.GetName(typeof(TableEnum), _table)).FirstOrDefault();
+                if(lst != null)
+                {
+
+                    var ret =  lst.GetValue(null).ToString();
+                    return ret;
+                }
+                else
+                {
+                    return EmptyDimPrefix;
+                }
+            }
             public static string EmptyDimPrefix { get { return "@"; } }
             public static string MainAccount{ get { return "FA"; } }
             public static string Customer { get { return "CU"; } }
@@ -143,41 +177,72 @@ namespace CoreModel
             dimVal = dimVal + LastIndex.ToString().PadLeft((9 - this.DimensionPrefix.Length), '0');
             return dimVal; 
         }
+        public static string GetTableAttribute(Type _className)
+        {
+            XPClassInfo cinfo = XpoDefault.Session.GetClassInfo(_className);
+            var tabAttr = cinfo.FindAttributeInfo(typeof(PersistentAttribute)).ToString();
+            return cinfo.TableName;
+            
+        }
+       
         private static List<TableInfo> GetTablesBasicInfo()
         {
-            List<TableInfo> tables = new List<TableInfo>()
-            {
-                new TableInfo() {TableId=(int)TableEnum.AccountGroup,Name=typeof(AccountGroup).Name,DBName=AccountGroup.TABLE_NAME,TableType=MyEnums.TableType.System,DimensionPrefix= DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.Sequence,Name=typeof(Sequence).Name,DBName=Sequence.TABLE_NAME,TableType=MyEnums.TableType.System,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.AccountRef1,Name=typeof(AccountRef1).Name,DBName=AccountRef1.TABLE_NAME,TableType=MyEnums.TableType.Master ,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.AccountRef2,Name=typeof(AccountRef2).Name,DBName=AccountRef2.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.Customer,Name=typeof(Customer).Name,DBName=Customer.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.Customer}
-                ,new TableInfo() {TableId=(int)TableEnum.MainAccountType,Name=typeof(MainAccountType).Name,DBName=MainAccountType.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.MainAccount,Name=typeof(MainAccount).Name,DBName=MainAccount.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.MainAccount}
-                ,new TableInfo() {TableId=(int)TableEnum.JournalBase,Name=typeof(JournalBase).Name,DBName=JournalBase.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.AddressBook,Name=typeof(AddressBook).Name,DBName=AddressBook.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.CombinationHeader,Name=typeof(CombinationHeader).Name,DBName=CombinationHeader.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.CombinationTable,Name=typeof(CombinationTable).Name,DBName=CombinationTable.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.Currency,Name=typeof(Currency).Name,DBName=Currency.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.DocumentTypeAccounts,Name=typeof(DocumentTypeAccounts).Name,DBName=DocumentTypeAccounts.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.SequenceValues,Name=typeof(SequenceValues).Name,DBName=SequenceValues.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.TaxAgency,Name=typeof(TaxAgency).Name,DBName=TaxAgency.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.TaxGroup,Name=typeof(TaxGroup).Name,DBName=TaxGroup.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                ,new TableInfo() {TableId=(int)TableEnum.Workflow,Name=typeof(Workflow).Name,DBName=Workflow.TABLE_NAME,TableType=MyEnums.TableType.Master,DimensionPrefix=DimPrefixEnum.EmptyDimPrefix}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
-                //,new TableInfo() {TableId=(int)TableEnum.,Name=typeof().Name,DBName=.TABLE_NAME,TableType=MyEnums.TableType.Master}
+            List<TableInfo> tables = new List<TableInfo>();
+            XPDictionary dict = new ReflectionDictionary();
+            
+                var assemblyInstance = GlobalMethods.GetAssemblyByName("CoreModel");
 
+                dict.CollectClassInfos(assemblyInstance);
 
+                foreach (XPClassInfo item in dict.Classes)
+                {
+                if (item.ClassType == typeof(TableBase)) continue;
+                var tableNameProp = item.ClassType.GetField("TableName");
+                var tableTypeProp = item.ClassType.GetField("TableType");
+                    if (item.IsPersistent 
+                        && tableNameProp != null
+                        && tableTypeProp != null)
+                {
+                    var tn = tableNameProp.GetValue(null);
+                    var tt = tableTypeProp.GetValue(null);
+                    if(tn != null && tt != null)
+                    {
+                        var le_TableName = (TableEnum)tn;
+                        var le_TableType = (MyEnums.TableType)tt;
+                        var info = ReadClassInfo(item.ClassType,le_TableName,le_TableType);
+                        tables.Add(info);
+                    }
+                }
 
-            };
+                }
+
             return tables;
 
         }
+
+        private static TableInfo ReadClassInfo(Type _type, TableEnum le_TableName, MyEnums.TableType le_TableType)
+        {
+            TableInfo ret = new TableInfo();
+            
+
+            //var TableNameProp = _type.GetProperty("TableName");
+            //var tableName = (TableEnum)TableNameProp.GetValue(null);
+            ret.TableId = (int)le_TableName;
+
+            ret.Name = _type.Name;
+            ret.DBName = GetTableAttribute(_type);
+
+            //var tableTypeProp = _type.GetProperty("TableType");
+            //var tableType = tableTypeProp.GetValue(null);
+            ret.TableType = (MyEnums.TableType)le_TableType;
+
+            ret.DimensionPrefix = DimPrefixEnum.GetTableDimPrefix(le_TableName);
+            ret.AssemblyName = _type.Assembly.FullName;
+            ret.ClassName = _type.Name;
+
+            return ret;
+        }
+
         public static void TableBaseRowsBuilder(UnitOfWork session)//Create ddb rows for each Persistent calss 
         {
 
@@ -194,7 +259,11 @@ namespace CoreModel
                         TableName = tab.Name,
                         TableDBName = tab.DBName,
                         TableType = tab.TableType,
-                        DimensionPrefix=tab.DimensionPrefix
+                        DimensionPrefix=tab.DimensionPrefix,
+                        LastIndex=0,
+                        ClassName=tab.ClassName,
+                        AssemblyName=tab.AssemblyName
+                        
                     };
                     t.Save();
                 }

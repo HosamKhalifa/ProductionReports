@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
             this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
             this.myGridView1 = new CoreLib.Grid.MyGridView();
@@ -41,6 +40,8 @@
             this.colDimensionPrefix = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastIndex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSequId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colClassName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAssemblyName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
@@ -81,7 +82,9 @@
             this.colTableType,
             this.colDimensionPrefix,
             this.colLastIndex,
-            this.colSequId});
+            this.colSequId,
+            this.colClassName,
+            this.colAssemblyName});
             this.myGridView1.GridControl = this.myGridControl1;
             this.myGridView1.Name = "myGridView1";
             this.myGridView1.OptionsEditForm.EditFormColumnCount = 2;
@@ -92,8 +95,6 @@
             // 
             this.colTableId.FieldName = "TableId";
             this.colTableId.Name = "colTableId";
-            this.colTableId.OptionsColumn.AllowEdit = false;
-            this.colTableId.OptionsColumn.ReadOnly = true;
             this.colTableId.Visible = true;
             this.colTableId.VisibleIndex = 0;
             // 
@@ -101,8 +102,6 @@
             // 
             this.colTableDBName.FieldName = "TableDBName";
             this.colTableDBName.Name = "colTableDBName";
-            this.colTableDBName.OptionsColumn.AllowEdit = false;
-            this.colTableDBName.OptionsColumn.ReadOnly = true;
             this.colTableDBName.Visible = true;
             this.colTableDBName.VisibleIndex = 1;
             // 
@@ -110,8 +109,6 @@
             // 
             this.colTableName.FieldName = "TableName";
             this.colTableName.Name = "colTableName";
-            this.colTableName.OptionsColumn.AllowEdit = false;
-            this.colTableName.OptionsColumn.ReadOnly = true;
             this.colTableName.Visible = true;
             this.colTableName.VisibleIndex = 2;
             // 
@@ -126,8 +123,6 @@
             // 
             this.colTableType.FieldName = "TableType";
             this.colTableType.Name = "colTableType";
-            this.colTableType.OptionsColumn.AllowEdit = false;
-            this.colTableType.OptionsColumn.ReadOnly = true;
             this.colTableType.Visible = true;
             this.colTableType.VisibleIndex = 4;
             // 
@@ -135,8 +130,6 @@
             // 
             this.colDimensionPrefix.FieldName = "DimensionPrefix";
             this.colDimensionPrefix.Name = "colDimensionPrefix";
-            this.colDimensionPrefix.OptionsColumn.AllowEdit = false;
-            this.colDimensionPrefix.OptionsColumn.ReadOnly = true;
             this.colDimensionPrefix.Visible = true;
             this.colDimensionPrefix.VisibleIndex = 5;
             // 
@@ -144,8 +137,6 @@
             // 
             this.colLastIndex.FieldName = "LastIndex";
             this.colLastIndex.Name = "colLastIndex";
-            this.colLastIndex.OptionsColumn.AllowEdit = false;
-            this.colLastIndex.OptionsColumn.ReadOnly = true;
             this.colLastIndex.Visible = true;
             this.colLastIndex.VisibleIndex = 6;
             // 
@@ -155,6 +146,20 @@
             this.colSequId.Name = "colSequId";
             this.colSequId.Visible = true;
             this.colSequId.VisibleIndex = 7;
+            // 
+            // colClassName
+            // 
+            this.colClassName.FieldName = "ClassName";
+            this.colClassName.Name = "colClassName";
+            this.colClassName.Visible = true;
+            this.colClassName.VisibleIndex = 8;
+            // 
+            // colAssemblyName
+            // 
+            this.colAssemblyName.FieldName = "AssemblyName";
+            this.colAssemblyName.Name = "colAssemblyName";
+            this.colAssemblyName.Visible = true;
+            this.colAssemblyName.VisibleIndex = 9;
             // 
             // TableBaseFrm
             // 
@@ -184,5 +189,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDimensionPrefix;
         private DevExpress.XtraGrid.Columns.GridColumn colLastIndex;
         private DevExpress.XtraGrid.Columns.GridColumn colSequId;
+        private DevExpress.XtraGrid.Columns.GridColumn colClassName;
+        private DevExpress.XtraGrid.Columns.GridColumn colAssemblyName;
     }
 }

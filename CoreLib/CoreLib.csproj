@@ -136,6 +136,7 @@
     <Compile Include="Grid\UserProfile\UIParams.cs" />
     <Compile Include="Grid\UserProfile\UIProfile.cs" />
     <Compile Include="Grid\UserProfile\UIProfileLine.cs" />
+    <Compile Include="Label\UILabelLang.cs" />
     <Compile Include="Label\UIObjectBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

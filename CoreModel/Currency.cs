@@ -10,7 +10,9 @@ namespace CoreModel
     [Persistent(@"CURRENCY_TB")]
     public class Currency : Line
     {
-        public static string TABLE_NAME = @"CURRENCY_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.Currency;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"CURRENCY_TB";
         public Currency(Session session) : base(session)
         {
         }

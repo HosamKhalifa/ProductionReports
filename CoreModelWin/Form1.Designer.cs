@@ -38,6 +38,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
+            this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.testBI = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -48,7 +49,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
+            this.sequenceLink = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -62,11 +63,12 @@
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.tableBaseLink,
             this.uILabelLink,
-            this.fieldsSettingsLink});
+            this.fieldsSettingsLink,
+            this.sequenceLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 54);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
-            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
+            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl1.Size = new System.Drawing.Size(203, 363);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
@@ -78,7 +80,8 @@
             this.SystemSetupNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.fieldsSettingsLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.uILabelLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.tableBaseLink)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.tableBaseLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.sequenceLink)});
             this.SystemSetupNavGrp.Name = "SystemSetupNavGrp";
             // 
             // fieldsSettingsLink
@@ -137,6 +140,15 @@
             this.skinBarSubItem1.Id = 1;
             this.skinBarSubItem1.Name = "skinBarSubItem1";
             this.skinBarSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // refreshBI
+            // 
+            this.refreshBI.Caption = "Refresh";
+            this.refreshBI.Glyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.Glyph")));
+            this.refreshBI.Id = 4;
+            this.refreshBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.LargeGlyph")));
+            this.refreshBI.Name = "refreshBI";
+            this.refreshBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bar2
             // 
@@ -217,14 +229,11 @@
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
             // 
-            // refreshBI
+            // sequenceLink
             // 
-            this.refreshBI.Caption = "Refresh";
-            this.refreshBI.Glyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.Glyph")));
-            this.refreshBI.Id = 4;
-            this.refreshBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.LargeGlyph")));
-            this.refreshBI.Name = "refreshBI";
-            this.refreshBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.sequenceLink.Caption = "Sequences";
+            this.sequenceLink.Name = "sequenceLink";
+            this.sequenceLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("sequenceLink.SmallImage")));
             // 
             // Form1
             // 
@@ -268,6 +277,7 @@
         private DevExpress.XtraBars.BarButtonItem testBI;
         private DevExpress.XtraNavBar.NavBarItem fieldsSettingsLink;
         private DevExpress.XtraBars.BarButtonItem refreshBI;
+        private DevExpress.XtraNavBar.NavBarItem sequenceLink;
     }
 }
 

@@ -15,6 +15,8 @@ using DevExpress.Data.Filtering;
 using System.Drawing;
 using DevExpress.Xpo.Metadata;
 using DevExpress.XtraGrid.Views.Grid;
+using CoreLib.Xpo;
+using System.Reflection;
 
 namespace CoreModelWin.AppLists
 {
@@ -100,6 +102,28 @@ namespace CoreModelWin.AppLists
             //RepositoryItem.DataSource = this.DataMemberXPCollection;
             rowsCount = this.DataMemberXPCollection.Count;
             return rowsCount;
+        }
+
+        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, XPCollectionExt ds)
+        {
+            XPClassInfo _classInfo = ds.ObjectClassInfo;
+            var objectBaseLine = AppListSession.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", _classInfo.FullName));
+            if (objectBaseLine == null) { return; }
+            foreach (var m in _classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistentAttribute") == null))
+            {
+                var c = _gridView.Columns.ColumnByFieldName(m.Name);
+                if (c != null)
+                {
+                    string fieldName = $"{m.Owner.FullName}.{m.Name}";
+                    var labelLine = objectBaseLine.FindOrCreateUILabel(fieldName);
+                    if (labelLine != null && labelLine.LookupEditor != null )
+                    {
+                        Assembly a = CoreLib.GlobalMethods.GetAssemblyByName(objectBaseLine.AssemblyName);
+                        Type lookupClass = a.GetType(objectBaseLine.ObjectName);
+                        LinkListToColumn(c, lookupClass);
+                    }
+                }
+            }
         }
 
         public void LinkListToColumn(DevExpress.XtraGrid.Columns.GridColumn col,Type tableType, string _valueMember="",string gridFilterString = "")
@@ -229,7 +253,7 @@ namespace CoreModelWin.AppLists
             foreach (var item in labels)
             {
                 string filedName = item.FieldName.Substring(item.FieldName.LastIndexOf('.') + 1);
-                string caption = item.ChooseValueForCurrentLang();
+                string caption = item.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldCaption);
                 var grdCol = targetGV.Columns.AddVisible(filedName, caption);
                 //Calc estimated width according to LookUp char width
                 Size columnSize = TextRenderer.MeasureText("".PadLeft(item.LookupMemberCharWidth,'A'), targetGV.Appearance.HeaderPanel.Font);

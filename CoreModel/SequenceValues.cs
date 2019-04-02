@@ -11,7 +11,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class SequenceValues : Line
     {
-        public static string TABLE_NAME = @"SEQU_VALUES_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.SequenceValues;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"SEQU_VALUES_TB";
         public SequenceValues(Session session) : base(session) { }
         public override void AfterConstruction()
         {

@@ -11,7 +11,9 @@ namespace CoreModel
     [Persistent(@"COMB_HEADER_TB")]
     public class CombinationHeader : XPLiteObjectExt
     {
-        public static string TABLE_NAME = @"COMB_HEADER_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.CombinationHeader;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"COMB_HEADER_TB";
 
 
         protected CombinationHeader(Session session) : base(session)

@@ -15,6 +15,8 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using CoreLib.SharedExt;
+using DevExpress.XtraBars.Docking2010.Customization;
+
 namespace CoreModelWin
 {
     public partial class Form1 : CoreLib.MyForm
@@ -107,7 +109,12 @@ namespace CoreModelWin
         {
             try
             {
-                
+                sequenceLink.LinkClicked += (s, e) =>
+                {
+                    MyEditor.SimpleForm frm = new MyEditor.SimpleForm(typeof(Sequence)) { MdiParent = this, WindowState = FormWindowState.Maximized };
+                    frm.Show();
+                                     
+                };
                 testBI.ItemClick += (s, e) => //Test
                 {
                     TestFrm frm = new TestFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };

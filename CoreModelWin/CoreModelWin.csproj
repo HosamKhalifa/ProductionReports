@@ -78,6 +78,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyEditor\SimpleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyEditor\SimpleForm.Designer.cs">
+      <DependentUpon>SimpleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyEditor\SalesCanvasXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +110,12 @@
     <Compile Include="TestFrm.Designer.cs">
       <DependentUpon>TestFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Sys\SequenceEditXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Sys\SequenceEditXUC.Designer.cs">
+      <DependentUpon>SequenceEditXUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AppLists\AutoLookUpServiceXUC.resx">
       <DependentUpon>AutoLookUpServiceXUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyEditor\SalesCanvasXUC.resx">
       <DependentUpon>SalesCanvasXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyEditor\SimpleForm.resx">
+      <DependentUpon>SimpleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyEditor\SystemCanvasXUC.resx">
       <DependentUpon>SystemCanvasXUC.cs</DependentUpon>
@@ -132,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TestFrm.resx">
       <DependentUpon>TestFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
+      <DependentUpon>SequenceEditXUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\DataSources\CoreModel.JournalBase.datasource" />

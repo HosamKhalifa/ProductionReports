@@ -211,20 +211,14 @@
             this.colObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAssemblyName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.myGridControl2 = new CoreLib.Grid.MyGridControl();
             this.xpCollectionExt2 = new CoreLib.Xpo.XPCollectionExt();
             this.myGridView2 = new CoreLib.Grid.MyGridView();
             this.colLabelId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLang_en = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLang_ar = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLang_fr = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLabelType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFieldName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLookupMember = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLookupMemberCharWidth = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -233,15 +227,29 @@
             this.colIsDisabled = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWidth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVisibleOrder = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelLangGC = new CoreLib.Grid.MyGridControl();
+            this.xpCollectionExt3 = new CoreLib.Xpo.XPCollectionExt();
+            this.labelLangGV = new CoreLib.Grid.MyGridView();
+            this.colUILabelType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLang_en = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLang_ar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLang_fr = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.objClassLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
+            this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objClassLookup)).BeginInit();
             this.SuspendLayout();
             // 
             // myGridControl1
@@ -712,6 +720,7 @@
             // 
             // unitOfWork1
             // 
+            this.unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.SchemaAlreadyExists;
             this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
             this.unitOfWork1.TrackPropertiesModifications = false;
             // 
@@ -744,12 +753,28 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.myGridControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.myGridControl2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(873, 491);
             this.splitContainerControl1.SplitterPosition = 274;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.splitContainerControl2.Horizontal = false;
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl2.Name = "splitContainerControl2";
+            this.splitContainerControl2.Panel1.Controls.Add(this.myGridControl2);
+            this.splitContainerControl2.Panel1.Text = "Panel1";
+            this.splitContainerControl2.Panel2.Controls.Add(this.labelLangGC);
+            this.splitContainerControl2.Panel2.Text = "Panel2";
+            this.splitContainerControl2.Size = new System.Drawing.Size(593, 491);
+            this.splitContainerControl2.SplitterPosition = 143;
+            this.splitContainerControl2.TabIndex = 1;
+            this.splitContainerControl2.Text = "splitContainerControl2";
             // 
             // myGridControl2
             // 
@@ -758,7 +783,9 @@
             this.myGridControl2.Location = new System.Drawing.Point(0, 0);
             this.myGridControl2.MainView = this.myGridView2;
             this.myGridControl2.Name = "myGridControl2";
-            this.myGridControl2.Size = new System.Drawing.Size(593, 491);
+            this.myGridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.objClassLookup});
+            this.myGridControl2.Size = new System.Drawing.Size(593, 342);
             this.myGridControl2.TabIndex = 0;
             this.myGridControl2.UseEmbeddedNavigator = true;
             this.myGridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -773,16 +800,9 @@
             // 
             this.myGridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colLabelId,
-            this.colLang_en,
-            this.colLang_ar,
-            this.colLang_fr,
-            this.colLabelType,
-            this.gridColumn1,
-            this.gridColumn2,
             this.colFieldName,
             this.colLookupMember,
             this.colLookupMemberCharWidth,
-            this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
@@ -805,43 +825,6 @@
             this.colLabelId.OptionsColumn.ReadOnly = true;
             this.colLabelId.Visible = true;
             this.colLabelId.VisibleIndex = 0;
-            // 
-            // colLang_en
-            // 
-            this.colLang_en.FieldName = "Lang_en";
-            this.colLang_en.Name = "colLang_en";
-            this.colLang_en.OptionsColumn.ReadOnly = true;
-            this.colLang_en.Width = 126;
-            // 
-            // colLang_ar
-            // 
-            this.colLang_ar.FieldName = "Lang_ar";
-            this.colLang_ar.Name = "colLang_ar";
-            this.colLang_ar.OptionsColumn.ReadOnly = true;
-            // 
-            // colLang_fr
-            // 
-            this.colLang_fr.FieldName = "Lang_fr";
-            this.colLang_fr.Name = "colLang_fr";
-            this.colLang_fr.OptionsColumn.ReadOnly = true;
-            // 
-            // colLabelType
-            // 
-            this.colLabelType.FieldName = "LabelType";
-            this.colLabelType.Name = "colLabelType";
-            this.colLabelType.OptionsColumn.ReadOnly = true;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.FieldName = "ObjectName!";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.ReadOnly = true;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.FieldName = "ObjectName!Key";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.ReadOnly = true;
             // 
             // colFieldName
             // 
@@ -866,19 +849,13 @@
             this.colLookupMemberCharWidth.VisibleIndex = 7;
             this.colLookupMemberCharWidth.Width = 85;
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.FieldName = "LookupEditor!";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 8;
-            // 
             // gridColumn4
             // 
+            this.gridColumn4.ColumnEdit = this.objClassLookup;
             this.gridColumn4.FieldName = "LookupEditor!Key";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 9;
+            this.gridColumn4.VisibleIndex = 8;
             this.gridColumn4.Width = 101;
             // 
             // gridColumn5
@@ -886,14 +863,14 @@
             this.gridColumn5.FieldName = "LookupEditorAlernateValueMember!";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 10;
+            this.gridColumn5.VisibleIndex = 9;
             // 
             // gridColumn6
             // 
             this.gridColumn6.FieldName = "LookupEditorAlernateValueMember!Key";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 11;
+            this.gridColumn6.VisibleIndex = 10;
             // 
             // colColumnName
             // 
@@ -939,6 +916,82 @@
             this.colVisibleOrder.Visible = true;
             this.colVisibleOrder.VisibleIndex = 1;
             // 
+            // labelLangGC
+            // 
+            this.labelLangGC.DataSource = this.xpCollectionExt3;
+            this.labelLangGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLangGC.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.labelLangGC.Location = new System.Drawing.Point(0, 0);
+            this.labelLangGC.MainView = this.labelLangGV;
+            this.labelLangGC.Name = "labelLangGC";
+            this.labelLangGC.Size = new System.Drawing.Size(593, 143);
+            this.labelLangGC.TabIndex = 0;
+            this.labelLangGC.UseEmbeddedNavigator = true;
+            this.labelLangGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.labelLangGV});
+            // 
+            // xpCollectionExt3
+            // 
+            this.xpCollectionExt3.CriteriaString = "[Oid] Is Null";
+            this.xpCollectionExt3.ObjectType = typeof(CoreLib.Label.UILabelLang);
+            this.xpCollectionExt3.Session = this.unitOfWork1;
+            // 
+            // labelLangGV
+            // 
+            this.labelLangGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colUILabelType,
+            this.colLang_en,
+            this.colLang_ar,
+            this.colLang_fr});
+            this.labelLangGV.GridControl = this.labelLangGC;
+            this.labelLangGV.Name = "labelLangGV";
+            this.labelLangGV.OptionsView.ShowGroupPanel = false;
+            this.labelLangGV.UnitOfWorkXpo = this.unitOfWork1;
+            // 
+            // colUILabelType
+            // 
+            this.colUILabelType.FieldName = "UILabelType";
+            this.colUILabelType.Name = "colUILabelType";
+            this.colUILabelType.OptionsColumn.AllowEdit = false;
+            this.colUILabelType.Visible = true;
+            this.colUILabelType.VisibleIndex = 0;
+            this.colUILabelType.Width = 114;
+            // 
+            // colLang_en
+            // 
+            this.colLang_en.FieldName = "Lang_en";
+            this.colLang_en.Name = "colLang_en";
+            this.colLang_en.Visible = true;
+            this.colLang_en.VisibleIndex = 1;
+            this.colLang_en.Width = 275;
+            // 
+            // colLang_ar
+            // 
+            this.colLang_ar.FieldName = "Lang_ar";
+            this.colLang_ar.Name = "colLang_ar";
+            this.colLang_ar.Visible = true;
+            this.colLang_ar.VisibleIndex = 2;
+            this.colLang_ar.Width = 275;
+            // 
+            // colLang_fr
+            // 
+            this.colLang_fr.FieldName = "Lang_fr";
+            this.colLang_fr.Name = "colLang_fr";
+            this.colLang_fr.Visible = true;
+            this.colLang_fr.VisibleIndex = 3;
+            this.colLang_fr.Width = 278;
+            // 
+            // objClassLookup
+            // 
+            this.objClassLookup.AutoHeight = false;
+            this.objClassLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.objClassLookup.DataSource = this.xpCollectionExt1;
+            this.objClassLookup.DisplayMember = "ObjectName";
+            this.objClassLookup.KeyMember = "Oid";
+            this.objClassLookup.Name = "objClassLookup";
+            this.objClassLookup.ValueMember = "Oid";
+            // 
             // FieldsSettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -951,9 +1004,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
+            this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objClassLookup)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -971,16 +1030,9 @@
         private Grid.MyGridView myGridView2;
         private Xpo.XPCollectionExt xpCollectionExt2;
         private DevExpress.XtraGrid.Columns.GridColumn colLabelId;
-        private DevExpress.XtraGrid.Columns.GridColumn colLang_en;
-        private DevExpress.XtraGrid.Columns.GridColumn colLang_ar;
-        private DevExpress.XtraGrid.Columns.GridColumn colLang_fr;
-        private DevExpress.XtraGrid.Columns.GridColumn colLabelType;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn colFieldName;
         private DevExpress.XtraGrid.Columns.GridColumn colLookupMember;
         private DevExpress.XtraGrid.Columns.GridColumn colLookupMemberCharWidth;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
@@ -989,5 +1041,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIsDisabled;
         private DevExpress.XtraGrid.Columns.GridColumn colWidth;
         private DevExpress.XtraGrid.Columns.GridColumn colVisibleOrder;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
+        private Grid.MyGridControl labelLangGC;
+        private Grid.MyGridView labelLangGV;
+        private Xpo.XPCollectionExt xpCollectionExt3;
+        private DevExpress.XtraGrid.Columns.GridColumn colUILabelType;
+        private DevExpress.XtraGrid.Columns.GridColumn colLang_en;
+        private DevExpress.XtraGrid.Columns.GridColumn colLang_ar;
+        private DevExpress.XtraGrid.Columns.GridColumn colLang_fr;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit objClassLookup;
     }
 }

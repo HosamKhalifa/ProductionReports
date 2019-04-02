@@ -5,11 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoreLib.SharedExt;
+using DevExpress.Xpo.Metadata;
 
 namespace CoreLib.Xpo
 {
     public class XPCollectionExt:XPCollection
     {
+        public XPCollectionExt() : base() { }
+        public XPCollectionExt(Session session, XPClassInfo objType) : base(session, objType) { }
+        public XPCollectionExt(Session session, Type type) : base(session, type) { }
+
         protected override void OnCollectionChanged(XPCollectionChangedEventArgs args)
         {
             if (args.CollectionChangedType == DevExpress.Xpo.XPCollectionChangedType.AfterRemove)

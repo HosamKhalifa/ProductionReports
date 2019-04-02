@@ -492,59 +492,25 @@ namespace CoreLib.Grid
                 
                 return;
             }
-           
+            
             var classInfo = ds.ObjectClassInfo;
             var objectBaseLine = this.UnitOfWorkXpo.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", classInfo.FullName));
-            foreach (var m in classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField)))
+            if(objectBaseLine == null) { return; }
+            foreach (var m in classInfo.Members/*.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistent") != null)*/)
             {
-                
-                var caption = m.FindAttributeInfo("caption");
-                var help = m.FindAttributeInfo("help");
+               // bool isNonPersist = m.FindAttributeInfo("NonPersistentAttribute") != null;
+
                 var c = this.Columns.ColumnByFieldName(m.Name);
                 if(c != null)
                 {
-                    if (caption != null)
-                    {
-                        string lblId = ((CustomAttribute)caption).Value;
-                        if (!string.IsNullOrEmpty(lblId))
-                        {
-                            var lbl = this.UnitOfWorkXpo.GetObjectByKey<UILabel>(lblId);
-                            lbl.ApplyFieldSettings(this,c);
-                            //c.Caption = UILabel.ResolveLabelId(lblId);
-                        }
-                    }
-                    else
-                    {
-                        //Try to use FieldName to get label
-                        string fieldName = $"{m.Owner.FullName}.{m.Name}";
-                        //Test if label already existed but not referenced in Xpo yet
-                        var labelLine = this.UnitOfWorkXpo.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName!Key] = ? AND [FieldName] = ? AND [LabelType] = ?  ", objectBaseLine.Oid, fieldName, MyEnums.UILabelType.FieldCaption));
+                    string fieldName = $"{m.Owner.FullName}.{m.Name}";
+                    var labelLine = objectBaseLine.FindOrCreateUILabel(fieldName);
                         if (labelLine != null)
                         {
                             labelLine.ApplyFieldSettings(this,c);
-                            //c.Caption = UILabel.ResolveLabelId(labelLine.LabelId);
+                            
                         }
-                    }
-                    if(help != null)
-                    {
-                        string lblId = ((CustomAttribute)help).Value;
-                        if (!string.IsNullOrEmpty(lblId))
-                        {
-                            c.ToolTip = UILabel.ResolveLabelId(lblId);
-                        }
-                    }
-                    else
-                    {
-                        //Try to use FieldName to get label
-                        string fieldName = $"{m.Owner.FullName}.{m.Name}";
-                        //Test if label already existed but not referenced in Xpo yet
-                        var labelLine = this.UnitOfWorkXpo.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName!Key] = ? AND [FieldName] = ? AND [LabelType] = ?  ", objectBaseLine.Oid, fieldName, MyEnums.UILabelType.FieldHelp));
-                        if (labelLine != null)
-                        {
-                            c.ToolTip = UILabel.ResolveLabelId(labelLine.LabelId);
-                        }
-                    }
-                }
+                   }
             }
             
             

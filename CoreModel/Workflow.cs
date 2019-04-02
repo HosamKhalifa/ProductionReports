@@ -10,7 +10,9 @@ namespace CoreModel
     [Persistent(@"WFLOW")]
     public class Workflow : Line
     {
-        public static string TABLE_NAME = @"WFLOW";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.Workflow;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"WFLOW";
         public Workflow(Session session) : base(session)
         {
 
@@ -19,6 +21,7 @@ namespace CoreModel
         {
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.Workflow);
             base.AfterConstruction();
+
         }
         string fWorkflowName;
         [Persistent(@"WFLOW_NAME")]

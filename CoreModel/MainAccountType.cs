@@ -12,7 +12,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class MainAccountType : Line
     {
-        public static string TABLE_NAME = @"MAIN_ACCOUNT_TYPE_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.MainAccountType;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"MAIN_ACCOUNT_TYPE_TB";
         public MainAccountType(Session session) : base(session)
         {
         }

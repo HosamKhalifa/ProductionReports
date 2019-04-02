@@ -12,7 +12,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class TaxGroup : Line
     {
-        public static string TABLE_NAME = "TAX_GROUP_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.TaxGroup;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = "TAX_GROUP_TB";
         public TaxGroup(Session session) : base(session)
         {
         }

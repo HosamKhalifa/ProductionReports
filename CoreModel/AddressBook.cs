@@ -12,7 +12,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class AddressBook : Line
     {
-        public static string TABLE_NAME = "ADDR_BOOK_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.AddressBook;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = "ADDR_BOOK_TB";
         public AddressBook(Session session) : base(session) { }
         public override void AfterConstruction()
         {

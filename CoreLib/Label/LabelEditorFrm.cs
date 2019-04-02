@@ -132,69 +132,83 @@ namespace CoreLib.Label
         }
         private void BuildMemberName(UIObjectBase table)
         {
+            #region Old
+            //var classInfo = unitOfWork1.Dictionary.GetClassInfo(table.AssemblyName,table.ObjectName);
+            //foreach (var m in classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField)))
+            //{
 
-            var classInfo = unitOfWork1.Dictionary.GetClassInfo(table.AssemblyName,table.ObjectName);
-            foreach (var m in classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField)))
+            //    var caption = m.FindAttributeInfo("caption");
+            //    var help = m.FindAttributeInfo("help");
+            //    string fieldName = $"{m.Owner.FullName}.{m.Name}";
+            //    if (caption != null)
+            //    {
+            //        string lblId = ((CustomAttribute)caption).Value;
+            //        if (!string.IsNullOrEmpty(lblId))
+            //        {
+
+            //            var line = unitOfWork1.GetObjectByKey<UILabel>(lblId);
+            //            if(line != null)
+            //            {
+            //                line.FieldName = fieldName;
+            //                line.Save();
+            //            }
+
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        var objName = unitOfWork1.FindObject<UIObjectBase>(CriteriaOperator.Parse(" ObjectName = ? ", classInfo.FullName));
+            //        //Test if label already existed but not referenced in Xpo yet
+            //        var labelLine = unitOfWork1.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName] = ? AND [FieldName] = ? AND [LabelType] = ?  ",objName, fieldName, MyEnums.UILabelType.FieldCaption));
+            //        if (objName != null && labelLine == null)
+            //        {
+            //            UILabel newLbl = new UILabel(unitOfWork1)
+            //            {
+            //                LabelType = MyEnums.UILabelType.FieldCaption,
+            //                FieldName = fieldName,
+            //                ObjectName = objName,
+            //                Lang_en = m.Name,
+            //                LookupMemberCharWidth=10,
+            //                Width=10,
+            //                IsDisabled=false,
+            //                IsHidden=false,
+            //                VisibleOrder=0
+            //            };
+
+            //            newLbl.Langs.Add(new UILabelLang(unitOfWork1) { UILabelType = MyEnums.UILabelType.FieldCaption, Lang_en = newLbl.FieldName });
+            //            newLbl.Langs.Add(new UILabelLang(unitOfWork1) { UILabelType = MyEnums.UILabelType.FieldHelp, Lang_en = newLbl.FieldName });
+            //            newLbl.Save();
+            //        }
+            //    }
+            //    if (help != null)
+            //    {
+            //        string lblId = ((CustomAttribute)help).Value;
+            //        if (!string.IsNullOrEmpty(lblId))
+            //        {
+            //            var line = unitOfWork1.GetObjectByKey<UILabel>(lblId);
+            //            if (line != null)
+            //            {
+            //                line.FieldName = m.Name;
+            //                line.Save();
+            //            }
+            //        }
+
+            //    }
+
+            //}
+            #endregion
+            var classInfo = unitOfWork1.Dictionary.GetClassInfo(table.AssemblyName, table.ObjectName);
+            var objectBaseLine = table;
+            if (objectBaseLine == null) { return; }
+            foreach (var m in classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistentAttribute") != null))
             {
 
-                var caption = m.FindAttributeInfo("caption");
-                var help = m.FindAttributeInfo("help");
                 string fieldName = $"{m.Owner.FullName}.{m.Name}";
-                if (caption != null)
-                {
-                    string lblId = ((CustomAttribute)caption).Value;
-                    if (!string.IsNullOrEmpty(lblId))
-                    {
-                        
-                        var line = unitOfWork1.GetObjectByKey<UILabel>(lblId);
-                        if(line != null)
-                        {
-                            line.FieldName = fieldName;
-                            line.Save();
-                        }
-                      
-                    }
-
-                }
-                else
-                {
-                    var objName = unitOfWork1.FindObject<UIObjectBase>(CriteriaOperator.Parse(" ObjectName = ? ", classInfo.FullName));
-                    //Test if label already existed but not referenced in Xpo yet
-                    var labelLine = unitOfWork1.FindObject<UILabel>(CriteriaOperator.Parse("[ObjectName] = ? AND [FieldName] = ? AND [LabelType] = ?  ",objName, fieldName, MyEnums.UILabelType.FieldCaption));
-                    if (objName != null && labelLine == null)
-                    {
-                        UILabel newLbl = new UILabel(unitOfWork1)
-                        {
-                            LabelType = MyEnums.UILabelType.FieldCaption,
-                            FieldName = fieldName,
-                            ObjectName = objName,
-                            Lang_en = m.Name,
-                            LookupMemberCharWidth=10,
-                            Width=10,
-                            IsDisabled=false,
-                            IsHidden=false,
-                            VisibleOrder=0
-                        };
-                        newLbl.Save();
-
-                    }
-                }
-                if (help != null)
-                {
-                    string lblId = ((CustomAttribute)help).Value;
-                    if (!string.IsNullOrEmpty(lblId))
-                    {
-                        var line = unitOfWork1.GetObjectByKey<UILabel>(lblId);
-                        if (line != null)
-                        {
-                            line.FieldName = m.Name;
-                            line.Save();
-                        }
-                    }
-
-                }
-                
+                var labelLine = objectBaseLine.FindOrCreateUILabel(fieldName);
+              
             }
+
             unitOfWork1.CommitChanges();
 
         }

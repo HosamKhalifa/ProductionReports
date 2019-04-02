@@ -21,13 +21,14 @@ namespace CoreModelWin
 
         private void InitGridView()
         {
-            myGridView1.Columns.ColumnByFieldName("TableId").OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
-            myGridView1.Columns.ColumnByFieldName("TableName").OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
-            myGridView1.Columns.ColumnByFieldName("TableDBName").OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+            //myGridView1.Columns.ColumnByFieldName("TableId").OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+            //myGridView1.Columns.ColumnByFieldName("TableName").OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+            //myGridView1.Columns.ColumnByFieldName("TableDBName").OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
 
             myGridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             myGridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-
+            AppLists.AppListInfo lst = new AppLists.AppListInfo(unitOfWork1);
+            lst.LinkLookupsToGrid(myGridView1, xpCollectionExt1);
         }
 
         private void InitTableRows()

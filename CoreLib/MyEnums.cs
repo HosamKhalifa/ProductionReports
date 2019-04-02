@@ -12,9 +12,8 @@ namespace CoreLib
         public enum UILabelType
         {
             FieldCaption=1,
-            FieldHelp=2,
-            FormTitle=3,
-            FormHelp=4
+            FieldHelp=2
         }
+        
     }
 }

@@ -12,7 +12,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class DocumentTypeAccounts : Line
     {
-        public static string TABLE_NAME = @"DOC_TYPE_ACCOUNTS";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.DocumentTypeAccounts;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"DOC_TYPE_ACCOUNTS";
         public DocumentTypeAccounts(Session session) : base(session)
         {
         }

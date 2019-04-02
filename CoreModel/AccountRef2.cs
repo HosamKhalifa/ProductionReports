@@ -12,7 +12,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class AccountRef2 : Line
     {
-        public static string TABLE_NAME = "ACT_REFNO2_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.AccountRef2;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = "ACT_REFNO2_TB";
         public AccountRef2(Session session) : base(session) { }
         public override void AfterConstruction()
         {

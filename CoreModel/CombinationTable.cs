@@ -11,8 +11,10 @@ namespace CoreModel
     [Persistent(@"COMB_TB")]
     public class CombinationTable : XPLiteObjectExt
     {
-        public static string TABLE_NAME = @"COMB_TB";
-        
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.CombinationTable;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = @"COMB_TB";
+
         public CombinationTable(Session session) : base(session)
         {
         }

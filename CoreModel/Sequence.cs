@@ -11,7 +11,9 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public  class Sequence : Line
     {
-        public static string TABLE_NAME = "SEQU_TB";
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.Sequence;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        //public static string TABLE_NAME = "SEQU_TB";
         public Sequence(Session session) : base(session) { }
         public override void AfterConstruction()
         {
@@ -81,7 +83,7 @@ namespace CoreModel
         }
         #region Associations
         [Association(@"Sequence_SequenceValues")]
-        public XPCollection<SequenceValues> SEQU_VALUES_s { get { return GetCollection<SequenceValues>("SequenceValues"); } }
+        public XPCollection<SequenceValues> SequenceValues { get { return GetCollection<SequenceValues>("SequenceValues"); } }
 
         [Association(@"SEQU_JOURNAL_FK")]
         public XPCollection<JournalBase> Journals { get { return GetCollection<JournalBase>("Journals"); } }
