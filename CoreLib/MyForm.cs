@@ -20,14 +20,14 @@ namespace CoreLib
         public MyForm()
         {
             InitializeComponent();
-            formUnitOfWork = new UnitOfWork();
+          
             
             
         }
 
        
         #region Members
-        UnitOfWork formUnitOfWork;
+       
        
         public WorkspaceManager FormWorkspaceManager { get; set; }
 
@@ -45,20 +45,18 @@ namespace CoreLib
         #region Events
         public virtual bool PreClosingOperations()
         {
-           
-            return true;
+            
+            return RefreshDataWithAsk() != DialogResult.Cancel;
         }
         protected virtual bool SaveChangesWithAsk(UnitOfWork unitOfWork)
         {
-            var saveXP = unitOfWork.GetObjectsToSave();
-            var delXP = unitOfWork.GetObjectsToDelete();
-                        
-            if (saveXP.Count > 0 || delXP.Count > 0)
+           
+            if (HasChanges())
             {
                
                     try
                     {
-                    unitOfWork.CommitChanges();
+                        unitOfWork.CommitChanges();
                     }
                     catch (Exception ex)
                     {
@@ -81,9 +79,9 @@ namespace CoreLib
         }
         public virtual bool HasChanges()
         {
-
-
-            return formUnitOfWork.TrackingChanges;
+            int modifiedRows = unitOfWork1.GetObjectsToSave().Count + unitOfWork1.GetObjectsToDelete().Count;
+            SetStatusBarText($"Modified objects count : {modifiedRows}");
+            return modifiedRows > 0 ;
 
 
         }
@@ -105,7 +103,7 @@ namespace CoreLib
 
                     //Do no thing
                     case DialogResult.Yes:
-                        SaveChangesWithAsk(formUnitOfWork);
+                        SaveChangesWithAsk(unitOfWork1);
                         return r;
 
 
@@ -132,7 +130,7 @@ namespace CoreLib
 
                     //Do no thing
                     case DialogResult.Yes:
-                        SaveChangesWithAsk(formUnitOfWork);
+                        SaveChangesWithAsk(unitOfWork1);
                         break;
 
 
@@ -151,16 +149,17 @@ namespace CoreLib
         {
             if (!PreClosingOperations())
             {
-                if (MessageBox.Show("The information entered does not pass validation and must be corrected before changes can be saved.\n \n Close without saving changes?", "Error saving changes", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    e.Cancel = false;
-                    return;
-                }
-                else
-                {
-                    e.Cancel = true;
-                    return;
-                }
+                //if (MessageBox.Show("The information entered does not pass validation and must be corrected before changes can be saved.\n \n Close without saving changes?", "Error saving changes", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                //{
+                //    e.Cancel = false;
+                //    return;
+                //}
+                //else
+                //{
+                //    e.Cancel = true;
+                //    return;
+                //}
+                e.Cancel = true;
 
             }
         }

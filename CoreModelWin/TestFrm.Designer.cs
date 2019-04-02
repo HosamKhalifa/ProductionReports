@@ -252,7 +252,7 @@
         private CoreLib.Grid.MyGridControl myGridControl1;
         private CoreLib.Grid.MyGridView myGridView1;
         private CoreLib.Xpo.XPCollectionExt xpCollectionExt1;
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
+     
         private DevExpress.XtraGrid.Columns.GridColumn colLineId;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt;

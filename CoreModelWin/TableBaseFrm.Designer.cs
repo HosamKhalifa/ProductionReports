@@ -177,7 +177,7 @@
         }
 
         #endregion
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        
         private CoreLib.Xpo.XPCollectionExt xpCollectionExt1;
         private CoreLib.Grid.MyGridControl myGridControl1;
         private CoreLib.Grid.MyGridView myGridView1;

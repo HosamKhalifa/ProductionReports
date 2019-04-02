@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // unitOfWork1
+            // 
+            this.unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.SchemaAlreadyExists;
+            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
+            this.unitOfWork1.TrackPropertiesModifications = true;
             // 
             // MyForm
             // 
@@ -38,10 +46,13 @@
             this.Name = "MyForm";
             this.Text = "MyForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MyForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        public DevExpress.Xpo.UnitOfWork unitOfWork1;
     }
 }

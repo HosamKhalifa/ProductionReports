@@ -1021,7 +1021,7 @@
 
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private Grid.MyGridControl myGridControl1;
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
+        
         private Grid.MyGridView myGridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colObjectName;
         private DevExpress.XtraGrid.Columns.GridColumn colAssemblyName;

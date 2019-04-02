@@ -233,7 +233,7 @@ namespace CoreLib.Label
         [NonPersistent]
         public string ColumnName
         {
-            get { return FieldName.Substring(FieldName.LastIndexOf('.') + 1); }
+            get { return FieldName?.Substring(FieldName.LastIndexOf('.') + 1); }
         }
 
 

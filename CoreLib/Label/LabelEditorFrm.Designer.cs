@@ -278,7 +278,7 @@
         private Grid.MyGridControl myGridControl1;
         private Grid.MyGridView objectMyGV;
         private Xpo.XPCollectionExt xpCollectionExt1;
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
+       
         private DevExpress.XtraEditors.SimpleButton syuncBtn;
         private Grid.MyGridView labelsMyGV;
         private DevExpress.XtraGrid.Columns.GridColumn colOid;

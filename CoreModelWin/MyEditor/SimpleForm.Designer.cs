@@ -28,19 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
             this.myGridView1 = new CoreLib.Grid.MyGridView();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // unitOfWork1
-            // 
-            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
-            this.unitOfWork1.TrackPropertiesModifications = false;
             // 
             // myGridControl1
             // 
@@ -74,8 +67,6 @@
         }
 
         #endregion
-
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private CoreLib.Grid.MyGridControl myGridControl1;
         private CoreLib.Grid.MyGridView myGridView1;
     }
