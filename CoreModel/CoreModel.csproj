@@ -65,6 +65,8 @@
     <Compile Include="CombinationHeader.cs" />
     <Compile Include="CombinationTable.cs" />
     <Compile Include="Currency.cs" />
+    <Compile Include="CurrencyPair.cs" />
+    <Compile Include="CurrencyPairExchangeRate.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DocumentBase.cs" />
     <Compile Include="DocumentLineBase.cs" />
@@ -74,7 +76,11 @@
     <Compile Include="DocumentLineTypeInventory.cs" />
     <Compile Include="DocumentType.cs" />
     <Compile Include="DocumentTypeAccounts.cs" />
+    <Compile Include="FiscalCalendar.cs" />
+    <Compile Include="FiscalCalenderPeriod.cs" />
+    <Compile Include="FiscalCalenderYear.cs" />
     <Compile Include="JournalBase.cs" />
+    <Compile Include="Ledger.cs" />
     <Compile Include="MainAccount.cs" />
     <Compile Include="MainAccountType.cs" />
     <Compile Include="Line.cs" />

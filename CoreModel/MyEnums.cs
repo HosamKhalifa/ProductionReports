@@ -37,7 +37,10 @@ namespace CoreModel
             AccountsPayable=1000,AccountsReceivable=1010,GeneralLedger=1030,FixedAssets=1040,CashAndBank=1050,Inventory=1060,
             Purchase=1070,Sales=1080
         }
-        
+        public enum FiscalPeriodType { Opening = 0, Operating = 1, Closing = 2 }
+        public enum FiscalPeriodStatus { Open = 1 ,Closed = 2}
+        public enum FiscalPeriodQuarter { Q1 = 1 , Q2 = 2 , Q3 = 3 , Q4 = 4}
+        public enum FiscalPeriodMonth { One=1, Two=2, Three = 3, Four = 4, Five = 5, Six = 6, Seven = 7, Eight = 8, Nine = 9, Ten = 10, Eleven = 11 , Twelve = 12 }
         public enum WorkflowStatus
         {
             Draft=10,//Draft is inital status for document 

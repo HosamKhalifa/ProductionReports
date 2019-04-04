@@ -29,7 +29,10 @@ namespace CoreModel
             AddressBook=1119, CombinationHeader=1120, CombinationTable=1121, 
             DocumentTypeAccounts=1122, SequenceValues=1123, TaxAgency=1124,TaxGroup=1125,
             Workflow=1126,Vendor=1127,Employee=1128,Department=1129,Location=1130,
-            Project=1131,Purpose,Item=1132, Service =1133, Currency = 1134
+            Project=1131,Purpose,Item=1132, Service =1133, Currency = 1134,
+            CurrencyPair=1135, CurrencyPairExchangeRate= 1136,Ledger = 1137,
+            FiscalCalendar = 1138, FiscalCalenderYear=1139, FiscalCalenderPeriod=1140
+
 
         }
         #endregion

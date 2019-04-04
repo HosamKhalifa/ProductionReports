@@ -206,7 +206,7 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode176 = new DevExpress.XtraGrid.GridLevelNode();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
             this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
+           // this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
             this.myGridView1 = new CoreLib.Grid.MyGridView();
             this.colObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAssemblyName = new DevExpress.XtraGrid.Columns.GridColumn();

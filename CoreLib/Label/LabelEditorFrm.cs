@@ -14,6 +14,7 @@ using DevExpress.Xpo;
 using CoreLib.Xpo;
 using DevExpress.Data.Filtering;
 using System.IO;
+using System.Reflection;
 
 namespace CoreLib.Label
 {
@@ -24,10 +25,12 @@ namespace CoreLib.Label
             InitializeComponent();
             //Build assembly list 
             this.assemblyList =  assemblyList.Split(';');
+
             
             
         }
         string[] assemblyList;
+       
 
         private void syuncBtn_Click(object sender, EventArgs e)
         {
@@ -87,6 +90,7 @@ namespace CoreLib.Label
             File.WriteAllText($@"{Environment.CurrentDirectory}\label_fr.json", fr_outputJson + Environment.NewLine);
         }
 
+       
         private void BuildObjectName(string[] assemblyNameList)
         {
             XPDictionary dict = new ReflectionDictionary();

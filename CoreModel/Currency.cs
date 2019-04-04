@@ -8,6 +8,7 @@ using DevExpress.Xpo;
 namespace CoreModel
 {
     [Persistent(@"CURRENCY_TB")]
+    [MapInheritance(MapInheritanceType.OwnTable)]
     public class Currency : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.Currency;

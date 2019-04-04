@@ -51,7 +51,8 @@ namespace CoreLib.Label
             get { return fAssemblyName; }
             set { SetPropertyValue<string>("AssemblyName", ref fAssemblyName, value); }
         }
-     
+
+       
         [Association("UIObjectBase-UILabels")]
         public XPCollection<UILabel> ObjectLabels { get { return GetCollection<UILabel>("ObjectLabels"); } }
 
