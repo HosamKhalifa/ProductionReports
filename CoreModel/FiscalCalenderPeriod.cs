@@ -25,7 +25,7 @@ namespace CoreModel
             return base.Validate() && StartDate <= EndDate ;
         }
         FiscalCalenderYear fFiscalCalenderYear;
-        [Indexed( "PERIOD_NAME",Name ="FISCAL_YEAR_PERIOD_NAME_UQ",Unique =true)]
+       // [Indexed( "PERIOD_NAME",Name ="FISCAL_YEAR_PERIOD_NAME_UQ",Unique =true)]
         [Persistent(@"FISCAL_CALENDER_YEAR")]
         [Association(@"FISCAL_YEAR_PERIOD_FK")]
         public FiscalCalenderYear FiscalCalenderYear

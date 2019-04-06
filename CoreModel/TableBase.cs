@@ -31,7 +31,8 @@ namespace CoreModel
             Workflow=1126,Vendor=1127,Employee=1128,Department=1129,Location=1130,
             Project=1131,Purpose,Item=1132, Service =1133, Currency = 1134,
             CurrencyPair=1135, CurrencyPairExchangeRate= 1136,Ledger = 1137,
-            FiscalCalendar = 1138, FiscalCalenderYear=1139, FiscalCalenderPeriod=1140
+            FiscalCalendar = 1138, FiscalCalenderYear=1139, FiscalCalenderPeriod=1140,
+            LedgerChartOfAccounts = 1141
 
 
         }

@@ -67,6 +67,9 @@
   <ItemGroup>
     <Compile Include="FormRecord.cs" />
     <Compile Include="GlobalMethods.cs" />
+    <Compile Include="Grid\AppService\AppServicesDataSet.cs">
+      <DependentUpon>AppServicesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Grid\AppService\AppServicesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,6 +178,7 @@
     </Compile>
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
     <Compile Include="SharedExt\UnitOfWorkExtensions.cs" />
+    <Compile Include="Xpo\IActionXpo.cs" />
     <Compile Include="Xpo\XPCollectionExt.cs">
       <SubType>Component</SubType>
     </Compile>

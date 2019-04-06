@@ -27,7 +27,7 @@ namespace CoreModelWin.MyEditor
         public SimpleForm (Type _classType)
         {
             InitializeComponent();
-
+            
             XPCollectionExt ds = new XPCollectionExt(unitOfWork1, _classType);
             myGridControl1.DataSource = ds;
             myGridControl1.RefreshDataSource();

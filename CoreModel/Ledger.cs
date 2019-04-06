@@ -43,7 +43,14 @@ namespace CoreModel
             get { return fFiscalCalendar; }
             set { SetPropertyValue<FiscalCalendar>("FiscalCalendar", ref fFiscalCalendar, value); }
         }
-
+        LedgerChartOfAccounts fLedgerChartOfAccounts;
+        [Persistent(@"LEDGER_COA")]
+        [Association(@"LEDGER_COA_FK")]
+        public LedgerChartOfAccounts LedgerChartOfAccounts
+        {
+            get { return fLedgerChartOfAccounts; }
+            set { SetPropertyValue<LedgerChartOfAccounts>("LedgerChartOfAccounts", ref fLedgerChartOfAccounts, value); }
+        }
 
     }
 }

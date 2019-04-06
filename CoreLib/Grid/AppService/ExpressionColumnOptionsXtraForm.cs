@@ -32,9 +32,9 @@ namespace CoreLib.Grid.AppService
         }
 
 
-            
+
         #region Members
-        
+
         CoreLib.Grid.MyGridView gridView;
         DevExpress.XtraPivotGrid.PivotGridControl pvc;
         enum CurrentGridType { GridView,PivotGrid };

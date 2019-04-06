@@ -119,7 +119,8 @@ namespace CoreModelWin.AppLists
                     if (labelLine != null && labelLine.LookupEditor != null )
                     {
                         Assembly a = CoreLib.GlobalMethods.GetAssemblyByName(objectBaseLine.AssemblyName);
-                        Type lookupClass = a.GetType(objectBaseLine.ObjectName);
+                        //Type lookupClass = a.GetType(objectBaseLine.ObjectName);
+                        Type lookupClass = a.GetType(labelLine.LookupEditor.ObjectName);
                         LinkListToColumn(c, lookupClass);
                     }
                 }
@@ -140,6 +141,7 @@ namespace CoreModelWin.AppLists
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             lookupGrd.Name = "lookupGrd";
             lookupGrd.View = lookupGrdView;
+            lookupGrd.DataSource = DataMemberXPCollection;
             lookupGrd.DisplayMember = DisplayMember;
             lookupGrd.ValueMember = string.IsNullOrEmpty(_valueMember) ? ValueMember : _valueMember;
             
@@ -239,7 +241,7 @@ namespace CoreModelWin.AppLists
         public void SetupGridView(DevExpress.XtraGrid.Views.Grid.GridView targetGV, XPBaseCollection _listXPC)
         {
             //DevExpress.XtraGrid.Views.Grid.GridView targetGV = col.Properties.View;
-            targetGV.GridControl?.ForceInitialize();
+            if(targetGV.GridControl != null) targetGV.GridControl.ForceInitialize();
             targetGV.Columns.Clear();
             targetGV.OptionsView.ColumnAutoWidth = false;
             targetGV.OptionsView.ShowAutoFilterRow = true;

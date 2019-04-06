@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
@@ -35,7 +36,9 @@
             this.fieldsSettingsLink = new DevExpress.XtraNavBar.NavBarItem();
             this.uILabelLink = new DevExpress.XtraNavBar.NavBarItem();
             this.tableBaseLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.sequenceLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.currencySetupLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
@@ -49,7 +52,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.sequenceLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.currencyCodeLink = new DevExpress.XtraNavBar.NavBarItem();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +68,9 @@
             this.tableBaseLink,
             this.uILabelLink,
             this.fieldsSettingsLink,
-            this.sequenceLink});
+            this.sequenceLink,
+            this.currencySetupLink,
+            this.currencyCodeLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 54);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
@@ -81,7 +87,9 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.fieldsSettingsLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.uILabelLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.tableBaseLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.sequenceLink)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.sequenceLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.currencyCodeLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.currencySetupLink)});
             this.SystemSetupNavGrp.Name = "SystemSetupNavGrp";
             // 
             // fieldsSettingsLink
@@ -101,6 +109,18 @@
             this.tableBaseLink.Caption = "Table info";
             this.tableBaseLink.Name = "tableBaseLink";
             this.tableBaseLink.SmallImage = global::CoreModelWin.Properties.Resources.grid_16x16;
+            // 
+            // sequenceLink
+            // 
+            this.sequenceLink.Caption = "Sequences";
+            this.sequenceLink.Name = "sequenceLink";
+            this.sequenceLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("sequenceLink.SmallImage")));
+            // 
+            // currencySetupLink
+            // 
+            this.currencySetupLink.Caption = "Currency setup";
+            this.currencySetupLink.Name = "currencySetupLink";
+            this.currencySetupLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("currencySetupLink.SmallImage")));
             // 
             // barManager1
             // 
@@ -229,11 +249,11 @@
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
             // 
-            // sequenceLink
+            // currencyCodeLink
             // 
-            this.sequenceLink.Caption = "Sequences";
-            this.sequenceLink.Name = "sequenceLink";
-            this.sequenceLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("sequenceLink.SmallImage")));
+            this.currencyCodeLink.Caption = "Currency code";
+            this.currencyCodeLink.Name = "currencyCodeLink";
+            this.currencyCodeLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("currencyCodeLink.SmallImage")));
             // 
             // Form1
             // 
@@ -249,6 +269,7 @@
             this.Name = "Form1";
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
@@ -278,6 +299,8 @@
         private DevExpress.XtraNavBar.NavBarItem fieldsSettingsLink;
         private DevExpress.XtraBars.BarButtonItem refreshBI;
         private DevExpress.XtraNavBar.NavBarItem sequenceLink;
+        private DevExpress.XtraNavBar.NavBarItem currencySetupLink;
+        private DevExpress.XtraNavBar.NavBarItem currencyCodeLink;
     }
 }
 

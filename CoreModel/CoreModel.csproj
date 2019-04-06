@@ -81,6 +81,7 @@
     <Compile Include="FiscalCalenderYear.cs" />
     <Compile Include="JournalBase.cs" />
     <Compile Include="Ledger.cs" />
+    <Compile Include="LedgerChartOfAccounts.cs" />
     <Compile Include="MainAccount.cs" />
     <Compile Include="MainAccountType.cs" />
     <Compile Include="Line.cs" />

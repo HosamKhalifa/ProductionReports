@@ -53,6 +53,13 @@ namespace CoreModel
             get { return fOffsetMainAccount; }
             set { SetPropertyValue<MainAccount>("OffsetMainAccount", ref fOffsetMainAccount, value); }
         }
+        LedgerChartOfAccounts fLedgerChartOfAccounts;
+        [Association("LEDGER_COA_MAIN_ACCOUNTS_FK")]
+        public LedgerChartOfAccounts LedgerChartOfAccounts
+        {
+            get { return fLedgerChartOfAccounts; }
+            set { SetPropertyValue<LedgerChartOfAccounts>("LedgerChartOfAccounts", ref fLedgerChartOfAccounts, value); }
+        }
 
         #endregion
 

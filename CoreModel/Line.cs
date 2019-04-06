@@ -98,7 +98,9 @@ namespace CoreModel
             set { SetPropertyValue<TableBase>("TableId", ref fTableId, value); }
         }
 
+       
 
+       
 
 
     }

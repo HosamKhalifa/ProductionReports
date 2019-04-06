@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.Xpo;
+using CoreLib.Xpo;
+using DevExpress.Data.Filtering;
 
 namespace CoreModel
 {
@@ -26,7 +28,11 @@ namespace CoreModel
         public string FromCurrencyCode
         {
             get { return fFromCurrencyCode; }
-            set { SetPropertyValue<string>("FromCurrencyCode", ref fFromCurrencyCode, value); }
+            set
+            {
+                SetPropertyValue<string>("FromCurrencyCode", ref fFromCurrencyCode, value);
+                WriteFromToKey();
+            }
         }
 
 
@@ -35,12 +41,16 @@ namespace CoreModel
         public string ToCurrencyCode
         {
             get { return fToCurrencyCode; }
-            set { SetPropertyValue<string>("ToCurrencyCode", ref fToCurrencyCode, value); }
+            set
+            {
+                SetPropertyValue<string>("ToCurrencyCode", ref fToCurrencyCode, value);
+                WriteFromToKey();
+            }
         }
 
         string fFromToKey;
         [Persistent(@"FROM_TO_KEY"),Size(8)]
-        [Indexed("FROM_CURR_TO_CURR_UQ",Unique =true)]
+        
         public string FromToKey
         {
             get { return fFromToKey; }
@@ -54,8 +64,8 @@ namespace CoreModel
         #region Associations
         [Association(@"CURR_PAIR_EXCHANGE_RATE_FK")]
         public XPCollection<CurrencyPairExchangeRate> ExchangeRates { get { return GetCollection<CurrencyPairExchangeRate>("ExchangeRates"); } }
-
         #endregion
+
 
 
     }

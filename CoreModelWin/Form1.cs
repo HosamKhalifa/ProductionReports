@@ -24,6 +24,9 @@ namespace CoreModelWin
         public Form1()
         {
             InitializeComponent();
+            //This form will use MenuController to be event handlers foreach menu item 
+            //Register this form as MdiParent in MenuController 
+            MenuController.MdiParentForm = this;
             InitMyForm();
             InitConn();
             InitBarButtons();
@@ -109,12 +112,19 @@ namespace CoreModelWin
         {
             try
             {
+                currencyCodeLink.LinkClicked += (s, e) =>
+                {
+                    MenuController.CurrencyFormOpen();
+                };
+                currencySetupLink.LinkClicked += (s, e) =>
+                {
+                    MenuController.CurrencySetupFormOpen();
+                };
                 sequenceLink.LinkClicked += (s, e) =>
                 {
-                    MyEditor.SimpleForm frm = new MyEditor.SimpleForm(typeof(Sequence)) { MdiParent = this, WindowState = FormWindowState.Maximized };
-                    frm.Show();
-                                     
+                    MenuController.SequenceFormOpen();
                 };
+
                 testBI.ItemClick += (s, e) => //Test
                 {
                     TestFrm frm = new TestFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
@@ -123,21 +133,17 @@ namespace CoreModelWin
 
                 fieldsSettingsLink.LinkClicked += (s, e)=>
                 {
-                    var frm = new CoreLib.Label.FieldsSettingsFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
-                    frm.Show();
+                    MenuController.FieldsSettingFormOpen();
                 };
 
                 uILabelLink.LinkClicked += (s, e) => //LabelEditor
                 {
-                    CoreLib.Label.LabelEditorFrm frm = new CoreLib.Label.LabelEditorFrm("CoreLib;CoreModel") { MdiParent = this, WindowState = FormWindowState.Maximized };
-                    frm.Show();
+                    MenuController.UILabelFormOpen();
+                   
                 };
                 tableBaseLink.LinkClicked += (s, e) => //TableBase 
                 {
-                  
-                        TableBaseFrm frm = new TableBaseFrm() { MdiParent = this, WindowState = FormWindowState.Maximized };
-                        frm.Show();
-                  
+                    MenuController.TableBaseFormOpen();
                 };
             }
             catch (Exception ex)
