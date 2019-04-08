@@ -117,6 +117,7 @@
     <Compile Include="Grid\AppService\XtraGridPopupMenu_PivotXtraForm.Designer.cs">
       <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grid\GridColumnSettingsHelper.cs" />
     <Compile Include="Grid\MyGrid1.cs">
       <SubType>Component</SubType>
     </Compile>

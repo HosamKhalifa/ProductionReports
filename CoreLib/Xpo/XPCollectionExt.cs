@@ -17,6 +17,7 @@ namespace CoreLib.Xpo
 
         protected override void OnCollectionChanged(XPCollectionChangedEventArgs args)
         {
+            base.OnCollectionChanged(args);
             if (args.CollectionChangedType == DevExpress.Xpo.XPCollectionChangedType.AfterRemove)
             {
                 if(this.Session is UnitOfWork)//Should be UnitOfWork to use extension method SaveLine
@@ -27,7 +28,7 @@ namespace CoreLib.Xpo
                 }
                 
             }
-            base.OnCollectionChanged(args);
+           
         }
         
     }

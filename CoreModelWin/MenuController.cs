@@ -15,18 +15,22 @@ namespace CoreModelWin
         public static MyForm MdiParentForm;
         public static void CurrencySetupFormOpen()
         {
-            //Curreny will use runtime Master-Details form 
-            var args = new MasterDetailsForm.FormParms()
-            {
-                MasterClass = typeof(CurrencyPair),
-                MasterKeyName = "LineId",
-                Details = typeof(CurrencyPairExchangeRate),
-                DetailsKeyName = "CurrencyPair",
-                IsKeyValueNumeric = true
-            };
+            //Curreny will use runtime Master - Details form
+              var args = new MasterDetailsForm.FormParms()
+              {
+                  MasterClass = typeof(CurrencyPair),
+                  MasterKeyName = "LineId",
+                  Details = typeof(CurrencyPairExchangeRate),
+                  DetailsKeyName = "CurrencyPair",
+                  IsKeyValueNumeric = true
+              };
             MasterDetailsForm frm = new MasterDetailsForm(args)
             { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
             frm.Show();
+
+            //View.Sys.CurrencySetupFrm frm = new View.Sys.CurrencySetupFrm() { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            //frm.Show();
+
         }
         public static void CurrencyFormOpen()
         {

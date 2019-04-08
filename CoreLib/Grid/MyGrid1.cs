@@ -124,6 +124,8 @@ namespace CoreLib.Grid
             this.OptionsView.EnableAppearanceEvenRow = true;
             this.OptionsMenu.ShowGroupSummaryEditorItem = true;
             this.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
+            //this.OptionsEditForm.ActionOnModifiedRowChange = EditFormModifiedAction.Save;
+            this.OptionsEditForm.BindingMode = EditFormBindingMode.Cached;
             this.OptionsEditForm.EditFormColumnCount = 2;
 
             //Labels
@@ -132,11 +134,26 @@ namespace CoreLib.Grid
             {
                 if (!this.DesignMode)
                 {
-                    var ds = this.DataSource;
-                    if (ds is XPCollection)
+                    
+                    if (this.DataSource is XPCollection)
                     {
+                        var ds = (XPCollection)this.DataSource;
+                        
                         this.BeginInit();
-                        ApplyLabel((XPCollectionExt)ds);
+                        ApplyLabel((XPCollection)ds);
+                        ds.CollectionChanged += (sndr, arg) => 
+                        {
+                            if (arg.CollectionChangedType == DevExpress.Xpo.XPCollectionChangedType.AfterRemove)
+                            {
+                                if (ds.Session is UnitOfWork)//Should be UnitOfWork to use extension method SaveLine
+                                {
+                                    UnitOfWork unit = (UnitOfWork)ds.Session;
+                                    unit.Delete(arg.ChangedObject);
+                                    //unit.SaveLine();
+                                }
+
+                            }
+                        };
                         this.EndInit();
                     }
 
@@ -148,7 +165,17 @@ namespace CoreLib.Grid
              {
                  try
                  {
-                     this.ShowEditForm();
+
+                     switch (this.OptionsBehavior.EditingMode)
+                     {
+                         case GridEditingMode.EditForm:
+                         case GridEditingMode.EditFormInplace:
+                         case GridEditingMode.EditFormInplaceHideCurrentRow:
+                                this.ShowEditForm();
+                             break;
+                         default:
+                             break;
+                     }
                  }
                  catch (Exception)
                  {
@@ -159,12 +186,12 @@ namespace CoreLib.Grid
             this.FocusedRowChanged += (s, e) => 
             {
                 var row = this.GetRow(e.FocusedRowHandle); 
-                if(row is XPLiteObject)
+                if(row != null && row is XPLiteObject)
                 {
                     FormRecord.CurrentRecord = (XPLiteObject)row;                  
                 }
             };
-            this.ValidateRow += (s, e) =>
+           /* this.ValidateRow += (s, e) =>
             {
                 try
                 {
@@ -174,7 +201,7 @@ namespace CoreLib.Grid
                 {
                     XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
                 }
-            };
+            };*/
             this.PopupMenuShowing += (sender, argE) => 
             {
                 var gv = (MyGridView)sender;
@@ -475,7 +502,7 @@ namespace CoreLib.Grid
                 }
             }
         }
-        public void ApplyLabel(XPCollectionExt ds)
+        public void ApplyLabel(XPCollection ds)
         {
             if(this.UnitOfWorkXpo == null)
             {
@@ -496,6 +523,14 @@ namespace CoreLib.Grid
             var classInfo = ds.ObjectClassInfo;
             var objectBaseLine = this.UnitOfWorkXpo.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", classInfo.FullName));
             if(objectBaseLine == null) { return; }
+            //Disable and hide all columns before start enable and show based on user settings 
+            foreach (GridColumn grdC in this.Columns)
+            {
+                grdC.Visible = false;
+                grdC.VisibleIndex = -1;
+                grdC.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+                grdC.OptionsColumn.AllowEdit = false;
+            }
             foreach (var m in classInfo.Members/*.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistent") != null)*/)
             {
                // bool isNonPersist = m.FindAttributeInfo("NonPersistentAttribute") != null;

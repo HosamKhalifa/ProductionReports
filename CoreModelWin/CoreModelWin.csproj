@@ -117,6 +117,12 @@
     <Compile Include="TestFrm.Designer.cs">
       <DependentUpon>TestFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Sys\CurrencySetupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Sys\CurrencySetupFrm.Designer.cs">
+      <DependentUpon>CurrencySetupFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sys\SequenceEditXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TestFrm.resx">
       <DependentUpon>TestFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sys\CurrencySetupFrm.resx">
+      <DependentUpon>CurrencySetupFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>

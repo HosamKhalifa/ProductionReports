@@ -37,9 +37,9 @@ namespace CoreModelWin.MyEditor
         }
         FormParms args;
         object masterKeyValue;
-        XPCollectionExt masterXPC;
+        XPCollection masterXPC;
        
-        XPCollectionExt detailsXPC;
+        XPCollection detailsXPC;
 
         public object XtarMessageBox { get; private set; }
 
@@ -81,18 +81,20 @@ namespace CoreModelWin.MyEditor
 
         private void InitObj()
         {
-            masterXPC = new XPCollectionExt(unitOfWork1, args.MasterClass) { LoadingEnabled = true};
-            detailsXPC = new XPCollectionExt(unitOfWork1, args.Details) { LoadingEnabled = false};
-            masterGC.DataSource = masterXPC;
+            masterXPC = new XPCollection(unitOfWork1, args.MasterClass) { LoadingEnabled = true};
+            detailsXPC = new XPCollection(unitOfWork1, args.Details) { LoadingEnabled = false};
+
+           
             masterGV.UnitOfWorkXpo = unitOfWork1;
+
+            masterGC.DataSource = masterXPC;
             masterGC.RefreshDataSource();
 
-            detailsGC.DataSource = detailsXPC;
             detailsGV.UnitOfWorkXpo = unitOfWork1;
+            detailsGC.DataSource = detailsXPC;
             detailsGC.RefreshDataSource();
 
-            masterGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
-            detailsGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
+          
 
             AppLists.AppListInfo masterAppLists = new AppLists.AppListInfo(unitOfWork1);
             masterAppLists.LinkLookupsToGrid(masterGV, masterXPC);

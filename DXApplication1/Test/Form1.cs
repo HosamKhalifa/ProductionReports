@@ -75,7 +75,7 @@ namespace Test
             string lang = comboBoxEdit1.EditValue.ToString();
             
             CoreLib.GlobalMethods.UILang =lang;
-            myGridView1.ApplyLabelToColumns();
+            //myGridView1.ApplyLabelToColumns();
         }
     }
 }

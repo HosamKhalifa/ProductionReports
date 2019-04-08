@@ -65,6 +65,7 @@ namespace CoreModel
         [Association(@"CURR_PAIR_EXCHANGE_RATE_FK")]
         public XPCollection<CurrencyPairExchangeRate> ExchangeRates { get { return GetCollection<CurrencyPairExchangeRate>("ExchangeRates"); } }
         #endregion
+        
 
 
 

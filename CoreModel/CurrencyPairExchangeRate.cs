@@ -27,7 +27,11 @@ namespace CoreModel
         public CurrencyPair CurrencyPair
         {
             get { return fCurrencyPair; }
-            set { SetPropertyValue<CurrencyPair>("CurrencyPair", ref fCurrencyPair, value); }
+            set
+            {
+                SetPropertyValue<CurrencyPair>("CurrencyPair", ref fCurrencyPair, value);
+                WriteComputation();
+            }
         }
 
         DateTime fValidFrom;
@@ -44,6 +48,19 @@ namespace CoreModel
             get { return fValidTo; }
             set { SetPropertyValue<DateTime>("ValidTo", ref fValidTo, value.Date); }
         }
+        #region Computed
+        private void WriteComputation()
+        {
+            CurrencyFromToKey = CurrencyPair != null? CurrencyPair.FromToKey:"";
+        }
+        string fCurrencyFromToKey;
+        [NonPersistent,Size(10)]
+        public string CurrencyFromToKey
+        {
+            get { return fCurrencyFromToKey; }
+            private set { SetPropertyValue<string>("CurrencyFromToKey", ref fCurrencyFromToKey, value); }
+        }
+        #endregion
 
     }
 }

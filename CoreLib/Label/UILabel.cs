@@ -70,16 +70,19 @@ namespace CoreLib.Label
         }
         public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol)
         {
-
+           // gv.Columns.Remove()
             gv.Columns[ColumnName].Caption = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldCaption);
             gv.Columns[ColumnName].ToolTip = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldHelp);
             
             Size columnSize = TextRenderer.MeasureText("".PadLeft(Width, 'A'), grdCol.AppearanceCell.Font);
-            gv.Columns[ColumnName].Width = columnSize.Width;
+            gv.Columns[ColumnName].Width = IsHidden ? 0: columnSize.Width;
             gv.Columns[ColumnName].OptionsColumn.ReadOnly = this.IsDisabled;
+            gv.Columns[ColumnName].OptionsColumn.AllowEdit = !IsDisabled;
             gv.Columns[ColumnName].OptionsEditForm.Visible = IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
+            
             gv.Columns[ColumnName].Visible = !IsHidden;
-
+            gv.Columns[ColumnName].VisibleIndex = IsHidden ? -1 : VisibleOrder;
+            gv.Columns[ColumnName].OptionsEditForm.VisibleIndex = IsHidden ? -1 : VisibleOrder;
         }
         public static string NextLineVal(Session unitOfWork)
         {

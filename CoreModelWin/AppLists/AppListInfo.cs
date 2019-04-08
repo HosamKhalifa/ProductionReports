@@ -104,7 +104,7 @@ namespace CoreModelWin.AppLists
             return rowsCount;
         }
 
-        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, XPCollectionExt ds)
+        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, XPCollection ds)
         {
             XPClassInfo _classInfo = ds.ObjectClassInfo;
             var objectBaseLine = AppListSession.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", _classInfo.FullName));

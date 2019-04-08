@@ -33,7 +33,7 @@ namespace ProductionReports
                 }
                 else
                 {
-                    Application.Run(new MainFrm());
+                    Application.Run(new Form1());
                 }
             }
             catch (Exception ex)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.masterGC = new CoreLib.Grid.MyGridControl();
             this.masterGV = new CoreLib.Grid.MyGridView();
@@ -52,8 +53,8 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.detailsGC);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(768, 419);
-            this.splitContainerControl1.SplitterPosition = 163;
+            this.splitContainerControl1.Size = new System.Drawing.Size(828, 542);
+            this.splitContainerControl1.SplitterPosition = 259;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -63,7 +64,7 @@
             this.masterGC.Location = new System.Drawing.Point(0, 0);
             this.masterGC.MainView = this.masterGV;
             this.masterGC.Name = "masterGC";
-            this.masterGC.Size = new System.Drawing.Size(768, 163);
+            this.masterGC.Size = new System.Drawing.Size(828, 259);
             this.masterGC.TabIndex = 0;
             this.masterGC.UseEmbeddedNavigator = true;
             this.masterGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -81,7 +82,7 @@
             this.detailsGC.Location = new System.Drawing.Point(0, 0);
             this.detailsGC.MainView = this.detailsGV;
             this.detailsGC.Name = "detailsGC";
-            this.detailsGC.Size = new System.Drawing.Size(768, 250);
+            this.detailsGC.Size = new System.Drawing.Size(828, 277);
             this.detailsGC.TabIndex = 0;
             this.detailsGC.UseEmbeddedNavigator = true;
             this.detailsGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -96,7 +97,7 @@
             // MasterDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(768, 419);
+            this.ClientSize = new System.Drawing.Size(828, 542);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "MasterDetailsForm";
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
