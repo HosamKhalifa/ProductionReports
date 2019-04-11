@@ -10,6 +10,7 @@ namespace CoreLib
    public class FormRecord
     {
         public static XPLiteObject CurrentRecord { get; set; }
+
         public static object ObjectParm { get; set; }
 
         static string fCurrentUserId;

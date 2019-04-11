@@ -33,15 +33,23 @@
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
             this.fieldsSettingsLink = new DevExpress.XtraNavBar.NavBarItem();
             this.uILabelLink = new DevExpress.XtraNavBar.NavBarItem();
             this.tableBaseLink = new DevExpress.XtraNavBar.NavBarItem();
             this.sequenceLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.currencyCodeLink = new DevExpress.XtraNavBar.NavBarItem();
             this.currencySetupLink = new DevExpress.XtraNavBar.NavBarItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
+            this.saveBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.addBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.delBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.editBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.langBI = new DevExpress.XtraBars.BarEditItem();
+            this.langRIImageCombo = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.testBI = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -50,12 +58,18 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.currencyCodeLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.langRIImageCombo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -70,7 +84,8 @@
             this.fieldsSettingsLink,
             this.sequenceLink,
             this.currencySetupLink,
-            this.currencyCodeLink});
+            this.currencyCodeLink,
+            this.fiscalCalenderLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 54);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
@@ -84,6 +99,7 @@
             this.SystemSetupNavGrp.Caption = "System setup";
             this.SystemSetupNavGrp.Expanded = true;
             this.SystemSetupNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.fiscalCalenderLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.fieldsSettingsLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.uILabelLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.tableBaseLink),
@@ -91,6 +107,13 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.currencyCodeLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.currencySetupLink)});
             this.SystemSetupNavGrp.Name = "SystemSetupNavGrp";
+            // 
+            // fiscalCalenderLink
+            // 
+            this.fiscalCalenderLink.Caption = "Fiscal calender";
+            this.fiscalCalenderLink.LargeImage = ((System.Drawing.Image)(resources.GetObject("fiscalCalenderLink.LargeImage")));
+            this.fiscalCalenderLink.Name = "fiscalCalenderLink";
+            this.fiscalCalenderLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("fiscalCalenderLink.SmallImage")));
             // 
             // fieldsSettingsLink
             // 
@@ -116,6 +139,12 @@
             this.sequenceLink.Name = "sequenceLink";
             this.sequenceLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("sequenceLink.SmallImage")));
             // 
+            // currencyCodeLink
+            // 
+            this.currencyCodeLink.Caption = "Currency code";
+            this.currencyCodeLink.Name = "currencyCodeLink";
+            this.currencyCodeLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("currencyCodeLink.SmallImage")));
+            // 
             // currencySetupLink
             // 
             this.currencySetupLink.Caption = "Currency setup";
@@ -136,11 +165,20 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.statusBarTxt,
             this.skinBarSubItem1,
-            this.barWorkspaceMenuItem1,
             this.testBI,
-            this.refreshBI});
+            this.refreshBI,
+            this.saveBarButtonItem,
+            this.addBarButtonItem,
+            this.delBarButtonItem,
+            this.editBarButtonItem,
+            this.barButtonItem1,
+            this.langBI,
+            this.barEditItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 13;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.langRIImageCombo,
+            this.repositoryItemImageComboBox1});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -151,7 +189,12 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.refreshBI)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.refreshBI),
+            new DevExpress.XtraBars.LinkPersistInfo(this.saveBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.addBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.delBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.editBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.langBI)});
             this.bar1.Text = "Tools";
             // 
             // skinBarSubItem1
@@ -169,6 +212,57 @@
             this.refreshBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.LargeGlyph")));
             this.refreshBI.Name = "refreshBI";
             this.refreshBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // saveBarButtonItem
+            // 
+            this.saveBarButtonItem.Caption = "Save";
+            this.saveBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("saveBarButtonItem.Glyph")));
+            this.saveBarButtonItem.Id = 6;
+            this.saveBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("saveBarButtonItem.LargeGlyph")));
+            this.saveBarButtonItem.Name = "saveBarButtonItem";
+            // 
+            // addBarButtonItem
+            // 
+            this.addBarButtonItem.Caption = "Add";
+            this.addBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("addBarButtonItem.Glyph")));
+            this.addBarButtonItem.Id = 7;
+            this.addBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("addBarButtonItem.LargeGlyph")));
+            this.addBarButtonItem.Name = "addBarButtonItem";
+            // 
+            // delBarButtonItem
+            // 
+            this.delBarButtonItem.Caption = "Delete";
+            this.delBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("delBarButtonItem.Glyph")));
+            this.delBarButtonItem.Id = 8;
+            this.delBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("delBarButtonItem.LargeGlyph")));
+            this.delBarButtonItem.Name = "delBarButtonItem";
+            // 
+            // editBarButtonItem
+            // 
+            this.editBarButtonItem.Caption = "Edit";
+            this.editBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("editBarButtonItem.Glyph")));
+            this.editBarButtonItem.Id = 9;
+            this.editBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("editBarButtonItem.LargeGlyph")));
+            this.editBarButtonItem.Name = "editBarButtonItem";
+            // 
+            // langBI
+            // 
+            this.langBI.Caption = "Lang";
+            this.langBI.Edit = this.langRIImageCombo;
+            this.langBI.Id = 11;
+            this.langBI.Name = "langBI";
+            this.langBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // langRIImageCombo
+            // 
+            this.langRIImageCombo.AutoHeight = false;
+            this.langRIImageCombo.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.langRIImageCombo.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("EN", "en", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("AR", "ar", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("FR", "fr", -1)});
+            this.langRIImageCombo.Name = "langRIImageCombo";
             // 
             // bar2
             // 
@@ -237,23 +331,38 @@
             this.barDockControlRight.Location = new System.Drawing.Point(772, 54);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 363);
             // 
-            // barWorkspaceMenuItem1
+            // barButtonItem1
             // 
-            this.barWorkspaceMenuItem1.Caption = "Workspace";
-            this.barWorkspaceMenuItem1.Id = 2;
-            this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
-            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 10;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.langRIImageCombo;
+            this.barEditItem1.Id = 12;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
             // 
-            // currencyCodeLink
+            // sharedImageCollection1
             // 
-            this.currencyCodeLink.Caption = "Currency code";
-            this.currencyCodeLink.Name = "currencyCodeLink";
-            this.currencyCodeLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("currencyCodeLink.SmallImage")));
+            // 
+            // 
+            // 
+            this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
+            this.sharedImageCollection1.ParentControl = this;
             // 
             // Form1
             // 
@@ -272,6 +381,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.langRIImageCombo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +406,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
-        private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraBars.BarButtonItem testBI;
         private DevExpress.XtraNavBar.NavBarItem fieldsSettingsLink;
@@ -301,6 +413,17 @@
         private DevExpress.XtraNavBar.NavBarItem sequenceLink;
         private DevExpress.XtraNavBar.NavBarItem currencySetupLink;
         private DevExpress.XtraNavBar.NavBarItem currencyCodeLink;
+        private DevExpress.XtraNavBar.NavBarItem fiscalCalenderLink;
+        private DevExpress.XtraBars.BarButtonItem saveBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem addBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem delBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem editBarButtonItem;
+        private DevExpress.XtraBars.BarEditItem langBI;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox langRIImageCombo;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
     }
 }
 

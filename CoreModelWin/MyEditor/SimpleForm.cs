@@ -1,4 +1,5 @@
 ﻿using CoreLib.Xpo;
+using DevExpress.Xpo;
 using DevExpress.Xpo.Metadata;
 using DevExpress.XtraEditors;
 using System;
@@ -28,7 +29,7 @@ namespace CoreModelWin.MyEditor
         {
             InitializeComponent();
             
-            XPCollectionExt ds = new XPCollectionExt(unitOfWork1, _classType);
+            XPCollection ds = new XPCollection(unitOfWork1, _classType);
             myGridControl1.DataSource = ds;
             myGridControl1.RefreshDataSource();
             AppLists.AppListInfo lst = new AppLists.AppListInfo(unitOfWork1);

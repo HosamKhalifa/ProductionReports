@@ -10,13 +10,40 @@ using System.Windows.Forms;
 using CoreLib.SharedExt;
 namespace CoreModelWin
 {
-    public partial class TableBaseFrm : CoreLib.MyForm
+    public partial class TableBaseFrm : CoreLib.MyForm,IEditableForm
     {
         public TableBaseFrm()
         {
             InitializeComponent();
             InitGridView();
             InitTableRows();
+        }
+
+        public void AddRecord()
+        {
+            myGridView1.AddNewRow();
+        }
+
+        public void DeleteRecord()
+        {
+            if(myGridView1.SelectedRowsCount > 0)
+            {
+                myGridView1.DeleteSelectedRows();
+            }
+            else
+            {
+                myGridView1.DeleteRow(myGridView1.FocusedRowHandle);
+            }
+        }
+
+        public void EditRecord()
+        {
+            myGridView1.ShowEditorByKey(new KeyEventArgs(Keys.F2));
+        }
+
+        public void SaveChanges()
+        {
+            unitOfWork1.CommitChanges();
         }
 
         private void InitGridView()

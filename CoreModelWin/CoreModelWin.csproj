@@ -78,6 +78,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IEditableForm.cs" />
+    <Compile Include="IMenuController.cs" />
     <Compile Include="MenuController.cs" />
     <Compile Include="MyEditor\MasterDetailsForm.cs">
       <SubType>Form</SubType>
@@ -117,12 +119,7 @@
     <Compile Include="TestFrm.Designer.cs">
       <DependentUpon>TestFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Sys\CurrencySetupFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Sys\CurrencySetupFrm.Designer.cs">
-      <DependentUpon>CurrencySetupFrm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="UIFormInfo.cs" />
     <Compile Include="View\Sys\SequenceEditXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -164,9 +161,6 @@
     <EmbeddedResource Include="TestFrm.resx">
       <DependentUpon>TestFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Sys\CurrencySetupFrm.resx">
-      <DependentUpon>CurrencySetupFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,7 +194,9 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Image1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

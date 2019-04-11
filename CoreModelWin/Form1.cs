@@ -19,20 +19,40 @@ using DevExpress.XtraBars.Docking2010.Customization;
 
 namespace CoreModelWin
 {
-    public partial class Form1 : CoreLib.MyForm
+    public partial class Form1 : CoreLib.MyForm,IMenuController
     {
         public Form1()
         {
             InitializeComponent();
+            LinkMenuController(); // Should be at first call stack
+
+
+            InitMyForm();
+            InitConn();
             //This form will use MenuController to be event handlers foreach menu item 
             //Register this form as MdiParent in MenuController 
             MenuController.MdiParentForm = this;
-            InitMyForm();
-            InitConn();
+            MenuController.BuildNavBarLinks(navBarControl1, unitOfWork1);
+           
+           
             InitBarButtons();
             SkinManage();
 
-            InitSystemSetupEventHandlers();//System setup menu event handlers
+            //InitSystemSetupEventHandlers();//System setup menu event handlers
+            
+        }
+
+        private void LinkMenuController()
+        {
+            //Assign FormEntity enum to link tag to link linkItem to its OpenForm methods
+            currencyCodeLink.Tag = UIFormInfo.FormEntityEnum.Currency;
+            currencySetupLink.Tag = UIFormInfo.FormEntityEnum.CurrencySetup;
+            tableBaseLink.Tag = UIFormInfo.FormEntityEnum.TableBase;
+            fieldsSettingsLink.Tag = UIFormInfo.FormEntityEnum.FieldsSetting;
+            uILabelLink.Tag = UIFormInfo.FormEntityEnum.UILabel;
+            sequenceLink.Tag = UIFormInfo.FormEntityEnum.Sequence;
+
+
         }
 
         private void InitBarButtons()
@@ -48,7 +68,11 @@ namespace CoreModelWin
 
         private void InitMyForm()
         {
-            
+            //Lang menu
+            langBI.EditValueChanged += (s, e) => 
+            {
+                CoreLib.GlobalMethods.UILang = langBI.EditValue.ToString();
+            };
         }
         public override void SetStatusBarText(string txt = "OK")
         {
@@ -60,7 +84,7 @@ namespace CoreModelWin
             try
             {
                 SecurityUser user = new SecurityUser();
-                user.ReadConnection("Nour", "Nour");
+                user.ReadConnection("Norran", "Norran");
 
                 XpoDefault.DataLayer = XpoDefault.GetDataLayer(user.ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.SchemaOnly);
                 SecurityUser.CurrentUser = user;
@@ -112,6 +136,7 @@ namespace CoreModelWin
         {
             try
             {
+                fiscalCalenderLink.LinkClicked += (s, e) => { MenuController.FiscalCalenderFormOpen(); };
                 currencyCodeLink.LinkClicked += (s, e) =>
                 {
                     MenuController.CurrencyFormOpen();
@@ -153,5 +178,26 @@ namespace CoreModelWin
             
             
         }
+        #region IMenu interface
+        public void EnableSaveButton(bool _settings)
+        {
+            saveBarButtonItem.Enabled = _settings;
+        }
+
+        public void EnableDeleteButton(bool _settings)
+        {
+            delBarButtonItem.Enabled = _settings;
+        }
+
+        public void EnableAddButton(bool _settings)
+        {
+            addBarButtonItem.Enabled = _settings;
+        }
+
+        public void EnableEditButton(bool _settings)
+        {
+            editBarButtonItem.Enabled = _settings;
+        }
+        #endregion
     }
 }

@@ -14,6 +14,8 @@ namespace CoreLib
             FieldCaption=1,
             FieldHelp=2
         }
+        public enum RelationConditionIndex { Line1=10,Line2=20,Line3=30,Line4=40,Line5=50}
+        public enum RelationConditionType { Normal = 100,Filter=200,Association=300}
         
     }
 }

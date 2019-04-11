@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FieldsSettingsFrm));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
@@ -204,22 +206,32 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode174 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode175 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode176 = new DevExpress.XtraGrid.GridLevelNode();
+            this.xpCollectionExt1 = new DevExpress.Xpo.XPCollection(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.xpCollectionExt2 = new DevExpress.Xpo.XPCollection(this.components);
+            this.xpCollectionExt3 = new DevExpress.Xpo.XPCollection(this.components);
+            this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
-            this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
-           // this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
             this.myGridView1 = new CoreLib.Grid.MyGridView();
             this.colObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAssemblyName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.myGridView3 = new CoreLib.Grid.MyGridView();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.myGridControl2 = new CoreLib.Grid.MyGridControl();
-            this.xpCollectionExt2 = new CoreLib.Xpo.XPCollectionExt();
             this.myGridView2 = new CoreLib.Grid.MyGridView();
             this.colLabelId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFieldName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLookupMember = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLookupMemberCharWidth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.objClassLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -228,34 +240,140 @@
             this.colWidth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVisibleOrder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelLangGC = new CoreLib.Grid.MyGridControl();
-            this.xpCollectionExt3 = new CoreLib.Xpo.XPCollectionExt();
             this.labelLangGV = new CoreLib.Grid.MyGridView();
             this.colUILabelType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLang_en = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLang_ar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLang_fr = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.objClassLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).BeginInit();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.myGridControl3 = new CoreLib.Grid.MyGridControl();
+            this.objectRelationHeaderXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.myGridView4 = new CoreLib.Grid.MyGridView();
+            this.colRelationId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRelationName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLeftObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRightObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
+            this.xtraTabControl2.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            this.xtraTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelLangGC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelLangGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objClassLookup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGV)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectRelationHeaderXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView4)).BeginInit();
             this.SuspendLayout();
+            // 
+            // unitOfWork1
+            // 
+            this.unitOfWork1.TrackPropertiesModifications = false;
+            // 
+            // xpCollectionExt1
+            // 
+            this.xpCollectionExt1.ObjectType = typeof(CoreLib.Label.UIObjectBase);
+            this.xpCollectionExt1.Session = this.unitOfWork1;
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.InsertGalleryImage("grid_16x16.png", "office2013/grid/grid_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/grid/grid_16x16.png"), 0);
+            this.imageCollection1.Images.SetKeyName(0, "grid_16x16.png");
+            this.imageCollection1.InsertGalleryImage("squeeze_16x16.png", "images/actions/squeeze_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/squeeze_16x16.png"), 1);
+            this.imageCollection1.Images.SetKeyName(1, "squeeze_16x16.png");
+            // 
+            // xpCollectionExt2
+            // 
+            this.xpCollectionExt2.ObjectType = typeof(CoreLib.Label.UILabel);
+            this.xpCollectionExt2.Session = this.unitOfWork1;
+            // 
+            // xpCollectionExt3
+            // 
+            this.xpCollectionExt3.CriteriaString = "[Oid] Is Null";
+            this.xpCollectionExt3.ObjectType = typeof(CoreLib.Label.UILabelLang);
+            this.xpCollectionExt3.Session = this.unitOfWork1;
+            // 
+            // xpCollection1
+            // 
+            this.xpCollection1.ObjectType = typeof(CoreLib.Label.UILabel);
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.xtraTabControl2);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(873, 491);
+            this.splitContainerControl1.SplitterPosition = 274;
+            this.splitContainerControl1.TabIndex = 0;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // xtraTabControl2
+            // 
+            this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl2.Name = "xtraTabControl2";
+            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage3;
+            this.xtraTabControl2.Size = new System.Drawing.Size(274, 491);
+            this.xtraTabControl2.TabIndex = 2;
+            this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage3,
+            this.xtraTabPage4});
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.treeList1);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(272, 458);
+            this.xtraTabPage3.Text = "Object tree";
+            // 
+            // treeList1
+            // 
+            this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeList1.Location = new System.Drawing.Point(0, 0);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsBehavior.ReadOnly = true;
+            this.treeList1.OptionsView.AutoWidth = false;
+            this.treeList1.OptionsView.ShowAutoFilterRow = true;
+            this.treeList1.SelectImageList = this.imageCollection1;
+            this.treeList1.Size = new System.Drawing.Size(272, 458);
+            this.treeList1.StateImageList = this.imageCollection1;
+            this.treeList1.TabIndex = 1;
+            // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.myGridControl1);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(272, 458);
+            this.xtraTabPage4.Text = "Object tables";
             // 
             // myGridControl1
             // 
             this.myGridControl1.DataSource = this.xpCollectionExt1;
-            this.myGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             gridLevelNode8.RelationName = "LookupEditor";
             gridLevelNode9.RelationName = "LookupEditorAlernateValueMember";
             gridLevelNode7.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
@@ -704,25 +822,15 @@
             gridLevelNode1.RelationName = "ObjectLabels";
             this.myGridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.myGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.myGridControl1.Location = new System.Drawing.Point(16, 14);
             this.myGridControl1.MainView = this.myGridView1;
             this.myGridControl1.Name = "myGridControl1";
-            this.myGridControl1.Size = new System.Drawing.Size(274, 491);
-            this.myGridControl1.TabIndex = 0;
+            this.myGridControl1.Size = new System.Drawing.Size(241, 396);
+            this.myGridControl1.TabIndex = 3;
             this.myGridControl1.UseEmbeddedNavigator = true;
             this.myGridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.myGridView1});
-            // 
-            // xpCollectionExt1
-            // 
-            this.xpCollectionExt1.ObjectType = typeof(CoreLib.Label.UIObjectBase);
-            this.xpCollectionExt1.Session = this.unitOfWork1;
-            // 
-            // unitOfWork1
-            // 
-            this.unitOfWork1.AutoCreateOption = DevExpress.Xpo.DB.AutoCreateOption.SchemaAlreadyExists;
-            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
-            this.unitOfWork1.TrackPropertiesModifications = false;
+            this.myGridView1,
+            this.myGridView3});
             // 
             // myGridView1
             // 
@@ -746,19 +854,30 @@
             this.colAssemblyName.FieldName = "AssemblyName";
             this.colAssemblyName.Name = "colAssemblyName";
             // 
-            // splitContainerControl1
+            // myGridView3
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.myGridControl1);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.splitContainerControl2);
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(873, 491);
-            this.splitContainerControl1.SplitterPosition = 274;
-            this.splitContainerControl1.TabIndex = 0;
-            this.splitContainerControl1.Text = "splitContainerControl1";
+            this.myGridView3.GridControl = this.myGridControl1;
+            this.myGridView3.Name = "myGridView3";
+            this.myGridView3.UnitOfWorkXpo = null;
+            // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(593, 491);
+            this.xtraTabControl1.TabIndex = 2;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.splitContainerControl2);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(591, 458);
+            this.xtraTabPage1.Text = "Properties";
             // 
             // splitContainerControl2
             // 
@@ -771,8 +890,8 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.labelLangGC);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(593, 491);
-            this.splitContainerControl2.SplitterPosition = 143;
+            this.splitContainerControl2.Size = new System.Drawing.Size(591, 458);
+            this.splitContainerControl2.SplitterPosition = 153;
             this.splitContainerControl2.TabIndex = 1;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
@@ -785,16 +904,11 @@
             this.myGridControl2.Name = "myGridControl2";
             this.myGridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.objClassLookup});
-            this.myGridControl2.Size = new System.Drawing.Size(593, 342);
+            this.myGridControl2.Size = new System.Drawing.Size(591, 299);
             this.myGridControl2.TabIndex = 0;
             this.myGridControl2.UseEmbeddedNavigator = true;
             this.myGridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.myGridView2});
-            // 
-            // xpCollectionExt2
-            // 
-            this.xpCollectionExt2.ObjectType = typeof(CoreLib.Label.UILabel);
-            this.xpCollectionExt2.Session = this.unitOfWork1;
             // 
             // myGridView2
             // 
@@ -857,6 +971,17 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 8;
             this.gridColumn4.Width = 101;
+            // 
+            // objClassLookup
+            // 
+            this.objClassLookup.AutoHeight = false;
+            this.objClassLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.objClassLookup.DataSource = this.xpCollectionExt1;
+            this.objClassLookup.DisplayMember = "ObjectName";
+            this.objClassLookup.KeyMember = "Oid";
+            this.objClassLookup.Name = "objClassLookup";
+            this.objClassLookup.ValueMember = "Oid";
             // 
             // gridColumn5
             // 
@@ -924,17 +1049,11 @@
             this.labelLangGC.Location = new System.Drawing.Point(0, 0);
             this.labelLangGC.MainView = this.labelLangGV;
             this.labelLangGC.Name = "labelLangGC";
-            this.labelLangGC.Size = new System.Drawing.Size(593, 143);
+            this.labelLangGC.Size = new System.Drawing.Size(591, 153);
             this.labelLangGC.TabIndex = 0;
             this.labelLangGC.UseEmbeddedNavigator = true;
             this.labelLangGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.labelLangGV});
-            // 
-            // xpCollectionExt3
-            // 
-            this.xpCollectionExt3.CriteriaString = "[Oid] Is Null";
-            this.xpCollectionExt3.ObjectType = typeof(CoreLib.Label.UILabelLang);
-            this.xpCollectionExt3.Session = this.unitOfWork1;
             // 
             // labelLangGV
             // 
@@ -981,16 +1100,70 @@
             this.colLang_fr.VisibleIndex = 3;
             this.colLang_fr.Width = 278;
             // 
-            // objClassLookup
+            // xtraTabPage2
             // 
-            this.objClassLookup.AutoHeight = false;
-            this.objClassLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.objClassLookup.DataSource = this.xpCollectionExt1;
-            this.objClassLookup.DisplayMember = "ObjectName";
-            this.objClassLookup.KeyMember = "Oid";
-            this.objClassLookup.Name = "objClassLookup";
-            this.objClassLookup.ValueMember = "Oid";
+            this.xtraTabPage2.Controls.Add(this.myGridControl3);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(591, 458);
+            this.xtraTabPage2.Text = "Relations";
+            // 
+            // myGridControl3
+            // 
+            this.myGridControl3.DataSource = this.objectRelationHeaderXPC;
+            this.myGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myGridControl3.Location = new System.Drawing.Point(0, 0);
+            this.myGridControl3.MainView = this.myGridView4;
+            this.myGridControl3.Name = "myGridControl3";
+            this.myGridControl3.Size = new System.Drawing.Size(591, 458);
+            this.myGridControl3.TabIndex = 0;
+            this.myGridControl3.UseEmbeddedNavigator = true;
+            this.myGridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.myGridView4});
+            // 
+            // objectRelationHeaderXPC
+            // 
+            this.objectRelationHeaderXPC.ObjectType = typeof(CoreLib.Label.UIObjectRelationHeader);
+            this.objectRelationHeaderXPC.Session = this.unitOfWork1;
+            // 
+            // myGridView4
+            // 
+            this.myGridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colRelationId,
+            this.colRelationName,
+            this.colLeftObjectName,
+            this.colRightObjectName});
+            this.myGridView4.GridControl = this.myGridControl3;
+            this.myGridView4.Name = "myGridView4";
+            this.myGridView4.OptionsView.ShowFooter = true;
+            this.myGridView4.UnitOfWorkXpo = null;
+            // 
+            // colRelationId
+            // 
+            this.colRelationId.FieldName = "RelationId";
+            this.colRelationId.Name = "colRelationId";
+            this.colRelationId.Visible = true;
+            this.colRelationId.VisibleIndex = 0;
+            // 
+            // colRelationName
+            // 
+            this.colRelationName.FieldName = "RelationName";
+            this.colRelationName.Name = "colRelationName";
+            this.colRelationName.Visible = true;
+            this.colRelationName.VisibleIndex = 1;
+            // 
+            // colLeftObjectName
+            // 
+            this.colLeftObjectName.FieldName = "LeftObjectName";
+            this.colLeftObjectName.Name = "colLeftObjectName";
+            this.colLeftObjectName.Visible = true;
+            this.colLeftObjectName.VisibleIndex = 2;
+            // 
+            // colRightObjectName
+            // 
+            this.colRightObjectName.FieldName = "RightObjectName";
+            this.colRightObjectName.Name = "colRightObjectName";
+            this.colRightObjectName.Visible = true;
+            this.colRightObjectName.VisibleIndex = 3;
             // 
             // FieldsSettingsFrm
             // 
@@ -998,42 +1171,64 @@
             this.ClientSize = new System.Drawing.Size(873, 491);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "FieldsSettingsFrm";
-            ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
+            this.xtraTabControl2.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            this.xtraTabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelLangGC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelLangGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objClassLookup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelLangGV)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.myGridControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectRelationHeaderXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private DevExpress.Xpo.XPCollection xpCollectionExt1;
+        private DevExpress.Xpo.XPCollection xpCollectionExt2;
+        private DevExpress.Xpo.XPCollection xpCollectionExt3;
+        private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.Xpo.XPCollection xpCollection1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private Grid.MyGridControl myGridControl1;
-        
         private Grid.MyGridView myGridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colObjectName;
         private DevExpress.XtraGrid.Columns.GridColumn colAssemblyName;
-        private Xpo.XPCollectionExt xpCollectionExt1;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private Grid.MyGridControl myGridControl2;
         private Grid.MyGridView myGridView2;
-        private Xpo.XPCollectionExt xpCollectionExt2;
         private DevExpress.XtraGrid.Columns.GridColumn colLabelId;
         private DevExpress.XtraGrid.Columns.GridColumn colFieldName;
         private DevExpress.XtraGrid.Columns.GridColumn colLookupMember;
         private DevExpress.XtraGrid.Columns.GridColumn colLookupMemberCharWidth;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit objClassLookup;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn colColumnName;
@@ -1041,14 +1236,22 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIsDisabled;
         private DevExpress.XtraGrid.Columns.GridColumn colWidth;
         private DevExpress.XtraGrid.Columns.GridColumn colVisibleOrder;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private Grid.MyGridControl labelLangGC;
         private Grid.MyGridView labelLangGV;
-        private Xpo.XPCollectionExt xpCollectionExt3;
         private DevExpress.XtraGrid.Columns.GridColumn colUILabelType;
         private DevExpress.XtraGrid.Columns.GridColumn colLang_en;
         private DevExpress.XtraGrid.Columns.GridColumn colLang_ar;
         private DevExpress.XtraGrid.Columns.GridColumn colLang_fr;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit objClassLookup;
+        private Grid.MyGridView myGridView3;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private Grid.MyGridControl myGridControl3;
+        private Grid.MyGridView myGridView4;
+        private DevExpress.Xpo.XPCollection objectRelationHeaderXPC;
+        private DevExpress.XtraGrid.Columns.GridColumn colRelationId;
+        private DevExpress.XtraGrid.Columns.GridColumn colRelationName;
+        private DevExpress.XtraGrid.Columns.GridColumn colLeftObjectName;
+        private DevExpress.XtraGrid.Columns.GridColumn colRightObjectName;
     }
 }

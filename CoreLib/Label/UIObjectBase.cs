@@ -56,6 +56,12 @@ namespace CoreLib.Label
         [Association("UIObjectBase-UILabels")]
         public XPCollection<UILabel> ObjectLabels { get { return GetCollection<UILabel>("ObjectLabels"); } }
 
+        [NonPersistent]
+        public string FriendlyName
+        {
+            get { return !string.IsNullOrEmpty( ObjectName )?ObjectName.Substring(ObjectName.LastIndexOf('.') + 1):""; }
+        }
+
 
 
     }
