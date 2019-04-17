@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using CoreLib.SharedExt;
 using DevExpress.XtraEditors;
+using DevExpress.Data.Filtering;
 
 namespace CoreModelWin.MyEditor
 {
@@ -19,51 +20,54 @@ namespace CoreModelWin.MyEditor
         {
             InitializeComponent();
         }
-        public class FormParms
-        {
-            public Type MasterClass { get; set; }
-            public Type Details { get; set; }
-            public string MasterKeyName { get; set; }
-            public string DetailsKeyName { get; set; }
-            public bool IsKeyValueNumeric{ get; set; }
-        }
-        public MasterDetailsForm(FormParms _args)
+
+      
+        public MasterDetailsForm(Args _args)
         {
             InitializeComponent();
-            this.args = _args;
+            if (_args.ParmObject == null || !(_args.ParmObject is MasterDetailsParm)) return;
+
+            this.parms = (MasterDetailsParm)_args.ParmObject;
             InitObj();
            
             InitEvents();
+            //Link GridView Events to this form 
+            masterGV.ViewDetails += (s, e) => 
+            {
+                MenuController.LookupFormRefOpen(e);
+            };
+            //detailsGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
         }
-        FormParms args;
-        object masterKeyValue;
+
+        MyEditor.MasterDetailsParm parms;
+        object masterKeyObject;
         XPCollection masterXPC;
        
         XPCollection detailsXPC;
 
-        public object XtarMessageBox { get; private set; }
+     
 
         private void InitEvents()
         {
+            //GridView approach
             masterGV.FocusedRowChanged += (s, e) =>
             {
                 try
                 {
                     if (e.FocusedRowHandle < 0) return;
                     var objName = (XPLiteObject)masterGV.GetRow(e.FocusedRowHandle);
-                    masterKeyValue = objName.GetMemberValue(args.MasterKeyName);
-                    string filter = $"[{args.DetailsKeyName}] =  ";
-                    if (args.IsKeyValueNumeric)
+                    if(parms.KeyType == KeyTypeEnum.Object)
                     {
-                        filter += $"{masterKeyValue}";
+                        masterKeyObject = objName;
                     }
                     else
                     {
-                        filter += $"'{masterKeyValue}'";
+                        masterKeyObject = objName.GetMemberValue(parms.MasterKeyName);
                     }
-                    detailsXPC.CriteriaString = filter;
+                    
+                    CriteriaOperator criteria = new BinaryOperator(new OperandProperty(parms.DetailsKeyName), new OperandValue(masterKeyObject), BinaryOperatorType.Equal);
+                    detailsXPC.Criteria = criteria;
                     detailsXPC.LoadingEnabled = true;
-                    masterKeyValue = objName;
                 }
                 catch (Exception ex)
                 {
@@ -73,20 +77,50 @@ namespace CoreModelWin.MyEditor
             };
             detailsGV.InitNewRow += (s, e) => 
             {
-                XPBaseObject x = (XPBaseObject)detailsGV.GetRow(e.RowHandle);
-                x.SetMemberValue(args.DetailsKeyName, masterKeyValue);
-            };
-        
-        }
 
+                DefaultNewRow(e.RowHandle);
+            };
+            
+            detailsGV.EditFormShowing += (s, e) => 
+            {
+                DefaultNewRow(e.RowHandle);
+            };
+          
+
+        }
+        void DefaultNewRow (int _RowHandle)
+        {
+            var x = (XPLiteObject)detailsGV.GetRow(_RowHandle);
+            //x?.SetMemberValue(parms.DetailsKeyName, masterKeyObject);
+
+            var left = new OperandProperty(parms.DetailsKeyName).PropertyName;
+            switch (parms.KeyType)
+            {
+                case KeyTypeEnum.Int:
+                    x?.SetMemberValue(left, ((int)masterKeyObject));
+                    break;
+                case KeyTypeEnum.Long:
+                    x?.SetMemberValue(left, ((long)masterKeyObject));
+                    break;
+                case KeyTypeEnum.String:
+                    x?.SetMemberValue(left, $"'{masterKeyObject.ToString()}'");
+                    break;
+                case KeyTypeEnum.Object:
+                    var defaultObj = ((XPBaseObject)masterKeyObject).This;
+                    x?.SetMemberValue(left, defaultObj);
+
+                    break;
+                default:
+                    break;
+            }
+        }
         private void InitObj()
         {
-            masterXPC = new XPCollection(unitOfWork1, args.MasterClass) { LoadingEnabled = true};
-            detailsXPC = new XPCollection(unitOfWork1, args.Details) { LoadingEnabled = false};
+            masterXPC = new XPCollection(unitOfWork1, parms.MasterClass) { LoadingEnabled = true};
+            detailsXPC = new XPCollection(unitOfWork1, parms.Details) { LoadingEnabled = false};
 
            
             masterGV.UnitOfWorkXpo = unitOfWork1;
-
             masterGC.DataSource = masterXPC;
             masterGC.RefreshDataSource();
 

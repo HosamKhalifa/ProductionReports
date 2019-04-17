@@ -191,17 +191,20 @@ namespace CoreLib.Grid
                     FormRecord.CurrentRecord = (XPLiteObject)row;                  
                 }
             };
-           /* this.ValidateRow += (s, e) =>
+            if (this.EnableAutoSave && this.UnitOfWorkXpo != null)
             {
-                try
-                {
-                    e.Valid = UnitOfWorkXpo.SaveLine();
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
-                }
-            };*/
+                this.ValidateRow += (s, e) =>
+                    {
+                        try
+                        {
+                            e.Valid = UnitOfWorkXpo.SaveLine();
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
+                        }
+                    }; 
+            }
             this.PopupMenuShowing += (sender, argE) => 
             {
                 var gv = (MyGridView)sender;
@@ -221,7 +224,7 @@ namespace CoreLib.Grid
                     DevExpress.Utils.Menu.DXMenuItem bulkUpdateMenuItem = new DevExpress.Utils.Menu.DXMenuItem("Multi rows update");
                     DevExpress.Utils.Menu.DXMenuItem pivotGridMenuItem = new DevExpress.Utils.Menu.DXMenuItem("Pivot grid");
                     DevExpress.Utils.Menu.DXMenuItem sendSMSMenuItem = new DevExpress.Utils.Menu.DXMenuItem("Send SMS");
-
+                    DevExpress.Utils.Menu.DXMenuItem viewDetailsMenuItem = new DevExpress.Utils.Menu.DXMenuItem("View details");
                     //get icons
                     Image printGridIcon = DevExpress.Images.ImageResourceCache.Default.GetImage("images/print/print_16x16.png");
                     Image previewGridIcon = DevExpress.Images.ImageResourceCache.Default.GetImage("images/print/preview_16x16.png");
@@ -234,6 +237,7 @@ namespace CoreLib.Grid
                     Image bulkUpdateLayoutIcon = DevExpress.Images.ImageResourceCache.Default.GetImage("images/programming/scripts_16x16.png");
                     Image pivotGridIcon = DevExpress.Images.ImageResourceCache.Default.GetImage("images/grid/pivot_16x16.png");
                     Image sendSMSIcon = DevExpress.Images.ImageResourceCache.Default.GetImage("images/mail/editfeed_16x16.png");
+                    Image viewDetailsIcon = DevExpress.Images.ImageResourceCache.Default.GetImage("devav/actions/showproduct_16x16.png");
                     //Assign icon to its menus
                     printGridMenuItem.Image = printGridIcon;
                     previewGridMenuItem.Image = previewGridIcon;
@@ -246,6 +250,7 @@ namespace CoreLib.Grid
                     bulkUpdateMenuItem.Image = bulkUpdateLayoutIcon;
                     pivotGridMenuItem.Image = pivotGridIcon;
                     sendSMSMenuItem.Image = sendSMSIcon;
+                    viewDetailsMenuItem.Image = viewDetailsIcon;
                     //Link this grid view to menu object via Tag property
                     printGridMenuItem.Tag = gv;
                     previewGridMenuItem.Tag = gv;
@@ -258,8 +263,10 @@ namespace CoreLib.Grid
                     bulkUpdateMenuItem.Tag = gv;
                     pivotGridMenuItem.Tag = gv;
                     sendSMSMenuItem.Tag = gv;
+                    viewDetailsMenuItem.Tag = gv;
                     //Event handler for each menu item
                     //=======================================================================================
+
                     printGridMenuItem.Click+= (s, e) => 
                     {
                         this.OptionsPrint.ExpandAllDetails = false;//To reserve user settings during printing
@@ -296,7 +303,6 @@ namespace CoreLib.Grid
                     {
                         gv.UnitOfWorkXpo.ReloadChangedObjects();
                     };
-
                     pivotGridMenuItem.Click += (s, e)=>
                     {
                         try
@@ -333,6 +339,31 @@ namespace CoreLib.Grid
 
 
                     };
+                    viewDetailsMenuItem.Click += (s, e) => 
+                    {
+                        if (argE.HitInfo.InRow && argE.HitInfo.RowHandle >= 0 )
+                        {
+                            var colInfo = (GridColumnInfo)argE.HitInfo.Column.Tag;
+                            if (colInfo == null) return;
+                            if (colInfo.IsViewDetails)
+                            {
+                                colInfo.FormArgs = new Args();
+                                //Save current row value 
+                                string cellVal = this.GetRowCellValue(argE.HitInfo.RowHandle, argE.HitInfo.Column).ToString();
+                                var col = argE.HitInfo.Column;
+                                if(col.ColumnType == typeof(string)      || 
+                                   col.ColumnType == typeof(DateTime)       )
+                                {
+                                    cellVal = $"'{cellVal}'";
+                                }
+                                colInfo.FormArgs.Caller = this.GridControl.FindForm();
+                                colInfo.FormArgs.LookupField = colInfo.ColumnLablel.LookupEditor.LookupValueField;
+                                colInfo.FormArgs.LookupValue = cellVal;
+                                colInfo.FormArgs.Record = (XPBaseObject)GetRow(argE.HitInfo.RowHandle);
+                                OnViewDetails(new ViewDetailsEventArgs(colInfo, this));
+                            }     
+                        }
+                    };
                     //=======================================================================================
                     //Add menu to grid 
                     //=======================================================================================
@@ -341,6 +372,7 @@ namespace CoreLib.Grid
                     argE.Menu.Items.Add(exportMenuItem);
                     argE.Menu.Items.Add(pivotGridMenuItem);
                     argE.Menu.Items.Add(refreshMenuItem);
+                    argE.Menu.Items.Add(viewDetailsMenuItem);
                     
 
                 }
@@ -475,7 +507,10 @@ namespace CoreLib.Grid
 
 
         }
+
         #region Methods
+
+        [Obsolete]
         public void ApplyLabelToColumns( )
         {
             string lblValue = "";
@@ -524,12 +559,16 @@ namespace CoreLib.Grid
             var objectBaseLine = this.UnitOfWorkXpo.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", classInfo.FullName));
             if(objectBaseLine == null) { return; }
             //Disable and hide all columns before start enable and show based on user settings 
-            foreach (GridColumn grdC in this.Columns)
+
+            if (EnableAutoFormat)
             {
-                grdC.Visible = false;
-                grdC.VisibleIndex = -1;
-                grdC.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
-                grdC.OptionsColumn.AllowEdit = false;
+                foreach (GridColumn grdC in this.Columns)
+                {
+                    grdC.Visible = false;
+                    grdC.VisibleIndex = -1;
+                    grdC.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
+                    grdC.OptionsColumn.AllowEdit = false;
+                } 
             }
             foreach (var m in classInfo.Members/*.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistent") != null)*/)
             {
@@ -542,7 +581,7 @@ namespace CoreLib.Grid
                     var labelLine = objectBaseLine.FindOrCreateUILabel(fieldName);
                         if (labelLine != null)
                         {
-                            labelLine.ApplyFieldSettings(this,c);
+                            labelLine.ApplyFieldSettings(this,c,EnableAutoFormat);
                             
                         }
                    }
@@ -551,6 +590,29 @@ namespace CoreLib.Grid
             
         }
         #endregion //Helper methods
+
+        #region Events
+        public event ViewDetailsHandler ViewDetails;
+        protected virtual void OnViewDetails(ViewDetailsEventArgs e)
+        {
+            ViewDetails?.Invoke(this, e);
+        }
+        #endregion
+
+        #region Properties
+        private bool fEnableAutoFormat=true;
+        public bool EnableAutoFormat
+        {
+            get { return fEnableAutoFormat; }
+            set { fEnableAutoFormat = value; }
+        }
+        private bool fEnableAutoSave = true;
+        public bool EnableAutoSave
+        {
+            get { return fEnableAutoSave; }
+            set { fEnableAutoSave = value; }
+        }
+        #endregion
 
         public MyGridView(GridControl grid) : base(grid)
         {

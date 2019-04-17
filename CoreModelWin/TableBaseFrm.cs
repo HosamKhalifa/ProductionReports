@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CoreLib.SharedExt;
 namespace CoreModelWin
 {
-    public partial class TableBaseFrm : CoreLib.MyForm,IEditableForm
+    public partial class TableBaseFrm : CoreLib.MyForm,CoreLib.IEditableForm
     {
         public TableBaseFrm()
         {

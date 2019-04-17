@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreModelWin
+namespace CoreLib
 {
-    interface IEditableForm
+   public interface IEditableForm
     {
         void AddRecord();
         void DeleteRecord();
         void EditRecord();
         void SaveChanges();
 
-       
+
     }
 }

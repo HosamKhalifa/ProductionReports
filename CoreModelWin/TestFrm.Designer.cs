@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestFrm));
             this.mySearchLookUpEdit1 = new CoreLib.MyEditor.MySearchLookUpEdit();
             this.mySearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -35,9 +36,8 @@
             this.lookupGrd = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
-            this.myGridView1 = new CoreLib.Grid.MyGridView();
             this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork();
+            this.myGridView1 = new CoreLib.Grid.MyGridView();
             this.colLineId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,14 +49,16 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSequenceWorkflowStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mySearchLookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mySearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupGrd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // mySearchLookUpEdit1
@@ -78,6 +80,7 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(260, 1);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
@@ -116,6 +119,11 @@
             this.myGridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.myGridView1});
             // 
+            // xpCollectionExt1
+            // 
+            this.xpCollectionExt1.ObjectType = typeof(CoreModel.JournalBase);
+            this.xpCollectionExt1.Session = this.unitOfWork1;
+            // 
             // myGridView1
             // 
             this.myGridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -133,16 +141,6 @@
             this.myGridView1.GridControl = this.myGridControl1;
             this.myGridView1.Name = "myGridView1";
             this.myGridView1.UnitOfWorkXpo = null;
-            // 
-            // xpCollectionExt1
-            // 
-            this.xpCollectionExt1.ObjectType = typeof(CoreModel.JournalBase);
-            this.xpCollectionExt1.Session = this.unitOfWork1;
-            // 
-            // unitOfWork1
-            // 
-            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
-            this.unitOfWork1.TrackPropertiesModifications = false;
             // 
             // colLineId
             // 
@@ -221,6 +219,12 @@
             this.colSequenceWorkflowStatus.Visible = true;
             this.colSequenceWorkflowStatus.VisibleIndex = 10;
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.InsertGalleryImage("showproduct_16x16.png", "devav/actions/showproduct_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("devav/actions/showproduct_16x16.png"), 0);
+            this.imageCollection1.Images.SetKeyName(0, "showproduct_16x16.png");
+            // 
             // TestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,14 +233,15 @@
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.mySearchLookUpEdit1);
             this.Name = "TestFrm";
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mySearchLookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mySearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupGrd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionExt1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,5 +269,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn colSequenceWorkflowStatus;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }

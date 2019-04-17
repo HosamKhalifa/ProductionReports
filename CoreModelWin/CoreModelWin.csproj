@@ -78,8 +78,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IEditableForm.cs" />
-    <Compile Include="IMenuController.cs" />
     <Compile Include="MenuController.cs" />
     <Compile Include="MyEditor\MasterDetailsForm.cs">
       <SubType>Form</SubType>
@@ -87,6 +85,7 @@
     <Compile Include="MyEditor\MasterDetailsForm.Designer.cs">
       <DependentUpon>MasterDetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyEditor\MasterDetailsParm.cs" />
     <Compile Include="MyEditor\SimpleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +119,12 @@
       <DependentUpon>TestFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="UIFormInfo.cs" />
+    <Compile Include="View\GL\MainAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GL\MainAccount.Designer.cs">
+      <DependentUpon>MainAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sys\SequenceEditXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -160,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TestFrm.resx">
       <DependentUpon>TestFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GL\MainAccount.resx">
+      <DependentUpon>MainAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>

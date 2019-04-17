@@ -16,6 +16,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
+
             base.AfterConstruction();
         }
 
@@ -115,7 +116,7 @@ namespace CoreModel
         [Persistent(@"TOTAL_AMOUNT_BEFORE_TAX_CC")]
         public decimal TotalAmountBeforeTaxCC
         {
-            get { return TotalAmountBeforeTaxCC; }
+            get { return fTotalAmountBeforeTaxCC; }
             set { SetPropertyValue<decimal>("TotalAmountBeforeTaxCC", ref fTotalAmountBeforeTaxCC, value); }
         }
 
@@ -123,7 +124,7 @@ namespace CoreModel
         [Persistent(@"TOTAL_AMOUNT_CC")]
         public decimal TotalAmountCC
         {
-            get { return TotalAmountCC; }
+            get { return fTotalAmountCC; }
             set { SetPropertyValue<decimal>("TotalAmountCC", ref fTotalAmountCC, value); }
         }
 

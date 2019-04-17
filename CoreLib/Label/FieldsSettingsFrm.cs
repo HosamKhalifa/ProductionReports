@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraTreeList.Columns;
+﻿using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,55 @@ namespace CoreLib.Label
 {
     public partial class FieldsSettingsFrm : CoreLib.MyForm
     {
+        public TreeList ObjectTree { get { return treeList1; } }
+        public DevExpress.Xpo.XPCollection UIObjectBaseXPC { get { return uIObjectBaseXPC; } }
         public FieldsSettingsFrm()
         {
             InitializeComponent();
             InitObj();
             InitTree();
+            InitLookup();
+            InitToolBar();
+            
+        }
+
+        private void InitToolBar()
+        {
+            defaultEnglishColumnBI.ItemClick += (s, e) =>
+            {
+                BindingManagerBase bindingMgr = this.BindingContext[uIObjectBaseXPC];
+                var currTab = (UIObjectBase)bindingMgr.Current;
+                foreach (var col in currTab.ObjectLabels)
+                {
+                    foreach (var lang in col.Langs)
+                    {
+                        lang.Lang_en = col.ColumnName;
+                        lang.Lang_ar = col.ColumnName;
+                        lang.Lang_fr = col.ColumnName;
+                        lang.Save();
+                    }
+
+                } 
+            };
+        }
+
+        private void InitLookup()
+        {
+            RepositoryItemComboBox cmb = new RepositoryItemComboBox();
+            PopulateObjectCombo(cmb);
+
+            colParentObjectName.ColumnEdit = cmb;
+            colChildObjectName.ColumnEdit = cmb;
+            //PopulateObjectCombo(_comRI);
+        }
+
+        private void PopulateObjectCombo(RepositoryItemComboBox _comRI)
+        {
+            _comRI.Items.Clear();
+            foreach (UIObjectBase item in uIObjectBaseXPC)
+            {
+                _comRI.Items.Add(item.ObjectName);
+            }
         }
 
         private void InitObj()
@@ -30,8 +76,9 @@ namespace CoreLib.Label
                 if (e.FocusedRowHandle < 0) return;
                 var objName = (UIObjectBase)myGridView1.GetRow(e.FocusedRowHandle);
                 string filter = $"[ObjectName!Key] = {objName.Oid} ";
-                xpCollectionExt2.CriteriaString =filter;
-                filter = $"[LeftObjectName!Key] = {objName.Oid} OR [RightObjectName!Key] = {objName.Oid}";
+               
+                uILabelXPC.CriteriaString =filter;
+                filter = $"[ParentObjectName] = '{objName.ObjectName }' OR [ChildObjectName] = '{objName.ObjectName}'";
                 objectRelationHeaderXPC.CriteriaString = filter;
             };
             myGridView2.FocusedRowChanged += (s, e) => 
@@ -39,7 +86,7 @@ namespace CoreLib.Label
                 if (e.FocusedRowHandle < 0) return;
                 var label = (UILabel)myGridView2.GetRow(e.FocusedRowHandle);
                 string filter = $"[UILabel!Key] = '{label.LabelId}'";
-                xpCollectionExt3.CriteriaString = filter;
+                uILabelLanXPC.CriteriaString = filter;
             };
             treeList1.FocusedNodeChanged += (s,e)=>
             {
@@ -52,14 +99,15 @@ namespace CoreLib.Label
                 {
                     //Filter using Object name
                     string filter = $"[ObjectName!Key] = {objId} ";
-                    xpCollectionExt2.CriteriaString = filter;
-                    filter = $"[LeftObjectName!Key] = {objId} OR [RightObjectName!Key] = {objId}";
+                    var currentObj =(UIObjectBase) uIObjectBaseXPC.Lookup(objId);
+                    uILabelXPC.CriteriaString = filter;
+                    filter = $"[ParentObjectName] = '{currentObj.ObjectName}' OR [ChildObjectName] = '{currentObj.ObjectName}'";
                     objectRelationHeaderXPC.CriteriaString = filter;
                 }
                 else if(objType.ToString() == "Field")
                 {
                     string filter = $"[LabelId] = '{objId}' ";
-                    xpCollectionExt2.CriteriaString = filter;
+                    uILabelXPC.CriteriaString = filter;
                 }
             };
            
@@ -88,12 +136,14 @@ namespace CoreLib.Label
             treeList1.EndUpdate();
             // Create a root node . 
             TreeListNode parentForRootNodes = null;
-            foreach (UIObjectBase table in xpCollectionExt1)
+
+            foreach (UIObjectBase table in uIObjectBaseXPC)
             {
                 treeList1.BeginUnboundLoad();
                 TreeListNode rootNode = treeList1.AppendNode(
                                                             new object[] {table.Oid, table.FriendlyName, "Table" },
                                                             parentForRootNodes);
+                
                 rootNode.ImageIndex = 0;
                 // Create a child of the rootNode 
                 foreach (UILabel field in table.ObjectLabels)
@@ -104,6 +154,8 @@ namespace CoreLib.Label
                  
                 treeList1.EndUnboundLoad();
             }
+
+           
         }
 
     }

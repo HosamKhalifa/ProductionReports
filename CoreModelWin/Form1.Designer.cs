@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.fiscalCalenderYearLink = new DevExpress.XtraNavBar.NavBarItem();
             this.fieldsSettingsLink = new DevExpress.XtraNavBar.NavBarItem();
             this.uILabelLink = new DevExpress.XtraNavBar.NavBarItem();
             this.tableBaseLink = new DevExpress.XtraNavBar.NavBarItem();
             this.sequenceLink = new DevExpress.XtraNavBar.NavBarItem();
             this.currencyCodeLink = new DevExpress.XtraNavBar.NavBarItem();
             this.currencySetupLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
-            this.refreshBI = new DevExpress.XtraBars.BarButtonItem();
+            this.retrieveBI = new DevExpress.XtraBars.BarButtonItem();
             this.saveBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.addBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.delBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
-            this.editBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.printBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.langBI = new DevExpress.XtraBars.BarEditItem();
             this.langRIImageCombo = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -62,7 +62,13 @@
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection();
+            this.gLNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.cOALink = new DevExpress.XtraNavBar.NavBarItem();
+            this.aPNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.mainAccountsTypeLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.mainAccountsLink = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -74,10 +80,13 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.SystemSetupNavGrp;
+            this.navBarControl1.ActiveGroup = this.gLNavGrp;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.SystemSetupNavGrp});
+            this.SystemSetupNavGrp,
+            this.gLNavGrp,
+            this.aPNavGrp,
+            this.navBarGroup1});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.tableBaseLink,
             this.uILabelLink,
@@ -85,7 +94,11 @@
             this.sequenceLink,
             this.currencySetupLink,
             this.currencyCodeLink,
-            this.fiscalCalenderLink});
+            this.fiscalCalenderLink,
+            this.fiscalCalenderYearLink,
+            this.cOALink,
+            this.mainAccountsTypeLink,
+            this.mainAccountsLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 54);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
@@ -97,9 +110,9 @@
             // SystemSetupNavGrp
             // 
             this.SystemSetupNavGrp.Caption = "System setup";
-            this.SystemSetupNavGrp.Expanded = true;
             this.SystemSetupNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.fiscalCalenderLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.fiscalCalenderYearLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.fieldsSettingsLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.uILabelLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.tableBaseLink),
@@ -107,6 +120,7 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.currencyCodeLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.currencySetupLink)});
             this.SystemSetupNavGrp.Name = "SystemSetupNavGrp";
+            this.SystemSetupNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("SystemSetupNavGrp.SmallImage")));
             // 
             // fiscalCalenderLink
             // 
@@ -114,6 +128,12 @@
             this.fiscalCalenderLink.LargeImage = ((System.Drawing.Image)(resources.GetObject("fiscalCalenderLink.LargeImage")));
             this.fiscalCalenderLink.Name = "fiscalCalenderLink";
             this.fiscalCalenderLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("fiscalCalenderLink.SmallImage")));
+            // 
+            // fiscalCalenderYearLink
+            // 
+            this.fiscalCalenderYearLink.Caption = "Fiscal calender year";
+            this.fiscalCalenderYearLink.Name = "fiscalCalenderYearLink";
+            this.fiscalCalenderYearLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("fiscalCalenderYearLink.SmallImage")));
             // 
             // fieldsSettingsLink
             // 
@@ -166,11 +186,11 @@
             this.statusBarTxt,
             this.skinBarSubItem1,
             this.testBI,
-            this.refreshBI,
+            this.retrieveBI,
             this.saveBarButtonItem,
             this.addBarButtonItem,
             this.delBarButtonItem,
-            this.editBarButtonItem,
+            this.printBarButtonItem,
             this.barButtonItem1,
             this.langBI,
             this.barEditItem1});
@@ -189,11 +209,11 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.skinBarSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.refreshBI),
+            new DevExpress.XtraBars.LinkPersistInfo(this.retrieveBI),
             new DevExpress.XtraBars.LinkPersistInfo(this.saveBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.addBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.delBarButtonItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.editBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.printBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.langBI)});
             this.bar1.Text = "Tools";
             // 
@@ -204,14 +224,14 @@
             this.skinBarSubItem1.Name = "skinBarSubItem1";
             this.skinBarSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // refreshBI
+            // retrieveBI
             // 
-            this.refreshBI.Caption = "Refresh";
-            this.refreshBI.Glyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.Glyph")));
-            this.refreshBI.Id = 4;
-            this.refreshBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("refreshBI.LargeGlyph")));
-            this.refreshBI.Name = "refreshBI";
-            this.refreshBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.retrieveBI.Caption = "Retrieve";
+            this.retrieveBI.Glyph = ((System.Drawing.Image)(resources.GetObject("retrieveBI.Glyph")));
+            this.retrieveBI.Id = 4;
+            this.retrieveBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("retrieveBI.LargeGlyph")));
+            this.retrieveBI.Name = "retrieveBI";
+            this.retrieveBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // saveBarButtonItem
             // 
@@ -237,13 +257,13 @@
             this.delBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("delBarButtonItem.LargeGlyph")));
             this.delBarButtonItem.Name = "delBarButtonItem";
             // 
-            // editBarButtonItem
+            // printBarButtonItem
             // 
-            this.editBarButtonItem.Caption = "Edit";
-            this.editBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("editBarButtonItem.Glyph")));
-            this.editBarButtonItem.Id = 9;
-            this.editBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("editBarButtonItem.LargeGlyph")));
-            this.editBarButtonItem.Name = "editBarButtonItem";
+            this.printBarButtonItem.Caption = "Print";
+            this.printBarButtonItem.Glyph = ((System.Drawing.Image)(resources.GetObject("printBarButtonItem.Glyph")));
+            this.printBarButtonItem.Id = 9;
+            this.printBarButtonItem.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("printBarButtonItem.LargeGlyph")));
+            this.printBarButtonItem.Name = "printBarButtonItem";
             // 
             // langBI
             // 
@@ -364,6 +384,47 @@
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
             this.sharedImageCollection1.ParentControl = this;
             // 
+            // gLNavGrp
+            // 
+            this.gLNavGrp.Caption = "General Ledger";
+            this.gLNavGrp.Expanded = true;
+            this.gLNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.cOALink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountsTypeLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountsLink)});
+            this.gLNavGrp.Name = "gLNavGrp";
+            this.gLNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("gLNavGrp.SmallImage")));
+            // 
+            // cOALink
+            // 
+            this.cOALink.Caption = "Chart of accounts";
+            this.cOALink.Name = "cOALink";
+            this.cOALink.SmallImage = ((System.Drawing.Image)(resources.GetObject("cOALink.SmallImage")));
+            // 
+            // aPNavGrp
+            // 
+            this.aPNavGrp.Caption = "Accounts payable";
+            this.aPNavGrp.Name = "aPNavGrp";
+            this.aPNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("aPNavGrp.SmallImage")));
+            // 
+            // navBarGroup1
+            // 
+            this.navBarGroup1.Caption = "Accounts receivable";
+            this.navBarGroup1.Name = "navBarGroup1";
+            this.navBarGroup1.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup1.SmallImage")));
+            // 
+            // mainAccountsTypeLink
+            // 
+            this.mainAccountsTypeLink.Caption = "Main accounts type";
+            this.mainAccountsTypeLink.Name = "mainAccountsTypeLink";
+            this.mainAccountsTypeLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsTypeLink.SmallImage")));
+            // 
+            // mainAccountsLink
+            // 
+            this.mainAccountsLink.Caption = "Main accounts";
+            this.mainAccountsLink.Name = "mainAccountsLink";
+            this.mainAccountsLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsLink.SmallImage")));
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,7 +470,7 @@
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraBars.BarButtonItem testBI;
         private DevExpress.XtraNavBar.NavBarItem fieldsSettingsLink;
-        private DevExpress.XtraBars.BarButtonItem refreshBI;
+        private DevExpress.XtraBars.BarButtonItem retrieveBI;
         private DevExpress.XtraNavBar.NavBarItem sequenceLink;
         private DevExpress.XtraNavBar.NavBarItem currencySetupLink;
         private DevExpress.XtraNavBar.NavBarItem currencyCodeLink;
@@ -417,13 +478,20 @@
         private DevExpress.XtraBars.BarButtonItem saveBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem addBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem delBarButtonItem;
-        private DevExpress.XtraBars.BarButtonItem editBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem printBarButtonItem;
         private DevExpress.XtraBars.BarEditItem langBI;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox langRIImageCombo;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
+        private DevExpress.XtraNavBar.NavBarItem fiscalCalenderYearLink;
+        private DevExpress.XtraNavBar.NavBarGroup gLNavGrp;
+        private DevExpress.XtraNavBar.NavBarItem cOALink;
+        private DevExpress.XtraNavBar.NavBarGroup aPNavGrp;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
+        private DevExpress.XtraNavBar.NavBarItem mainAccountsTypeLink;
+        private DevExpress.XtraNavBar.NavBarItem mainAccountsLink;
     }
 }
 

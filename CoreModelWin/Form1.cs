@@ -19,7 +19,7 @@ using DevExpress.XtraBars.Docking2010.Customization;
 
 namespace CoreModelWin
 {
-    public partial class Form1 : CoreLib.MyForm,IMenuController
+    public partial class Form1 : CoreLib.MyForm,CoreLib.IMenuController
     {
         public Form1()
         {
@@ -33,6 +33,7 @@ namespace CoreModelWin
             //Register this form as MdiParent in MenuController 
             MenuController.MdiParentForm = this;
             MenuController.BuildNavBarLinks(navBarControl1, unitOfWork1);
+            MenuController.BuildFunctionLinks(barManager1);
            
            
             InitBarButtons();
@@ -44,26 +45,36 @@ namespace CoreModelWin
 
         private void LinkMenuController()
         {
+            //Assign FunctionCode enum to Bar manager items
+            saveBarButtonItem.Tag = CoreLib.MyEnums.MainFunction.Save;
+            addBarButtonItem.Tag = CoreLib.MyEnums.MainFunction.NewRecord;
+            delBarButtonItem.Tag = CoreLib.MyEnums.MainFunction.DeleteRecord;
+            printBarButtonItem.Tag = CoreLib.MyEnums.MainFunction.Print;
+            retrieveBI.Tag = CoreLib.MyEnums.MainFunction.Retrieve;
             //Assign FormEntity enum to link tag to link linkItem to its OpenForm methods
-            currencyCodeLink.Tag = UIFormInfo.FormEntityEnum.Currency;
-            currencySetupLink.Tag = UIFormInfo.FormEntityEnum.CurrencySetup;
-            tableBaseLink.Tag = UIFormInfo.FormEntityEnum.TableBase;
-            fieldsSettingsLink.Tag = UIFormInfo.FormEntityEnum.FieldsSetting;
-            uILabelLink.Tag = UIFormInfo.FormEntityEnum.UILabel;
-            sequenceLink.Tag = UIFormInfo.FormEntityEnum.Sequence;
-
-
+            currencyCodeLink.Tag = CoreLib.MyEnums.FormEntityEnum.Currency;
+            currencySetupLink.Tag = CoreLib.MyEnums.FormEntityEnum.CurrencySetup;
+            tableBaseLink.Tag = CoreLib.MyEnums.FormEntityEnum.TableBase;
+            fieldsSettingsLink.Tag = CoreLib.MyEnums.FormEntityEnum.FieldsSetting;
+            uILabelLink.Tag = CoreLib.MyEnums.FormEntityEnum.UILabel;
+            sequenceLink.Tag = CoreLib.MyEnums.FormEntityEnum.Sequence;
+            fiscalCalenderLink.Tag = CoreLib.MyEnums.FormEntityEnum.FiscalCalender;
+            fiscalCalenderYearLink.Tag = CoreLib.MyEnums.FormEntityEnum.FiscalCalenderYear;
+            cOALink.Tag = CoreLib.MyEnums.FormEntityEnum.LedgerChartOfAccounts;
+            mainAccountsTypeLink.Tag = CoreLib.MyEnums.FormEntityEnum.MainAccountType;
+            mainAccountsLink.Tag = CoreLib.MyEnums.FormEntityEnum.MainAccount;
         }
 
         private void InitBarButtons()
         {
-            refreshBI.ItemClick += (s, e) => 
+            retrieveBI.ItemClick += (s, e) => 
             {
                 if(CoreLib.FormRecord.CurrentRecord != null)
                 {
                     CoreLib.FormRecord.CurrentRecord.Reload();
                 }
             };
+
         }
 
         private void InitMyForm()
@@ -89,7 +100,6 @@ namespace CoreModelWin
                 XpoDefault.DataLayer = XpoDefault.GetDataLayer(user.ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.SchemaOnly);
                 SecurityUser.CurrentUser = user;
                 SecurityUser.IsConnected = true;
-
 
                 #region OldCode
                 //List<XPClassInfo> lst = new List<XPClassInfo>()
@@ -132,6 +142,7 @@ namespace CoreModelWin
             };
         }
 
+        /*
         private void InitSystemSetupEventHandlers()
         {
             try
@@ -178,6 +189,7 @@ namespace CoreModelWin
             
             
         }
+        */
         #region IMenu interface
         public void EnableSaveButton(bool _settings)
         {
@@ -196,7 +208,7 @@ namespace CoreModelWin
 
         public void EnableEditButton(bool _settings)
         {
-            editBarButtonItem.Enabled = _settings;
+            printBarButtonItem.Enabled = _settings;
         }
         #endregion
     }

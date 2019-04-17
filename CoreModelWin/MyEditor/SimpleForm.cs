@@ -25,13 +25,20 @@ namespace CoreModelWin.MyEditor
             _usrCtrl.Dock = DockStyle.Fill;
             this.ActiveControl = _usrCtrl;
         }
-        public SimpleForm (Type _classType)
+        public SimpleForm (CoreLib.Args _args):base(_args)
         {
             InitializeComponent();
-            
+            if(_args == null || _args.ParmObject == null)//Parm object will represent Type instance 
+            {
+                SetStatusBarText("Type of object does not passed to Simple form ");
+                return;
+            }
+            Type _classType = (Type)_args.ParmObject;
             XPCollection ds = new XPCollection(unitOfWork1, _classType);
+            ds.LoadingEnabled = true;
+            MainDataSource = ds;//Link main data source
             myGridControl1.DataSource = ds;
-            myGridControl1.RefreshDataSource();
+            //myGridControl1.RefreshDataSource();
             AppLists.AppListInfo lst = new AppLists.AppListInfo(unitOfWork1);
             lst.LinkLookupsToGrid(myGridView1,ds);
 

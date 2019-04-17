@@ -17,6 +17,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.CurrencyPairExchangeRate);
             base.AfterConstruction();
             ValidFrom = DateTime.Today.Date;
             ValidTo = ValidFrom.AddMonths(1);
@@ -48,6 +49,16 @@ namespace CoreModel
             get { return fValidTo; }
             set { SetPropertyValue<DateTime>("ValidTo", ref fValidTo, value.Date); }
         }
+
+        decimal fExchangeRate;
+        [Persistent(@"EXCHANGE_RATE")]
+        public decimal ExchangeRate
+        {
+            get { return fExchangeRate; }
+            set { SetPropertyValue<decimal>("ExchangeRate", ref fExchangeRate, value); }
+        }
+
+
         #region Computed
         private void WriteComputation()
         {

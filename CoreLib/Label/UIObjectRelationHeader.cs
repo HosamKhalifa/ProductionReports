@@ -32,19 +32,19 @@ namespace CoreLib.Label
             set { SetPropertyValue<string>("RelationName", ref fRelationName, value); }
         }
 
-        string fLeftObjectName;
+        string fParentObjectName;
         [Size(150)]
-        public string LeftObjectName
+        public string ParentObjectName
         {
-            get { return fLeftObjectName; }
-            set { SetPropertyValue<string>("LeftObjectName", ref fLeftObjectName, value); }
+            get { return fParentObjectName; }
+            set { SetPropertyValue<string>("ParentObjectName", ref fParentObjectName, value); }
         }
-        string fRightObjectName;
+        string fChildObjectName;
         [Size(150)]
-        public string RightObjectName
+        public string ChildObjectName
         {
-            get { return fRightObjectName; }
-            set { SetPropertyValue<string>("RightObjectName", ref fRightObjectName, value); }
+            get { return fChildObjectName; }
+            set { SetPropertyValue<string>("ChildObjectName", ref fChildObjectName, value); }
         }
         #region Association
         [Association(@"OBJ_HEADER_LINES_FK")]

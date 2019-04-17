@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreModelWin
+namespace CoreLib
 {
-    interface IMenuController
+   public interface IMenuController
     {
         void EnableSaveButton(Boolean _settings);
         void EnableDeleteButton(Boolean _settings);

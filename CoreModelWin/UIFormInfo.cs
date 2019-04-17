@@ -11,10 +11,10 @@ namespace CoreModelWin
 {
     public class UIFormInfo : XPLiteObject
     {
-        public enum FormEntityEnum
-    {
-        TestForm, FieldsSetting , Sequence  , UILabel, TableBase, FiscalCalender, Currency, CurrencySetup
-    }
+        //public enum FormEntityEnum
+        //{
+        //    TestForm, FieldsSetting , Sequence  , UILabel, TableBase, FiscalCalender, Currency, CurrencySetup
+        //}
         protected UIFormInfo(Session session) : base(session)
         {
         }
@@ -95,11 +95,12 @@ namespace CoreModelWin
             if(formInfoList == null || formInfoList.Count == 0)
             {
                 formInfoList = new List<UIFormInfo>();
-                foreach (var item in Enum.GetNames(typeof(FormEntityEnum)))
+                foreach (var item in Enum.GetNames(typeof(CoreLib.MyEnums.FormEntityEnum)))
                 {
                     //Search if Table is existed in DB
 
-                    var itemEnum = (FormEntityEnum)Enum.Parse(typeof(FormEntityEnum), item);
+                    var itemEnum = (CoreLib.MyEnums.FormEntityEnum)Enum.Parse(typeof(CoreLib.MyEnums.FormEntityEnum), item);
+                    if (itemEnum == CoreLib.MyEnums.FormEntityEnum.None) continue;
                     var dbFrmRow = session.GetObjectByKey<UIFormInfo>((int)itemEnum);
                     if (dbFrmRow == null)
                     {
@@ -110,6 +111,7 @@ namespace CoreModelWin
                             LinkCaption_en = item.ToString()
                         };
                         t.Save();
+                        dbFrmRow = t;
                     }
 
                     formInfoList.Add(dbFrmRow);

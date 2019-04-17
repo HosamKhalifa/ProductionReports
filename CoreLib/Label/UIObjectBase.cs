@@ -36,7 +36,7 @@ namespace CoreLib.Label
             }
             return l;         
         }
-
+        
         string fObjectName;
         [Size(150)]
         public string ObjectName
@@ -55,13 +55,27 @@ namespace CoreLib.Label
        
         [Association("UIObjectBase-UILabels")]
         public XPCollection<UILabel> ObjectLabels { get { return GetCollection<UILabel>("ObjectLabels"); } }
-
+        [NonPersistent]
+        public string LookupValueField
+        {
+            get
+            {
+                var lookupFieldName = ObjectLabels.Where(x => x.LookupMember == MyEnums.AutoLookUp.ValueMemberHidden ||
+                                        x.LookupMember == MyEnums.AutoLookUp.ValueMemberVisiable).FirstOrDefault();
+                return lookupFieldName != null ? lookupFieldName.ColumnName : "";
+            }
+        }
         [NonPersistent]
         public string FriendlyName
         {
             get { return !string.IsNullOrEmpty( ObjectName )?ObjectName.Substring(ObjectName.LastIndexOf('.') + 1):""; }
         }
-
+        public Type ObjectType()
+        {
+            var a = CoreLib.GlobalMethods.GetAssemblyByName(AssemblyName);
+            Type tabType = a.GetType(ObjectName);
+            return tabType;
+        }
 
 
     }

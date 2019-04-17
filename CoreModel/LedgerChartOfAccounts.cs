@@ -18,6 +18,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.LedgerChartOfAccounts);
             base.AfterConstruction();
         }
         string fChartOfAccountsName;

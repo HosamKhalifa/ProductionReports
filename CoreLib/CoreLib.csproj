@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Args.cs" />
     <Compile Include="FormRecord.cs" />
     <Compile Include="GlobalMethods.cs" />
     <Compile Include="Grid\AppService\AppServicesDataSet.cs">
@@ -118,10 +119,13 @@
     <Compile Include="Grid\AppService\XtraGridPopupMenu_PivotXtraForm.Designer.cs">
       <DependentUpon>XtraGridPopupMenu_PivotXtraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Grid\GridColumnSettingsHelper.cs" />
+    <Compile Include="Grid\GridColumnInfo.cs" />
     <Compile Include="Grid\MyGrid1.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Grid\ViewDetailsEventArgs.cs" />
+    <Compile Include="IEditableForm.cs" />
+    <Compile Include="IMenuController.cs" />
     <Compile Include="Label\UIObjectRelationHeader.cs" />
     <Compile Include="Label\FieldsSettingsFrm.cs">
       <SubType>Form</SubType>
@@ -186,6 +190,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
+    <Compile Include="SharedExt\StringExt.cs" />
     <Compile Include="SharedExt\UnitOfWorkExtensions.cs" />
     <Compile Include="Xpo\IActionXpo.cs" />
     <Compile Include="Xpo\XPCollectionExt.cs">

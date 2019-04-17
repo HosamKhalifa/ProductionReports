@@ -68,12 +68,17 @@ namespace CoreLib.Label
             ret = lblLang.Lang;
             return ret;
         }
-        public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol)
+        public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol,bool enableAutoFormat)
         {
+            //Save Column information in grid column Tag
+            GridColumnInfo info = new GridColumnInfo() { ColumnLablel = this };
+            grdCol.Tag = info;
            // gv.Columns.Remove()
             gv.Columns[ColumnName].Caption = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldCaption);
             gv.Columns[ColumnName].ToolTip = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldHelp);
-            
+
+            if (!enableAutoFormat) return;//Exit for non formated grid view
+
             Size columnSize = TextRenderer.MeasureText("".PadLeft(Width, 'A'), grdCol.AppearanceCell.Font);
             gv.Columns[ColumnName].Width = IsHidden ? 0: columnSize.Width;
             gv.Columns[ColumnName].OptionsColumn.ReadOnly = this.IsDisabled;
@@ -120,9 +125,9 @@ namespace CoreLib.Label
             return ("@" + returnIndex.ToString());
             
         }
-                
 
-        //=============================================================================================================================
+        #region Fields
+
         string fLabelId;
         [Key,Size(7)]
         public string LabelId
@@ -169,7 +174,6 @@ namespace CoreLib.Label
             set { SetPropertyValue<UIObjectBase>("ObjectName",ref fObjectName,value); }
         }
         string fFieldName;
-       
         public string FieldName
         {
             get { return fFieldName; }
@@ -221,23 +225,33 @@ namespace CoreLib.Label
             get { return fWidth; }
             set { SetPropertyValue<int>("Width", ref fWidth, value); }
         }
+        
         int fVisibleOrder;
         public int VisibleOrder
         {
             get { return fVisibleOrder; }
             set { SetPropertyValue<int>("VisibleOrder", ref fVisibleOrder, value); }
         }
-
-        #region Associations
-        [Association(@"UILABLE_UILABEL_LANG_FK")]
-        public XPCollection<UILabelLang> Langs { get { return GetCollection<UILabelLang>("Langs"); } }
-        #endregion
-
+        MyEnums.FormEntityEnum fLookupFormRef;
+        public MyEnums.FormEntityEnum LookupFormRef
+        {
+            get { return fLookupFormRef; }
+            set { SetPropertyValue<MyEnums.FormEntityEnum>("LookupFormRef", ref fLookupFormRef, value); }
+        }
         [NonPersistent]
         public string ColumnName
         {
             get { return FieldName?.Substring(FieldName.LastIndexOf('.') + 1); }
         }
+
+
+        #endregion
+
+
+        #region Associations
+        [Association(@"UILABLE_UILABEL_LANG_FK")]
+        public XPCollection<UILabelLang> Langs { get { return GetCollection<UILabelLang>("Langs"); } }
+        #endregion
 
 
 

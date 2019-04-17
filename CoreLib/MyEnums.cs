@@ -16,6 +16,16 @@ namespace CoreLib
         }
         public enum RelationConditionIndex { Line1=10,Line2=20,Line3=30,Line4=40,Line5=50}
         public enum RelationConditionType { Normal = 100,Filter=200,Association=300}
-        
+        public enum FormEntityEnum
+        {
+            None=0,TestForm=1, FieldsSetting=2, Sequence=3, UILabel=4, TableBase=5, FiscalCalender=6, Currency=7, CurrencySetup=8,
+            FiscalCalenderYear=9, LedgerChartOfAccounts=10,Ledger=11,MainAccountType=12,MainAccount=13
+        }
+        //this enum should assigned to general tool bar item.tag property 
+        public enum MainFunction
+        {
+            Retrieve=5,Save=10,NewRecord=20,DeleteRecord=30,Print=40
+        }
+
     }
 }

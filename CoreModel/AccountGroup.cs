@@ -14,6 +14,7 @@ namespace CoreModel
         public override void AfterConstruction()
         {
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.AccountGroup);
+
             base.AfterConstruction();
         }
 
