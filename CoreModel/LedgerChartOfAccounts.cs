@@ -38,6 +38,8 @@ namespace CoreModel
         #region Association
         [Association(@"LEDGER_COA_FK")]
         public XPCollection<Ledger> Ledgers { get { return GetCollection<Ledger>("Ledgers"); }  }
+        [Association("LEDGER_COA_MAIN_ACCOUNTS_FK")]
+        public XPCollection<MainAccount> MainAccounts { get { return GetCollection<MainAccount>("MainAccounts"); } }
         #endregion
     }
 }

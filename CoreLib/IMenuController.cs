@@ -12,5 +12,6 @@ namespace CoreLib
         void EnableDeleteButton(Boolean _settings);
         void EnableAddButton(Boolean _settings);
         void EnableEditButton(Boolean _settings);
+        void SetStatusBarText(string txt = "OK");
     }
 }

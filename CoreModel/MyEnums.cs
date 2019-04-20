@@ -8,6 +8,9 @@ namespace CoreModel
 {
    public class MyEnums
     {
+        public enum MainAccountClass{ Total=0,Assets=1,Liabilities=2,Equity=3,Revenues=4,CostOfGoodsSold=5,Expenses=6}
+        public enum BalanceControl {None=0,Debit=1,Credit=2 }
+        public enum AccountClosingType { None=0,BalanceSheetAccounts=10,ResultAcounts=20,OwnershipAccounts=30}
         public enum DefinitionType { All=0,Group=10, ReferenceNumber1 =20, ReferenceNumber2=30, SpecificRow =40}
         public enum Module { GeneralLedger=10,AccountsPayable=20,AccountsReceivable=30,Inventory,Bank}
         public enum DocType
@@ -27,8 +30,8 @@ namespace CoreModel
 
         public enum AccountType
         {
-            Employee=10,Customer=20,Vendor=30,InventoryItem=40,
-            MainAccount=50
+            MainAccountOnly = 0,Employee =10,Customer=20,Vendor=30,InventoryItem=40
+            
         }
         public enum DebitCredit { Debit=1,Credit=-1}
         public enum InventoryDirection { Incoming=1,Outgoing= -1}

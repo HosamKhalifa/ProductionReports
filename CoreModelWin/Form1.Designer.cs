@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
+            this.gLNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.cOALink = new DevExpress.XtraNavBar.NavBarItem();
+            this.mainAccountsTypeLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.mainAccountsLink = new DevExpress.XtraNavBar.NavBarItem();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
             this.fiscalCalenderYearLink = new DevExpress.XtraNavBar.NavBarItem();
@@ -40,7 +45,9 @@
             this.sequenceLink = new DevExpress.XtraNavBar.NavBarItem();
             this.currencyCodeLink = new DevExpress.XtraNavBar.NavBarItem();
             this.currencySetupLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.aPNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.retrieveBI = new DevExpress.XtraBars.BarButtonItem();
@@ -62,13 +69,7 @@
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection();
-            this.gLNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
-            this.cOALink = new DevExpress.XtraNavBar.NavBarItem();
-            this.aPNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.mainAccountsTypeLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.mainAccountsLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -106,6 +107,35 @@
             this.navBarControl1.Size = new System.Drawing.Size(203, 363);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
+            // 
+            // gLNavGrp
+            // 
+            this.gLNavGrp.Caption = "General Ledger";
+            this.gLNavGrp.Expanded = true;
+            this.gLNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.cOALink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountsTypeLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountsLink)});
+            this.gLNavGrp.Name = "gLNavGrp";
+            this.gLNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("gLNavGrp.SmallImage")));
+            // 
+            // cOALink
+            // 
+            this.cOALink.Caption = "Chart of accounts";
+            this.cOALink.Name = "cOALink";
+            this.cOALink.SmallImage = ((System.Drawing.Image)(resources.GetObject("cOALink.SmallImage")));
+            // 
+            // mainAccountsTypeLink
+            // 
+            this.mainAccountsTypeLink.Caption = "Main accounts type";
+            this.mainAccountsTypeLink.Name = "mainAccountsTypeLink";
+            this.mainAccountsTypeLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsTypeLink.SmallImage")));
+            // 
+            // mainAccountsLink
+            // 
+            this.mainAccountsLink.Caption = "Main accounts";
+            this.mainAccountsLink.Name = "mainAccountsLink";
+            this.mainAccountsLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsLink.SmallImage")));
             // 
             // SystemSetupNavGrp
             // 
@@ -170,6 +200,18 @@
             this.currencySetupLink.Caption = "Currency setup";
             this.currencySetupLink.Name = "currencySetupLink";
             this.currencySetupLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("currencySetupLink.SmallImage")));
+            // 
+            // aPNavGrp
+            // 
+            this.aPNavGrp.Caption = "Accounts payable";
+            this.aPNavGrp.Name = "aPNavGrp";
+            this.aPNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("aPNavGrp.SmallImage")));
+            // 
+            // navBarGroup1
+            // 
+            this.navBarGroup1.Caption = "Accounts receivable";
+            this.navBarGroup1.Name = "navBarGroup1";
+            this.navBarGroup1.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup1.SmallImage")));
             // 
             // barManager1
             // 
@@ -384,47 +426,6 @@
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // gLNavGrp
-            // 
-            this.gLNavGrp.Caption = "General Ledger";
-            this.gLNavGrp.Expanded = true;
-            this.gLNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.cOALink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountsTypeLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.mainAccountsLink)});
-            this.gLNavGrp.Name = "gLNavGrp";
-            this.gLNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("gLNavGrp.SmallImage")));
-            // 
-            // cOALink
-            // 
-            this.cOALink.Caption = "Chart of accounts";
-            this.cOALink.Name = "cOALink";
-            this.cOALink.SmallImage = ((System.Drawing.Image)(resources.GetObject("cOALink.SmallImage")));
-            // 
-            // aPNavGrp
-            // 
-            this.aPNavGrp.Caption = "Accounts payable";
-            this.aPNavGrp.Name = "aPNavGrp";
-            this.aPNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("aPNavGrp.SmallImage")));
-            // 
-            // navBarGroup1
-            // 
-            this.navBarGroup1.Caption = "Accounts receivable";
-            this.navBarGroup1.Name = "navBarGroup1";
-            this.navBarGroup1.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup1.SmallImage")));
-            // 
-            // mainAccountsTypeLink
-            // 
-            this.mainAccountsTypeLink.Caption = "Main accounts type";
-            this.mainAccountsTypeLink.Name = "mainAccountsTypeLink";
-            this.mainAccountsTypeLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsTypeLink.SmallImage")));
-            // 
-            // mainAccountsLink
-            // 
-            this.mainAccountsLink.Caption = "Main accounts";
-            this.mainAccountsLink.Name = "mainAccountsLink";
-            this.mainAccountsLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsLink.SmallImage")));
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,6 +440,7 @@
             this.Name = "Form1";
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

@@ -17,6 +17,9 @@ using DevExpress.Xpo.Metadata;
 using DevExpress.XtraGrid.Views.Grid;
 using CoreLib.Xpo;
 using System.Reflection;
+using DevExpress.XtraDataLayout;
+using DevExpress.XtraLayout;
+using DevExpress.XtraEditors.Controls;
 
 namespace CoreModelWin.AppLists
 {
@@ -24,12 +27,17 @@ namespace CoreModelWin.AppLists
     {
         public AppListInfo(Session session)
         {
-
             this.AppListSession = session;
             ActiveColumnLinks = new List<DevExpress.XtraGrid.Columns.GridColumn>();
-            
-
         }
+        #region Inner classes
+        class LayoutItemInfo
+        {
+            public LayoutControlItem Item { get; set; }
+            public string FieldName { get; set; }
+            public UILabel FieldSettings { get; set; }
+        }
+        #endregion
 
         #region Members
         private RepositoryItemLookUpEditBase repositoryItem;
@@ -126,6 +134,54 @@ namespace CoreModelWin.AppLists
                 }
             }
         }
+        public void LinkToDataLayout(DataLayoutControl _dataLayout, XPCollection ds)
+        {
+            XPClassInfo _classInfo = ds.ObjectClassInfo;
+            var objectBaseLine = AppListSession.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", _classInfo.FullName));
+            if (objectBaseLine == null) { return; }
+            var ControlList = GetControlList(_dataLayout, objectBaseLine);
+           
+            foreach (var c in ControlList )
+            {
+                //Get Label
+
+                c.Item.Text = c.FieldSettings.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldCaption);
+                c.Item.OptionsToolTip.ToolTip = c.FieldSettings.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldHelp);
+
+                c.Item.Control.Enabled = !c.FieldSettings.IsDisabled;
+                if(c.FieldSettings.LookupEditor != null)
+                {
+                   if(c.Item.Control is LookUpEdit)
+                    {
+                        LinkListToColumn((LookUpEdit)c.Item.Control, c.FieldSettings.LookupEditor.ObjectType());
+                    }else if (c.Item.Control is SearchLookUpEdit)
+                    {
+                        LinkListToColumn((SearchLookUpEdit)c.Item.Control, c.FieldSettings.LookupEditor.ObjectType());
+                    }
+                }
+            }
+        }
+
+        private List<LayoutItemInfo> GetControlList(DataLayoutControl _dataLayout,UIObjectBase _objectBaseLine)
+        {
+            var lst = new List<LayoutItemInfo>();
+            string cName = "";
+            foreach (var item in _dataLayout.Items)
+            {
+                LayoutControlItem i = item as LayoutControlItem;
+                if (i != null)
+                {
+                    var c = i.Control;
+                    cName = $"{c.Name.Replace(c.GetType().Name, "")}";
+                    UILabel label = _objectBaseLine.ObjectLabels.Where(x => x.ColumnName == cName).FirstOrDefault();
+                    if (label == null) continue;
+                    lst.Add(new LayoutItemInfo()
+                    {  FieldName= cName.Trim(),Item = i,FieldSettings=label
+                    });
+                }
+            }
+            return lst;
+        }
 
         public void LinkListToColumn(DevExpress.XtraGrid.Columns.GridColumn col,Type tableType, string _valueMember="",string gridFilterString = "")
         {
@@ -188,19 +244,33 @@ namespace CoreModelWin.AppLists
             }
 
         }
-        public void LinkListToColumn(DevExpress.XtraEditors.LookUpEdit col)
+        public void LinkListToColumn(DevExpress.XtraEditors.LookUpEdit col,Type _targetObj)
         {
             try
             {
+                CriteriaOperator criteria = new BinaryOperator(new OperandProperty("ObjectName"), new OperandValue(_targetObj.FullName), BinaryOperatorType.Equal);
+                var targetObjectBase = AppListSession.FindObject<UIObjectBase>(criteria);
+                if (targetObjectBase == null) return;
 
-                RepositoryItemLookUpEdit MyList = (RepositoryItemLookUpEdit)this.LayoutObject;
-                //MyList.Columns.Assign(col.Properties.Columns);
-                col.Properties.Columns.Assign(MyList.Columns);
+                DataMemberXPCollection = new XPCollection(AppListSession, _targetObj);
+                foreach (var labl in targetObjectBase.ObjectLabels.Where(x=> x.LookupMember != CoreLib.MyEnums.AutoLookUp.None))
+                {
+                    if(labl.LookupMember == CoreLib.MyEnums.AutoLookUp.ValueMemberVisiable || labl.LookupMember == CoreLib.MyEnums.AutoLookUp.ValueMemberHidden)
+                    {
+                        ValueMember = labl.ColumnName;
+                    }
+                    else if(labl.LookupMember == CoreLib.MyEnums.AutoLookUp.DisplayMember1)
+                    {
+                        DisplayMember = labl.ColumnName;
+                    }
+
+                    col.Properties.Columns.Add(new LookUpColumnInfo(labl.ColumnName, labl.GetGUIWidth(col.Font), labl.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldCaption)));
+
+                }
                 col.Properties.DataSource = DataMemberXPCollection;
                 col.Properties.DisplayMember = this.DisplayMember;
                 col.Properties.ValueMember = this.ValueMember;
                 RetrieveRows(false);
-
 
             }
             catch (Exception ex)

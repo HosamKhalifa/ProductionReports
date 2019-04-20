@@ -123,6 +123,9 @@ namespace CoreModelWin
                 case CoreLib.MyEnums.FormEntityEnum.MainAccountType:
                     MenuController.MainAccountTypeFormOpen(_args);
                     break;
+                case CoreLib.MyEnums.FormEntityEnum.MainAccount:
+                    MenuController.MainAccountFormOpen(_args);
+                    break;
                 default:
                     break;
             }
@@ -149,8 +152,10 @@ namespace CoreModelWin
                     Save();
                     break;
                 case CoreLib.MyEnums.MainFunction.NewRecord:
+                    NewRecord();
                     break;
                 case CoreLib.MyEnums.MainFunction.DeleteRecord:
+                    DeleteRecord();
                     break;
                 case CoreLib.MyEnums.MainFunction.Print:
                     break;
@@ -171,6 +176,12 @@ namespace CoreModelWin
         #endregion
 
         #region Open Methods
+        public static void MainAccountFormOpen(Args _args)
+        {
+            _args.Caller = _args.Caller == null?MdiParentForm:_args.Caller;
+            View.GL.MainAccount frm = new View.GL.MainAccount(_args) { MdiParent=MdiParentForm,WindowState=FormWindowState.Maximized};
+            frm.Show();
+        }
         public static void MainAccountTypeFormOpen(Args _args)
         {
             //Simple form expect calss type passed in Args.ObjectParm
@@ -295,6 +306,14 @@ namespace CoreModelWin
         public static void Retrieve()
         {
             ActiveChildForm?.Retrieve();            
+        }
+        public static void NewRecord()
+        {
+            ActiveChildForm?.NewRecord();
+        }
+        public static bool? DeleteRecord()
+        {
+            return ActiveChildForm?.DeleteRecord();
         }
         #endregion
 

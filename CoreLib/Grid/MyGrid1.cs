@@ -26,6 +26,17 @@ namespace CoreLib.Grid
     [ToolboxItem(true)]
     public class MyGridControl : GridControl
     {
+        public MyGridControl()
+        {
+            this.GotFocus += (s, e) => 
+            {
+                foreach (var v in this.Views)
+                {
+                    var gv = v as MyGridView;
+                    gv.EnableEditButtons();
+                }
+            };
+        }
         protected override BaseView CreateDefaultView()
         {
             return CreateView("MyGridView");
@@ -36,7 +47,7 @@ namespace CoreLib.Grid
         {
             base.RegisterAvailableViewsCore(collection);
             collection.Add(new MyGridViewInfoRegistrator());
-            this.UseEmbeddedNavigator = true;
+         
             this.KeyDown += (s, e) => 
             {
                 try
@@ -80,7 +91,11 @@ namespace CoreLib.Grid
             };
         }
 
-       
+        #region Properties
+
+      
+
+        #endregion
     }
 
     public class MyGridViewInfoRegistrator : GridInfoRegistrator
@@ -95,7 +110,7 @@ namespace CoreLib.Grid
 
         public override BaseView CreateView(GridControl grid)
         {
-            return new MyGridView(grid);
+           return new MyGridView(grid);
         }
 
         public override BaseViewInfo CreateViewInfo(BaseView view)
@@ -123,11 +138,7 @@ namespace CoreLib.Grid
             this.OptionsView.ShowFooter = true;
             this.OptionsView.EnableAppearanceEvenRow = true;
             this.OptionsMenu.ShowGroupSummaryEditorItem = true;
-            this.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
-            //this.OptionsEditForm.ActionOnModifiedRowChange = EditFormModifiedAction.Save;
-            this.OptionsEditForm.BindingMode = EditFormBindingMode.Cached;
-            this.OptionsEditForm.EditFormColumnCount = 2;
-
+            
             //Labels
             //Should calling after datasource settings ApplyLabelToColumns();
             this.DataSourceChanged += (s, e) => 
@@ -165,7 +176,6 @@ namespace CoreLib.Grid
              {
                  try
                  {
-
                      switch (this.OptionsBehavior.EditingMode)
                      {
                          case GridEditingMode.EditForm:
@@ -589,6 +599,21 @@ namespace CoreLib.Grid
             
             
         }
+        public void EnableEditButtons()
+        {
+            var gc = this.GridControl;
+            ControlNavigator cn = (ControlNavigator)gc.EmbeddedNavigator;
+            cn.Buttons.Remove.Enabled = EnableNavBarEditButtons;
+            cn.Buttons.Append.Enabled = EnableNavBarEditButtons;
+            cn.Buttons.Edit.Enabled = EnableNavBarEditButtons;
+            if (EnableNavBarEditButtons)
+            {
+                this.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
+                this.OptionsEditForm.BindingMode = EditFormBindingMode.Cached;
+                this.OptionsEditForm.EditFormColumnCount = 2;
+            }
+
+        }
         #endregion //Helper methods
 
         #region Events
@@ -600,18 +625,34 @@ namespace CoreLib.Grid
         #endregion
 
         #region Properties
+        private bool fEnableNavBarEditButtons = true;
+        public bool EnableNavBarEditButtons
+        {
+            get
+            {
+                return fEnableNavBarEditButtons;
+            }
+
+            set
+            {
+                fEnableNavBarEditButtons = value;
+            }
+        }
         private bool fEnableAutoFormat=true;
         public bool EnableAutoFormat
         {
             get { return fEnableAutoFormat; }
             set { fEnableAutoFormat = value; }
         }
+
         private bool fEnableAutoSave = true;
         public bool EnableAutoSave
         {
             get { return fEnableAutoSave; }
             set { fEnableAutoSave = value; }
         }
+
+      
         #endregion
 
         public MyGridView(GridControl grid) : base(grid)

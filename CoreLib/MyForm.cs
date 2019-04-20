@@ -89,16 +89,23 @@ namespace CoreLib
                     
             //} 
         }
+
         #region Properties
         public virtual void SetStatusBarText(string txt="OK")
         {
-
+            if(this.MdiParent != null && (this.MdiParent is IMenuController))
+            {
+                var parent = (IMenuController)this.MdiParent;
+                parent.SetStatusBarText(txt);
+            }
             
         }
         #endregion
+
         #region Methods
         
         #endregion
+
         #region Events
         public virtual bool PreClosingOperations()
         {
@@ -129,6 +136,20 @@ namespace CoreLib
             return true;
 
         }
+        public virtual void NewRecord()
+        {
+            //Should be overrided on Desctents form
+        }
+        public virtual bool DeleteRecord()
+        {
+            bool askUser = false;
+            if(XtraMessageBox.Show("Do you want to delete current record?","Delete",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                askUser = true;
+            }
+            return askUser;
+        }
+
         public virtual void FillAllTables()
         {
            //Should override in desctents with logic for requery 

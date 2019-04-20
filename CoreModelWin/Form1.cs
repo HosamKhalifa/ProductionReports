@@ -85,11 +85,6 @@ namespace CoreModelWin
                 CoreLib.GlobalMethods.UILang = langBI.EditValue.ToString();
             };
         }
-        public override void SetStatusBarText(string txt = "OK")
-        {
-            statusBarTxt.Caption = txt;
-            base.SetStatusBarText(txt);
-        }
         private void InitConn()
         {
             try
@@ -191,6 +186,11 @@ namespace CoreModelWin
         }
         */
         #region IMenu interface
+        public override void SetStatusBarText(string txt = "OK")
+        {
+            statusBarTxt.Caption = txt;
+            base.SetStatusBarText(txt);
+        }
         public void EnableSaveButton(bool _settings)
         {
             saveBarButtonItem.Enabled = _settings;
@@ -210,6 +210,12 @@ namespace CoreModelWin
         {
             printBarButtonItem.Enabled = _settings;
         }
+        
         #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

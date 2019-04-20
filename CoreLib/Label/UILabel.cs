@@ -14,6 +14,7 @@ using DevExpress.Xpo.DB;
 using DevExpress.XtraGrid.Columns;
 using System.Drawing;
 using CoreLib.Grid;
+using DevExpress.XtraLayout;
 
 namespace CoreLib.Label
 {
@@ -68,6 +69,7 @@ namespace CoreLib.Label
             ret = lblLang.Lang;
             return ret;
         }
+        
         public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol,bool enableAutoFormat)
         {
             //Save Column information in grid column Tag
@@ -89,6 +91,7 @@ namespace CoreLib.Label
             gv.Columns[ColumnName].VisibleIndex = IsHidden ? -1 : VisibleOrder;
             gv.Columns[ColumnName].OptionsEditForm.VisibleIndex = IsHidden ? -1 : VisibleOrder;
         }
+       
         public static string NextLineVal(Session unitOfWork)
         {
             #region EndCode
@@ -243,7 +246,11 @@ namespace CoreLib.Label
         {
             get { return FieldName?.Substring(FieldName.LastIndexOf('.') + 1); }
         }
-
+        public int GetGUIWidth(Font _font)
+        {
+            Size columnSize = TextRenderer.MeasureText("".PadLeft(Width, 'A'),_font);
+            return columnSize.Width;
+        }
 
         #endregion
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DevExpress.Xpo;
 using DevExpress.Data.Filtering;
-
+using CoreLib.SharedExt;
 namespace CoreModel
 {
     [Persistent(@"MAIN_ACCOUNT_TB")]
@@ -21,8 +21,29 @@ namespace CoreModel
         public override void AfterConstruction()
         {
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.MainAccount);
+            MainAccountClass = MyEnums.MainAccountClass.Assets;
+            Active = true;
+            BalanceControl = MyEnums.BalanceControl.None;
+            DisableManualEntry = false;
             base.AfterConstruction();
         }
+        #region Methods
+        protected override bool Validate()
+        {
+            bool ret = true;
+            ret = ret && MainAccountType != null;
+            ret = ret && EffectiveFrom != null;
+            ret = ret && LedgerChartOfAccounts != null;
+            ret = ret && DisplayNumber.IsNotNull();
+            ret = ret && Name.IsNotNull();
+
+            return base.Validate() && ret;
+        }
+        void InitAccountClass(MyEnums.MainAccountClass _mainActClass)
+        {
+            
+        }
+        #endregion
         #region Fields
         int fDepth;
         [Persistent(@"DEPTH")]
@@ -46,20 +67,51 @@ namespace CoreModel
             get { return fEffectiveFrom; }
             set { SetPropertyValue<DateTime>("EffectiveFrom", ref fEffectiveFrom, value); }
         }
-
-        MainAccount fOffsetMainAccount;
-        public MainAccount OffsetMainAccount
-        {
-            get { return fOffsetMainAccount; }
-            set { SetPropertyValue<MainAccount>("OffsetMainAccount", ref fOffsetMainAccount, value); }
-        }
         LedgerChartOfAccounts fLedgerChartOfAccounts;
+        [Persistent(@"LEDGER_COA")]
         [Association("LEDGER_COA_MAIN_ACCOUNTS_FK")]
         public LedgerChartOfAccounts LedgerChartOfAccounts
         {
             get { return fLedgerChartOfAccounts; }
             set { SetPropertyValue<LedgerChartOfAccounts>("LedgerChartOfAccounts", ref fLedgerChartOfAccounts, value); }
         }
+
+        MyEnums.BalanceControl fBalanceControl;
+        [Persistent(@"BALANCE_CONTROL")]
+        public MyEnums.BalanceControl BalanceControl
+        {
+            get { return fBalanceControl; }
+            set { SetPropertyValue<MyEnums.BalanceControl>("BalanceControl", ref fBalanceControl, value); }
+        }
+        MyEnums.AccountClosingType fAccountClosingType;
+        [Persistent(@"ACCOUNT_CLOSING_TYPE")]
+        public MyEnums.AccountClosingType AccountClosingType
+        {
+            get { return fAccountClosingType; }
+            set { SetPropertyValue<MyEnums.AccountClosingType>("AccountClosingType", ref fAccountClosingType, value); }
+        }
+        bool fDisableManualEntry;
+        [Persistent(@"DISABLE_MANUAL_ENTRY")]
+        public bool DisableManualEntry
+        {
+            get { return fDisableManualEntry; }
+            set { SetPropertyValue<bool>("DisableManualEntry", ref fDisableManualEntry, value); }
+        }
+        MyEnums.MainAccountClass fMainAccountClass;
+        [Persistent(@"MAIN_ACCOUNT_CLASS")]
+        public MyEnums.MainAccountClass MainAccountClass
+        {
+            get { return fMainAccountClass; }
+            set { SetPropertyValue<MyEnums.MainAccountClass>("MainAccountClass", ref fMainAccountClass, value); }
+        }
+        MyEnums.AccountType fDetailsType;
+        [Persistent(@"MAIN_ACCOUNT_DETAIL_TYPE")]
+        public MyEnums.AccountType DetailsType
+        {
+            get { return fDetailsType; }
+            set { SetPropertyValue<MyEnums.AccountType>("DetailsType", ref fDetailsType, value); }
+        }
+
 
         #endregion
 
