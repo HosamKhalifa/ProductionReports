@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FieldsSettingsFrm));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
@@ -208,11 +207,11 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode176 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            this.uIObjectBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.uILabelXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.uILabelLanXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
+            this.uIObjectBaseXPC = new DevExpress.Xpo.XPCollection();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection();
+            this.uILabelXPC = new DevExpress.Xpo.XPCollection();
+            this.uILabelLanXPC = new DevExpress.Xpo.XPCollection();
+            this.xpCollection1 = new DevExpress.Xpo.XPCollection();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
@@ -252,21 +251,21 @@
             this.colLang_fr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.myGridControl3 = new CoreLib.Grid.MyGridControl();
-            this.objectRelationHeaderXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.objectRelationHeaderXPC = new DevExpress.Xpo.XPCollection();
             this.myGridView4 = new CoreLib.Grid.MyGridView();
             this.colRelationId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRelationName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colParentObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colChildObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.uILabelBinding = new System.Windows.Forms.BindingSource(this.components);
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.uILabelBinding = new System.Windows.Forms.BindingSource();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.defaultEnglishColumnBI = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
-            this.defaultEnglishColumnBI = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uIObjectBaseXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -389,7 +388,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.myGridControl1);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(272, 458);
+            this.xtraTabPage4.Size = new System.Drawing.Size(272, 408);
             this.xtraTabPage4.Text = "Object tables";
             // 
             // myGridControl1
@@ -859,7 +858,10 @@
             this.colObjectName,
             this.colAssemblyName});
             this.myGridView1.EnableAutoFormat = true;
+            this.myGridView1.EnableAutoSave = true;
+            
             this.myGridView1.GridControl = this.myGridControl1;
+            this.myGridView1.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
             this.myGridView1.Name = "myGridView1";
             this.myGridView1.UnitOfWorkXpo = this.unitOfWork1;
             // 
@@ -879,7 +881,10 @@
             // myGridView3
             // 
             this.myGridView3.EnableAutoFormat = true;
+            this.myGridView3.EnableAutoSave = true;
+          
             this.myGridView3.GridControl = this.myGridControl1;
+            this.myGridView3.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
             this.myGridView3.Name = "myGridView3";
             this.myGridView3.UnitOfWorkXpo = null;
             // 
@@ -899,7 +904,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.xtraTabControl3);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(591, 458);
+            this.xtraTabPage1.Size = new System.Drawing.Size(591, 408);
             this.xtraTabPage1.Text = "Properties";
             // 
             // xtraTabControl3
@@ -909,7 +914,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage5;
-            this.xtraTabControl3.Size = new System.Drawing.Size(591, 458);
+            this.xtraTabControl3.Size = new System.Drawing.Size(591, 408);
             this.xtraTabControl3.TabIndex = 2;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage5});
@@ -918,7 +923,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.columnTableViewSCC);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(565, 448);
+            this.xtraTabPage5.Size = new System.Drawing.Size(565, 398);
             this.xtraTabPage5.Text = "Columns";
             // 
             // columnTableViewSCC
@@ -932,7 +937,7 @@
             this.columnTableViewSCC.Panel1.Text = "Panel1";
             this.columnTableViewSCC.Panel2.Controls.Add(this.labelLangGC);
             this.columnTableViewSCC.Panel2.Text = "Panel2";
-            this.columnTableViewSCC.Size = new System.Drawing.Size(565, 448);
+            this.columnTableViewSCC.Size = new System.Drawing.Size(565, 398);
             this.columnTableViewSCC.SplitterPosition = 153;
             this.columnTableViewSCC.TabIndex = 1;
             this.columnTableViewSCC.Text = "splitContainerControl2";
@@ -946,7 +951,7 @@
             this.myGridControl2.Name = "myGridControl2";
             this.myGridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.objClassLookup});
-            this.myGridControl2.Size = new System.Drawing.Size(565, 289);
+            this.myGridControl2.Size = new System.Drawing.Size(565, 239);
             this.myGridControl2.TabIndex = 0;
             this.myGridControl2.UseEmbeddedNavigator = true;
             this.myGridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -969,7 +974,10 @@
             this.colVisibleOrder,
             this.colLookupFormRef});
             this.myGridView2.EnableAutoFormat = false;
+            this.myGridView2.EnableAutoSave = true;
+            
             this.myGridView2.GridControl = this.myGridControl2;
+            this.myGridView2.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.SimpleEdit;
             this.myGridView2.Name = "myGridView2";
             this.myGridView2.OptionsView.ColumnAutoWidth = false;
             this.myGridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -1115,7 +1123,10 @@
             this.colLang_ar,
             this.colLang_fr});
             this.labelLangGV.EnableAutoFormat = false;
+            this.labelLangGV.EnableAutoSave = true;
+            
             this.labelLangGV.GridControl = this.labelLangGC;
+            this.labelLangGV.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
             this.labelLangGV.Name = "labelLangGV";
             this.labelLangGV.OptionsView.ShowGroupPanel = false;
             this.labelLangGV.UnitOfWorkXpo = this.unitOfWork1;
@@ -1186,7 +1197,10 @@
             this.colParentObjectName,
             this.colChildObjectName});
             this.myGridView4.EnableAutoFormat = true;
+            this.myGridView4.EnableAutoSave = true;
+            
             this.myGridView4.GridControl = this.myGridControl3;
+            this.myGridView4.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
             this.myGridView4.Name = "myGridView4";
             this.myGridView4.OptionsDetail.AllowExpandEmptyDetails = true;
             this.myGridView4.OptionsDetail.AllowOnlyOneMasterRowExpanded = true;
@@ -1249,6 +1263,40 @@
             this.barManager1.MdiMenuMergeStyle = DevExpress.XtraBars.BarMdiMenuMergeStyle.OnlyWhenChildMaximized;
             this.barManager1.StatusBar = this.bar3;
             // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.defaultEnglishColumnBI)});
+            this.bar1.Text = "Tools";
+            // 
+            // defaultEnglishColumnBI
+            // 
+            this.defaultEnglishColumnBI.Caption = "Default EN ";
+            this.defaultEnglishColumnBI.Glyph = ((System.Drawing.Image)(resources.GetObject("defaultEnglishColumnBI.Glyph")));
+            this.defaultEnglishColumnBI.Id = 0;
+            this.defaultEnglishColumnBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("defaultEnglishColumnBI.LargeGlyph")));
+            this.defaultEnglishColumnBI.Name = "defaultEnglishColumnBI";
+            this.defaultEnglishColumnBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            toolTipItem1.Text = "Default column names to english system field name";
+            superToolTip1.Items.Add(toolTipItem1);
+            this.defaultEnglishColumnBI.SuperTip = superToolTip1;
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -1276,38 +1324,6 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(873, 28);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 441);
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.defaultEnglishColumnBI)});
-            this.bar1.Text = "Tools";
-            // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
-            // defaultEnglishColumnBI
-            // 
-            this.defaultEnglishColumnBI.Caption = "Default EN ";
-            this.defaultEnglishColumnBI.Glyph = ((System.Drawing.Image)(resources.GetObject("defaultEnglishColumnBI.Glyph")));
-            this.defaultEnglishColumnBI.Id = 0;
-            this.defaultEnglishColumnBI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("defaultEnglishColumnBI.LargeGlyph")));
-            this.defaultEnglishColumnBI.Name = "defaultEnglishColumnBI";
-            this.defaultEnglishColumnBI.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipItem1.Text = "Default column names to english system field name";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.defaultEnglishColumnBI.SuperTip = superToolTip1;
             // 
             // FieldsSettingsFrm
             // 

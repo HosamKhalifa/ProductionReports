@@ -22,7 +22,16 @@ namespace CoreModel
             
             
         }
-        public enum SysSequence { LINE_ID_SEQU=10, UI_LABEL_SEQU = 20 ,GL_COMB_ID_SEQU=30,COMB_ID_SEQU=40}
+        public enum SysSequence
+        {
+            None=0,
+            LINE_ID_SEQU =10, UI_LABEL_SEQU = 20 ,GL_COMB_ID_SEQU=30,COMB_ID_SEQU=40
+            //Dimension sequences
+            ,MAIN_ACCOUNT_DIM_SEQU=50, EMPLOYEE_DIM_SEQU = 60, CUSTOMER_DIM_SEQU =70, VENDOR_DIM_SEQU =80
+            ,INVENTORY_DIM_SEQU =90, PURPOSE_DIM_SEQU =100, LOCATION_DIM_SEQU =110, DEPARTMENT_DIM_SEQU =120
+            ,EQUIPMENT_DIM_SEQU =130,PROJECT_DIM_SEQU =140, FIXED_ASSET_DIM_SEQU = 150
+
+        }
         public enum TableType
         {
             Master=10,Document=20,DocumentLine=30,Parameter=40,System=50
@@ -30,7 +39,8 @@ namespace CoreModel
 
         public enum AccountType
         {
-            MainAccountOnly = 0,Employee =10,Customer=20,Vendor=30,InventoryItem=40
+            MainAccountOnly = 0,Employee =10,Customer=20,Vendor=30,InventoryItem=40,Purpose=50,Location=60,Department=70,
+            Equipment=80,FixedAssets
             
         }
         public enum DebitCredit { Debit=1,Credit=-1}

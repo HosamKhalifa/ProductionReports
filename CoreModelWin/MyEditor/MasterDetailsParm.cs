@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoreLib;
 
 namespace CoreModelWin.MyEditor
 {
@@ -14,5 +15,37 @@ namespace CoreModelWin.MyEditor
         public string MasterKeyName { get; set; }
         public string DetailsKeyName { get; set; }
         public KeyTypeEnum KeyType { get; set; }
+
+        public MyEnums.GridViewEditMode MasterGVEditMode
+        {
+            get
+            {
+                return fMasterGVEditMode;
+            }
+
+            set
+            {
+                fMasterGVEditMode = value;
+            }
+        }
+
+        public MyEnums.GridViewEditMode DetailsGVEditMode
+        {
+            get
+            {
+                return fDetailsGVEditMode;
+            }
+
+            set
+            {
+                fDetailsGVEditMode = value;
+            }
+        }
+
+        private CoreLib.MyEnums.GridViewEditMode fMasterGVEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
+
+        private CoreLib.MyEnums.GridViewEditMode fDetailsGVEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
+
+
     }
 }

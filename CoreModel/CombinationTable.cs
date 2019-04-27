@@ -24,7 +24,19 @@ namespace CoreModel
             base.AfterConstruction();
         }
         #region Methods
-
+       /* public static CombinationTable FindOrCreateCombination( MainAccount _mainAccount,
+                                                                string _detAccountDim="",
+                                                                string _LocationDim = "", 
+                                                                string _DepartmentDim="",
+                                                                string _ProjectDim="",
+                                                                string _PurposeDim="",
+                                                                string _EquipmentDim="",
+                                                                string _BusinessPartner=""
+                                                               )
+        {
+            CombinationTable combination;
+            return combination;
+        }*/
         #endregion
         #region Fields
         long fCombinationId;
@@ -80,7 +92,13 @@ namespace CoreModel
             get { return fEquipmentDim; }
             set { SetPropertyValue<string>("EquipmentDim", ref fEquipmentDim, value); }
         }
-
+        string fBusinessPartenerDim;
+        [Persistent(@"BP_DIM"),Size(9)]
+        public string BusinessPartenerDim
+        {
+            get { return fBusinessPartenerDim; }
+            set { SetPropertyValue<string>("BusinessPartenerDim", ref fBusinessPartenerDim, value); }
+        }
 
         #endregion
     }

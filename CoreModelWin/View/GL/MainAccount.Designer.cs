@@ -188,7 +188,7 @@
             this.colMainAccountClass});
             this.mainActListGV.EnableAutoFormat = false;
             this.mainActListGV.EnableAutoSave = false;
-            this.mainActListGV.EnableNavBarEditButtons = false;
+        
             this.mainActListGV.GridControl = this.myGridControl1;
             this.mainActListGV.Name = "mainActListGV";
             this.mainActListGV.OptionsEditForm.EditFormColumnCount = 1;

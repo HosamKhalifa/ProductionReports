@@ -126,6 +126,15 @@ namespace CoreModelWin
                 case CoreLib.MyEnums.FormEntityEnum.MainAccount:
                     MenuController.MainAccountFormOpen(_args);
                     break;
+                case CoreLib.MyEnums.FormEntityEnum.Customer:
+                    MenuController.CustomerFormOpen(_args);
+                    break;
+                case CoreLib.MyEnums.FormEntityEnum.Country:
+                    MenuController.CountryFormOpen(_args);
+                    break;
+                case CoreLib.MyEnums.FormEntityEnum.City:
+                    MenuController.CityFormOpen(_args);
+                    break;
                 default:
                     break;
             }
@@ -176,6 +185,40 @@ namespace CoreModelWin
         #endregion
 
         #region Open Methods
+        public static void CityFormOpen(Args _args)
+        {
+            //Curreny will use runtime Master - Details form
+            var parms = new MyEditor.MasterDetailsParm()
+            {
+                MasterClass = typeof(Province),
+                MasterKeyName = "LineId",
+                Details = typeof(City),
+                DetailsKeyName = "Province",
+                KeyType = KeyTypeEnum.Object,
+                MasterGVEditMode = CoreLib.MyEnums.GridViewEditMode.SimpleEdit,
+                DetailsGVEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit
+            };
+            _args.ParmObject = parms;
+            MasterDetailsForm frm = new MasterDetailsForm(_args)
+            { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+
+        }
+        public static void CountryFormOpen(Args _args)
+        {
+            //Simple form expect calss type passed in Args.ObjectParm
+            _args.ParmObject = typeof(Country);
+            SimpleForm frm = new MyEditor.SimpleForm(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+        }
+        public static void CustomerFormOpen(Args _args)
+        {
+            _args.Caller = _args.Caller == null ? MdiParentForm : _args.Caller;
+            _args.ParmEnumType = typeof(TableBase.TableEnum);
+            _args.ParmEnumValue = (int)TableBase.TableEnum.Customer;
+            View.Shared.AccountBase frm = new View.Shared.AccountBase(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+        }
         public static void MainAccountFormOpen(Args _args)
         {
             _args.Caller = _args.Caller == null?MdiParentForm:_args.Caller;

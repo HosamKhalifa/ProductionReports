@@ -8,6 +8,7 @@ namespace CoreLib
 {
     public class MyEnums
     {
+        public enum GridViewEditMode { ReadOnly=0,SimpleEdit=1,FormEdit=2}
         public enum AutoLookUp {None=0, ValueMemberVisiable=5,ValueMemberHidden=7,DisplayMember1=10, DisplayMember2 = 20, DisplayMember3 = 30, DisplayMember4 = 40, DisplayMember5 = 50, DisplayMember6 = 60, DisplayMember7 = 70 }
         public enum UILabelType
         {
@@ -19,7 +20,8 @@ namespace CoreLib
         public enum FormEntityEnum
         {
             None=0,TestForm=1, FieldsSetting=2, Sequence=3, UILabel=4, TableBase=5, FiscalCalender=6, Currency=7, CurrencySetup=8,
-            FiscalCalenderYear=9, LedgerChartOfAccounts=10,Ledger=11,MainAccountType=12,MainAccount=13
+            FiscalCalenderYear=9, LedgerChartOfAccounts=10,Ledger=11,MainAccountType=12,MainAccount=13,Customer=14,Vendor = 15,
+            Employee=16,Equipment=17,Purpose=18,Country=19,City=20,Province=21
         }
         //this enum should assigned to general tool bar item.tag property 
         public enum MainFunction

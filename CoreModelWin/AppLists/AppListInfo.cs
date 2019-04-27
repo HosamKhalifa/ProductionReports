@@ -119,7 +119,10 @@ namespace CoreModelWin.AppLists
             if (objectBaseLine == null) { return; }
             foreach (var m in _classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistentAttribute") == null))
             {
-                var c = _gridView.Columns.ColumnByFieldName(m.Name);
+                //if (x.FindAttributeInfo("NonPersistentAttribute") == null) continue;
+                var c = _gridView.Columns.ColumnByFieldName(m.Name) == null ?
+                        _gridView.Columns.ColumnByFieldName($"{m.Name}!Key"):
+                        null;
                 if (c != null)
                 {
                     string fieldName = $"{m.Owner.FullName}.{m.Name}";

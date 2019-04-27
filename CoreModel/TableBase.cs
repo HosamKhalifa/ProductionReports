@@ -20,7 +20,6 @@ namespace CoreModel
 
             base.AfterConstruction();
         }
-        int fTableId;
         #region Members
         public enum TableEnum
         {
@@ -29,18 +28,17 @@ namespace CoreModel
             AddressBook=1119, CombinationHeader=1120, CombinationTable=1121, 
             DocumentTypeAccounts=1122, SequenceValues=1123, TaxAgency=1124,TaxGroup=1125,
             Workflow=1126,Vendor=1127,Employee=1128,Department=1129,Location=1130,
-            Project=1131,Purpose,Item=1132, Service =1133, Currency = 1134,
+            Project=1131,Purpose, Service =1133, Currency = 1134,
             CurrencyPair=1135, CurrencyPairExchangeRate= 1136,Ledger = 1137,
             FiscalCalendar = 1138, FiscalCalenderYear=1139, FiscalCalenderPeriod=1140,
-            LedgerChartOfAccounts = 1141
-
-
+            LedgerChartOfAccounts = 1141,Equipment=1142,
+            FixedAsset = 1143, Item = 1144, DimensionBase=1145,DimensionHeader=1146,
+            Country=1147,City=1148,Province=1149
         }
         #endregion
 
         #region Fields
-
-
+        int fTableId;
         [Persistent(@"TABLE_ID"),Key]
         public int TableId
         {
@@ -138,7 +136,7 @@ namespace CoreModel
             public static string GetTableDimPrefix(TableEnum _table)
             {
 
-                var lst = typeof(DimPrefixEnum).GetFields(BindingFlags.Static).Where(x => x.Name == Enum.GetName(typeof(TableEnum), _table)).FirstOrDefault();
+                var lst = typeof(DimPrefixEnum).GetProperties().Where(x => x.Name == Enum.GetName(typeof(TableEnum), _table)).FirstOrDefault();
                 if(lst != null)
                 {
 
@@ -161,6 +159,11 @@ namespace CoreModel
             public static string Purpose { get { return "PR"; } }
             public static string Item { get { return "IT"; } }
             public static string Service { get { return "SR"; } }
+            public static string FixedAsset { get { return "FX"; } }
+            public static string Equipment { get { return "EQ"; } }
+            
+            
+
         }
         #endregion
 
@@ -170,6 +173,7 @@ namespace CoreModel
         {
             return  session.GetObjectByKey<TableBase>((int)_table);
         }
+        [Obsolete]
         public string NextDimValue()
         {
             if (string.IsNullOrEmpty(DimensionPrefix))

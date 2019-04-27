@@ -145,26 +145,35 @@ namespace CoreLib.Grid
             {
                 if (!this.DesignMode)
                 {
-                    
-                    if (this.DataSource is XPCollection)
+                    XPCollection ds = null;
+                    if (this.DataSource is XPCollection)                                //Level 1
                     {
-                        var ds = (XPCollection)this.DataSource;
-                        
-                        this.BeginInit();
-                        ApplyLabel((XPCollection)ds);
-                        ds.CollectionChanged += (sndr, arg) => 
+                        ds = (XPCollection)this.DataSource;
+                        if(ds != null)
                         {
-                            if (arg.CollectionChangedType == DevExpress.Xpo.XPCollectionChangedType.AfterRemove)
+                            this.BeginInit();
+                            ApplyLabel((XPCollection)ds);
+                            ds.CollectionChanged += (sndr, arg) => 
                             {
-                                if (ds.Session is UnitOfWork)//Should be UnitOfWork to use extension method SaveLine
+                                if (arg.CollectionChangedType == DevExpress.Xpo.XPCollectionChangedType.AfterRemove)
                                 {
-                                    UnitOfWork unit = (UnitOfWork)ds.Session;
-                                    unit.Delete(arg.ChangedObject);
-                                    //unit.SaveLine();
-                                }
+                                    if (ds.Session is UnitOfWork)//Should be UnitOfWork to use extension method SaveLine
+                                    {
+                                        UnitOfWork unit = (UnitOfWork)ds.Session;
+                                        unit.Delete(arg.ChangedObject);
+                                        //unit.SaveLine();
+                                    }
 
-                            }
-                        };
+                                }
+                            };
+                            this.EndInit();
+                        }
+                    }
+                    else if(this.DataSource is BindingSource && this.ClassInfo != null && this.UnitOfWorkXpo != null)
+                    {
+                        this.BeginInit();
+                        var xpClassInfo = UnitOfWorkXpo.GetClassInfo(this.ClassInfo);
+                        ApplyLabel(xpClassInfo);
                         this.EndInit();
                     }
 
@@ -547,27 +556,50 @@ namespace CoreLib.Grid
                 }
             }
         }
+
         public void ApplyLabel(XPCollection ds)
         {
-            if(this.UnitOfWorkXpo == null)
+            if (this.UnitOfWorkXpo == null)
             {
                 string errTxt = $"GridView has null UnitOfWorkXpo please set data source for this gridView{this.GridControl.TopLevelControl.Name}.{this.GridControl.Name}.{this.Name}";
                 if (this.GridControl.TopLevelControl is CoreLib.MyForm)
                 {
                     var frm = (CoreLib.MyForm)this.GridControl.TopLevelControl;
                     if (frm.IsMdiContainer)
-                         { frm.SetStatusBarText(errTxt); }
-                    else {XtraMessageBox.Show(errTxt);}
+                    { frm.SetStatusBarText(errTxt); }
+                    else { XtraMessageBox.Show(errTxt); }
 
                 }
-                
-                
+
+
                 return;
             }
-            
+
             var classInfo = ds.ObjectClassInfo;
+            ApplyLabel(classInfo);
+
+        }
+        public void ApplyLabel(XPClassInfo  classInfo )
+        {
+            if (this.UnitOfWorkXpo == null)
+            {
+                string errTxt = $"GridView has null UnitOfWorkXpo please set data source for this gridView{this.GridControl.TopLevelControl.Name}.{this.GridControl.Name}.{this.Name}";
+                if (this.GridControl.TopLevelControl is CoreLib.MyForm)
+                {
+                    var frm = (CoreLib.MyForm)this.GridControl.TopLevelControl;
+                    if (frm.IsMdiContainer)
+                    { frm.SetStatusBarText(errTxt); }
+                    else { XtraMessageBox.Show(errTxt); }
+
+                }
+
+
+                return;
+            }
+
+            
             var objectBaseLine = this.UnitOfWorkXpo.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", classInfo.FullName));
-            if(objectBaseLine == null) { return; }
+            if (objectBaseLine == null) { return; }
             //Disable and hide all columns before start enable and show based on user settings 
 
             if (EnableAutoFormat)
@@ -578,35 +610,41 @@ namespace CoreLib.Grid
                     grdC.VisibleIndex = -1;
                     grdC.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
                     grdC.OptionsColumn.AllowEdit = false;
-                } 
+                }
             }
-            foreach (var m in classInfo.Members/*.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistent") != null)*/)
+            // foreach (var m in classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistent") != null))
+            foreach (XPMemberInfo m in classInfo.PersistentProperties)
             {
-               // bool isNonPersist = m.FindAttributeInfo("NonPersistentAttribute") != null;
-
-                var c = this.Columns.ColumnByFieldName(m.Name);
-                if(c != null)
+                // bool isNonPersist = m.FindAttributeInfo("NonPersistentAttribute") != null;
+                var c = this.Columns[m.Name] ?? this.Columns[$"{m.Name}!Key"];
+                //var c = this.Columns.ColumnByFieldName(m.MappingField) ;
+                if (c == null)//Try add !Key for missed field name
+                {
+                    c = this.Columns.ColumnByFieldName($"{m.Name}!Key");
+                }
+                if (c != null)
                 {
                     string fieldName = $"{m.Owner.FullName}.{m.Name}";
                     var labelLine = objectBaseLine.FindOrCreateUILabel(fieldName);
-                        if (labelLine != null)
-                        {
-                            labelLine.ApplyFieldSettings(this,c,EnableAutoFormat);
-                            
-                        }
-                   }
+                    if (labelLine != null)
+                    {
+                        labelLine.ApplyFieldSettings(this, c, EnableAutoFormat);
+
+                    }
+                }
             }
-            
-            
+
+
         }
+
         public void EnableEditButtons()
         {
             var gc = this.GridControl;
             ControlNavigator cn = (ControlNavigator)gc.EmbeddedNavigator;
-            cn.Buttons.Remove.Enabled = EnableNavBarEditButtons;
-            cn.Buttons.Append.Enabled = EnableNavBarEditButtons;
-            cn.Buttons.Edit.Enabled = EnableNavBarEditButtons;
-            if (EnableNavBarEditButtons)
+            cn.Buttons.Remove.Enabled = GridViewEditMode != MyEnums.GridViewEditMode.ReadOnly;
+            cn.Buttons.Append.Enabled = GridViewEditMode != MyEnums.GridViewEditMode.ReadOnly;
+            cn.Buttons.Edit.Enabled     = GridViewEditMode != MyEnums.GridViewEditMode.ReadOnly;
+            if (GridViewEditMode == MyEnums.GridViewEditMode.FormEdit)
             {
                 this.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
                 this.OptionsEditForm.BindingMode = EditFormBindingMode.Cached;
@@ -625,6 +663,13 @@ namespace CoreLib.Grid
         #endregion
 
         #region Properties
+        private MyEnums.GridViewEditMode fGridViewEditMode=MyEnums.GridViewEditMode.FormEdit;
+        public MyEnums.GridViewEditMode GridViewEditMode
+        {
+            get { return fGridViewEditMode; }
+            set { fGridViewEditMode = value; }
+        }
+        /*
         private bool fEnableNavBarEditButtons = true;
         public bool EnableNavBarEditButtons
         {
@@ -638,6 +683,7 @@ namespace CoreLib.Grid
                 fEnableNavBarEditButtons = value;
             }
         }
+        */
         private bool fEnableAutoFormat=true;
         public bool EnableAutoFormat
         {
@@ -650,6 +696,12 @@ namespace CoreLib.Grid
         {
             get { return fEnableAutoSave; }
             set { fEnableAutoSave = value; }
+        }
+        private Type fClassInfo;
+        public Type ClassInfo
+        {
+            get { return fClassInfo; }
+            set { fClassInfo = value; }
         }
 
       

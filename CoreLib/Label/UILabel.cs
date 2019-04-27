@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Columns;
 using System.Drawing;
 using CoreLib.Grid;
 using DevExpress.XtraLayout;
+using System.Diagnostics;
 
 namespace CoreLib.Label
 {
@@ -72,24 +73,33 @@ namespace CoreLib.Label
         
         public void ApplyFieldSettings(MyGridView gv ,GridColumn grdCol,bool enableAutoFormat)
         {
+            //Avoid access to null when field is complex name Like Name!Key or Name!
+            var c = gv.Columns[ColumnName] ?? gv.Columns[$"{ColumnName}!Key"];
+            if (c == null)
+            {
+                Debug.WriteLine($"{ColumnName} has been scapped from apply settings");
+                return;
+            }
+            
             //Save Column information in grid column Tag
             GridColumnInfo info = new GridColumnInfo() { ColumnLablel = this };
             grdCol.Tag = info;
-           // gv.Columns.Remove()
-            gv.Columns[ColumnName].Caption = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldCaption);
-            gv.Columns[ColumnName].ToolTip = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldHelp);
+            // gv.Columns.Remove()
+
+            c.Caption = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldCaption);
+            c.ToolTip = ChooseValueForCurrentLang(MyEnums.UILabelType.FieldHelp);
 
             if (!enableAutoFormat) return;//Exit for non formated grid view
 
             Size columnSize = TextRenderer.MeasureText("".PadLeft(Width, 'A'), grdCol.AppearanceCell.Font);
-            gv.Columns[ColumnName].Width = IsHidden ? 0: columnSize.Width;
-            gv.Columns[ColumnName].OptionsColumn.ReadOnly = this.IsDisabled;
-            gv.Columns[ColumnName].OptionsColumn.AllowEdit = !IsDisabled;
-            gv.Columns[ColumnName].OptionsEditForm.Visible = IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
-            
-            gv.Columns[ColumnName].Visible = !IsHidden;
-            gv.Columns[ColumnName].VisibleIndex = IsHidden ? -1 : VisibleOrder;
-            gv.Columns[ColumnName].OptionsEditForm.VisibleIndex = IsHidden ? -1 : VisibleOrder;
+            c.Width = IsHidden ? 0: columnSize.Width;
+            c.OptionsColumn.ReadOnly = this.IsDisabled;
+            c.OptionsColumn.AllowEdit = !IsDisabled;
+            c.OptionsEditForm.Visible = IsDisabled ? DevExpress.Utils.DefaultBoolean.False : DevExpress.Utils.DefaultBoolean.Default;
+
+            c.Visible = !IsHidden;
+            c.VisibleIndex = IsHidden ? -1 : VisibleOrder;
+            c.OptionsEditForm.VisibleIndex = IsHidden ? -1 : VisibleOrder;
         }
        
         public static string NextLineVal(Session unitOfWork)

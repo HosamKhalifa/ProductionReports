@@ -36,7 +36,7 @@ namespace CoreModel
 
         string fMainAccountNum;
         [Persistent(@"MAIN_ACCOUNT_DIM"), Size(9)]
-        [Indexed("DetailAccountDim", Name = "MAIN_ACT_DETAIL_ACT_UQ",  Unique = true)]
+        [Indexed("DetailAccountDim;LedgerChartOfAccounts", Name = "MAIN_ACT_DETAIL_ACT_UQ",  Unique = true)]
         public string MainAccountNum
         {
             get { return fMainAccountNum; }
@@ -49,6 +49,14 @@ namespace CoreModel
         {
             get { return fDetailAccountDim; }
             set { SetPropertyValue<string>("DetailAccountDim", ref fDetailAccountDim, value); }
+        }
+
+        public LedgerChartOfAccounts fLedgerChartOfAccounts;
+        [Persistent(@"LEDGER_COA")]
+        public LedgerChartOfAccounts LedgerChartOfAccounts
+        {
+            get { return fLedgerChartOfAccounts; }
+            set { SetPropertyValue<LedgerChartOfAccounts>("LedgerChartOfAccounts", ref fLedgerChartOfAccounts, value); }
         }
 
         #region Associations

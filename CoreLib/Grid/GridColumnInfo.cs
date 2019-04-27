@@ -10,7 +10,7 @@ namespace CoreLib.Grid
 {
    public class GridColumnInfo
     {
-        //Current column label
+   
         public UILabel ColumnLablel { get; set; }
         public Args FormArgs { get; set; }
       //  public string LookupValue { get; set; }//Value of current row for lookup field
@@ -21,6 +21,7 @@ namespace CoreLib.Grid
                 return ColumnLablel != null && ColumnLablel.LookupFormRef != MyEnums.FormEntityEnum.None;
             }
         }
+
        
 
     }

@@ -126,6 +126,18 @@
     <Compile Include="View\GL\MainAccount.Designer.cs">
       <DependentUpon>MainAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Sales\AccountBaseLineXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Sales\AccountBaseLineXUC.Designer.cs">
+      <DependentUpon>AccountBaseLineXUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\AccountBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Shared\AccountBase.Designer.cs">
+      <DependentUpon>AccountBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sys\SequenceEditXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +182,12 @@
     <EmbeddedResource Include="View\GL\MainAccount.resx">
       <DependentUpon>MainAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Sales\AccountBaseLineXUC.resx">
+      <DependentUpon>AccountBaseLineXUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Shared\AccountBase.resx">
+      <DependentUpon>AccountBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +223,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\AP\" />
+    <Folder Include="View\AR\" />
+    <Folder Include="View\HR\" />
+    <Folder Include="View\Inventory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

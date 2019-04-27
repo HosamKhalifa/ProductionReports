@@ -128,13 +128,18 @@ namespace CoreModelWin.MyEditor
             detailsGC.DataSource = detailsXPC;
             detailsGC.RefreshDataSource();
 
-          
+            //Enable edit mode
+            masterGV.GridViewEditMode = parms.MasterGVEditMode;
+            detailsGV.GridViewEditMode = parms.DetailsGVEditMode;
 
             AppLists.AppListInfo masterAppLists = new AppLists.AppListInfo(unitOfWork1);
             masterAppLists.LinkLookupsToGrid(masterGV, masterXPC);
 
             AppLists.AppListInfo detailsAppLists = new AppLists.AppListInfo(unitOfWork1);
             detailsAppLists.LinkLookupsToGrid(detailsGV, detailsXPC);
+
+
+
         }
     }
 }

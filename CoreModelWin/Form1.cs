@@ -63,6 +63,10 @@ namespace CoreModelWin
             cOALink.Tag = CoreLib.MyEnums.FormEntityEnum.LedgerChartOfAccounts;
             mainAccountsTypeLink.Tag = CoreLib.MyEnums.FormEntityEnum.MainAccountType;
             mainAccountsLink.Tag = CoreLib.MyEnums.FormEntityEnum.MainAccount;
+            customerLink.Tag = CoreLib.MyEnums.FormEntityEnum.Customer;
+            countryLink.Tag = CoreLib.MyEnums.FormEntityEnum.Country;
+            cityLink.Tag = CoreLib.MyEnums.FormEntityEnum.City;
+            testLink.Tag = CoreLib.MyEnums.FormEntityEnum.TestForm;
         }
 
         private void InitBarButtons()
@@ -74,7 +78,7 @@ namespace CoreModelWin
                     CoreLib.FormRecord.CurrentRecord.Reload();
                 }
             };
-
+          
         }
 
         private void InitMyForm()
@@ -115,6 +119,8 @@ namespace CoreModelWin
                 {
                     s.UpdateSchema(item);
                 }
+                //Initialize DB system rows
+                CoreModel.SysDataInit.InitDB(s);
                
 
 

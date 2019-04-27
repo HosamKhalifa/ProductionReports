@@ -17,6 +17,7 @@ namespace CoreModel
             base.AfterConstruction();
         }
         #region Fields
+        /*
         string fDimensionValue;
         [Size(9)]
         [Persistent(@"DIM_VAL")]
@@ -26,7 +27,16 @@ namespace CoreModel
             get { return fDimensionValue; }
             set { SetPropertyValue<string>("DimensionValue", ref fDimensionValue, value); }
         }
-       
+        */
+        DimensionHeader fDimensionHeader;
+        [Persistent(@"DIM_HEADER")]
+        [Association("DIMENSION_HEADER_ACCOUNTS_FK")]
+        public DimensionHeader DimensionHeader
+        {
+            get { return fDimensionHeader; }
+            set { SetPropertyValue<DimensionHeader>("DimensionHeader", ref fDimensionHeader, value); }
+        }
+
         string fDisplayNumber;
         [Size(9)]
         [Persistent(@"DISPLAY_NUMBER")]
@@ -104,12 +114,23 @@ namespace CoreModel
         #region Associations
         [Association(@"Account-Addresses")]
         public XPCollection<AddressBook> AccountAddresses { get { return GetCollection<AddressBook>("AccountAddresses"); } }
+
+      
+      
         #endregion
 
         #region Events
         protected override void OnSaving()
         {
-            if(TableId != null) { DimensionValue = TableId.NextDimValue(); }
+            if(TableId != null && Session.IsNewObject(this))
+            {
+                var dimBase = Session.GetObjectByKey<DimensionBase>(TableId.TableId);//Test if TableId has Dimension 
+                if (dimBase != null)
+                {
+                    DimensionHeader = DimensionBase.FindOrCreateDimHeader(this);
+                }
+               
+            }
             
             base.OnSaving();
         }
