@@ -24,6 +24,7 @@ namespace CoreModel
         }
         public enum SequRecycle { Continuous = 10,Monthly=20,Yearly=30}
         public enum SequenceType { Account=10,Document= 20}
+        public enum SequenceGenerating { Automatic = 200 , Manual=400}
         public enum SequencUsedeDate {None=0, EffectiveDate=10,DocumentDate=20,LedgerDate}
         public enum SysSequence
         {

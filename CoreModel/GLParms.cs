@@ -17,6 +17,33 @@ namespace CoreModel
             base.AfterConstruction();
         }
 
+        #region Methods
+        public static void BuildTableRows(Session _uOW)
+        {
+            var GLP = _uOW.GetObjectByKey<GLParms>(-100);
+            if(GLP == null)
+            {
+                GLP = new GLParms(_uOW)
+                {
+                    SingleLineKey = -100
+                };
+                GLP.Save();
+                _uOW.CommitTransaction();
+            }
+        }
+
+        #endregion
+
+        #region Static Property
+        public static GLParms GLParameters(Session _uOW)
+        {
+             return _uOW.GetObjectByKey<GLParms>(-100);
+        }
+        #endregion
+
+
+        #region Fields
+
         int fSingleLineKey = -100;
         [Persistent(@"SINGLE_LINE_KEY"),Key]
         public int SingleLineKey
@@ -39,5 +66,7 @@ namespace CoreModel
             get { return fTempAccountSequ; }
             set { SetPropertyValue<Sequence>("TempAccountSequ", ref fTempAccountSequ, value); }
         }
+        #endregion
+
     }
 }

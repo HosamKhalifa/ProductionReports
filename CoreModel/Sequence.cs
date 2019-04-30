@@ -77,6 +77,7 @@ namespace CoreModel
             }
             return hashCode;
         }
+
         
         #endregion
 
@@ -141,6 +142,14 @@ namespace CoreModel
         {
             get { return fSequencUsedeDate; }
             set { SetPropertyValue<MyEnums.SequencUsedeDate>("SequencUsedeDate", ref fSequencUsedeDate, value); }
+        }
+
+        MyEnums.SequenceGenerating fSequenceGenerating;
+        [Persistent(@"SEQU_GEN")]
+        public MyEnums.SequenceGenerating SequenceGenerating
+        {
+            get { return fSequenceGenerating; }
+            set { fSequenceGenerating = value; }
         }
         #endregion
 

@@ -14,8 +14,22 @@ namespace CoreModel
         public Account(Session session) : base(session) { }
         public override void AfterConstruction()
         {
+            //Default display number to temp sequence
+            DisplayNumber = GetDefaultDisplayNumber();
             base.AfterConstruction();
         }
+
+        #region Methods
+        
+        public virtual string GetDefaultDisplayNumber()
+        {
+            var sequ =  GLParms.GLParameters(Session).TempAccountSequ;
+            return sequ.NextValue(CoreLib.FormRecord.EffectiveDate);
+        }
+
+
+        #endregion
+
         #region Fields
         /*
         string fDimensionValue;
