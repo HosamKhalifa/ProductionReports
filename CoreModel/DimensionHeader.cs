@@ -13,6 +13,12 @@ namespace CoreModel
         public DimensionHeader(Session session) : base(session)
         {
         }
+        public DimensionHeader(Session session,Account _account):base(session)
+        {
+            DimDisplayNumber = _account.DisplayNumber;
+            DimSearchName = _account.Name;
+            DimAccountBase = _account;
+        }
         public override void AfterConstruction()
         {
             base.AfterConstruction();
@@ -47,6 +53,14 @@ namespace CoreModel
         {
             get { return fDimensionBase; }
             set { SetPropertyValue<DimensionBase>("DimensionBase", ref fDimensionBase, value); }
+        }
+
+        private Account fDimAccountBase;
+        [Persistent(@"DIM_ACCOUNT_BASE")]
+        public Account DimAccountBase
+        {
+            get { return fDimAccountBase; }
+            private set { fDimAccountBase = value; }
         }
 
         #endregion

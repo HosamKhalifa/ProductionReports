@@ -83,6 +83,7 @@
     <Compile Include="FiscalCalendar.cs" />
     <Compile Include="FiscalCalenderPeriod.cs" />
     <Compile Include="FiscalCalenderYear.cs" />
+    <Compile Include="GLParms.cs" />
     <Compile Include="JournalBase.cs" />
     <Compile Include="Ledger.cs" />
     <Compile Include="LedgerChartOfAccounts.cs" />

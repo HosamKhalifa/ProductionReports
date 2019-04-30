@@ -8,6 +8,7 @@ using CoreLib.Xpo;
 using DevExpress.Xpo.Metadata;
 using System.Reflection;
 using CoreLib;
+using CoreLib.Label;
 
 namespace CoreModel
 {
@@ -169,6 +170,13 @@ namespace CoreModel
 
 
         #region Methods
+        public Type GetTableType()
+        {
+            var a = CoreLib.GlobalMethods.GetAssemblyByName(AssemblyName);
+            Type tabType = a.GetType(ClassName);
+            return tabType;
+
+        }
         public static TableBase GetTable(Session session,TableEnum _table)
         {
             return  session.GetObjectByKey<TableBase>((int)_table);
@@ -245,8 +253,8 @@ namespace CoreModel
             ret.TableType = (MyEnums.TableType)le_TableType;
 
             ret.DimensionPrefix = DimPrefixEnum.GetTableDimPrefix(le_TableName);
-            ret.AssemblyName = _type.Assembly.FullName;
-            ret.ClassName = _type.Name;
+            ret.AssemblyName = _type.Assembly.GetName().Name;
+            ret.ClassName = _type.FullName;
 
             return ret;
         }

@@ -17,6 +17,7 @@ namespace CoreModel
                 DimensionBase.TableBaseRowsBuilder(uOW);
                 Country.BuildTableRows(uOW);
                 Currency.BuildTableRows(uOW);
+                Workflow.BuildTableRows(uOW);
             }
 
             

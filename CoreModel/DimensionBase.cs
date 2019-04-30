@@ -16,6 +16,7 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
+            
             base.AfterConstruction();
         }
 
@@ -23,9 +24,10 @@ namespace CoreModel
 
         public long NextDimKey()
         {
-            long startValue = TableId * 1000 * 1000 * 10;
-            long dimValue = SysSequence.NextVal(Session, DimensionSequence, startValue);
-            return dimValue;
+            long lenValue = 1000 * 1000 * 10;
+            long sequVal = SysSequence.NextVal(Session, DimensionSequence, 1);
+            long newValue = (lenValue * TableId) + sequVal;
+            return newValue;
         }
         public static void TableBaseRowsBuilder(UnitOfWork session)
         {
@@ -110,23 +112,22 @@ namespace CoreModel
         public static DimensionHeader FindOrCreateDimHeader(Account _account)
         {
             //CriteriaOperator.Parse("[AccountReferenceObject] = ?",new OperandValue(_account))
-            var filter = new BinaryOperator(new OperandProperty("AccountReferenceObject"), new OperandValue(_account), BinaryOperatorType.Equal);
+            
+            var filter = new BinaryOperator(new OperandProperty("DimAccountBase"), new OperandValue(_account), BinaryOperatorType.Equal);
             DimensionHeader dim = _account.Session.FindObject<DimensionHeader>(filter);
             if(dim == null)
             {
                 var dimBase = _account.Session.GetObjectByKey<DimensionBase>(_account.TableId.TableId);
                 if(dimBase != null)
                 {
-                    dim = new DimensionHeader(_account.Session)
+                    dim = new DimensionHeader(_account.Session,_account)
                     {
                         DimensionBase = dimBase,
-                        DimensionKey = dimBase.NextDimKey(),
-                        DimDisplayNumber = _account.DisplayNumber,
-                        DimSearchName = _account.Name
+                        DimensionKey = dimBase.NextDimKey()
                     };
                     dim.Save();
                     
-                    _account.Session.CommitTransaction();
+               
                 }
             }
             return dim;

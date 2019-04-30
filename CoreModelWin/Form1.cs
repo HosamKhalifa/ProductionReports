@@ -78,7 +78,26 @@ namespace CoreModelWin
                     CoreLib.FormRecord.CurrentRecord.Reload();
                 }
             };
-          
+            //Link effective date 
+            effectiveDateBarStaticItem.Caption = $"Effective:{CoreLib.FormRecord.EffectiveDate.ToShortDateString()}";
+            effectiveDateBarStaticItem.ItemDoubleClick +=(s,e)=>
+            {
+                var parmList = new List<CoreLib.InputBoxInfo>();
+                parmList.Add(new CoreLib.InputBoxInfo()
+                {
+                    Name = "EffectiveDate",
+                    Caption = "Effective date:",
+                    DataType = typeof(DateTime)
+                });
+
+                CoreLib.InputBox.Show("Enter new effective date",parmList );
+                CoreLib.InputBoxInfo data = parmList.Where(x => x.Name == "EffectiveDate").FirstOrDefault();
+                if(data.InputValue != null)
+                {
+                    CoreLib.FormRecord.EffectiveDate = ((DateTime)data.InputValue).Date;
+                    effectiveDateBarStaticItem.Caption = CoreLib.FormRecord.EffectiveDate.ToShortDateString();
+                }
+            };
         }
 
         private void InitMyForm()

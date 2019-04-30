@@ -20,6 +20,68 @@ namespace CoreModel
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.Sequence);
             base.AfterConstruction();
         }
+        #region Methods
+        protected override bool Validate()
+        {
+          
+            bool isValid = true;
+            if((this.SequRecycle == MyEnums.SequRecycle.Monthly || SequRecycle == MyEnums.SequRecycle.Yearly) &&
+                this.SequencUsedeDate == MyEnums.SequencUsedeDate.None)
+            {
+                isValid = false;
+                throw new Exception("Monthly and Yearly sequence need to be used date selected");
+                
+            }
+            return base.Validate() && isValid;
+        }
+        public string NextValue(DateTime _date) //Date should be passed as Sequ type {Document,Finance or Effective date}
+        {
+            string newValue = "";
+            if(_date == null) { _date = CoreLib.FormRecord.EffectiveDate; }
+            if (!(_date >= StartDate && _date <= EndDate)) return "";
+            var sequValueLine = FindOrCreateSequenceValue(GetHash(_date));
+            newValue = sequValueLine.NextVal();
+            return newValue;
+        }
+        SequenceValues FindOrCreateSequenceValue(string _hash)
+        {
+            var line = this.SequenceValues.Where(x => x.SequenceKey == _hash).FirstOrDefault();
+            if(line == null)
+            {
+                line = new CoreModel.SequenceValues(Session)
+                {
+                    SequenceId = this,
+                    SequenceKey = _hash,
+                    CurrentValue = 0
+                };
+                SequenceValues.Add(line);
+            }
+            return line;
+        }
+        private string GetHash(DateTime _date)
+        {
+            string hashCode = "";
+            switch (SequRecycle)
+            {
+                case MyEnums.SequRecycle.Continuous:
+                    hashCode += "XXXXXX"; 
+                    break;
+                case MyEnums.SequRecycle.Monthly:
+                    hashCode += (_date.Year * 100 + _date.Month).ToString();
+                    break;
+                case MyEnums.SequRecycle.Yearly:
+                    hashCode += (_date.Year * 100 ).ToString();
+                    break;
+                default:
+                    break;
+            }
+            return hashCode;
+        }
+        
+        #endregion
+
+        #region Fields
+
         string fSequName;
         [Indexed(Name = @"SEQU_NAME_UK", Unique = true)]
         [Size(200)]
@@ -37,13 +99,12 @@ namespace CoreModel
             get { return fSequMask; }
             set { SetPropertyValue<string>("SequMask", ref fSequMask, value); }
         }
-        string fSequType;
-        [Size(1)]
+        MyEnums.SequenceType fSequType;
         [Persistent(@"SEQU_TYPE")]
-        public string SequType
+        public MyEnums.SequenceType SequType
         {
             get { return fSequType; }
-            set { SetPropertyValue<string>("SequType", ref fSequType, value); }
+            set { SetPropertyValue<MyEnums.SequenceType>("SequType", ref fSequType, value); }
         }
         byte fSequLength;
         [Persistent(@"SEQU_LENGTH")]
@@ -66,21 +127,23 @@ namespace CoreModel
             get { return fEndDate; }
             set { SetPropertyValue<DateTime>("EndDate", ref fEndDate, value); }
         }
-        string fSequRecycle;
-        [Size(1)]
+        MyEnums.SequRecycle fSequRecycle;
         [Persistent(@"SEQU_RECYCLE")]
-        public string SequRecycle
+        public MyEnums.SequRecycle SequRecycle
         {
             get { return fSequRecycle; }
-            set { SetPropertyValue<string>("SequRecycle", ref fSequRecycle, value); }
+            set { SetPropertyValue<MyEnums.SequRecycle>("SequRecycle", ref fSequRecycle, value); }
         }
-        byte fWFStatusCreation;
-        [Persistent(@"SEQU_WF_STATUS_CREATION")]
-        public byte WFStatusCreation
+
+        MyEnums.SequencUsedeDate fSequencUsedeDate;
+        [Persistent(@"SEQU_USED_DATE")]
+        public MyEnums.SequencUsedeDate SequencUsedeDate
         {
-            get { return fWFStatusCreation; }
-            set { SetPropertyValue<byte>("WFStatusCreation", ref fWFStatusCreation, value); }
+            get { return fSequencUsedeDate; }
+            set { SetPropertyValue<MyEnums.SequencUsedeDate>("SequencUsedeDate", ref fSequencUsedeDate, value); }
         }
+        #endregion
+
         #region Associations
         [Association(@"Sequence_SequenceValues")]
         public XPCollection<SequenceValues> SequenceValues { get { return GetCollection<SequenceValues>("SequenceValues"); } }

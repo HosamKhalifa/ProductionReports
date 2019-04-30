@@ -1,6 +1,7 @@
 ﻿using CoreLib.Xpo;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Metadata;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -44,5 +45,9 @@ namespace CoreModelWin.MyEditor
 
 
         }
+
+        public CoreLib.Grid.MyGridView MainGridView { get { return myGridView1; }  }
+        public Bar MainBar { get { return mainBar; }}
+
     }
 }

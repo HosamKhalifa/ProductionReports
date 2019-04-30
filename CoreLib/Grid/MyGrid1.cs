@@ -133,11 +133,14 @@ namespace CoreLib.Grid
     {
         public MyGridView()
         {
-            this.OptionsView.ColumnAutoWidth = false;
-            this.OptionsView.ShowAutoFilterRow = true;
-            this.OptionsView.ShowFooter = true;
-            this.OptionsView.EnableAppearanceEvenRow = true;
-            this.OptionsMenu.ShowGroupSummaryEditorItem = true;
+            if (!DesignMode)
+            {
+                this.OptionsView.ColumnAutoWidth = false;
+                this.OptionsView.ShowAutoFilterRow = true;
+                this.OptionsView.ShowFooter = true;
+                this.OptionsView.EnableAppearanceEvenRow = true;
+                this.OptionsMenu.ShowGroupSummaryEditorItem = true;
+            }
             
             //Labels
             //Should calling after datasource settings ApplyLabelToColumns();
@@ -180,6 +183,7 @@ namespace CoreLib.Grid
                     //ApplyLabelToColumns();
                 }
 
+
             };   
             this.InitNewRow += (s, e) =>
              {
@@ -210,7 +214,7 @@ namespace CoreLib.Grid
                     FormRecord.CurrentRecord = (XPLiteObject)row;                  
                 }
             };
-            if (this.EnableAutoSave && this.UnitOfWorkXpo != null)
+            if (this.EnableAutoSave )
             {
                 this.ValidateRow += (s, e) =>
                     {
@@ -640,6 +644,7 @@ namespace CoreLib.Grid
         public void EnableEditButtons()
         {
             var gc = this.GridControl;
+            gc.UseEmbeddedNavigator = GridViewEditMode != MyEnums.GridViewEditMode.ReadOnly;
             ControlNavigator cn = (ControlNavigator)gc.EmbeddedNavigator;
             cn.Buttons.Remove.Enabled = GridViewEditMode != MyEnums.GridViewEditMode.ReadOnly;
             cn.Buttons.Append.Enabled = GridViewEditMode != MyEnums.GridViewEditMode.ReadOnly;
@@ -720,7 +725,23 @@ namespace CoreLib.Grid
             }
         }
         //UNit of work holder is an access to database
-        public UnitOfWork UnitOfWorkXpo { get; set; }
+        UnitOfWork fUnitOfWorkXpo;
+        public UnitOfWork UnitOfWorkXpo
+        {
+            get
+            {
+                if(fUnitOfWorkXpo == null)
+                {
+                    if(this.GridControl != null)
+                    {
+                        var frm = this.GridControl.FindForm();
+                        if(frm is MyForm) { fUnitOfWorkXpo = ((MyForm)frm).unitOfWork1; }
+                    }
+                }
+                return fUnitOfWorkXpo;
+            }
+            set { fUnitOfWorkXpo = value; }
+        }
 
     }
 

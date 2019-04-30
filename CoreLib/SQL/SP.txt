@@ -1,0 +1,68 @@
+﻿
+GO
+/****** Object:  StoredProcedure [dbo].[sp_Sys_NextValue]    Script Date: 04/28/2019 11:01:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[sp_Sys_NextValue] 
+									(
+										@SequenceId		int,
+										@SequenceName	varchar(120),
+										@StartWith		bigint=0,
+										@NewID int OUTPUT  
+									)
+AS
+BEGIN
+ DECLARE @ReturnValue INT 
+ SELECT @ReturnValue = 0 
+ SET NOCOUNT ON 
+ SET XACT_ABORT ON 
+
+DECLARE	
+@NewValue				int,
+@StartValue				bigint
+
+  BEGIN TRANSACTION 
+    -- Get next value
+	 
+	SELECT @NewValue = SEQUENCE_VALUE + 1 
+	FROM dbo.SYS_SEQUENCE_TB WITH(RowLock,XLock)
+	WHERE SEQUENCE_NAME = @SequenceName
+	
+	IF @@RowCount = 0 
+		BEGIN
+			SET @StartValue = ISNULL(@StartWith,1)
+			INSERT SYS_SEQUENCE_TB(SEQUENCE_ID,SEQUENCE_NAME,SEQUENCE_VALUE,START_WITH)
+			SELECT				   @SequenceId,@SequenceName,@StartValue,@StartValue
+			SET @NewValue = @StartValue
+		END
+	ELSE
+		BEGIN
+			UPDATE dbo.SYS_SEQUENCE_TB SET SEQUENCE_VALUE = @NewValue
+			WHERE SEQUENCE_NAME = @SequenceName
+		END
+	SET @NewID = @NewValue
+	
+GOTO SUCCESS 
+FAILURE: 
+IF @@TRANCOUNT > 0 
+BEGIN 
+ROLLBACK TRANSACTION 
+END 
+SELECT @ReturnValue = -1 
+GOTO COMPLETE 
+SUCCESS: 
+IF @@TRANCOUNT > 0 
+BEGIN 
+COMMIT TRANSACTION 
+END 
+SELECT @ReturnValue = 0  
+COMPLETE: 
+RETURN @ReturnValue
+ END 
+		
+
+
+

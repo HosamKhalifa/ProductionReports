@@ -270,6 +270,21 @@ namespace CoreModelWin
             //Simple form expect calss type passed in Args.ObjectParm
             _args.ParmObject = typeof(Sequence);
             SimpleForm frm = new MyEditor.SimpleForm(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.MainGridView.EnableAutoSave = true;
+            var actionBtn = new DevExpress.XtraBars.BarButtonItem()
+            {
+                Name = "TestSequence",
+                Glyph = DevExpress.Images.ImageResourceCache.Default.GetImage("devav/actions/showproduct_16x16.png")
+            };
+            frm.MainBar.AddItem(actionBtn);
+            actionBtn.ItemClick += (s, e) =>
+            {
+                if(FormRecord.CurrentRecord != null && CoreLib.FormRecord.CurrentRecord  is Sequence)
+                {
+                    var line = (Sequence)FormRecord.CurrentRecord;
+                    MessageBox.Show(line.NextValue(FormRecord.EffectiveDate));
+                }
+            };
             frm.Show();
         }
         public static void FieldsSettingFormOpen()

@@ -192,6 +192,7 @@
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\CoreLib.FormRecord.datasource" />
     <None Include="Properties\DataSources\CoreModel.JournalBase.datasource" />
     <None Include="Properties\DataSources\CoreModel.TableBase.datasource" />
     <None Include="Properties\Settings.settings">

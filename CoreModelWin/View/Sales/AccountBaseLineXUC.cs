@@ -16,14 +16,22 @@ namespace CoreModelWin.View.Sales
             InitializeComponent();
         }
         #region
-        public void InitObj(UnitOfWork _uOW,XPCollection _header,XPCollection _address)
+        public void InitObj(BindingSource _accountBindingSource)
         {
-            accountBaseXPC = _header;
-            addressXPC.Session = _uOW;
-            addressXPC = _address??addressXPC;
+            
 
         }
         #endregion
+        public BindingSource AccountBaseBS
+        {
+            get { return accountBaseBS; }
+            set
+            {
+                accountBaseBS = value;
+                dataLayoutControl1.DataSource = accountBaseBS;
+                
+            }
+        }
 
     }
 }

@@ -13,6 +13,8 @@ namespace CoreLib
 
         public static object ObjectParm { get; set; }
 
+
+
         static string fCurrentUserId;
         public static string CurrentUserId
         { get
@@ -30,5 +32,19 @@ namespace CoreLib
         }
         public static string ProfileConnStr { get; set; }
 
+        static DateTime fEffectiveDate  = DateTime.Today.Date;
+        public static DateTime EffectiveDate
+        {
+            get
+            {
+
+                return fEffectiveDate ;
+            }
+
+            set
+            {
+                fEffectiveDate = value;
+            }
+        }
     }
 }

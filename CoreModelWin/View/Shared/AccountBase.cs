@@ -1,6 +1,7 @@
 ﻿using CoreLib;
 using CoreModel;
 using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,9 +25,21 @@ namespace CoreModelWin.View.Shared
             if(Args.ParmEnumType == typeof(TableBase.TableEnum) && Args.ParmEnumValue > 0)
             {
                 AccountType = (TableBase.TableEnum)Args.ParmEnumValue;
-                var filter = new BinaryOperator(new OperandProperty("TableId"), new OperandValue(AccountType), BinaryOperatorType.Equal);
-                accountBaseXPC.Criteria = filter;
-                accountBaseXPC.LoadingEnabled = true;
+                Type t = TableBase.GetTable(unitOfWork1, AccountType).GetTableType();
+                
+                accountBaseXPC = new XPCollection(unitOfWork1, t) ;
+                accountBaseBS.DataSource = accountBaseXPC;
+                accountBaseLineXUC1.AccountBaseBS = this.accountBaseBS;
+                this.accountBaseBS.ResetBindings(true);
+                accountBaseLineXUC1.AccountBaseBS.ResetBindings(true);
+
+                accountBaseGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
+
+                /*
+                    var filter = new BinaryOperator(new OperandProperty("TableId"), new OperandValue(AccountType), BinaryOperatorType.Equal);
+                    accountBaseXPC.Criteria = filter;
+                    accountBaseXPC.LoadingEnabled = true;
+                 */
             }
         }
 

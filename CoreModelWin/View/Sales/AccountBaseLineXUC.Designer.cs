@@ -32,7 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountBaseLineXUC));
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.addressBookGC = new CoreLib.Grid.MyGridControl();
-            this.addressXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.accountAddressesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.accountBaseBS = new System.Windows.Forms.BindingSource(this.components);
+            this.accountBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.addressBookGV = new CoreLib.Grid.MyGridView();
             this.colLineId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,7 +63,6 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DimensionHeaderTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.accountBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.DisplayNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -87,10 +88,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addressBookGC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBaseBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBookGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimensionHeaderTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayNumberTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
@@ -133,30 +135,40 @@
             this.dataLayoutControl1.Controls.Add(this.ReferenceNumber2LookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.GroupIdLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.ReferenceNumberTextEdit);
-            this.dataLayoutControl1.DataSource = this.accountBaseXPC;
+            this.dataLayoutControl1.DataSource = this.accountBaseBS;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, -1);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(47, 119, 775, 445);
             this.dataLayoutControl1.OptionsView.UseDefaultDragAndDropRendering = false;
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(826, 429);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(822, 458);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // addressBookGC
             // 
-            this.addressBookGC.DataSource = this.addressXPC;
+            this.addressBookGC.DataSource = this.accountAddressesBS;
             this.addressBookGC.Location = new System.Drawing.Point(24, 183);
             this.addressBookGC.MainView = this.addressBookGV;
             this.addressBookGC.Name = "addressBookGC";
-            this.addressBookGC.Size = new System.Drawing.Size(778, 222);
+            this.addressBookGC.Size = new System.Drawing.Size(774, 251);
             this.addressBookGC.TabIndex = 1;
             this.addressBookGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.addressBookGV});
             // 
-            // addressXPC
+            // accountAddressesBS
             // 
-            this.addressXPC.ObjectType = typeof(CoreModel.AddressBook);
+            this.accountAddressesBS.DataMember = "AccountAddresses";
+            this.accountAddressesBS.DataSource = this.accountBaseBS;
+            // 
+            // accountBaseBS
+            // 
+            this.accountBaseBS.DataSource = this.accountBaseXPC;
+            // 
+            // accountBaseXPC
+            // 
+            this.accountBaseXPC.LoadingEnabled = false;
+            this.accountBaseXPC.ObjectType = typeof(CoreModel.Account);
             // 
             // addressBookGV
             // 
@@ -383,7 +395,7 @@
             // 
             // DimensionHeaderTextEdit
             // 
-            this.DimensionHeaderTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "DimensionHeader!Key", true));
+            this.DimensionHeaderTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "DimensionHeader!Key", true));
             this.DimensionHeaderTextEdit.Location = new System.Drawing.Point(108, 84);
             this.DimensionHeaderTextEdit.Name = "DimensionHeaderTextEdit";
             this.DimensionHeaderTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -391,101 +403,96 @@
             this.DimensionHeaderTextEdit.Properties.Mask.EditMask = "N0";
             this.DimensionHeaderTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.DimensionHeaderTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.DimensionHeaderTextEdit.Size = new System.Drawing.Size(302, 20);
+            this.DimensionHeaderTextEdit.Size = new System.Drawing.Size(300, 20);
             this.DimensionHeaderTextEdit.StyleController = this.dataLayoutControl1;
             this.DimensionHeaderTextEdit.TabIndex = 4;
             // 
-            // accountBaseXPC
-            // 
-            this.accountBaseXPC.LoadingEnabled = false;
-            this.accountBaseXPC.ObjectType = typeof(CoreModel.Customer);
-            // 
             // DisplayNumberTextEdit
             // 
-            this.DisplayNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "DisplayNumber", true));
+            this.DisplayNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "DisplayNumber", true));
             this.DisplayNumberTextEdit.Location = new System.Drawing.Point(108, 36);
             this.DisplayNumberTextEdit.Name = "DisplayNumberTextEdit";
-            this.DisplayNumberTextEdit.Size = new System.Drawing.Size(302, 20);
+            this.DisplayNumberTextEdit.Size = new System.Drawing.Size(300, 20);
             this.DisplayNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.DisplayNumberTextEdit.TabIndex = 5;
             // 
             // NameTextEdit
             // 
-            this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "Name", true));
+            this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "Name", true));
             this.NameTextEdit.Location = new System.Drawing.Point(108, 12);
             this.NameTextEdit.Name = "NameTextEdit";
-            this.NameTextEdit.Size = new System.Drawing.Size(706, 20);
+            this.NameTextEdit.Size = new System.Drawing.Size(702, 20);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 6;
             // 
             // DescriptionTextEdit
             // 
-            this.DescriptionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "Description", true));
+            this.DescriptionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "Description", true));
             this.DescriptionTextEdit.Location = new System.Drawing.Point(108, 60);
             this.DescriptionTextEdit.Name = "DescriptionTextEdit";
-            this.DescriptionTextEdit.Size = new System.Drawing.Size(302, 20);
+            this.DescriptionTextEdit.Size = new System.Drawing.Size(300, 20);
             this.DescriptionTextEdit.StyleController = this.dataLayoutControl1;
             this.DescriptionTextEdit.TabIndex = 7;
             // 
             // ActiveCheckEdit
             // 
-            this.ActiveCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "Active", true));
+            this.ActiveCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "Active", true));
             this.ActiveCheckEdit.Location = new System.Drawing.Point(108, 108);
             this.ActiveCheckEdit.Name = "ActiveCheckEdit";
             this.ActiveCheckEdit.Properties.Caption = "Active";
             this.ActiveCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ActiveCheckEdit.Size = new System.Drawing.Size(302, 19);
+            this.ActiveCheckEdit.Size = new System.Drawing.Size(300, 19);
             this.ActiveCheckEdit.StyleController = this.dataLayoutControl1;
             this.ActiveCheckEdit.TabIndex = 8;
             // 
             // ReferenceNumber1LookUpEdit
             // 
-            this.ReferenceNumber1LookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "ReferenceNumber1!Key", true));
-            this.ReferenceNumber1LookUpEdit.Location = new System.Drawing.Point(510, 84);
+            this.ReferenceNumber1LookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "ReferenceNumber1!Key", true));
+            this.ReferenceNumber1LookUpEdit.Location = new System.Drawing.Point(508, 84);
             this.ReferenceNumber1LookUpEdit.Name = "ReferenceNumber1LookUpEdit";
             this.ReferenceNumber1LookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.ReferenceNumber1LookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ReferenceNumber1LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ReferenceNumber1LookUpEdit.Properties.NullText = "";
-            this.ReferenceNumber1LookUpEdit.Size = new System.Drawing.Size(304, 20);
+            this.ReferenceNumber1LookUpEdit.Size = new System.Drawing.Size(302, 20);
             this.ReferenceNumber1LookUpEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumber1LookUpEdit.TabIndex = 9;
             // 
             // ReferenceNumber2LookUpEdit
             // 
-            this.ReferenceNumber2LookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "ReferenceNumber2!Key", true));
-            this.ReferenceNumber2LookUpEdit.Location = new System.Drawing.Point(510, 108);
+            this.ReferenceNumber2LookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "ReferenceNumber2!Key", true));
+            this.ReferenceNumber2LookUpEdit.Location = new System.Drawing.Point(508, 108);
             this.ReferenceNumber2LookUpEdit.Name = "ReferenceNumber2LookUpEdit";
             this.ReferenceNumber2LookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.ReferenceNumber2LookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ReferenceNumber2LookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ReferenceNumber2LookUpEdit.Properties.NullText = "";
-            this.ReferenceNumber2LookUpEdit.Size = new System.Drawing.Size(304, 20);
+            this.ReferenceNumber2LookUpEdit.Size = new System.Drawing.Size(302, 20);
             this.ReferenceNumber2LookUpEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumber2LookUpEdit.TabIndex = 10;
             // 
             // GroupIdLookUpEdit
             // 
-            this.GroupIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "GroupId!Key", true));
-            this.GroupIdLookUpEdit.Location = new System.Drawing.Point(510, 60);
+            this.GroupIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "GroupId!Key", true));
+            this.GroupIdLookUpEdit.Location = new System.Drawing.Point(508, 60);
             this.GroupIdLookUpEdit.Name = "GroupIdLookUpEdit";
             this.GroupIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.GroupIdLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.GroupIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.GroupIdLookUpEdit.Properties.NullText = "";
-            this.GroupIdLookUpEdit.Size = new System.Drawing.Size(304, 20);
+            this.GroupIdLookUpEdit.Size = new System.Drawing.Size(302, 20);
             this.GroupIdLookUpEdit.StyleController = this.dataLayoutControl1;
             this.GroupIdLookUpEdit.TabIndex = 11;
             // 
             // ReferenceNumberTextEdit
             // 
-            this.ReferenceNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseXPC, "ReferenceNumber", true));
-            this.ReferenceNumberTextEdit.Location = new System.Drawing.Point(510, 36);
+            this.ReferenceNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "ReferenceNumber", true));
+            this.ReferenceNumberTextEdit.Location = new System.Drawing.Point(508, 36);
             this.ReferenceNumberTextEdit.Name = "ReferenceNumberTextEdit";
-            this.ReferenceNumberTextEdit.Size = new System.Drawing.Size(304, 20);
+            this.ReferenceNumberTextEdit.Size = new System.Drawing.Size(302, 20);
             this.ReferenceNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumberTextEdit.TabIndex = 12;
             // 
@@ -497,7 +504,7 @@
             this.headerLayoutGroup});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(826, 429);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(822, 458);
             // 
             // headerLayoutGroup
             // 
@@ -516,14 +523,14 @@
             this.detailsLayoutGroup});
             this.headerLayoutGroup.Location = new System.Drawing.Point(0, 0);
             this.headerLayoutGroup.Name = "headerLayoutGroup";
-            this.headerLayoutGroup.Size = new System.Drawing.Size(806, 409);
+            this.headerLayoutGroup.Size = new System.Drawing.Size(802, 438);
             // 
             // ItemForDisplayNumber
             // 
             this.ItemForDisplayNumber.Control = this.DisplayNumberTextEdit;
             this.ItemForDisplayNumber.Location = new System.Drawing.Point(0, 24);
             this.ItemForDisplayNumber.Name = "ItemForDisplayNumber";
-            this.ItemForDisplayNumber.Size = new System.Drawing.Size(402, 24);
+            this.ItemForDisplayNumber.Size = new System.Drawing.Size(400, 24);
             this.ItemForDisplayNumber.Text = "Display Number";
             this.ItemForDisplayNumber.TextSize = new System.Drawing.Size(93, 13);
             // 
@@ -532,34 +539,34 @@
             this.ItemForActive.Control = this.ActiveCheckEdit;
             this.ItemForActive.Location = new System.Drawing.Point(0, 96);
             this.ItemForActive.Name = "ItemForActive";
-            this.ItemForActive.Size = new System.Drawing.Size(402, 24);
+            this.ItemForActive.Size = new System.Drawing.Size(400, 24);
             this.ItemForActive.Text = "Active";
             this.ItemForActive.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.ReferenceNumber1LookUpEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(402, 72);
+            this.layoutControlItem2.Location = new System.Drawing.Point(400, 72);
             this.layoutControlItem2.Name = "ItemForReferenceNumber1!Key";
-            this.layoutControlItem2.Size = new System.Drawing.Size(404, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(402, 24);
             this.layoutControlItem2.Text = "ReferenceNumber1";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.ReferenceNumber2LookUpEdit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(402, 96);
+            this.layoutControlItem3.Location = new System.Drawing.Point(400, 96);
             this.layoutControlItem3.Name = "ItemForReferenceNumber2!Key";
-            this.layoutControlItem3.Size = new System.Drawing.Size(404, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(402, 24);
             this.layoutControlItem3.Text = "ReferenceNumber2";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.GroupIdLookUpEdit;
-            this.layoutControlItem4.Location = new System.Drawing.Point(402, 48);
+            this.layoutControlItem4.Location = new System.Drawing.Point(400, 48);
             this.layoutControlItem4.Name = "ItemForGroupId!Key";
-            this.layoutControlItem4.Size = new System.Drawing.Size(404, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(402, 24);
             this.layoutControlItem4.Text = "GroupId";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 13);
             // 
@@ -568,7 +575,7 @@
             this.ItemForDescription.Control = this.DescriptionTextEdit;
             this.ItemForDescription.Location = new System.Drawing.Point(0, 48);
             this.ItemForDescription.Name = "ItemForDescription";
-            this.ItemForDescription.Size = new System.Drawing.Size(402, 24);
+            this.ItemForDescription.Size = new System.Drawing.Size(400, 24);
             this.ItemForDescription.Text = "Description";
             this.ItemForDescription.TextSize = new System.Drawing.Size(93, 13);
             // 
@@ -577,7 +584,7 @@
             this.layoutControlItem1.Control = this.DimensionHeaderTextEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem1.Name = "ItemForDimensionHeader!Key";
-            this.layoutControlItem1.Size = new System.Drawing.Size(402, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(400, 24);
             this.layoutControlItem1.Text = "DimensionHeader";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
             // 
@@ -586,16 +593,16 @@
             this.ItemForName.Control = this.NameTextEdit;
             this.ItemForName.Location = new System.Drawing.Point(0, 0);
             this.ItemForName.Name = "ItemForName";
-            this.ItemForName.Size = new System.Drawing.Size(806, 24);
+            this.ItemForName.Size = new System.Drawing.Size(802, 24);
             this.ItemForName.Text = "Name";
             this.ItemForName.TextSize = new System.Drawing.Size(93, 13);
             // 
             // ItemForReferenceNumber
             // 
             this.ItemForReferenceNumber.Control = this.ReferenceNumberTextEdit;
-            this.ItemForReferenceNumber.Location = new System.Drawing.Point(402, 24);
+            this.ItemForReferenceNumber.Location = new System.Drawing.Point(400, 24);
             this.ItemForReferenceNumber.Name = "ItemForReferenceNumber";
-            this.ItemForReferenceNumber.Size = new System.Drawing.Size(404, 24);
+            this.ItemForReferenceNumber.Size = new System.Drawing.Size(402, 24);
             this.ItemForReferenceNumber.Text = "Reference Number";
             this.ItemForReferenceNumber.TextSize = new System.Drawing.Size(93, 13);
             // 
@@ -607,14 +614,14 @@
             this.layoutControlItem5});
             this.detailsLayoutGroup.Location = new System.Drawing.Point(0, 120);
             this.detailsLayoutGroup.Name = "detailsLayoutGroup";
-            this.detailsLayoutGroup.Size = new System.Drawing.Size(806, 289);
+            this.detailsLayoutGroup.Size = new System.Drawing.Size(802, 318);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.addressBookGC;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(782, 242);
+            this.layoutControlItem5.Size = new System.Drawing.Size(778, 271);
             this.layoutControlItem5.Text = "Address book";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(93, 13);
@@ -624,15 +631,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Controls.Add(this.dataLayoutControl1);
             this.Name = "AccountBaseLineXUC";
-            this.Size = new System.Drawing.Size(826, 431);
+            this.Size = new System.Drawing.Size(822, 460);
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.addressBookGC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBaseBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBookGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimensionHeaderTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayNumberTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
@@ -684,7 +692,6 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForDescription;
         private CoreLib.Grid.MyGridControl addressBookGC;
         private CoreLib.Grid.MyGridView addressBookGV;
-        private DevExpress.Xpo.XPCollection addressXPC;
         private DevExpress.XtraGrid.Columns.GridColumn colLineId;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt;
@@ -713,5 +720,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraLayout.LayoutControlGroup detailsLayoutGroup;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private System.Windows.Forms.BindingSource accountBaseBS;
+        private System.Windows.Forms.BindingSource accountAddressesBS;
     }
 }

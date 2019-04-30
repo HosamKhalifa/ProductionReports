@@ -32,6 +32,7 @@
             this.mainTabC = new DevExpress.XtraTab.XtraTabControl();
             this.overviewTabG = new DevExpress.XtraTab.XtraTabPage();
             this.accountBaseGC = new CoreLib.Grid.MyGridControl();
+            this.accountBaseBS = new System.Windows.Forms.BindingSource(this.components);
             this.accountBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.accountBaseGV = new CoreLib.Grid.MyGridView();
             this.colLineId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,49 +58,16 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.generalTabG = new DevExpress.XtraTab.XtraTabPage();
-            this.accountBaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.addressGC = new CoreLib.Grid.MyGridControl();
-            this.addressGV = new CoreLib.Grid.MyGridView();
-            this.accountAddressesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colLineId1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreatedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreatedAt1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colModifiedBy1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colModifiedAt1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRowNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsPrimary = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAddressDetails = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colContact = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colReportHint = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTelephone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMobile = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFax = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCountry = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTaxFileNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTaxCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCommercialRegistry = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.accountBaseLineXUC1 = new CoreModelWin.View.Sales.AccountBaseLineXUC();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainTabC)).BeginInit();
             this.mainTabC.SuspendLayout();
             this.overviewTabG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBaseBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseGV)).BeginInit();
             this.generalTabG.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBaseBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressGC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTabC
@@ -125,7 +93,7 @@
             // 
             // accountBaseGC
             // 
-            this.accountBaseGC.DataSource = this.accountBaseBindingSource;
+            this.accountBaseGC.DataSource = this.accountBaseBS;
             this.accountBaseGC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accountBaseGC.Location = new System.Drawing.Point(0, 0);
             this.accountBaseGC.MainView = this.accountBaseGV;
@@ -134,6 +102,10 @@
             this.accountBaseGC.TabIndex = 0;
             this.accountBaseGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.accountBaseGV});
+            // 
+            // accountBaseBS
+            // 
+            this.accountBaseBS.DataSource = this.accountBaseXPC;
             // 
             // accountBaseXPC
             // 
@@ -167,9 +139,9 @@
             this.gridColumn11,
             this.gridColumn12});
             this.accountBaseGV.EnableAutoFormat = false;
-            this.accountBaseGV.EnableAutoSave = false;
+            this.accountBaseGV.EnableAutoSave = true;
             this.accountBaseGV.GridControl = this.accountBaseGC;
-            this.accountBaseGV.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
+            this.accountBaseGV.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.SimpleEdit;
             this.accountBaseGV.Name = "accountBaseGV";
             this.accountBaseGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
             this.accountBaseGV.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Cached;
@@ -351,257 +323,18 @@
             // 
             // generalTabG
             // 
-            this.generalTabG.Controls.Add(this.addressGC);
+            this.generalTabG.Controls.Add(this.accountBaseLineXUC1);
             this.generalTabG.Name = "generalTabG";
             this.generalTabG.Size = new System.Drawing.Size(794, 380);
             this.generalTabG.Text = "General";
             // 
-            // accountBaseBindingSource
+            // accountBaseLineXUC1
             // 
-            this.accountBaseBindingSource.DataSource = this.accountBaseXPC;
-            // 
-            // addressGC
-            // 
-            this.addressGC.DataSource = this.accountAddressesBindingSource;
-            this.addressGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addressGC.Location = new System.Drawing.Point(0, 0);
-            this.addressGC.MainView = this.addressGV;
-            this.addressGC.Name = "addressGC";
-            this.addressGC.Size = new System.Drawing.Size(794, 380);
-            this.addressGC.TabIndex = 0;
-            this.addressGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.addressGV});
-            // 
-            // addressGV
-            // 
-            this.addressGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colLineId1,
-            this.colCreatedBy1,
-            this.colCreatedAt1,
-            this.colModifiedBy1,
-            this.colModifiedAt1,
-            this.gridColumn5,
-            this.gridColumn13,
-            this.colRowNumber,
-            this.gridColumn14,
-            this.gridColumn15,
-            this.colIsPrimary,
-            this.colAddressDetails,
-            this.colContact,
-            this.colReportHint,
-            this.colTelephone,
-            this.colMobile,
-            this.colFax,
-            this.colEmail,
-            this.colCountry,
-            this.colCity,
-            this.colTaxFileNumber,
-            this.colTaxCardNumber,
-            this.colCommercialRegistry,
-            this.gridColumn16,
-            this.gridColumn17,
-            this.gridColumn18,
-            this.gridColumn19});
-            this.addressGV.EnableAutoFormat = true;
-            this.addressGV.EnableAutoSave = true;
-            this.addressGV.GridControl = this.addressGC;
-            this.addressGV.GridViewEditMode = CoreLib.MyEnums.GridViewEditMode.FormEdit;
-            this.addressGV.Name = "addressGV";
-            this.addressGV.UnitOfWorkXpo = null;
-            // 
-            // accountAddressesBindingSource
-            // 
-            this.accountAddressesBindingSource.DataMember = "AccountAddresses";
-            this.accountAddressesBindingSource.DataSource = this.accountBaseBindingSource;
-            // 
-            // colLineId1
-            // 
-            this.colLineId1.FieldName = "LineId";
-            this.colLineId1.Name = "colLineId1";
-            this.colLineId1.Visible = true;
-            this.colLineId1.VisibleIndex = 0;
-            // 
-            // colCreatedBy1
-            // 
-            this.colCreatedBy1.FieldName = "CreatedBy";
-            this.colCreatedBy1.Name = "colCreatedBy1";
-            this.colCreatedBy1.Visible = true;
-            this.colCreatedBy1.VisibleIndex = 1;
-            // 
-            // colCreatedAt1
-            // 
-            this.colCreatedAt1.FieldName = "CreatedAt";
-            this.colCreatedAt1.Name = "colCreatedAt1";
-            this.colCreatedAt1.Visible = true;
-            this.colCreatedAt1.VisibleIndex = 2;
-            // 
-            // colModifiedBy1
-            // 
-            this.colModifiedBy1.FieldName = "ModifiedBy";
-            this.colModifiedBy1.Name = "colModifiedBy1";
-            this.colModifiedBy1.Visible = true;
-            this.colModifiedBy1.VisibleIndex = 3;
-            // 
-            // colModifiedAt1
-            // 
-            this.colModifiedAt1.FieldName = "ModifiedAt";
-            this.colModifiedAt1.Name = "colModifiedAt1";
-            this.colModifiedAt1.Visible = true;
-            this.colModifiedAt1.VisibleIndex = 4;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.FieldName = "TableId!";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.FieldName = "TableId!Key";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 6;
-            // 
-            // colRowNumber
-            // 
-            this.colRowNumber.FieldName = "RowNumber";
-            this.colRowNumber.Name = "colRowNumber";
-            this.colRowNumber.Visible = true;
-            this.colRowNumber.VisibleIndex = 7;
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.FieldName = "Account!";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 8;
-            // 
-            // gridColumn15
-            // 
-            this.gridColumn15.FieldName = "Account!Key";
-            this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 9;
-            // 
-            // colIsPrimary
-            // 
-            this.colIsPrimary.FieldName = "IsPrimary";
-            this.colIsPrimary.Name = "colIsPrimary";
-            this.colIsPrimary.Visible = true;
-            this.colIsPrimary.VisibleIndex = 10;
-            // 
-            // colAddressDetails
-            // 
-            this.colAddressDetails.FieldName = "AddressDetails";
-            this.colAddressDetails.Name = "colAddressDetails";
-            this.colAddressDetails.Visible = true;
-            this.colAddressDetails.VisibleIndex = 11;
-            // 
-            // colContact
-            // 
-            this.colContact.FieldName = "Contact";
-            this.colContact.Name = "colContact";
-            this.colContact.Visible = true;
-            this.colContact.VisibleIndex = 12;
-            // 
-            // colReportHint
-            // 
-            this.colReportHint.FieldName = "ReportHint";
-            this.colReportHint.Name = "colReportHint";
-            this.colReportHint.Visible = true;
-            this.colReportHint.VisibleIndex = 13;
-            // 
-            // colTelephone
-            // 
-            this.colTelephone.FieldName = "Telephone";
-            this.colTelephone.Name = "colTelephone";
-            this.colTelephone.Visible = true;
-            this.colTelephone.VisibleIndex = 14;
-            // 
-            // colMobile
-            // 
-            this.colMobile.FieldName = "Mobile";
-            this.colMobile.Name = "colMobile";
-            this.colMobile.Visible = true;
-            this.colMobile.VisibleIndex = 15;
-            // 
-            // colFax
-            // 
-            this.colFax.FieldName = "Fax";
-            this.colFax.Name = "colFax";
-            this.colFax.Visible = true;
-            this.colFax.VisibleIndex = 16;
-            // 
-            // colEmail
-            // 
-            this.colEmail.FieldName = "Email";
-            this.colEmail.Name = "colEmail";
-            this.colEmail.Visible = true;
-            this.colEmail.VisibleIndex = 17;
-            // 
-            // colCountry
-            // 
-            this.colCountry.FieldName = "Country";
-            this.colCountry.Name = "colCountry";
-            this.colCountry.Visible = true;
-            this.colCountry.VisibleIndex = 18;
-            // 
-            // colCity
-            // 
-            this.colCity.FieldName = "City";
-            this.colCity.Name = "colCity";
-            this.colCity.Visible = true;
-            this.colCity.VisibleIndex = 19;
-            // 
-            // colTaxFileNumber
-            // 
-            this.colTaxFileNumber.FieldName = "TaxFileNumber";
-            this.colTaxFileNumber.Name = "colTaxFileNumber";
-            this.colTaxFileNumber.Visible = true;
-            this.colTaxFileNumber.VisibleIndex = 20;
-            // 
-            // colTaxCardNumber
-            // 
-            this.colTaxCardNumber.FieldName = "TaxCardNumber";
-            this.colTaxCardNumber.Name = "colTaxCardNumber";
-            this.colTaxCardNumber.Visible = true;
-            this.colTaxCardNumber.VisibleIndex = 21;
-            // 
-            // colCommercialRegistry
-            // 
-            this.colCommercialRegistry.FieldName = "CommercialRegistry";
-            this.colCommercialRegistry.Name = "colCommercialRegistry";
-            this.colCommercialRegistry.Visible = true;
-            this.colCommercialRegistry.VisibleIndex = 22;
-            // 
-            // gridColumn16
-            // 
-            this.gridColumn16.FieldName = "TaxAgency!";
-            this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 23;
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.FieldName = "TaxAgency!Key";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 24;
-            // 
-            // gridColumn18
-            // 
-            this.gridColumn18.FieldName = "TaxGroup!";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 25;
-            // 
-            // gridColumn19
-            // 
-            this.gridColumn19.FieldName = "TaxGroup!Key";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 26;
+            this.accountBaseLineXUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.accountBaseLineXUC1.Location = new System.Drawing.Point(0, 0);
+            this.accountBaseLineXUC1.Name = "accountBaseLineXUC1";
+            this.accountBaseLineXUC1.Size = new System.Drawing.Size(794, 380);
+            this.accountBaseLineXUC1.TabIndex = 0;
             // 
             // AccountBase
             // 
@@ -614,13 +347,10 @@
             this.mainTabC.ResumeLayout(false);
             this.overviewTabG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBaseBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseGV)).EndInit();
             this.generalTabG.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.accountBaseBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressGC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addressGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -654,36 +384,7 @@
         public CoreLib.Grid.MyGridControl accountBaseGC;
         public CoreLib.Grid.MyGridView accountBaseGV;
         public DevExpress.Xpo.XPCollection accountBaseXPC;
-        private System.Windows.Forms.BindingSource accountBaseBindingSource;
-        private CoreLib.Grid.MyGridControl addressGC;
-        private System.Windows.Forms.BindingSource accountAddressesBindingSource;
-        private CoreLib.Grid.MyGridView addressGV;
-        private DevExpress.XtraGrid.Columns.GridColumn colLineId1;
-        private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy1;
-        private DevExpress.XtraGrid.Columns.GridColumn colCreatedAt1;
-        private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy1;
-        private DevExpress.XtraGrid.Columns.GridColumn colModifiedAt1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraGrid.Columns.GridColumn colRowNumber;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsPrimary;
-        private DevExpress.XtraGrid.Columns.GridColumn colAddressDetails;
-        private DevExpress.XtraGrid.Columns.GridColumn colContact;
-        private DevExpress.XtraGrid.Columns.GridColumn colReportHint;
-        private DevExpress.XtraGrid.Columns.GridColumn colTelephone;
-        private DevExpress.XtraGrid.Columns.GridColumn colMobile;
-        private DevExpress.XtraGrid.Columns.GridColumn colFax;
-        private DevExpress.XtraGrid.Columns.GridColumn colEmail;
-        private DevExpress.XtraGrid.Columns.GridColumn colCountry;
-        private DevExpress.XtraGrid.Columns.GridColumn colCity;
-        private DevExpress.XtraGrid.Columns.GridColumn colTaxFileNumber;
-        private DevExpress.XtraGrid.Columns.GridColumn colTaxCardNumber;
-        private DevExpress.XtraGrid.Columns.GridColumn colCommercialRegistry;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private System.Windows.Forms.BindingSource accountBaseBS;
+        private Sales.AccountBaseLineXUC accountBaseLineXUC1;
     }
 }
