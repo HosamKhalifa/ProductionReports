@@ -33,7 +33,7 @@ namespace CoreModel
             set { SetPropertyValue<long>("DimensionKey", ref fDimensionKey, value); }
         }
         string fDimDisplayNumber;
-        [Persistent(@"DIM_DISPLAY_NUM"),Size(9)]
+        [Persistent(@"DIM_DISPLAY_NUM"),Size(20)]
         public string DimDisplayNumber
         {
             get { return fDimDisplayNumber; }

@@ -96,6 +96,7 @@
     <Compile Include="SecurityAccessType.cs" />
     <Compile Include="SecurityUser.cs" />
     <Compile Include="Sequence.cs" />
+    <Compile Include="SequenceRegistry.cs" />
     <Compile Include="SequenceValues.cs" />
     <Compile Include="SysDataInit.cs" />
     <Compile Include="SysSequence.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="TaxGroup.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Workflow.cs" />
+    <Compile Include="WorkflowStep.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoreLib\CoreLib.csproj">

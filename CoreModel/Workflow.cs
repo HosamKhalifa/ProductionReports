@@ -21,6 +21,48 @@ namespace CoreModel
             base.AfterConstruction();
 
         }
+        
+        #region Methods
+        public static void BuildTableRows(UnitOfWork session)
+        {
+            var DimList = GetList();
+            foreach (WorkflowInfo item in DimList)
+            {
+                var dbTabRow = session.GetObjectByKey<Workflow>((int)item.StatusId);
+                if (dbTabRow == null)
+                {
+                    dbTabRow = new Workflow(session)
+                    {
+                        WorkflowStatus = (int)item.StatusId,
+                        WorkflowName=item.Name,
+                        WorkflowDescription=item.Description
+                    };
+                    dbTabRow.Save();
+                }
+            }
+            session.CommitChanges();
+        }
+        class WorkflowInfo
+        {
+            public MyEnums.WorkflowStatus StatusId { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public MyEnums.WorkflowTarget WorkflowTarget { get; set; }
+        }
+        static List<WorkflowInfo> GetList()
+        {
+            var lst = new List<WorkflowInfo>()
+            {
+                new WorkflowInfo() {StatusId= MyEnums.WorkflowStatus.Draft,Name="Draft",Description="Draft is the inital status for newly created document" },
+                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.ReadyForApprove,Name="ReadyForApprove",Description="Ready for apporve is the status when document pass vaidation and then will be ready to starting approve rules application"},
+                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Approving,Name="Approving",Description="Approving after first approve action applied to the document and still til Last required approve happened" },
+                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Approved,Name="Approved",Description="After all approve cycle member signed the document " },
+                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Posted,Name="Posted",Description="Can not changed after posted and could not reject" },
+                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Rejected,Name="Rejected",Description="These option will return document to Whom take ReadyForApprove action and need to change status to Draft to be able modify it" }
+            };
+            return lst;                
+        }
+        #endregion
 
         #region Fields
 
@@ -48,48 +90,13 @@ namespace CoreModel
             set { SetPropertyValue<string>("WorkflowDescription", ref fWorkflowDescription, value); }
         }
 
+       
+
+
         #endregion
 
-        #region Methods
-        public static void BuildTableRows(UnitOfWork session)
-        {
-            var DimList = GetList();
-            foreach (WorkflowInfo item in DimList)
-            {
-                var dbTabRow = session.GetObjectByKey<Workflow>((int)item.StatusId);
-                if (dbTabRow == null)
-                {
-                    dbTabRow = new Workflow(session)
-                    {
-                        WorkflowStatus = (int)item.StatusId,
-                        WorkflowName=item.Name,
-                        WorkflowDescription=item.Description
-                    };
-                    dbTabRow.Save();
-                }
-            }
-            session.CommitChanges();
-        }
-        class WorkflowInfo
-        {
-            public MyEnums.WorkflowStatus StatusId { get; set; }
-            public string Name { get; set; }
-            public string Description { get; set; }
-        }
-        static List<WorkflowInfo> GetList()
-        {
-            var lst = new List<WorkflowInfo>()
-            {
-                new WorkflowInfo() {StatusId= MyEnums.WorkflowStatus.Draft,Name="Draft",Description="Draft is the inital status for newly created document" },
-                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.ReadyForApprove,Name="ReadyForApprove",Description="Ready for apporve is the status when document pass vaidation and then will be ready to starting approve rules application" },
-                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Approving,Name="Approving",Description="Approving after first approve action applied to the document and still til Last required approve happened" },
-                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Approved,Name="Approved",Description="After all approve cycle member signed the document " },
-                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Posted,Name="Posted",Description="Can not changed after posted and could not reject" },
-                new WorkflowInfo() {StatusId=MyEnums.WorkflowStatus.Rejected,Name="Rejected",Description="These option will return document to Whom take ReadyForApprove action and need to change status to Draft to be able modify it" }
-            };
-            return lst;                
-        }
-        #endregion
+     
+
 
     }
 }

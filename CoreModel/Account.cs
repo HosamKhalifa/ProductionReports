@@ -16,6 +16,7 @@ namespace CoreModel
         {
             //Default display number to temp sequence
             DisplayNumber = GetDefaultDisplayNumber();
+            
             base.AfterConstruction();
         }
 
@@ -31,17 +32,7 @@ namespace CoreModel
         #endregion
 
         #region Fields
-        /*
-        string fDimensionValue;
-        [Size(9)]
-        [Persistent(@"DIM_VAL")]
-        
-        public string DimensionValue
-        {
-            get { return fDimensionValue; }
-            set { SetPropertyValue<string>("DimensionValue", ref fDimensionValue, value); }
-        }
-        */
+      
         DimensionHeader fDimensionHeader;
         [Persistent(@"DIM_HEADER")]
         [Association("DIMENSION_HEADER_ACCOUNTS_FK")]
@@ -52,7 +43,7 @@ namespace CoreModel
         }
 
         string fDisplayNumber;
-        [Size(9)]
+        [Size(20)]
         [Persistent(@"DISPLAY_NUMBER")]
         public string DisplayNumber
         {
@@ -65,7 +56,7 @@ namespace CoreModel
         public string Name
         {
             get { return fName; }
-            set { SetPropertyValue<string>("Name", ref fName, value); }
+            set { SetPropertyValueExt<string>("Name", ref fName, value); }
         }
         string fDescription;
         [Size(250)]
@@ -117,37 +108,49 @@ namespace CoreModel
 
         AddressBook fPrimaryAddress;
         [Persistent(@"PRIMARY_ADDRESS")]
-
         public AddressBook PrimaryAddress
         {
             get { return fPrimaryAddress; }
             set { SetPropertyValue<AddressBook>("PrimaryAddress", ref fPrimaryAddress, value); }
         }
-        #endregion
 
-        #region Associations
-        [Association(@"Account-Addresses")]
-        public XPCollection<AddressBook> AccountAddresses { get { return GetCollection<AddressBook>("AccountAddresses"); } }
+        SequenceRegistry fSequenceRegistry;
+        [Persistent(@"SEQU_REGISTRY")]
+        public SequenceRegistry SequenceRegistry
+        {
+            get { return fSequenceRegistry; }
+            set { SetPropertyValue<SequenceRegistry>("SequenceRegistry", ref fSequenceRegistry, value); }
+        }
 
-      
-      
         #endregion
 
         #region Events
+
         protected override void OnSaving()
         {
-            if(TableId != null && Session.IsNewObject(this))
+            if (Session.IsNewObject(this))
             {
-                var dimBase = Session.GetObjectByKey<DimensionBase>(TableId.TableId);//Test if TableId has Dimension 
-                if (dimBase != null)
+                if (TableId != null)
                 {
-                    DimensionHeader = DimensionBase.FindOrCreateDimHeader(this);
+                    var dimBase = Session.GetObjectByKey<DimensionBase>(TableId.TableId);//Test if TableId has Dimension 
+                    if (dimBase != null)
+                    {
+                        DimensionHeader = DimensionBase.FindOrCreateDimHeader(this);
+                    }
                 }
-               
+
+            }
+            else
+            {
+                if (!IsEditable)//
+                {
+                    return;
+                }
             }
             
             base.OnSaving();
         }
+      
         #endregion
 
     }

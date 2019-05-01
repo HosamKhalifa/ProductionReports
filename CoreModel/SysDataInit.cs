@@ -18,7 +18,9 @@ namespace CoreModel
                 Country.BuildTableRows(uOW);
                 Currency.BuildTableRows(uOW);
                 Workflow.BuildTableRows(uOW);
+                WorkflowStep.BuildTableRows(uOW);
                 GLParms.BuildTableRows(uOW);
+
             }
 
             

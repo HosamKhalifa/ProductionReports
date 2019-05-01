@@ -64,8 +64,11 @@ namespace CoreModel
             ReadyForApprove =20,//Ready for apporve the status when document pass vaidation and then will be ready to starting approve rules
             Approving=30,//Approving after first approve action applied to the document and still til Last Approve happened
             Approved =40,//After all approve cycle member signed the document
-            Rejected=-1,//These option will return document to Whom take ReadyForApprove 
+            Rejected =-1,//These option will return document to Whom take ReadyForApprove 
             Posted=100//Can not changed
         }
+        public enum WorkflowTarget { Account = 10,Document=20}
+        public enum WorkflowStep { MakeItReady = 10,Approve=20,Reopen=30,Reject=40,Post=50}
+
     }
 }
