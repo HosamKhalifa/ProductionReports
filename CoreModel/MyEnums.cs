@@ -41,6 +41,11 @@ namespace CoreModel
             Master=10,Document=20,DocumentLine=30,Parameter=40,System=50
         }
 
+        //HR Enum
+
+        public enum Gender { Male,Female}
+
+
         public enum AccountType
         {
             MainAccountOnly = 0,Employee =10,Customer=20,Vendor=30,InventoryItem=40,Purpose=50,Location=60,Department=70,
@@ -69,8 +74,9 @@ namespace CoreModel
         }
         public enum WorkflowTarget { Account = 10,Document=20}
         public enum WorkflowStep { MakeItReady = 10,Approve=20,Reopen=30,Reject=40,Post=50}
-
         public enum SecurityAccessEnum { Deny=0,Read=1,Update=2,Create=3,Delete=4}
+        public enum SecurityPrivilege { Query=100,Create=110,ApproveReject=120,Post=130,CreateApproveReject=140,CreateApproveRejectPost=150}
+
 
     }
 }

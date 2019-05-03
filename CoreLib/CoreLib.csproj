@@ -197,6 +197,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SecurityStore.cs" />
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
     <Compile Include="SharedExt\MyFormExt.cs" />
     <Compile Include="SharedExt\StringExt.cs" />

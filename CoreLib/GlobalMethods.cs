@@ -14,6 +14,7 @@ using CoreLib.Grid.UserProfile;
 using System.Data.OleDb;
 using System.Reflection;
 using CoreLib.Label;
+using System.Text;
 
 namespace CoreLib
 {
@@ -30,6 +31,15 @@ namespace CoreLib
                 }
         }
         #region Methods
+        public static string EncryptPwd(string password)
+        {
+            string msg = "";
+            byte[] encode = new byte[password.Length];
+            encode = Encoding.UTF8.GetBytes(password);
+            msg = Convert.ToBase64String(encode);
+            return msg;
+        }
+
         public static string AskUser_SaveFilePath(string fileType)
         {
             SaveFileDialog dlg = new SaveFileDialog();
