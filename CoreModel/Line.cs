@@ -27,7 +27,6 @@ namespace CoreModel
             this.ModifiedBy = SecurityUser.CurrentUser.UserId;
             this.ModifiedAt = DateTime.Now;
 
-            this.WorkflowStatus = MyEnums.WorkflowStatus.Draft;//starting workflow
             this.LineId = SysSequence.NextVal(Session,MyEnums.SysSequence.LINE_ID_SEQU,(10 * 1000 * 1000));
 
             base.AfterConstruction();
@@ -54,11 +53,12 @@ namespace CoreModel
         }
         protected bool SetPropertyValueExt<T>(string propertyName, ref T propertyValueHolder, T newValue)
         {
-            if (IsEditable)
+            if (!IsLoading && !IsEditable)
             {
-                return SetPropertyValue<T>(propertyName, ref propertyValueHolder, newValue);
+                return false;
             }
-            return false;
+            return SetPropertyValue<T>(propertyName, ref propertyValueHolder, newValue);
+           
         }
 
         //Definition
@@ -109,19 +109,25 @@ namespace CoreModel
             set { SetPropertyValue<TableBase>("TableId", ref fTableId, value); }
         }
 
-        MyEnums.WorkflowStatus fWorkflowStatus;
+        MyEnums.WorkflowStatus fWorkflowStatus = MyEnums.WorkflowStatus.Draft;
         [Persistent(@"WFLOW_STATUS")]
         public MyEnums.WorkflowStatus WorkflowStatus
         {
             get { return fWorkflowStatus; }
-            set { SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, value); }
+            // set { SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, value); }
         }
 
-        bool fIsEditable;
+      
         [NonPersistent]
         public bool IsEditable
         {
             get{ return WorkflowStatus == MyEnums.WorkflowStatus.Draft; }
+        }
+
+        public virtual void SetWorkflowStatus(MyEnums.WorkflowStatus _wrkFlow)
+        {
+            //This should called by approve menu 
+            this.fWorkflowStatus = _wrkFlow;
         }
 
 

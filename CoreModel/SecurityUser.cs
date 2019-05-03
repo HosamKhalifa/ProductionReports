@@ -73,7 +73,7 @@ namespace CoreModel
             bool ret = false;
             string creator = ConfigurationManager.AppSettings.Get("CreatorPermissionId");
             SecurityAccessType accessType = SecurityUser.UserPermission(creator);
-            if(accessType.AccessDegree >= 2)
+            if(accessType.AccessType >= 2)
             {
                 ret = true;
             }
@@ -85,7 +85,7 @@ namespace CoreModel
             bool ret = false;
             string creator = ConfigurationManager.AppSettings.Get("ApproverPermissionId");
             SecurityAccessType accessType = SecurityUser.UserPermission(creator);
-            if (accessType.AccessDegree >= 2)
+            if (accessType.AccessType >= 2)
             {
                 ret = true;
             }

@@ -10,27 +10,58 @@ namespace CoreModel
     [Persistent(@"SEC_ACCESS_TYPE_TB")]
     public partial class SecurityAccessType : XPLiteObject
     {
-        string fAccessType;
+        protected SecurityAccessType(Session session) : base(session)
+        {
+        }
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+        }
+        int fAccessType;
         [Key]
-        [Persistent(@"ACCESS_TYPE"), Size(1)]
-        public string AccessType
+        [Persistent(@"ACCESS_TYPE")]
+        public int AccessType
         {
             get { return fAccessType; }
-            set { SetPropertyValue<string>("AccessType", ref fAccessType, value); }
+            set { SetPropertyValue<int>("AccessType", ref fAccessType, value); }
         }
-        int fAccessDegree;
-        [Persistent(@"ACCESS_DEGREE")]
-        public int AccessDegree
-        {
-            get { return fAccessDegree; }
-            set { SetPropertyValue<int>("AccessDegree", ref fAccessDegree, value); }
-        }
+        
         string fAccessTypeName;
+
+
         [Persistent(@"ACCESS_TYPE_NAME"),Size(50)]
         public string AccessTypeName
         {
             get { return fAccessTypeName; }
             set { SetPropertyValue<string>("AccessTypeName", ref fAccessTypeName, value); }
         }
+
+        public static void BuildTableRows(Session _uOW)
+        {
+            var lst = new List<MyEnums.SecurityAccessEnum>()
+            {
+                MyEnums.SecurityAccessEnum.Deny,
+                MyEnums.SecurityAccessEnum.Read,
+                MyEnums.SecurityAccessEnum.Update,
+                MyEnums.SecurityAccessEnum.Create,
+                MyEnums.SecurityAccessEnum.Delete
+            };
+
+            foreach (var item in lst)
+            {
+
+                if (_uOW.GetObjectByKey<SecurityAccessType>((int)item) == null)
+                {
+                    var denyLine = new SecurityAccessType(_uOW)
+                    {
+                        AccessType = (int)item,
+                        AccessTypeName = item.ToString()
+                    };
+                    denyLine.Save();
+                }
+            }
+            _uOW.CommitTransaction();
+        }
+
     }
 }

@@ -23,7 +23,14 @@ namespace CoreLib
         {
             InitializeComponent();
             InitGrids();
+            InitXPCollections();
         }
+
+        private void InitXPCollections()
+        {
+          
+        }
+
         public MyForm(Args _args)
         {
             InitializeComponent();

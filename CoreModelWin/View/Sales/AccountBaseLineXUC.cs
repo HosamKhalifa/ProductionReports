@@ -13,6 +13,7 @@ namespace CoreModelWin.View.Sales
     {
         public AccountBaseLineXUC()
         {
+
             InitializeComponent();
         }
         #region

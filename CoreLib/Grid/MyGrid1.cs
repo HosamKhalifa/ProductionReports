@@ -211,7 +211,13 @@ namespace CoreLib.Grid
                 var row = this.GetRow(e.FocusedRowHandle); 
                 if(row != null && row is XPLiteObject)
                 {
-                    FormRecord.CurrentRecord = (XPLiteObject)row;                  
+                    FormRecord.CurrentRecord = (XPLiteObject)row;   
+                    //Assign current row to Args
+                    if(this.GridControl.FindForm() != null && this.GridControl.FindForm().GetType() == typeof(MyForm))
+                    {
+                        ((MyForm)this.GridControl.FindForm()).Args.Record = (XPLiteObject)row;
+                    }
+                               
                 }
             };
             if (this.EnableAutoSave )

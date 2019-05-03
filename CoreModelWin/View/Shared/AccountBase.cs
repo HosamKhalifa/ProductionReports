@@ -29,9 +29,9 @@ namespace CoreModelWin.View.Shared
                 
                 accountBaseXPC = new XPCollection(unitOfWork1, t) ;
                 accountBaseBS.DataSource = accountBaseXPC;
-                accountBaseLineXUC1.AccountBaseBS = this.accountBaseBS;
+                accountBaseLineXUC2.AccountBaseBS = this.accountBaseBS;
                 this.accountBaseBS.ResetBindings(true);
-                accountBaseLineXUC1.AccountBaseBS.ResetBindings(true);
+                accountBaseLineXUC2.AccountBaseBS.ResetBindings(true);
 
                 accountBaseGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
 

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
@@ -62,9 +62,16 @@
             this.printBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.langBI = new DevExpress.XtraBars.BarEditItem();
             this.langRIImageCombo = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.approveBI = new DevExpress.XtraBars.BarButtonItem();
+            this.approvePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.statusBarTxt = new DevExpress.XtraBars.BarStaticItem();
+            this.effectiveDateBarStaticItem = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -75,11 +82,11 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.effectiveDateBarStaticItem = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.langRIImageCombo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.approvePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -111,11 +118,11 @@
             this.countryLink,
             this.cityLink,
             this.testLink});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 52);
+            this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(203, 364);
+            this.navBarControl1.Size = new System.Drawing.Size(203, 367);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -282,9 +289,14 @@
             this.barButtonItem1,
             this.langBI,
             this.barEditItem1,
-            this.effectiveDateBarStaticItem});
+            this.effectiveDateBarStaticItem,
+            this.approveBI,
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barButtonItem5});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 14;
+            this.barManager1.MaxItemId = 19;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.langRIImageCombo,
             this.repositoryItemImageComboBox1});
@@ -303,7 +315,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.addBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.delBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.printBarButtonItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.langBI)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.langBI),
+            new DevExpress.XtraBars.LinkPersistInfo(this.approveBI)});
             this.bar1.Text = "Tools";
             // 
             // skinBarSubItem1
@@ -373,6 +386,46 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("FR", "fr", -1)});
             this.langRIImageCombo.Name = "langRIImageCombo";
             // 
+            // approveBI
+            // 
+            this.approveBI.ActAsDropDown = true;
+            this.approveBI.AllowDrawArrow = false;
+            this.approveBI.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.approveBI.Caption = "Action";
+            this.approveBI.DropDownControl = this.approvePopupMenu;
+            this.approveBI.Id = 14;
+            this.approveBI.Name = "approveBI";
+            // 
+            // approvePopupMenu
+            // 
+            this.approvePopupMenu.Manager = this.barManager1;
+            this.approvePopupMenu.MenuCaption = "Workflow steps";
+            this.approvePopupMenu.Name = "approvePopupMenu";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Make it ready";
+            this.barButtonItem2.Id = 15;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Approve";
+            this.barButtonItem3.Id = 16;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Reopen";
+            this.barButtonItem4.Id = 17;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "barButtonItem5";
+            this.barButtonItem5.Id = 18;
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -405,33 +458,40 @@
             this.statusBarTxt.Name = "statusBarTxt";
             this.statusBarTxt.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // effectiveDateBarStaticItem
+            // 
+            this.effectiveDateBarStaticItem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.effectiveDateBarStaticItem.Id = 13;
+            this.effectiveDateBarStaticItem.Name = "effectiveDateBarStaticItem";
+            this.effectiveDateBarStaticItem.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(772, 52);
+            this.barDockControlTop.Size = new System.Drawing.Size(772, 51);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 416);
-            this.barDockControlBottom.Size = new System.Drawing.Size(772, 29);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 418);
+            this.barDockControlBottom.Size = new System.Drawing.Size(772, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 364);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 367);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(772, 52);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 364);
+            this.barDockControlRight.Location = new System.Drawing.Point(772, 51);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 367);
             // 
             // testBI
             // 
@@ -462,7 +522,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // sharedImageCollection1
             // 
@@ -471,13 +531,6 @@
             // 
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
             this.sharedImageCollection1.ParentControl = this;
-            // 
-            // effectiveDateBarStaticItem
-            // 
-            this.effectiveDateBarStaticItem.Border = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.effectiveDateBarStaticItem.Id = 13;
-            this.effectiveDateBarStaticItem.Name = "effectiveDateBarStaticItem";
-            this.effectiveDateBarStaticItem.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // Form1
             // 
@@ -498,6 +551,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.langRIImageCombo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.approvePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
@@ -553,6 +607,12 @@
         private DevExpress.XtraNavBar.NavBarItem cityLink;
         private DevExpress.XtraNavBar.NavBarItem testLink;
         private DevExpress.XtraBars.BarStaticItem effectiveDateBarStaticItem;
+        private DevExpress.XtraBars.BarButtonItem approveBI;
+        private DevExpress.XtraBars.PopupMenu approvePopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }
 

@@ -9,6 +9,8 @@ using CoreModel;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
 using DevExpress.XtraBars;
+using DevExpress.Xpo;
+using DevExpress.Data.Filtering;
 
 namespace CoreModelWin
 {
@@ -140,6 +142,9 @@ namespace CoreModelWin
             }
 
         }
+
+     
+
         public static void BuildFunctionLinks(BarManager _barMgr)
         {
             _barMgr.ItemClick += (s, e) => 
@@ -373,6 +378,53 @@ namespace CoreModelWin
         {
             return ActiveChildForm?.DeleteRecord();
         }
+
+        //Approve menu setup
+
+        public static void ApproveMenuSetup(Session _uOW,DevExpress.XtraBars.PopupMenu _appMenu)
+        {
+            XPCollection wflowSteps = new XPCollection(_uOW , typeof(WorkflowStep));
+            
+            foreach (WorkflowStep action in wflowSteps)
+            {
+                _appMenu.AddItem(new DevExpress.XtraBars.BarButtonItem()
+                {
+                    Name = action.WorkflowStepName.Replace(" ", string.Empty),
+                    Caption = action.WorkflowStepName,
+                    Enabled = false,
+                    Tag = action,
+                    Visibility = BarItemVisibility.Never
+                }).Item.ItemClick+=(s,e)=> 
+                {
+                    if(CoreLib.FormRecord.CurrentRecord != null && CoreLib.FormRecord.CurrentRecord is Line)
+                    {
+                        (CoreLib.FormRecord.CurrentRecord as Line).SetWorkflowStatus(action.NextWorkflow);
+                    }
+                };
+            }
+        }
+        public static void ApproveMenuActivated(PopupMenu approvePopupMenu)
+        {
+            //Hide all menu buttons
+            foreach (BarButtonItemLink btn in approvePopupMenu.ItemLinks)
+            {
+                btn.Item.Visibility = BarItemVisibility.Never;
+                btn.Item.Enabled = false;
+            }
+            var current = (Line)CoreLib.FormRecord.CurrentRecord;
+            var lst = WorkflowStep.GetCurrentRecordOption(current);
+            foreach (var item in lst)
+            {
+                var btn = approvePopupMenu.ItemLinks.Where(x => x.Item.Name == item.WorkflowStepName.Replace(" ", string.Empty)).FirstOrDefault();
+                if(btn != null)
+                {
+                    btn.Item.Visibility = BarItemVisibility.Always;
+                    btn.Item.Enabled = true;
+                }
+            }
+            
+        }
+
         #endregion
 
     }

@@ -58,7 +58,8 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.generalTabG = new DevExpress.XtraTab.XtraTabPage();
-            this.accountBaseLineXUC1 = new CoreModelWin.View.Sales.AccountBaseLineXUC();
+            this.accountBaseLineXUC2 = new CoreModelWin.View.Sales.AccountBaseLineXUC();
+            this.colWorkflowStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainTabC)).BeginInit();
             this.mainTabC.SuspendLayout();
@@ -88,7 +89,7 @@
             // 
             this.overviewTabG.Controls.Add(this.accountBaseGC);
             this.overviewTabG.Name = "overviewTabG";
-            this.overviewTabG.Size = new System.Drawing.Size(794, 380);
+            this.overviewTabG.Size = new System.Drawing.Size(790, 385);
             this.overviewTabG.Text = "Overview";
             // 
             // accountBaseGC
@@ -98,7 +99,7 @@
             this.accountBaseGC.Location = new System.Drawing.Point(0, 0);
             this.accountBaseGC.MainView = this.accountBaseGV;
             this.accountBaseGC.Name = "accountBaseGC";
-            this.accountBaseGC.Size = new System.Drawing.Size(794, 380);
+            this.accountBaseGC.Size = new System.Drawing.Size(790, 385);
             this.accountBaseGC.TabIndex = 0;
             this.accountBaseGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.accountBaseGV});
@@ -116,6 +117,7 @@
             // accountBaseGV
             // 
             this.accountBaseGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colWorkflowStatus,
             this.colLineId,
             this.colCreatedBy,
             this.colCreatedAt,
@@ -138,6 +140,7 @@
             this.colReferenceNumber,
             this.gridColumn11,
             this.gridColumn12});
+            this.accountBaseGV.CustomizationFormBounds = new System.Drawing.Rectangle(630, 389, 216, 183);
             this.accountBaseGV.EnableAutoFormat = false;
             this.accountBaseGV.EnableAutoSave = true;
             this.accountBaseGV.GridControl = this.accountBaseGC;
@@ -146,6 +149,7 @@
             this.accountBaseGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplace;
             this.accountBaseGV.OptionsEditForm.BindingMode = DevExpress.XtraGrid.Views.Grid.EditFormBindingMode.Cached;
             this.accountBaseGV.OptionsEditForm.EditFormColumnCount = 2;
+            this.accountBaseGV.OptionsMenu.ShowConditionalFormattingItem = true;
             this.accountBaseGV.OptionsView.ColumnAutoWidth = false;
             this.accountBaseGV.OptionsView.EnableAppearanceEvenRow = true;
             this.accountBaseGV.OptionsView.ShowAutoFilterRow = true;
@@ -222,7 +226,7 @@
             this.colDisplayNumber.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "DisplayNumber", "{0}")});
             this.colDisplayNumber.Visible = true;
-            this.colDisplayNumber.VisibleIndex = 0;
+            this.colDisplayNumber.VisibleIndex = 1;
             this.colDisplayNumber.Width = 88;
             // 
             // colName
@@ -230,7 +234,7 @@
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 2;
+            this.colName.VisibleIndex = 3;
             this.colName.Width = 166;
             // 
             // colDescription
@@ -238,7 +242,7 @@
             this.colDescription.FieldName = "Description";
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 3;
+            this.colDescription.VisibleIndex = 4;
             this.colDescription.Width = 130;
             // 
             // colActive
@@ -246,7 +250,7 @@
             this.colActive.FieldName = "Active";
             this.colActive.Name = "colActive";
             this.colActive.Visible = true;
-            this.colActive.VisibleIndex = 4;
+            this.colActive.VisibleIndex = 5;
             this.colActive.Width = 43;
             // 
             // colRefNo1_Name
@@ -257,7 +261,7 @@
             this.colRefNo1_Name.OptionsColumn.AllowEdit = false;
             this.colRefNo1_Name.OptionsColumn.ReadOnly = true;
             this.colRefNo1_Name.Visible = true;
-            this.colRefNo1_Name.VisibleIndex = 6;
+            this.colRefNo1_Name.VisibleIndex = 7;
             this.colRefNo1_Name.Width = 109;
             // 
             // gridColumn6
@@ -274,7 +278,7 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.VisibleIndex = 8;
             this.gridColumn7.Width = 109;
             // 
             // gridColumn8
@@ -290,7 +294,7 @@
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 5;
+            this.gridColumn9.VisibleIndex = 6;
             this.gridColumn9.Width = 111;
             // 
             // gridColumn10
@@ -303,7 +307,7 @@
             this.colReferenceNumber.FieldName = "ReferenceNumber";
             this.colReferenceNumber.Name = "colReferenceNumber";
             this.colReferenceNumber.Visible = true;
-            this.colReferenceNumber.VisibleIndex = 1;
+            this.colReferenceNumber.VisibleIndex = 2;
             this.colReferenceNumber.Width = 102;
             // 
             // gridColumn11
@@ -311,7 +315,7 @@
             this.gridColumn11.FieldName = "PrimaryAddress!";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 8;
+            this.gridColumn11.VisibleIndex = 9;
             this.gridColumn11.Width = 103;
             // 
             // gridColumn12
@@ -319,22 +323,30 @@
             this.gridColumn12.FieldName = "PrimaryAddress!Key";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 9;
+            this.gridColumn12.VisibleIndex = 10;
             // 
             // generalTabG
             // 
-            this.generalTabG.Controls.Add(this.accountBaseLineXUC1);
+            this.generalTabG.Controls.Add(this.accountBaseLineXUC2);
             this.generalTabG.Name = "generalTabG";
-            this.generalTabG.Size = new System.Drawing.Size(794, 380);
+            this.generalTabG.Size = new System.Drawing.Size(790, 385);
             this.generalTabG.Text = "General";
             // 
-            // accountBaseLineXUC1
+            // accountBaseLineXUC2
             // 
-            this.accountBaseLineXUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.accountBaseLineXUC1.Location = new System.Drawing.Point(0, 0);
-            this.accountBaseLineXUC1.Name = "accountBaseLineXUC1";
-            this.accountBaseLineXUC1.Size = new System.Drawing.Size(794, 380);
-            this.accountBaseLineXUC1.TabIndex = 0;
+            this.accountBaseLineXUC2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.accountBaseLineXUC2.Location = new System.Drawing.Point(0, 0);
+            this.accountBaseLineXUC2.Name = "accountBaseLineXUC2";
+            this.accountBaseLineXUC2.Size = new System.Drawing.Size(790, 460);
+            this.accountBaseLineXUC2.TabIndex = 0;
+            // 
+            // colWorkflowStatus
+            // 
+            this.colWorkflowStatus.Caption = "Status";
+            this.colWorkflowStatus.FieldName = "WorkflowStatus";
+            this.colWorkflowStatus.Name = "colWorkflowStatus";
+            this.colWorkflowStatus.Visible = true;
+            this.colWorkflowStatus.VisibleIndex = 0;
             // 
             // AccountBase
             // 
@@ -357,7 +369,6 @@
 
         #endregion
         private DevExpress.XtraTab.XtraTabPage overviewTabG;
-        private DevExpress.XtraTab.XtraTabPage generalTabG;
         public DevExpress.XtraTab.XtraTabControl mainTabC;
         private DevExpress.XtraGrid.Columns.GridColumn colLineId;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
@@ -385,6 +396,9 @@
         public CoreLib.Grid.MyGridView accountBaseGV;
         public DevExpress.Xpo.XPCollection accountBaseXPC;
         private System.Windows.Forms.BindingSource accountBaseBS;
-        private Sales.AccountBaseLineXUC accountBaseLineXUC1;
+        
+        private DevExpress.XtraTab.XtraTabPage generalTabG;
+        private Sales.AccountBaseLineXUC accountBaseLineXUC2;
+        private DevExpress.XtraGrid.Columns.GridColumn colWorkflowStatus;
     }
 }

@@ -20,6 +20,7 @@ namespace CoreModel
                 Workflow.BuildTableRows(uOW);
                 WorkflowStep.BuildTableRows(uOW);
                 GLParms.BuildTableRows(uOW);
+                SecurityAccessType.BuildTableRows(uOW);
 
             }
 

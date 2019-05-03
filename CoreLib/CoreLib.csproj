@@ -198,6 +198,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SharedExt\ExceptionExtensions.cs" />
+    <Compile Include="SharedExt\MyFormExt.cs" />
     <Compile Include="SharedExt\StringExt.cs" />
     <Compile Include="SharedExt\UnitOfWorkExtensions.cs" />
     <Compile Include="Xpo\IActionXpo.cs" />

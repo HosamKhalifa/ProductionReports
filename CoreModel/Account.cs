@@ -48,7 +48,7 @@ namespace CoreModel
         public string DisplayNumber
         {
             get { return fDisplayNumber; }
-            set { SetPropertyValue<string>("DisplayNumber", ref fDisplayNumber, value); }
+            set { SetPropertyValueExt<string>("DisplayNumber", ref fDisplayNumber, value); }
         }
         string fName;
         [Size(250)]
@@ -64,14 +64,14 @@ namespace CoreModel
         public string Description
         {
             get { return fDescription; }
-            set { SetPropertyValue<string>("Description", ref fDescription, value); }
+            set { SetPropertyValueExt<string>("Description", ref fDescription, value); }
         }
         bool fActive;
         [Persistent(@"ACTIVE")]
         public bool Active
         {
             get { return fActive; }
-            set { SetPropertyValue<bool>("Active", ref fActive, value); }
+            set { SetPropertyValueExt<bool>("Active", ref fActive, value); }
         }
         AccountRef1 fReferenceNumber1;
         [Persistent(@"REF_NO1")]
@@ -79,7 +79,7 @@ namespace CoreModel
         public AccountRef1 ReferenceNumber1
         {
             get { return fReferenceNumber1; }
-            set { SetPropertyValue<AccountRef1>("ReferenceNumber1", ref fReferenceNumber1, value); }
+            set { SetPropertyValueExt<AccountRef1>("ReferenceNumber1", ref fReferenceNumber1, value); }
         }
         AccountRef2 fReferenceNumber2;
         [Persistent(@"REF_NO2")]
@@ -87,7 +87,7 @@ namespace CoreModel
         public AccountRef2 ReferenceNumber2
         {
             get { return fReferenceNumber2; }
-            set { SetPropertyValue<AccountRef2>("ReferenceNumber2", ref fReferenceNumber2, value); }
+            set { SetPropertyValueExt<AccountRef2>("ReferenceNumber2", ref fReferenceNumber2, value); }
         }
         AccountGroup fGroupId;
         [Persistent(@"GROUP_ID")]
@@ -95,7 +95,7 @@ namespace CoreModel
         public AccountGroup GroupId
         {
             get { return fGroupId; }
-            set { SetPropertyValue<AccountGroup>("GroupId", ref fGroupId, value); }
+            set { SetPropertyValueExt<AccountGroup>("GroupId", ref fGroupId, value); }
         }
         string fReferenceNumber;
         [Size(120)]
@@ -103,7 +103,7 @@ namespace CoreModel
         public string ReferenceNumber
         {
             get { return fReferenceNumber; }
-            set { SetPropertyValue<string>("ReferenceNumber", ref fReferenceNumber, value); }
+            set { SetPropertyValueExt<string>("ReferenceNumber", ref fReferenceNumber, value); }
         }
 
         AddressBook fPrimaryAddress;
@@ -150,7 +150,12 @@ namespace CoreModel
             
             base.OnSaving();
         }
-      
+
+        #endregion
+
+        #region Asssociation
+        [Association(@"Account-Addresses")]
+        public XPCollection<AddressBook> AccountAddresses { get { return GetCollection<AddressBook>("AccountAddresses"); } }
         #endregion
 
     }

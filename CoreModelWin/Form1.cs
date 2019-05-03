@@ -78,6 +78,17 @@ namespace CoreModelWin
                     CoreLib.FormRecord.CurrentRecord.Reload();
                 }
             };
+            //Approve buttons build
+            MenuController.ApproveMenuSetup(unitOfWork1, approvePopupMenu);
+            approveBI.ItemClick += (s, e) => 
+            {
+                if(CoreLib.FormRecord.CurrentRecord != null && CoreLib.FormRecord.CurrentRecord is Line)
+                {
+                    MenuController.ApproveMenuActivated(approvePopupMenu);
+                }
+            };
+
+
             //Link effective date 
             effectiveDateBarStaticItem.Caption = $"Effective:{CoreLib.FormRecord.EffectiveDate.ToShortDateString()}";
             effectiveDateBarStaticItem.ItemDoubleClick +=(s,e)=>

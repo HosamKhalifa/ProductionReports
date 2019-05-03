@@ -50,7 +50,7 @@ namespace CoreModel
         public int Depth
         {
             get { return fDepth; }
-            set { SetPropertyValue<int>("Depth", ref fDepth, value); }
+            set { SetPropertyValueExt<int>("Depth", ref fDepth, value); }
         }
 
         MainAccountType fMainAccountType;
@@ -58,14 +58,14 @@ namespace CoreModel
         public MainAccountType MainAccountType
         {
             get { return fMainAccountType; }
-            set { SetPropertyValue<MainAccountType>("MainAccountType", ref fMainAccountType, value); }
+            set { SetPropertyValueExt<MainAccountType>("MainAccountType", ref fMainAccountType, value); }
         }
         DateTime fEffectiveFrom;
         [Persistent(@"EFFECTIVE_FROM")]
         public DateTime EffectiveFrom
         {
             get { return fEffectiveFrom; }
-            set { SetPropertyValue<DateTime>("EffectiveFrom", ref fEffectiveFrom, value); }
+            set { SetPropertyValueExt<DateTime>("EffectiveFrom", ref fEffectiveFrom, value); }
         }
         LedgerChartOfAccounts fLedgerChartOfAccounts;
         [Persistent(@"LEDGER_COA")]
@@ -81,35 +81,35 @@ namespace CoreModel
         public MyEnums.BalanceControl BalanceControl
         {
             get { return fBalanceControl; }
-            set { SetPropertyValue<MyEnums.BalanceControl>("BalanceControl", ref fBalanceControl, value); }
+            set { SetPropertyValueExt<MyEnums.BalanceControl>("BalanceControl", ref fBalanceControl, value); }
         }
         MyEnums.AccountClosingType fAccountClosingType;
         [Persistent(@"ACCOUNT_CLOSING_TYPE")]
         public MyEnums.AccountClosingType AccountClosingType
         {
             get { return fAccountClosingType; }
-            set { SetPropertyValue<MyEnums.AccountClosingType>("AccountClosingType", ref fAccountClosingType, value); }
+            set { SetPropertyValueExt<MyEnums.AccountClosingType>("AccountClosingType", ref fAccountClosingType, value); }
         }
         bool fDisableManualEntry;
         [Persistent(@"DISABLE_MANUAL_ENTRY")]
         public bool DisableManualEntry
         {
             get { return fDisableManualEntry; }
-            set { SetPropertyValue<bool>("DisableManualEntry", ref fDisableManualEntry, value); }
+            set { SetPropertyValueExt<bool>("DisableManualEntry", ref fDisableManualEntry, value); }
         }
         MyEnums.MainAccountClass fMainAccountClass;
         [Persistent(@"MAIN_ACCOUNT_CLASS")]
         public MyEnums.MainAccountClass MainAccountClass
         {
             get { return fMainAccountClass; }
-            set { SetPropertyValue<MyEnums.MainAccountClass>("MainAccountClass", ref fMainAccountClass, value); }
+            set { SetPropertyValueExt<MyEnums.MainAccountClass>("MainAccountClass", ref fMainAccountClass, value); }
         }
         MyEnums.AccountType fDetailsType;
         [Persistent(@"MAIN_ACCOUNT_DETAIL_TYPE")]
         public MyEnums.AccountType DetailsType
         {
             get { return fDetailsType; }
-            set { SetPropertyValue<MyEnums.AccountType>("DetailsType", ref fDetailsType, value); }
+            set { SetPropertyValueExt<MyEnums.AccountType>("DetailsType", ref fDetailsType, value); }
         }
 
 

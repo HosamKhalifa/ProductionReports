@@ -155,7 +155,32 @@ namespace CoreModel
 
             };
         }
+        public static List<WorkflowStep> GetCurrentRecordOption(Line _line)
+        {
+            List<WorkflowStep> lst = new List<WorkflowStep>();
+            MyEnums.WorkflowTarget target;
 
+            if (_line is Account)
+            {
+                target = MyEnums.WorkflowTarget.Account;
+            }
+            else if(_line is DocumentBase)
+            {
+                target = MyEnums.WorkflowTarget.Document;
+            }
+            else
+            {
+                throw new Exception("Current line does not hav workflow status info we could not apply workflow step on it");
+            }
+
+            string filer = "[WorkflowTarget] = ? AND [CurrentWorkflow] = ? ";
+            XPCollection nextSteps = new XPCollection(_line.Session, typeof(WorkflowStep), CriteriaOperator.Parse(filer,target,_line.WorkflowStatus));
+            foreach (WorkflowStep item in nextSteps)
+            {
+                lst.Add(item);
+            }
+            return lst;
+        }
 
     }
 }

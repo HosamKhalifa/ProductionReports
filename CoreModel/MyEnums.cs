@@ -70,5 +70,7 @@ namespace CoreModel
         public enum WorkflowTarget { Account = 10,Document=20}
         public enum WorkflowStep { MakeItReady = 10,Approve=20,Reopen=30,Reject=40,Post=50}
 
+        public enum SecurityAccessEnum { Deny=0,Read=1,Update=2,Create=3,Delete=4}
+
     }
 }
