@@ -92,6 +92,9 @@ namespace CoreModelWin
             
             switch (_linkTag)
             {
+                case CoreLib.MyEnums.FormEntityEnum.AccountGrouping:
+                    MenuController.AccountGroupingFormOpen();
+                    break;
                 case CoreLib.MyEnums.FormEntityEnum.TestForm:
                     MenuController.TestFormOpen();
                     break;
@@ -188,7 +191,11 @@ namespace CoreModelWin
             frm.Show();
         }
         #endregion
-
+        public static void AccountGroupingFormOpen()
+        {
+            var frm = new View.Shared.AccountGroupingFrm() { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+        }
         #region Open Methods
         public static void CityFormOpen(Args _args)
         {

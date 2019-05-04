@@ -63,7 +63,8 @@ namespace CoreModel
 
         //Definition
         //====================================================================
-
+        #region Fields
+        
         long fLineId;
         [Key]
         [Persistent(@"LINE_ID")]
@@ -100,6 +101,18 @@ namespace CoreModel
             set { SetPropertyValue<DateTime>("ModifiedAt", ref fModifiedAt, value); }
         }
 
+        Line fParentLine;
+        [Persistent(@"PARENT_LINE")]
+        public Line ParentLine
+        {
+            get { return fParentLine; }
+            set
+                {
+                    SetPropertyValue<Line>("ParentLine", ref fParentLine, value);
+                    FamilyRegistration();
+                }
+        }
+
         TableBase fTableId;
         [Persistent(@"TABLE_ID")]
         [Association("TableBase-Line")]
@@ -117,6 +130,7 @@ namespace CoreModel
             // set { SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, value); }
         }
 
+        #endregion
       
         [NonPersistent]
         public bool IsEditable
@@ -124,11 +138,55 @@ namespace CoreModel
             get{ return WorkflowStatus == MyEnums.WorkflowStatus.Draft; }
         }
 
+        #region Association
+        [Association("LineId_ShadowLineId")]
+        public XPCollection<LineShadow> LineShadowLines { get { return GetCollection<LineShadow>("LineShadowLines"); } }
+        [Association("LineId_ShadowFamilyLineId")]
+        public XPCollection<LineShadow> LineShadowFamilyLines { get { return GetCollection<LineShadow>("LineShadowFamilyLines"); } }
+
+        #endregion
+
+        #region Methods
         public virtual void SetWorkflowStatus(MyEnums.WorkflowStatus _wrkFlow)
         {
             //This should called by approve menu 
             this.fWorkflowStatus = _wrkFlow;
         }
+
+        class Shadowinfo
+        {
+            public Line LineId { get; set; }
+            public Line Family { get; set; }
+        }
+        public void FamilyRegistration()
+        {
+            var lst = new List<Shadowinfo>();
+
+            lst.Add(new Shadowinfo() { LineId = this, Family = this });
+            if (ParentLine != null)//non Root insert
+            {
+                //Get Parent family
+                foreach (LineShadow sh in this.ParentLine.LineShadowLines)
+                {
+                    lst.Add(new Shadowinfo() { LineId = sh.LineId, Family = sh.Family });
+                }
+            }
+            //Loop for each pairs and try insert if not alredy existed
+            foreach (var item in lst)
+            {
+                var dbLine = Session.FindObject<LineShadow>(CriteriaOperator.Parse("[LineId] = ? AND [Family] = ? ", item.LineId, item.Family));
+                if(dbLine == null)
+                {
+                    dbLine = new LineShadow(Session) { LineId=item.LineId,Family=item.Family};
+                    dbLine.Save();
+                }
+            }
+
+
+        }
+        
+
+        #endregion
 
 
 

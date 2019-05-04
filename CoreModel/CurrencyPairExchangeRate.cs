@@ -11,7 +11,7 @@ namespace CoreModel
     public class CurrencyPairExchangeRate : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.CurrencyPairExchangeRate;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public CurrencyPairExchangeRate(Session session) : base(session)
         {
         }

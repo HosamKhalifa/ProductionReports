@@ -12,7 +12,7 @@ namespace CoreModel
     public class Ledger : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.Ledger;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public Ledger(Session session) : base(session)
         {
         }

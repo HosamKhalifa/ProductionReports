@@ -8,7 +8,7 @@ namespace CoreModel
     public class AccountGroup:Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.AccountGroup;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = "ACT_GROUP_TB";
         public AccountGroup(Session session) : base(session) { }
         public override void AfterConstruction()

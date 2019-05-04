@@ -13,7 +13,7 @@ namespace CoreModel
     public class MainAccountType : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.MainAccountType;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = @"MAIN_ACCOUNT_TYPE_TB";
         public MainAccountType(Session session) : base(session)
         {

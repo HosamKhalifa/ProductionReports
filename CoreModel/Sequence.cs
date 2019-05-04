@@ -12,7 +12,7 @@ namespace CoreModel
     public  class Sequence : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.Sequence;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = "SEQU_TB";
         public Sequence(Session session) : base(session) { }
         public override void AfterConstruction()

@@ -12,6 +12,8 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class SecurityPrincipalUser : SecurityPrincipal
     {
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalUser;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         protected SecurityPrincipalUser(Session session) : base(session)
         {
         }

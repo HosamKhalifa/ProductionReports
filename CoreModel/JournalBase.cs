@@ -12,7 +12,7 @@ namespace CoreModel
     public class JournalBase : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.JournalBase;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public JournalBase(Session session) : base(session)
         {
         }

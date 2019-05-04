@@ -13,7 +13,7 @@ namespace CoreModel
     public class Country : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.Country;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public Country(Session session) : base(session)
         {
         }

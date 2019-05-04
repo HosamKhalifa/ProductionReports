@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
@@ -64,10 +64,6 @@
             this.langRIImageCombo = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.approveBI = new DevExpress.XtraBars.BarButtonItem();
             this.approvePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.statusBarTxt = new DevExpress.XtraBars.BarStaticItem();
@@ -79,9 +75,14 @@
             this.testBI = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.acccountGroupLink = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -94,7 +95,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.SystemSetupNavGrp;
+            this.navBarControl1.ActiveGroup = this.orgNavGrp;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.SystemSetupNavGrp,
@@ -117,7 +118,8 @@
             this.customerLink,
             this.countryLink,
             this.cityLink,
-            this.testLink});
+            this.testLink,
+            this.acccountGroupLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
@@ -129,7 +131,6 @@
             // SystemSetupNavGrp
             // 
             this.SystemSetupNavGrp.Caption = "System setup";
-            this.SystemSetupNavGrp.Expanded = true;
             this.SystemSetupNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.fiscalCalenderLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.fiscalCalenderYearLink),
@@ -248,9 +249,11 @@
             // orgNavGrp
             // 
             this.orgNavGrp.Caption = "Organization";
+            this.orgNavGrp.Expanded = true;
             this.orgNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.countryLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.cityLink)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.cityLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.acccountGroupLink)});
             this.orgNavGrp.Name = "orgNavGrp";
             this.orgNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("orgNavGrp.SmallImage")));
             // 
@@ -402,30 +405,6 @@
             this.approvePopupMenu.MenuCaption = "Workflow steps";
             this.approvePopupMenu.Name = "approvePopupMenu";
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Make it ready";
-            this.barButtonItem2.Id = 15;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Approve";
-            this.barButtonItem3.Id = 16;
-            this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Reopen";
-            this.barButtonItem4.Id = 17;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "barButtonItem5";
-            this.barButtonItem5.Id = 18;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -512,6 +491,30 @@
             this.barEditItem1.Id = 12;
             this.barEditItem1.Name = "barEditItem1";
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Make it ready";
+            this.barButtonItem2.Id = 15;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Approve";
+            this.barButtonItem3.Id = 16;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Reopen";
+            this.barButtonItem4.Id = 17;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "barButtonItem5";
+            this.barButtonItem5.Id = 18;
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
             // repositoryItemImageComboBox1
             // 
             this.repositoryItemImageComboBox1.AutoHeight = false;
@@ -522,7 +525,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition2;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // sharedImageCollection1
             // 
@@ -531,6 +534,12 @@
             // 
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
             this.sharedImageCollection1.ParentControl = this;
+            // 
+            // acccountGroupLink
+            // 
+            this.acccountGroupLink.Caption = "Account grouping";
+            this.acccountGroupLink.Name = "acccountGroupLink";
+            this.acccountGroupLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("acccountGroupLink.SmallImage")));
             // 
             // Form1
             // 
@@ -613,6 +622,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraNavBar.NavBarItem acccountGroupLink;
     }
 }
 

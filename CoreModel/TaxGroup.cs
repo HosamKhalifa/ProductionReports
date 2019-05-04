@@ -13,7 +13,7 @@ namespace CoreModel
     public class TaxGroup : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.TaxGroup;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = "TAX_GROUP_TB";
         public TaxGroup(Session session) : base(session)
         {

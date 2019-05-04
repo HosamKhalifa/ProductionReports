@@ -12,7 +12,7 @@ namespace CoreModel
     public class Province : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.Province;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public Province(Session session) : base(session)
         {
         }

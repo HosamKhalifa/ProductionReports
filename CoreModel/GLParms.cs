@@ -9,6 +9,8 @@ namespace CoreModel
 {
     public class GLParms : XPLiteObject
     {
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.GLParms;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         protected GLParms(Session session) : base(session)
         {
         }

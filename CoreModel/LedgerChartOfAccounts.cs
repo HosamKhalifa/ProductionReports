@@ -12,7 +12,7 @@ namespace CoreModel
     public class LedgerChartOfAccounts : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.LedgerChartOfAccounts;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public LedgerChartOfAccounts(Session session) : base(session)
         {
         }

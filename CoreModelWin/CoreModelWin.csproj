@@ -139,6 +139,18 @@
     <Compile Include="View\Shared\AccountBase.Designer.cs">
       <DependentUpon>AccountBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Shared\AccountGroupingFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Shared\AccountGroupingFrm.Designer.cs">
+      <DependentUpon>AccountGroupingFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\AccountGroupingXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Shared\AccountGroupingXUC.Designer.cs">
+      <DependentUpon>AccountGroupingXUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sys\SequenceEditXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -194,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Shared\AccountBase.resx">
       <DependentUpon>AccountBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Shared\AccountGroupingFrm.resx">
+      <DependentUpon>AccountGroupingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Shared\AccountGroupingXUC.resx">
+      <DependentUpon>AccountGroupingXUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>

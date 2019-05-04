@@ -10,6 +10,8 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.ParentTable)]
     public class SecurityPrincipalRoleJournal : SecurityPrincipalRole
     {
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalRoleJournal;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public SecurityPrincipalRoleJournal(Session session) : base(session)
         {
         }
@@ -26,11 +28,12 @@ namespace CoreModel
             set { SetPropertyValue<JournalBase>("Journal", ref fJournal, value); }
         }
 
-        MyEnums.SecurityPrivilege fSecurityPrivilege;
-        public MyEnums.SecurityPrivilege SecurityPrivilege
+        MyEnums.SecurityPrivilegeJournal fSecurityPrivilege;
+        [Persistent("SEC_PRIV") ]
+        public MyEnums.SecurityPrivilegeJournal SecurityPrivilege
         {
             get { return fSecurityPrivilege; }
-            set { SetPropertyValue<MyEnums.SecurityPrivilege>("SecurityPrivilege", ref fSecurityPrivilege, value); }
+            set { SetPropertyValue<MyEnums.SecurityPrivilegeJournal>("SecurityPrivilege", ref fSecurityPrivilege, value); }
         }
 
 

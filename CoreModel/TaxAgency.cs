@@ -13,7 +13,7 @@ namespace CoreModel
     public class TaxAgency : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.TaxAgency;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = @"TAX_AGENCY_TB";
         public TaxAgency(Session session) : base(session)
         {

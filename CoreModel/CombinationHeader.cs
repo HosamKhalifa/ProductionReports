@@ -12,7 +12,7 @@ namespace CoreModel
     public class CombinationHeader : XPLiteObjectExt
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.CombinationHeader;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = @"COMB_HEADER_TB";
 
 

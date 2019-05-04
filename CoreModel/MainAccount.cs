@@ -13,7 +13,7 @@ namespace CoreModel
     public class MainAccount : Account
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.MainAccount;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = @"MAIN_ACCOUNT_TB";
         public MainAccount(Session session) : base(session)
         {

@@ -62,7 +62,8 @@
     <Compile Include="AccountRef2.cs" />
     <Compile Include="AccountGroup.cs" />
     <Compile Include="AddressBook.cs" />
-    <Compile Include="AppRole.cs" />
+    <Compile Include="LineShadow.cs" />
+    <Compile Include="SecurityPrincipalRole.cs" />
     <Compile Include="SecurityPrincipal.cs" />
     <Compile Include="City.cs" />
     <Compile Include="CombinationHeader.cs" />
@@ -98,8 +99,10 @@
     <Compile Include="Province.cs" />
     <Compile Include="SecurityAccessType.cs" />
     <Compile Include="SecurityPrincipalRoleJournal.cs" />
+    <Compile Include="SecurityPrincipalRoleSimple.cs" />
     <Compile Include="SecurityPrincipalUser.cs" />
     <Compile Include="SecurityUser.cs" />
+    <Compile Include="SecuriyPrincipalRoleMaster.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="SequenceRegistry.cs" />
     <Compile Include="SequenceValues.cs" />

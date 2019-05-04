@@ -14,7 +14,7 @@ namespace CoreModel
     public class CurrencyPair : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.CurrencyPair;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public CurrencyPair(Session session) : base(session)
         {
         }

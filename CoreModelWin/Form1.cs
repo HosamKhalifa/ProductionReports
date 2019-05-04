@@ -67,6 +67,7 @@ namespace CoreModelWin
             countryLink.Tag = CoreLib.MyEnums.FormEntityEnum.Country;
             cityLink.Tag = CoreLib.MyEnums.FormEntityEnum.City;
             testLink.Tag = CoreLib.MyEnums.FormEntityEnum.TestForm;
+            acccountGroupLink.Tag = CoreLib.MyEnums.FormEntityEnum.AccountGrouping;
         }
 
         private void InitBarButtons()

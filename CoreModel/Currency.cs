@@ -13,7 +13,7 @@ namespace CoreModel
     public class Currency : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.Currency;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = @"CURRENCY_TB";
         public Currency(Session session) : base(session)
         {

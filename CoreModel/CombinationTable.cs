@@ -12,7 +12,7 @@ namespace CoreModel
     public class CombinationTable : XPLiteObjectExt
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.CombinationTable;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         //public static string TABLE_NAME = @"COMB_TB";
 
         public CombinationTable(Session session) : base(session)

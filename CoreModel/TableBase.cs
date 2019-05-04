@@ -34,7 +34,9 @@ namespace CoreModel
             FiscalCalendar = 1138, FiscalCalenderYear=1139, FiscalCalenderPeriod=1140,
             LedgerChartOfAccounts = 1141,Equipment=1142,
             FixedAsset = 1143, Item = 1144, DimensionBase=1145,DimensionHeader=1146,
-            Country=1147,City=1148,Province=1149
+            Country=1147,City=1148,Province=1149, GLParms=1150,
+            SecurityPrincipalUser=1151, SecurityPrincipalRoleMaster=1152, SecurityPrincipalRoleSimple=1153,
+            SecurityPrincipalRoleJournal=1154
         }
         #endregion
 

@@ -12,7 +12,7 @@ namespace CoreModel
     public class City : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.City;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public City(Session session) : base(session)
         {
         }

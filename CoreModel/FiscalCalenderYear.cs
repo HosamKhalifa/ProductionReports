@@ -12,7 +12,7 @@ namespace CoreModel
     public class FiscalCalenderYear : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.FiscalCalenderYear;
-        public static MyEnums.TableType TableType = MyEnums.TableType.Master;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public FiscalCalenderYear(Session session) : base(session)
         {
         }
