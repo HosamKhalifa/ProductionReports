@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreModel
 {
+    [Persistent(@"GL_PARMS_TB")]
     public class GLParms : XPLiteObject
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.GLParms;

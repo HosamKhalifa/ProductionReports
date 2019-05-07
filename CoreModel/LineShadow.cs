@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace CoreModel
 {
+    [Persistent(@"LINE_SHADOW")]
     public class LineShadow : XPObject
     {
+       
         public LineShadow(Session session) : base(session)
         {
         }

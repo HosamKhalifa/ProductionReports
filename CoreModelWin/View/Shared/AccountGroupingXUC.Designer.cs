@@ -33,9 +33,8 @@
             this.grpXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.ref1TPage = new DevExpress.XtraTab.XtraTabPage();
             this.grpTPage = new DevExpress.XtraTab.XtraTabPage();
-            this.dataNavigator1 = new DevExpress.XtraEditors.DataNavigator();
+            this.grpDataNavigator = new DevExpress.XtraEditors.DataNavigator();
             this.grpBS = new System.Windows.Forms.BindingSource(this.components);
             this.grpTreeList = new DevExpress.XtraTreeList.TreeList();
             this.colLineId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -49,6 +48,7 @@
             this.colAccountType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colParentLine = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.parentLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.ref1TPage = new DevExpress.XtraTab.XtraTabPage();
             this.ref2TPage = new DevExpress.XtraTab.XtraTabPage();
             this.accountTypeImageCombo = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).BeginInit();
@@ -94,29 +94,23 @@
             this.ref1TPage,
             this.ref2TPage});
             // 
-            // ref1TPage
-            // 
-            this.ref1TPage.Name = "ref1TPage";
-            this.ref1TPage.Size = new System.Drawing.Size(444, 221);
-            this.ref1TPage.Text = "Reference one";
-            // 
             // grpTPage
             // 
-            this.grpTPage.Controls.Add(this.dataNavigator1);
+            this.grpTPage.Controls.Add(this.grpDataNavigator);
             this.grpTPage.Controls.Add(this.grpTreeList);
             this.grpTPage.Name = "grpTPage";
             this.grpTPage.Size = new System.Drawing.Size(444, 221);
             this.grpTPage.Text = "Primary group";
             // 
-            // dataNavigator1
+            // grpDataNavigator
             // 
-            this.dataNavigator1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataNavigator1.DataSource = this.grpBS;
-            this.dataNavigator1.Location = new System.Drawing.Point(3, 194);
-            this.dataNavigator1.Name = "dataNavigator1";
-            this.dataNavigator1.Size = new System.Drawing.Size(160, 24);
-            this.dataNavigator1.TabIndex = 3;
-            this.dataNavigator1.Text = "dataNavigator1";
+            this.grpDataNavigator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpDataNavigator.DataSource = this.grpBS;
+            this.grpDataNavigator.Location = new System.Drawing.Point(3, 194);
+            this.grpDataNavigator.Name = "grpDataNavigator";
+            this.grpDataNavigator.Size = new System.Drawing.Size(160, 24);
+            this.grpDataNavigator.TabIndex = 3;
+            this.grpDataNavigator.Text = "Group";
             // 
             // grpBS
             // 
@@ -202,6 +196,8 @@
             // 
             this.treeListColumn2.FieldName = "ParentLine!Key";
             this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.OptionsColumn.AllowEdit = false;
+            this.treeListColumn2.OptionsColumn.ReadOnly = true;
             this.treeListColumn2.Width = 87;
             // 
             // colGroupNum
@@ -225,6 +221,7 @@
             // 
             this.colAccountType.FieldName = "AccountType";
             this.colAccountType.Name = "colAccountType";
+            this.colAccountType.OptionsColumn.ReadOnly = true;
             this.colAccountType.Width = 298;
             // 
             // colParentLine
@@ -251,6 +248,12 @@
             this.parentLookUp.KeyMember = "LineId";
             this.parentLookUp.Name = "parentLookUp";
             this.parentLookUp.ValueMember = "LineId";
+            // 
+            // ref1TPage
+            // 
+            this.ref1TPage.Name = "ref1TPage";
+            this.ref1TPage.Size = new System.Drawing.Size(444, 221);
+            this.ref1TPage.Text = "Reference one";
             // 
             // ref2TPage
             // 
@@ -310,6 +313,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colAccountType;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colParentLine;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit parentLookUp;
-        private DevExpress.XtraEditors.DataNavigator dataNavigator1;
+        private DevExpress.XtraEditors.DataNavigator grpDataNavigator;
     }
 }

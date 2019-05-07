@@ -9,7 +9,7 @@ using DevExpress.Xpo.Metadata;
 using System.Reflection;
 using CoreLib;
 using CoreLib.Label;
-
+using CoreLib.SharedExt;
 namespace CoreModel
 {
     [Persistent(@"TABLE_BASE")]
@@ -197,9 +197,10 @@ namespace CoreModel
         }
         public static string GetTableAttribute(Type _className)
         {
+            string typeName = _className.Name;
             XPClassInfo cinfo = XpoDefault.Session.GetClassInfo(_className);
-            var tabAttr = cinfo.FindAttributeInfo(typeof(PersistentAttribute)).ToString();
-            return cinfo.TableName;
+            //var tabAttr = cinfo.FindAttributeInfo(typeof(PersistentAttribute))?.ToString();
+            return cinfo.TableName.IsNotNull()?cinfo.TableName:"";
             
         }
        

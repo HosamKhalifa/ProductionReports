@@ -47,6 +47,7 @@ namespace CoreModel
             this.ModifiedAt = DateTime.Now;
             if (Validate())
             {
+                BuildTreeNodes();
                 base.OnSaving();
             }
             
@@ -109,10 +110,21 @@ namespace CoreModel
             set
                 {
                     SetPropertyValue<Line>("ParentLine", ref fParentLine, value);
-                    FamilyRegistration();
+                    if (!IsLoading)
+                    {
+                        FamilyRegistration();
+                        BuildTreeNodes();
+                    }
                 }
         }
 
+        string fLineShadow;
+        [Persistent(@"LINE_SHADOW"),Size(350)]
+        public string LineShadow
+        {
+            get { return fLineShadow; }
+            private set { SetPropertyValue<String>("LineShadow", ref fLineShadow,value); }
+        }
         TableBase fTableId;
         [Persistent(@"TABLE_ID")]
         [Association("TableBase-Line")]
@@ -161,7 +173,6 @@ namespace CoreModel
         public void FamilyRegistration()
         {
             var lst = new List<Shadowinfo>();
-
             lst.Add(new Shadowinfo() { LineId = this, Family = this });
             if (ParentLine != null)//non Root insert
             {
@@ -185,10 +196,25 @@ namespace CoreModel
 
         }
         
+        public void BuildTreeNodes()
+        {
+            string lineShadow = "";
+            if(ParentLine != null )
+            {
+                lineShadow = ParentLine.LineShadow + "-" + LineId.ToString().PadRight(15, ' ');
+            }
+            else
+            {
+                lineShadow= LineId.ToString().PadRight(15, ' ');
+            }
+            this.LineShadow = lineShadow;
+        }
 
         #endregion
 
-
+        #region Events
+       
+        #endregion
 
 
 

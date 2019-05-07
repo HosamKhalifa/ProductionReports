@@ -29,10 +29,33 @@ namespace CoreModelWin.View.Shared
                 currentActivatedAccType = (CoreModel.MyEnums.AccountType)accountTypeImageCombo.EditValue;
                 ActivateAccountType(currentActivatedAccType);
             };
+            grpXPC.Session = _uOw;
+            grpBS.PositionChanged += (s, e)=>
+            {
+                grpBS.EndEdit();
+                unitOfWork1.CommitChanges();
+            };
             grpXPC.CollectionChanged += (s, e) => 
             {
                 ((CoreModel.AccountGroup)e.ChangedObject).AccountType = currentActivatedAccType;
             };
+            grpDataNavigator.ButtonClick += (s, e) => 
+            {
+                if (e.Button.ButtonType == NavigatorButtonType.Append)
+                {
+                    if(grpTreeList.Nodes.Count> 0)
+                    {
+                        var curr = grpTreeList.FocusedNode.GetValue(colLineId);
+                        if(curr != null)
+                        {
+                            var parnetAccountGrp = _uOw.GetObjectByKey<CoreModel.AccountGroup>(curr);
+                            grpXPC.Add(new CoreModel.AccountGroup(_uOw) { ParentLine = parnetAccountGrp });
+                            e.Handled = true;
+                        }
+                    }
+                }
+            };
+
             
         }
         public void ActivateAccountType(CoreModel.MyEnums.AccountType _type)
