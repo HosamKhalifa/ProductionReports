@@ -28,13 +28,14 @@ namespace CoreModelWin.View.Shared
                 Type t = TableBase.GetTable(unitOfWork1, AccountType).GetTableType();
                 
                 accountBaseXPC = new XPCollection(unitOfWork1, t) ;
+
                 accountBaseBS.DataSource = accountBaseXPC;
                 accountBaseLineXUC2.AccountBaseBS = this.accountBaseBS;
                 this.accountBaseBS.ResetBindings(true);
                 accountBaseLineXUC2.AccountBaseBS.ResetBindings(true);
 
                 accountBaseGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
-
+                accountBaseLineXUC2.InitObj(unitOfWork1);
                 /*
                     var filter = new BinaryOperator(new OperandProperty("TableId"), new OperandValue(AccountType), BinaryOperatorType.Equal);
                     accountBaseXPC.Criteria = filter;

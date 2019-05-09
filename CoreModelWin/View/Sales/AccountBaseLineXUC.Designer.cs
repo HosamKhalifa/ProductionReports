@@ -69,7 +69,6 @@
             this.ActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.ReferenceNumber1LookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ReferenceNumber2LookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.GroupIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ReferenceNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.headerLayoutGroup = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -84,6 +83,7 @@
             this.ItemForReferenceNumber = new DevExpress.XtraLayout.LayoutControlItem();
             this.detailsLayoutGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.GroupIdLookUpEdit = new DevExpress.XtraEditors.PopupContainerEdit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -99,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActiveCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1LookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2LookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumberTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerLayoutGroup)).BeginInit();
@@ -114,6 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForReferenceNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailsLayoutGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // imageCollectionMyXUC
@@ -133,8 +133,8 @@
             this.dataLayoutControl1.Controls.Add(this.ActiveCheckEdit);
             this.dataLayoutControl1.Controls.Add(this.ReferenceNumber1LookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.ReferenceNumber2LookUpEdit);
-            this.dataLayoutControl1.Controls.Add(this.GroupIdLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.ReferenceNumberTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.GroupIdLookUpEdit);
             this.dataLayoutControl1.DataSource = this.accountBaseBS;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, -1);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -148,10 +148,10 @@
             // addressBookGC
             // 
             this.addressBookGC.DataSource = this.accountAddressesBS;
-            this.addressBookGC.Location = new System.Drawing.Point(24, 183);
+            this.addressBookGC.Location = new System.Drawing.Point(24, 187);
             this.addressBookGC.MainView = this.addressBookGV;
             this.addressBookGC.Name = "addressBookGC";
-            this.addressBookGC.Size = new System.Drawing.Size(774, 251);
+            this.addressBookGC.Size = new System.Drawing.Size(774, 247);
             this.addressBookGC.TabIndex = 1;
             this.addressBookGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.addressBookGV});
@@ -473,20 +473,6 @@
             this.ReferenceNumber2LookUpEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumber2LookUpEdit.TabIndex = 10;
             // 
-            // GroupIdLookUpEdit
-            // 
-            this.GroupIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "GroupId!Key", true));
-            this.GroupIdLookUpEdit.Location = new System.Drawing.Point(508, 60);
-            this.GroupIdLookUpEdit.Name = "GroupIdLookUpEdit";
-            this.GroupIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.GroupIdLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.GroupIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.GroupIdLookUpEdit.Properties.NullText = "";
-            this.GroupIdLookUpEdit.Size = new System.Drawing.Size(302, 20);
-            this.GroupIdLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.GroupIdLookUpEdit.TabIndex = 11;
-            // 
             // ReferenceNumberTextEdit
             // 
             this.ReferenceNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "ReferenceNumber", true));
@@ -621,10 +607,23 @@
             this.layoutControlItem5.Control = this.addressBookGC;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(778, 271);
+            this.layoutControlItem5.Size = new System.Drawing.Size(778, 267);
             this.layoutControlItem5.Text = "Address book";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // GroupIdLookUpEdit
+            // 
+            this.GroupIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "GroupId!Key", true));
+            this.GroupIdLookUpEdit.Location = new System.Drawing.Point(508, 60);
+            this.GroupIdLookUpEdit.Name = "GroupIdLookUpEdit";
+            this.GroupIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.GroupIdLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.GroupIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.GroupIdLookUpEdit.Size = new System.Drawing.Size(302, 20);
+            this.GroupIdLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.GroupIdLookUpEdit.TabIndex = 11;
             // 
             // AccountBaseLineXUC
             // 
@@ -647,7 +646,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActiveCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1LookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2LookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumberTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerLayoutGroup)).EndInit();
@@ -662,6 +660,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForReferenceNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailsLayoutGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -678,7 +677,6 @@
         private DevExpress.XtraEditors.CheckEdit ActiveCheckEdit;
         private DevExpress.XtraEditors.LookUpEdit ReferenceNumber1LookUpEdit;
         private DevExpress.XtraEditors.LookUpEdit ReferenceNumber2LookUpEdit;
-        private DevExpress.XtraEditors.LookUpEdit GroupIdLookUpEdit;
         private DevExpress.XtraEditors.TextEdit ReferenceNumberTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup headerLayoutGroup;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
@@ -722,5 +720,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private System.Windows.Forms.BindingSource accountBaseBS;
         private System.Windows.Forms.BindingSource accountAddressesBS;
+        private DevExpress.XtraEditors.PopupContainerEdit GroupIdLookUpEdit;
     }
 }
