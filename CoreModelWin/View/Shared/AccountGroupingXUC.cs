@@ -161,6 +161,7 @@ namespace CoreModelWin.View.Shared
                 grpTPage.PageVisible = false;
                 ref2TPage.PageVisible = false;
                 ref1TreeList.Dock = DockStyle.Fill;
+                ref1TreeList.DoubleClick += TreeList_Click;
             }
             if (_target == typeof(CoreModel.AccountRef2))
             {
@@ -168,6 +169,7 @@ namespace CoreModelWin.View.Shared
                 grpTPage.PageVisible = false;
                 ref1TPage.PageVisible = false;
                 ref2TreeList.Dock = DockStyle.Fill;
+                ref2TreeList.DoubleClick += TreeList_Click;
             }
 
 

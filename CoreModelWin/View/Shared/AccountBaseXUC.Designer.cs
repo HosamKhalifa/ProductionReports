@@ -89,11 +89,11 @@
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.popupContainerEdit1 = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.ReferenceNumber1PopupContainerEdit = new DevExpress.XtraEditors.PopupContainerEdit();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.popupContainerEdit2 = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.ReferenceNumber2PopupContainerEdit = new DevExpress.XtraEditors.PopupContainerEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.popupContainerEdit3 = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.GroupIdPopupContainerEdit = new DevExpress.XtraEditors.PopupContainerEdit();
             this.GroupFullNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -129,11 +129,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveCheckEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1PopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2PopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdPopupContainerEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupFullNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -428,11 +428,11 @@
             this.dataLayoutControl1.Controls.Add(this.NameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DescriptionTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ActiveCheckEdit);
-            this.dataLayoutControl1.Controls.Add(this.popupContainerEdit1);
+            this.dataLayoutControl1.Controls.Add(this.ReferenceNumber1PopupContainerEdit);
             this.dataLayoutControl1.Controls.Add(this.textEdit1);
-            this.dataLayoutControl1.Controls.Add(this.popupContainerEdit2);
+            this.dataLayoutControl1.Controls.Add(this.ReferenceNumber2PopupContainerEdit);
             this.dataLayoutControl1.Controls.Add(this.textEdit2);
-            this.dataLayoutControl1.Controls.Add(this.popupContainerEdit3);
+            this.dataLayoutControl1.Controls.Add(this.GroupIdPopupContainerEdit);
             this.dataLayoutControl1.Controls.Add(this.GroupFullNameTextEdit);
             this.dataLayoutControl1.DataSource = this.actBaseBS;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -626,16 +626,16 @@
             this.DisplayNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "DisplayNumber", true));
             this.DisplayNumberTextEdit.Location = new System.Drawing.Point(181, 12);
             this.DisplayNumberTextEdit.Name = "DisplayNumberTextEdit";
-            this.DisplayNumberTextEdit.Size = new System.Drawing.Size(208, 20);
+            this.DisplayNumberTextEdit.Size = new System.Drawing.Size(271, 20);
             this.DisplayNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.DisplayNumberTextEdit.TabIndex = 5;
             // 
             // ReferenceNumberTextEdit
             // 
             this.ReferenceNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber", true));
-            this.ReferenceNumberTextEdit.Location = new System.Drawing.Point(562, 12);
+            this.ReferenceNumberTextEdit.Location = new System.Drawing.Point(625, 12);
             this.ReferenceNumberTextEdit.Name = "ReferenceNumberTextEdit";
-            this.ReferenceNumberTextEdit.Size = new System.Drawing.Size(208, 20);
+            this.ReferenceNumberTextEdit.Size = new System.Drawing.Size(145, 20);
             this.ReferenceNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumberTextEdit.TabIndex = 6;
             // 
@@ -644,7 +644,7 @@
             this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "Name", true));
             this.NameTextEdit.Location = new System.Drawing.Point(181, 36);
             this.NameTextEdit.Name = "NameTextEdit";
-            this.NameTextEdit.Size = new System.Drawing.Size(208, 20);
+            this.NameTextEdit.Size = new System.Drawing.Size(271, 20);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 7;
             // 
@@ -660,86 +660,86 @@
             // ActiveCheckEdit
             // 
             this.ActiveCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "Active", true));
-            this.ActiveCheckEdit.Location = new System.Drawing.Point(562, 36);
+            this.ActiveCheckEdit.Location = new System.Drawing.Point(625, 36);
             this.ActiveCheckEdit.Name = "ActiveCheckEdit";
             this.ActiveCheckEdit.Properties.Caption = "Active";
             this.ActiveCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ActiveCheckEdit.Size = new System.Drawing.Size(208, 19);
+            this.ActiveCheckEdit.Size = new System.Drawing.Size(145, 19);
             this.ActiveCheckEdit.StyleController = this.dataLayoutControl1;
             this.ActiveCheckEdit.TabIndex = 9;
             // 
-            // popupContainerEdit1
+            // ReferenceNumber1PopupContainerEdit
             // 
-            this.popupContainerEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1!Key", true));
-            this.popupContainerEdit1.Location = new System.Drawing.Point(181, 84);
-            this.popupContainerEdit1.Name = "popupContainerEdit1";
-            this.popupContainerEdit1.Properties.Appearance.Options.UseTextOptions = true;
-            this.popupContainerEdit1.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.popupContainerEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ReferenceNumber1PopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1!Key", true));
+            this.ReferenceNumber1PopupContainerEdit.Location = new System.Drawing.Point(181, 84);
+            this.ReferenceNumber1PopupContainerEdit.Name = "ReferenceNumber1PopupContainerEdit";
+            this.ReferenceNumber1PopupContainerEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.ReferenceNumber1PopupContainerEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ReferenceNumber1PopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.popupContainerEdit1.Properties.Mask.EditMask = "N0";
-            this.popupContainerEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.popupContainerEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.popupContainerEdit1.Size = new System.Drawing.Size(208, 20);
-            this.popupContainerEdit1.StyleController = this.dataLayoutControl1;
-            this.popupContainerEdit1.TabIndex = 10;
+            this.ReferenceNumber1PopupContainerEdit.Properties.Mask.EditMask = "N0";
+            this.ReferenceNumber1PopupContainerEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.ReferenceNumber1PopupContainerEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.ReferenceNumber1PopupContainerEdit.Size = new System.Drawing.Size(98, 20);
+            this.ReferenceNumber1PopupContainerEdit.StyleController = this.dataLayoutControl1;
+            this.ReferenceNumber1PopupContainerEdit.TabIndex = 10;
             // 
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1.RefNo1Name", true));
-            this.textEdit1.Location = new System.Drawing.Point(562, 84);
+            this.textEdit1.Location = new System.Drawing.Point(452, 84);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(208, 20);
+            this.textEdit1.Size = new System.Drawing.Size(318, 20);
             this.textEdit1.StyleController = this.dataLayoutControl1;
             this.textEdit1.TabIndex = 11;
             // 
-            // popupContainerEdit2
+            // ReferenceNumber2PopupContainerEdit
             // 
-            this.popupContainerEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2!Key", true));
-            this.popupContainerEdit2.Location = new System.Drawing.Point(181, 108);
-            this.popupContainerEdit2.Name = "popupContainerEdit2";
-            this.popupContainerEdit2.Properties.Appearance.Options.UseTextOptions = true;
-            this.popupContainerEdit2.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.popupContainerEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ReferenceNumber2PopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2!Key", true));
+            this.ReferenceNumber2PopupContainerEdit.Location = new System.Drawing.Point(181, 108);
+            this.ReferenceNumber2PopupContainerEdit.Name = "ReferenceNumber2PopupContainerEdit";
+            this.ReferenceNumber2PopupContainerEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.ReferenceNumber2PopupContainerEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ReferenceNumber2PopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.popupContainerEdit2.Properties.Mask.EditMask = "N0";
-            this.popupContainerEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.popupContainerEdit2.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.popupContainerEdit2.Size = new System.Drawing.Size(208, 20);
-            this.popupContainerEdit2.StyleController = this.dataLayoutControl1;
-            this.popupContainerEdit2.TabIndex = 12;
+            this.ReferenceNumber2PopupContainerEdit.Properties.Mask.EditMask = "N0";
+            this.ReferenceNumber2PopupContainerEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.ReferenceNumber2PopupContainerEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.ReferenceNumber2PopupContainerEdit.Size = new System.Drawing.Size(98, 20);
+            this.ReferenceNumber2PopupContainerEdit.StyleController = this.dataLayoutControl1;
+            this.ReferenceNumber2PopupContainerEdit.TabIndex = 12;
             // 
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2.RefNo1Name", true));
-            this.textEdit2.Location = new System.Drawing.Point(562, 108);
+            this.textEdit2.Location = new System.Drawing.Point(452, 108);
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(208, 20);
+            this.textEdit2.Size = new System.Drawing.Size(318, 20);
             this.textEdit2.StyleController = this.dataLayoutControl1;
             this.textEdit2.TabIndex = 13;
             // 
-            // popupContainerEdit3
+            // GroupIdPopupContainerEdit
             // 
-            this.popupContainerEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "GroupId!Key", true));
-            this.popupContainerEdit3.Location = new System.Drawing.Point(181, 132);
-            this.popupContainerEdit3.Name = "popupContainerEdit3";
-            this.popupContainerEdit3.Properties.Appearance.Options.UseTextOptions = true;
-            this.popupContainerEdit3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.popupContainerEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.GroupIdPopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "GroupId!Key", true));
+            this.GroupIdPopupContainerEdit.Location = new System.Drawing.Point(181, 132);
+            this.GroupIdPopupContainerEdit.Name = "GroupIdPopupContainerEdit";
+            this.GroupIdPopupContainerEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.GroupIdPopupContainerEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.GroupIdPopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.popupContainerEdit3.Properties.Mask.EditMask = "N0";
-            this.popupContainerEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.popupContainerEdit3.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.popupContainerEdit3.Size = new System.Drawing.Size(208, 20);
-            this.popupContainerEdit3.StyleController = this.dataLayoutControl1;
-            this.popupContainerEdit3.TabIndex = 14;
+            this.GroupIdPopupContainerEdit.Properties.Mask.EditMask = "N0";
+            this.GroupIdPopupContainerEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.GroupIdPopupContainerEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.GroupIdPopupContainerEdit.Size = new System.Drawing.Size(98, 20);
+            this.GroupIdPopupContainerEdit.StyleController = this.dataLayoutControl1;
+            this.GroupIdPopupContainerEdit.TabIndex = 14;
             // 
             // GroupFullNameTextEdit
             // 
             this.GroupFullNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "GroupFullName", true));
-            this.GroupFullNameTextEdit.Location = new System.Drawing.Point(562, 132);
+            this.GroupFullNameTextEdit.Location = new System.Drawing.Point(452, 132);
             this.GroupFullNameTextEdit.Name = "GroupFullNameTextEdit";
-            this.GroupFullNameTextEdit.Size = new System.Drawing.Size(208, 20);
+            this.GroupFullNameTextEdit.Size = new System.Drawing.Size(318, 20);
             this.GroupFullNameTextEdit.StyleController = this.dataLayoutControl1;
             this.GroupFullNameTextEdit.TabIndex = 15;
             // 
@@ -786,37 +786,37 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.popupContainerEdit1;
+            this.layoutControlItem1.Control = this.ReferenceNumber1PopupContainerEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem1.Name = "ItemForReferenceNumber1!Key";
-            this.layoutControlItem1.Size = new System.Drawing.Size(381, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(271, 24);
             this.layoutControlItem1.Text = "ReferenceNumber1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(166, 13);
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.popupContainerEdit2;
+            this.layoutControlItem3.Control = this.ReferenceNumber2PopupContainerEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem3.Name = "ItemForReferenceNumber2!Key";
-            this.layoutControlItem3.Size = new System.Drawing.Size(381, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(271, 24);
             this.layoutControlItem3.Text = "ReferenceNumber2";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(166, 13);
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.popupContainerEdit3;
+            this.layoutControlItem5.Control = this.GroupIdPopupContainerEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem5.Name = "ItemForGroupId!Key";
-            this.layoutControlItem5.Size = new System.Drawing.Size(381, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(271, 24);
             this.layoutControlItem5.Text = "GroupId";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(166, 13);
             // 
             // ItemForReferenceNumber
             // 
             this.ItemForReferenceNumber.Control = this.ReferenceNumberTextEdit;
-            this.ItemForReferenceNumber.Location = new System.Drawing.Point(381, 0);
+            this.ItemForReferenceNumber.Location = new System.Drawing.Point(444, 0);
             this.ItemForReferenceNumber.Name = "ItemForReferenceNumber";
-            this.ItemForReferenceNumber.Size = new System.Drawing.Size(381, 24);
+            this.ItemForReferenceNumber.Size = new System.Drawing.Size(318, 24);
             this.ItemForReferenceNumber.Text = "Reference Number";
             this.ItemForReferenceNumber.TextSize = new System.Drawing.Size(166, 13);
             // 
@@ -825,7 +825,7 @@
             this.ItemForName.Control = this.NameTextEdit;
             this.ItemForName.Location = new System.Drawing.Point(0, 24);
             this.ItemForName.Name = "ItemForName";
-            this.ItemForName.Size = new System.Drawing.Size(381, 24);
+            this.ItemForName.Size = new System.Drawing.Size(444, 24);
             this.ItemForName.Text = "Name";
             this.ItemForName.TextSize = new System.Drawing.Size(166, 13);
             // 
@@ -834,43 +834,43 @@
             this.ItemForDisplayNumber.Control = this.DisplayNumberTextEdit;
             this.ItemForDisplayNumber.Location = new System.Drawing.Point(0, 0);
             this.ItemForDisplayNumber.Name = "ItemForDisplayNumber";
-            this.ItemForDisplayNumber.Size = new System.Drawing.Size(381, 24);
+            this.ItemForDisplayNumber.Size = new System.Drawing.Size(444, 24);
             this.ItemForDisplayNumber.Text = "Display Number";
             this.ItemForDisplayNumber.TextSize = new System.Drawing.Size(166, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.textEdit1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(381, 72);
+            this.layoutControlItem2.Location = new System.Drawing.Point(271, 72);
             this.layoutControlItem2.Name = "ItemForReferenceNumber1.RefNo1Name";
-            this.layoutControlItem2.Size = new System.Drawing.Size(381, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(491, 24);
             this.layoutControlItem2.Text = "Reference Number1.Ref No1Name";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(166, 13);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.textEdit2;
-            this.layoutControlItem4.Location = new System.Drawing.Point(381, 96);
+            this.layoutControlItem4.Location = new System.Drawing.Point(271, 96);
             this.layoutControlItem4.Name = "ItemForReferenceNumber2.RefNo1Name";
-            this.layoutControlItem4.Size = new System.Drawing.Size(381, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(491, 24);
             this.layoutControlItem4.Text = "Reference Number2.Ref No1Name";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(166, 13);
             // 
             // ItemForGroupFullName
             // 
             this.ItemForGroupFullName.Control = this.GroupFullNameTextEdit;
-            this.ItemForGroupFullName.Location = new System.Drawing.Point(381, 120);
+            this.ItemForGroupFullName.Location = new System.Drawing.Point(271, 120);
             this.ItemForGroupFullName.Name = "ItemForGroupFullName";
-            this.ItemForGroupFullName.Size = new System.Drawing.Size(381, 24);
+            this.ItemForGroupFullName.Size = new System.Drawing.Size(491, 24);
             this.ItemForGroupFullName.Text = "Group Full Name";
             this.ItemForGroupFullName.TextSize = new System.Drawing.Size(166, 13);
             // 
             // ItemForActive
             // 
             this.ItemForActive.Control = this.ActiveCheckEdit;
-            this.ItemForActive.Location = new System.Drawing.Point(381, 24);
+            this.ItemForActive.Location = new System.Drawing.Point(444, 24);
             this.ItemForActive.Name = "ItemForActive";
-            this.ItemForActive.Size = new System.Drawing.Size(381, 24);
+            this.ItemForActive.Size = new System.Drawing.Size(318, 24);
             this.ItemForActive.Text = "Active";
             this.ItemForActive.TextSize = new System.Drawing.Size(166, 13);
             // 
@@ -910,11 +910,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveCheckEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1PopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2PopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupContainerEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdPopupContainerEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupFullNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -972,11 +972,11 @@
         private DevExpress.XtraEditors.TextEdit NameTextEdit;
         private DevExpress.XtraEditors.TextEdit DescriptionTextEdit;
         private DevExpress.XtraEditors.CheckEdit ActiveCheckEdit;
-        private DevExpress.XtraEditors.PopupContainerEdit popupContainerEdit1;
+        private DevExpress.XtraEditors.PopupContainerEdit ReferenceNumber1PopupContainerEdit;
         private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.PopupContainerEdit popupContainerEdit2;
+        private DevExpress.XtraEditors.PopupContainerEdit ReferenceNumber2PopupContainerEdit;
         private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.PopupContainerEdit popupContainerEdit3;
+        private DevExpress.XtraEditors.PopupContainerEdit GroupIdPopupContainerEdit;
         private DevExpress.XtraEditors.TextEdit GroupFullNameTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;

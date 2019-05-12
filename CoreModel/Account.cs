@@ -60,11 +60,15 @@ namespace CoreModel
             }
             return ret; 
         }
-
+        public static MyEnums.AccountType TranslateTableEnumToActType(Type _accountClassType)
+        {
+            var tab = (TableBase.TableEnum)Enum.Parse(typeof(TableBase.TableEnum), _accountClassType.Name, true);
+            return TranslateTableEnumToActType(tab);
+        }
         #endregion
 
         #region Fields
-      
+
         DimensionHeader fDimensionHeader;
         [Persistent(@"DIM_HEADER")]
         [Association("DIMENSION_HEADER_ACCOUNTS_FK")]

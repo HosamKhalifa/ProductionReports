@@ -44,9 +44,9 @@ namespace CoreModelWin.View.Sales
             GroupIdLookUpEdit.Properties.PopupControl.Size = new Size(702, 310);
             grpXUC.LookUp(typeof(CoreModel.AccountGroup), CoreModel.MyEnums.AccountType.Customer);
             GroupIdLookUpEdit.Properties.ShowPopupCloseButton = true;
-            GroupIdLookUpEdit.CloseUp += (s, e) => 
+            GroupIdLookUpEdit.CloseUp += (s, e) =>
             {
-                if(grpXUC.SelectedRow != null)
+                if (grpXUC.SelectedRow != null)
                 {
                     e.Value = ((CoreModel.Line)grpXUC.SelectedRow).LineId;
                 }

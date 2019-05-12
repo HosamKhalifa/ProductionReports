@@ -18,6 +18,7 @@ namespace CoreModelWin.View.Shared
         {
             InitializeComponent();
             InitData();
+            
         }
 
         private void InitData()
@@ -26,7 +27,9 @@ namespace CoreModelWin.View.Shared
             {
                 AccountType = (TableBase.TableEnum)Args.ParmEnumValue;
                 Type t = TableBase.GetTable(unitOfWork1, AccountType).GetTableType();
-                
+                accountBaseXUC1.InitObj(unitOfWork1, t);
+
+
                 accountBaseXPC = new XPCollection(unitOfWork1, t) ;
 
                 accountBaseBS.DataSource = accountBaseXPC;
