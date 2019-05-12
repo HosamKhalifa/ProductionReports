@@ -49,7 +49,7 @@ namespace CoreModel
         public enum AccountType
         {
             MainAccountOnly = 0,Employee =10,Customer=20,Vendor=30,InventoryItem=40,Purpose=50,Location=60,Department=70,
-            Equipment=80,FixedAssets
+            Equipment=80,FixedAsset=90
             
         }
         public enum DebitCredit { Debit=1,Credit=-1}

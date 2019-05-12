@@ -20,6 +20,11 @@ namespace CoreModelWin.View.Shared
             InitializeComponent();
         }
         CoreModel.MyEnums.AccountType currentActivatedAccType;
+        private XPLiteObject fSelectedRow;
+        public XPLiteObject SelectedRow
+        {
+            get { return fSelectedRow; }
+        }
         public void InitObj(UnitOfWork _uOw )
         {
             unitOfWork1 = _uOw;
@@ -148,6 +153,7 @@ namespace CoreModelWin.View.Shared
                 ref1TPage.PageVisible = false;
                 ref2TPage.PageVisible = false;
                 grpTreeList.Dock = DockStyle.Fill;
+                grpTreeList.DoubleClick += TreeList_Click;
             }
             if (_target == typeof(CoreModel.AccountRef1))
             {
@@ -165,6 +171,22 @@ namespace CoreModelWin.View.Shared
             }
 
 
+        }
+        
+        private void TreeList_Click(object sender, EventArgs e)
+        {
+            
+            var list = (DevExpress.XtraTreeList.TreeList)sender;
+            if(list.FocusedNode != null)
+            {
+                var currRec = (CoreModel.Line)list.GetDataRecordByNode(list.FocusedNode);
+                fSelectedRow = currRec;
+
+                var popUpEditor = (PopupContainerControl)this.Parent;
+                popUpEditor.OwnerEdit.EditValue = currRec.LineId;
+                //popUpEditor.QueryDisplayText += (s, e) => { e.DisplayText = currR; };
+                popUpEditor.OwnerEdit.ClosePopup();
+            }
         }
     }
 }

@@ -35,7 +35,8 @@ namespace CoreModelWin.View.Shared
                 accountBaseLineXUC2.AccountBaseBS.ResetBindings(true);
 
                 accountBaseGV.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
-                accountBaseLineXUC2.InitObj(unitOfWork1);
+                var actType = Account.TranslateTableEnumToActType(AccountType);
+                accountBaseLineXUC2.InitObj(unitOfWork1, actType);
                 /*
                     var filter = new BinaryOperator(new OperandProperty("TableId"), new OperandValue(AccountType), BinaryOperatorType.Equal);
                     accountBaseXPC.Criteria = filter;

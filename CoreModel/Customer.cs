@@ -21,7 +21,7 @@ namespace CoreModel
         public override void AfterConstruction()
         {
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.Customer);
-            
+           
             base.AfterConstruction();
         }
         #region Fields

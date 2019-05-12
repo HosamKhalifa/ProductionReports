@@ -16,6 +16,7 @@ namespace CoreModel
         public static MyEnums.TableType TableType = MyEnums.TableType.Master;
         //public static string TABLE_NAME = "ADDR_BOOK_TB";
         public AddressBook(Session session) : base(session) { }
+      
         public override void AfterConstruction()
         {
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.AddressBook);

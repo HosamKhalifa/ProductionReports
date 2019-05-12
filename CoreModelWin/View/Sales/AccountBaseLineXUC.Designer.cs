@@ -30,11 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountBaseLineXUC));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.addressBookGC = new CoreLib.Grid.MyGridControl();
-            this.accountAddressesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.GroupNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.accountBaseBS = new System.Windows.Forms.BindingSource(this.components);
             this.accountBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
+            this.addressBookGC = new CoreLib.Grid.MyGridControl();
+            this.accountAddressesBS = new System.Windows.Forms.BindingSource(this.components);
             this.addressBookGV = new CoreLib.Grid.MyGridView();
             this.colLineId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,6 +64,7 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.DimensionHeaderTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DisplayNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -70,6 +73,7 @@
             this.ReferenceNumber1LookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ReferenceNumber2LookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ReferenceNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.GroupIdLookUpEdit = new DevExpress.XtraEditors.PopupContainerEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.headerLayoutGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForDisplayNumber = new DevExpress.XtraLayout.LayoutControlItem();
@@ -83,15 +87,18 @@
             this.ItemForReferenceNumber = new DevExpress.XtraLayout.LayoutControlItem();
             this.detailsLayoutGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.GroupIdLookUpEdit = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.addressBookGC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressBookGC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBookGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimensionHeaderTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayNumberTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
@@ -100,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1LookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2LookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumberTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerLayoutGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDisplayNumber)).BeginInit();
@@ -113,7 +121,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForReferenceNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailsLayoutGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             this.SuspendLayout();
             // 
             // imageCollectionMyXUC
@@ -125,6 +134,7 @@
             this.dataLayoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataLayoutControl1.Controls.Add(this.GroupNameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.addressBookGC);
             this.dataLayoutControl1.Controls.Add(this.DimensionHeaderTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DisplayNumberTextEdit);
@@ -145,21 +155,15 @@
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
-            // addressBookGC
+            // GroupNameTextEdit
             // 
-            this.addressBookGC.DataSource = this.accountAddressesBS;
-            this.addressBookGC.Location = new System.Drawing.Point(24, 187);
-            this.addressBookGC.MainView = this.addressBookGV;
-            this.addressBookGC.Name = "addressBookGC";
-            this.addressBookGC.Size = new System.Drawing.Size(774, 247);
-            this.addressBookGC.TabIndex = 1;
-            this.addressBookGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.addressBookGV});
-            // 
-            // accountAddressesBS
-            // 
-            this.accountAddressesBS.DataMember = "AccountAddresses";
-            this.accountAddressesBS.DataSource = this.accountBaseBS;
+            this.GroupNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "GroupFullName", true));
+            this.GroupNameTextEdit.Location = new System.Drawing.Point(613, 60);
+            this.GroupNameTextEdit.Name = "GroupNameTextEdit";
+            this.GroupNameTextEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.GroupNameTextEdit.Size = new System.Drawing.Size(197, 20);
+            this.GroupNameTextEdit.StyleController = this.dataLayoutControl1;
+            this.GroupNameTextEdit.TabIndex = 13;
             // 
             // accountBaseBS
             // 
@@ -167,8 +171,30 @@
             // 
             // accountBaseXPC
             // 
+            this.accountBaseXPC.DisplayableProperties = resources.GetString("accountBaseXPC.DisplayableProperties");
             this.accountBaseXPC.LoadingEnabled = false;
             this.accountBaseXPC.ObjectType = typeof(CoreModel.Account);
+            this.accountBaseXPC.Session = this.unitOfWork1;
+            // 
+            // addressBookGC
+            // 
+            this.addressBookGC.DataSource = this.accountAddressesBS;
+            gridLevelNode1.RelationName = "Level1";
+            this.addressBookGC.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.addressBookGC.Location = new System.Drawing.Point(24, 187);
+            this.addressBookGC.MainView = this.addressBookGV;
+            this.addressBookGC.Name = "addressBookGC";
+            this.addressBookGC.Size = new System.Drawing.Size(774, 223);
+            this.addressBookGC.TabIndex = 1;
+            this.addressBookGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.addressBookGV});
+            // 
+            // accountAddressesBS
+            // 
+            this.accountAddressesBS.AllowNew = true;
+            this.accountAddressesBS.DataMember = "AccountAddresses";
+            this.accountAddressesBS.DataSource = this.accountBaseBS;
             // 
             // addressBookGV
             // 
@@ -208,7 +234,7 @@
             this.addressBookGV.OptionsView.EnableAppearanceOddRow = true;
             this.addressBookGV.OptionsView.ShowFooter = true;
             this.addressBookGV.OptionsView.ShowGroupPanel = false;
-            this.addressBookGV.UnitOfWorkXpo = null;
+            this.addressBookGV.UnitOfWorkXpo = this.unitOfWork1;
             // 
             // colLineId
             // 
@@ -393,6 +419,11 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 18;
             // 
+            // unitOfWork1
+            // 
+            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
+            this.unitOfWork1.TrackPropertiesModifications = false;
+            // 
             // DimensionHeaderTextEdit
             // 
             this.DimensionHeaderTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "DimensionHeader!Key", true));
@@ -482,12 +513,26 @@
             this.ReferenceNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumberTextEdit.TabIndex = 12;
             // 
+            // GroupIdLookUpEdit
+            // 
+            this.GroupIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "GroupId!Key", true));
+            this.GroupIdLookUpEdit.Location = new System.Drawing.Point(508, 60);
+            this.GroupIdLookUpEdit.Name = "GroupIdLookUpEdit";
+            this.GroupIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.GroupIdLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.GroupIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.GroupIdLookUpEdit.Size = new System.Drawing.Size(101, 20);
+            this.GroupIdLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.GroupIdLookUpEdit.TabIndex = 11;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.headerLayoutGroup});
+            this.headerLayoutGroup,
+            this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(822, 458);
@@ -506,10 +551,11 @@
             this.layoutControlItem1,
             this.ItemForName,
             this.ItemForReferenceNumber,
-            this.detailsLayoutGroup});
+            this.detailsLayoutGroup,
+            this.layoutControlItem6});
             this.headerLayoutGroup.Location = new System.Drawing.Point(0, 0);
             this.headerLayoutGroup.Name = "headerLayoutGroup";
-            this.headerLayoutGroup.Size = new System.Drawing.Size(802, 438);
+            this.headerLayoutGroup.Size = new System.Drawing.Size(802, 414);
             // 
             // ItemForDisplayNumber
             // 
@@ -552,7 +598,7 @@
             this.layoutControlItem4.Control = this.GroupIdLookUpEdit;
             this.layoutControlItem4.Location = new System.Drawing.Point(400, 48);
             this.layoutControlItem4.Name = "ItemForGroupId!Key";
-            this.layoutControlItem4.Size = new System.Drawing.Size(402, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(201, 24);
             this.layoutControlItem4.Text = "GroupId";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 13);
             // 
@@ -595,35 +641,40 @@
             // detailsLayoutGroup
             // 
             this.detailsLayoutGroup.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("New", ((System.Drawing.Image)(resources.GetObject("detailsLayoutGroup.CustomHeaderButtons"))))});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("New", ((System.Drawing.Image)(resources.GetObject("detailsLayoutGroup.CustomHeaderButtons"))), -1, DevExpress.XtraEditors.ButtonPanel.ImageLocation.Default, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", true, -1, true, null, true, false, true, null, "New", -1)});
             this.detailsLayoutGroup.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem5});
             this.detailsLayoutGroup.Location = new System.Drawing.Point(0, 120);
             this.detailsLayoutGroup.Name = "detailsLayoutGroup";
-            this.detailsLayoutGroup.Size = new System.Drawing.Size(802, 318);
+            this.detailsLayoutGroup.Size = new System.Drawing.Size(802, 294);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.addressBookGC;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(778, 267);
+            this.layoutControlItem5.Size = new System.Drawing.Size(778, 243);
             this.layoutControlItem5.Text = "Address book";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(93, 13);
             // 
-            // GroupIdLookUpEdit
+            // layoutControlItem6
             // 
-            this.GroupIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.accountBaseBS, "GroupId!Key", true));
-            this.GroupIdLookUpEdit.Location = new System.Drawing.Point(508, 60);
-            this.GroupIdLookUpEdit.Name = "GroupIdLookUpEdit";
-            this.GroupIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.GroupIdLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.GroupIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.GroupIdLookUpEdit.Size = new System.Drawing.Size(302, 20);
-            this.GroupIdLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.GroupIdLookUpEdit.TabIndex = 11;
+            this.layoutControlItem6.Control = this.GroupNameTextEdit;
+            this.layoutControlItem6.Location = new System.Drawing.Point(601, 48);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(201, 24);
+            this.layoutControlItem6.Text = "Group name";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.AllowDrawBackground = false;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 414);
+            this.layoutControlGroup2.Name = "autoGeneratedGroup0";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(802, 24);
             // 
             // AccountBaseLineXUC
             // 
@@ -634,11 +685,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.addressBookGC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBaseXPC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addressBookGC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountAddressesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBookGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DimensionHeaderTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayNumberTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
@@ -647,6 +700,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1LookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2LookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumberTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerLayoutGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDisplayNumber)).EndInit();
@@ -660,7 +714,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForReferenceNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailsLayoutGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupIdLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -721,5 +776,9 @@
         private System.Windows.Forms.BindingSource accountBaseBS;
         private System.Windows.Forms.BindingSource accountAddressesBS;
         private DevExpress.XtraEditors.PopupContainerEdit GroupIdLookUpEdit;
+        private DevExpress.XtraEditors.TextEdit GroupNameTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.Xpo.UnitOfWork unitOfWork1;
     }
 }

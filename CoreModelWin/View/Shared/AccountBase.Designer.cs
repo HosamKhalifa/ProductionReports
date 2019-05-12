@@ -35,6 +35,7 @@
             this.accountBaseBS = new System.Windows.Forms.BindingSource(this.components);
             this.accountBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.accountBaseGV = new CoreLib.Grid.MyGridView();
+            this.colWorkflowStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLineId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,7 +60,7 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.generalTabG = new DevExpress.XtraTab.XtraTabPage();
             this.accountBaseLineXUC2 = new CoreModelWin.View.Sales.AccountBaseLineXUC();
-            this.colWorkflowStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.accountBaseXUC1 = new CoreModelWin.View.Shared.AccountBaseXUC();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainTabC)).BeginInit();
             this.mainTabC.SuspendLayout();
@@ -76,20 +77,21 @@
             this.mainTabC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainTabC.Location = new System.Drawing.Point(0, 12);
+            this.mainTabC.Location = new System.Drawing.Point(444, 176);
             this.mainTabC.Name = "mainTabC";
             this.mainTabC.SelectedTabPage = this.overviewTabG;
-            this.mainTabC.Size = new System.Drawing.Size(796, 413);
+            this.mainTabC.Size = new System.Drawing.Size(352, 249);
             this.mainTabC.TabIndex = 0;
             this.mainTabC.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.overviewTabG,
             this.generalTabG});
+            this.mainTabC.Visible = false;
             // 
             // overviewTabG
             // 
             this.overviewTabG.Controls.Add(this.accountBaseGC);
             this.overviewTabG.Name = "overviewTabG";
-            this.overviewTabG.Size = new System.Drawing.Size(790, 385);
+            this.overviewTabG.Size = new System.Drawing.Size(346, 221);
             this.overviewTabG.Text = "Overview";
             // 
             // accountBaseGC
@@ -99,7 +101,7 @@
             this.accountBaseGC.Location = new System.Drawing.Point(0, 0);
             this.accountBaseGC.MainView = this.accountBaseGV;
             this.accountBaseGC.Name = "accountBaseGC";
-            this.accountBaseGC.Size = new System.Drawing.Size(790, 385);
+            this.accountBaseGC.Size = new System.Drawing.Size(346, 221);
             this.accountBaseGC.TabIndex = 0;
             this.accountBaseGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.accountBaseGV});
@@ -155,6 +157,14 @@
             this.accountBaseGV.OptionsView.ShowAutoFilterRow = true;
             this.accountBaseGV.OptionsView.ShowFooter = true;
             this.accountBaseGV.UnitOfWorkXpo = this.unitOfWork1;
+            // 
+            // colWorkflowStatus
+            // 
+            this.colWorkflowStatus.Caption = "Status";
+            this.colWorkflowStatus.FieldName = "WorkflowStatus";
+            this.colWorkflowStatus.Name = "colWorkflowStatus";
+            this.colWorkflowStatus.Visible = true;
+            this.colWorkflowStatus.VisibleIndex = 0;
             // 
             // colLineId
             // 
@@ -329,7 +339,7 @@
             // 
             this.generalTabG.Controls.Add(this.accountBaseLineXUC2);
             this.generalTabG.Name = "generalTabG";
-            this.generalTabG.Size = new System.Drawing.Size(790, 385);
+            this.generalTabG.Size = new System.Drawing.Size(346, 221);
             this.generalTabG.Text = "General";
             // 
             // accountBaseLineXUC2
@@ -337,21 +347,24 @@
             this.accountBaseLineXUC2.Dock = System.Windows.Forms.DockStyle.Top;
             this.accountBaseLineXUC2.Location = new System.Drawing.Point(0, 0);
             this.accountBaseLineXUC2.Name = "accountBaseLineXUC2";
-            this.accountBaseLineXUC2.Size = new System.Drawing.Size(790, 460);
+            this.accountBaseLineXUC2.Size = new System.Drawing.Size(346, 460);
             this.accountBaseLineXUC2.TabIndex = 0;
             // 
-            // colWorkflowStatus
+            // accountBaseXUC1
             // 
-            this.colWorkflowStatus.Caption = "Status";
-            this.colWorkflowStatus.FieldName = "WorkflowStatus";
-            this.colWorkflowStatus.Name = "colWorkflowStatus";
-            this.colWorkflowStatus.Visible = true;
-            this.colWorkflowStatus.VisibleIndex = 0;
+            this.accountBaseXUC1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.accountBaseXUC1.Location = new System.Drawing.Point(12, 12);
+            this.accountBaseXUC1.Name = "accountBaseXUC1";
+            this.accountBaseXUC1.Size = new System.Drawing.Size(862, 413);
+            this.accountBaseXUC1.TabIndex = 1;
             // 
             // AccountBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(886, 437);
+            this.Controls.Add(this.accountBaseXUC1);
             this.Controls.Add(this.mainTabC);
             this.Name = "AccountBase";
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
@@ -400,5 +413,6 @@
         private DevExpress.XtraTab.XtraTabPage generalTabG;
         private Sales.AccountBaseLineXUC accountBaseLineXUC2;
         private DevExpress.XtraGrid.Columns.GridColumn colWorkflowStatus;
+        private AccountBaseXUC accountBaseXUC1;
     }
 }

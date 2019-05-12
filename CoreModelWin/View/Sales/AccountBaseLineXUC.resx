@@ -131,14 +131,20 @@
         ZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0cmVhbWVyAAAAAAIAAAAL
 </value>
   </data>
-  <metadata name="accountAddressesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>642, 17</value>
-  </metadata>
   <metadata name="accountBaseBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>509, 17</value>
   </metadata>
   <metadata name="accountBaseXPC.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>367, 17</value>
+  </metadata>
+  <data name="accountBaseXPC.DisplayableProperties" xml:space="preserve">
+    <value>This;LineId;CreatedBy;CreatedAt;ModifiedBy;ModifiedAt;ParentLine!;ParentLine!Key;ParentLine;LineShadow;TableId!;TableId!Key;TableId;WorkflowStatus;IsEditable;LineShadowLines;LineShadowFamilyLines;DimensionHeader!;DimensionHeader!Key;DimensionHeader;DisplayNumber;Name;Description;Active;ReferenceNumber1!;ReferenceNumber1!Key;ReferenceNumber1;ReferenceNumber2!;ReferenceNumber2!Key;ReferenceNumber2;GroupId!;GroupId!Key;GroupId;ReferenceNumber;PrimaryAddress!;PrimaryAddress!Key;PrimaryAddress;SequenceRegistry!;SequenceRegistry!Key;SequenceRegistry;AccountAddresses;GroupFullName</value>
+  </data>
+  <metadata name="unitOfWork1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="accountAddressesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>642, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="detailsLayoutGroup.CustomHeaderButtons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

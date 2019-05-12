@@ -28,6 +28,38 @@ namespace CoreModel
             return sequ.NextValue(CoreLib.FormRecord.EffectiveDate);
         }
 
+        public static MyEnums.AccountType TranslateTableEnumToActType(TableBase.TableEnum _table)
+        {
+            MyEnums.AccountType ret = MyEnums.AccountType.MainAccountOnly;
+            switch (_table)
+            {
+                case TableBase.TableEnum.Customer:
+                    ret = MyEnums.AccountType.Customer;
+                    break;
+                case TableBase.TableEnum.Department:
+                    ret = MyEnums.AccountType.Department;
+                    break;
+                case TableBase.TableEnum.Employee:
+                    ret = MyEnums.AccountType.Employee;
+                    break;
+                case TableBase.TableEnum.Equipment:
+                    ret = MyEnums.AccountType.Equipment;
+                    break;
+                case TableBase.TableEnum.FixedAsset:
+                    ret = MyEnums.AccountType.FixedAsset;
+                    break;
+                case TableBase.TableEnum.Vendor:
+                    ret = MyEnums.AccountType.Vendor;
+                    break;
+                case TableBase.TableEnum.Location:
+                    ret = MyEnums.AccountType.Location;
+                    break;
+                case TableBase.TableEnum.Purpose:
+                    ret = MyEnums.AccountType.Purpose;
+                    break;
+            }
+            return ret; 
+        }
 
         #endregion
 
@@ -122,6 +154,10 @@ namespace CoreModel
             set { SetPropertyValue<SequenceRegistry>("SequenceRegistry", ref fSequenceRegistry, value); }
         }
 
+        #endregion
+        #region ComputedFields
+        [NonPersistent]
+        public string GroupFullName { get { return GroupId != null? $"{GroupId.GroupNum} {GroupId.GroupName}":""; } }
         #endregion
 
         #region Events

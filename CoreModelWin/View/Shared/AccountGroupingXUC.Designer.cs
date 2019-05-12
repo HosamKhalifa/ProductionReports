@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountGroupingXUC));
             this.grpXPC = new DevExpress.Xpo.XPCollection(this.components);
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.grpTPage = new DevExpress.XtraTab.XtraTabPage();
             this.grpDataNavigator = new DevExpress.XtraEditors.DataNavigator();
@@ -71,9 +70,9 @@
             this.RefNo2ParentLookup = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colLineId_ref2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.accountTypeImageCombo = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpXPC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.grpTPage.SuspendLayout();
@@ -102,11 +101,6 @@
             this.grpXPC.LoadingEnabled = false;
             this.grpXPC.ObjectType = typeof(CoreModel.AccountGroup);
             this.grpXPC.Session = this.unitOfWork1;
-            // 
-            // unitOfWork1
-            // 
-            this.unitOfWork1.IsObjectModifiedOnNonPersistentPropertyChange = null;
-            this.unitOfWork1.TrackPropertiesModifications = false;
             // 
             // xtraTabControl1
             // 
@@ -518,9 +512,9 @@
             this.Controls.Add(this.accountTypeImageCombo);
             this.Name = "AccountGroupingXUC";
             this.Size = new System.Drawing.Size(732, 414);
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpXPC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.grpTPage.ResumeLayout(false);
@@ -544,7 +538,6 @@
 
         #endregion
         private DevExpress.Xpo.XPCollection grpXPC;
-        private DevExpress.Xpo.UnitOfWork unitOfWork1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage ref1TPage;
         private DevExpress.XtraTab.XtraTabPage grpTPage;

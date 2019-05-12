@@ -210,10 +210,26 @@ namespace CoreModel
             this.LineShadow = lineShadow;
         }
 
+        private List<Line> GetLineShadowLines()
+        {
+            List<Line> retList = new List<Line>();
+            var lst = LineShadow.Split('-');
+            foreach (string item in lst)
+            {
+                long lineOid;
+                if(long.TryParse(item.Trim(), out lineOid))
+                {
+                    var line = Session.GetObjectByKey<Line>(lineOid);
+                    if (line != null) retList.Add(line);
+                }
+            }
+            return retList;
+        }
+
         #endregion
 
         #region Events
-       
+
         #endregion
 
 
