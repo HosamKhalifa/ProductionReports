@@ -112,6 +112,7 @@
     <Compile Include="TaxAgency.cs" />
     <Compile Include="TaxGroup.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Vendor.cs" />
     <Compile Include="Workflow.cs" />
     <Compile Include="WorkflowStep.cs" />
   </ItemGroup>

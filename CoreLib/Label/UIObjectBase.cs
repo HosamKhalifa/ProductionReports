@@ -1,4 +1,5 @@
 ﻿using CoreLib.Xpo;
+using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace CoreLib.Label
         {
             base.AfterConstruction();
         }
+        #region Methods
         public UILabel FindOrCreateUILabel(string _fieldName)
         {
             UILabel l = ObjectLabels.Where(x => x.FieldName == _fieldName ).FirstOrDefault();
@@ -36,9 +38,89 @@ namespace CoreLib.Label
             }
             return l;         
         }
-        
+        public static UIObjectBase GetUIObjectByName(Type _type, UnitOfWork _uOW = null)
+        {
+            return GetUIObjectByName(_type.FullName, _uOW);
+        }
+        public static UIObjectBase GetUIObjectByName(string _ObjectName, UnitOfWork _uOW = null)
+        {
+            var sess = _uOW == null ? XpoDefault.Session : _uOW;
+            var objectBase = sess.FindObject<CoreLib.Label.UIObjectBase>(new BinaryOperator(new OperandProperty("ObjectName"), new OperandValue(_ObjectName), BinaryOperatorType.Equal));
+            return objectBase;
+        }
+        //Setup labels
+        public void SetupGUILabels(DevExpress.XtraGrid.Views.Grid.GridView _list)
+        {
+            foreach (DevExpress.XtraGrid.Columns.GridColumn item in _list.Columns)
+            {
+                var label = this.ObjectLabels.Where(x => x.ColumnName == item.FieldName).FirstOrDefault();
+                if (label != null)
+                {
+                    item.Caption = label.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldCaption);
+                    item.ToolTip = label.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldHelp);
+                }
+            }
+        }
+        public void SetupGUILabels(DevExpress.XtraTreeList.TreeList _list)
+        {
+            foreach (DevExpress.XtraTreeList.Columns.TreeListColumn item in _list.Columns)
+            {
+                var label = this.ObjectLabels.Where(x => x.ColumnName == item.FieldName).FirstOrDefault();
+                if (label != null)
+                {
+                    item.Caption = label.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldCaption);
+                    item.ToolTip = label.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldHelp);
+                }
+            }
+        }
+        public void SetupGUILabels(DevExpress.XtraEditors.LookUpEdit _list)
+        {
+            foreach (DevExpress.XtraEditors.Controls.LookUpColumnInfo item in _list.Properties.Columns)
+            {
+                var label = this.ObjectLabels.Where(x => x.ColumnName == item.FieldName).FirstOrDefault();
+                if (label != null)
+                {
+                    item.Caption = label.ChooseValueForCurrentLang(CoreLib.MyEnums.UILabelType.FieldCaption);
+                }
+            }
+        }
+        public void SetupGUILabels(DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit _list)
+        {
+            SetupGUILabels(_list.View);
+        }
+        public void SetupGUILabels(DevExpress.XtraEditors.SearchLookUpEdit _list)
+        {
+            SetupGUILabels(_list.Properties.View);
+        }
+
+        public string LookUpValueMember()
+        {
+            var valuMember = this.ObjectLabels.Where(x => x.LookupMember == MyEnums.AutoLookUp.ValueMemberHidden ||
+                                        x.LookupMember == MyEnums.AutoLookUp.ValueMemberVisiable).FirstOrDefault();
+            if(valuMember != null)
+            {
+                return valuMember.ColumnName;
+            }
+            else
+            {
+                return "";
+            }
+        }
+        public string LookUpDisplayMember()
+        {
+            var displayMember = this.ObjectLabels.Where(x => x.LookupMember == MyEnums.AutoLookUp.DisplayMember1 ).FirstOrDefault();
+            if (displayMember != null)
+            {
+                return displayMember.ColumnName;
+            }
+            else
+            {
+                return "";
+            }
+        }
+        #endregion
         string fObjectName;
-        [Size(150)]
+        [Size(150),Indexed(Name ="UIObjectName_UQ",Unique =true)]
         public string ObjectName
         {
             get { return fObjectName; }

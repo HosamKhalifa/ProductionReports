@@ -23,7 +23,7 @@ using DevExpress.XtraEditors.Controls;
 
 namespace CoreModelWin.AppLists
 {
-    public class AppListInfo //Class holding infos about app list object 
+    public class AppListInfo //Class holding info about app list object 
     {
         public AppListInfo(Session session)
         {
@@ -112,9 +112,8 @@ namespace CoreModelWin.AppLists
             return rowsCount;
         }
 
-        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, XPCollection ds)
+        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, XPClassInfo _classInfo)
         {
-            XPClassInfo _classInfo = ds.ObjectClassInfo;
             var objectBaseLine = AppListSession.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", _classInfo.FullName));
             if (objectBaseLine == null) { return; }
             foreach (var m in _classInfo.Members.Where(x => !string.IsNullOrEmpty(x.MappingField) || x.FindAttributeInfo("NonPersistentAttribute") == null))
@@ -137,6 +136,12 @@ namespace CoreModelWin.AppLists
                 }
             }
         }
+        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, XPCollection ds)
+        {
+            XPClassInfo _classInfo = ds.ObjectClassInfo;
+            LinkLookupsToGrid(_gridView, _classInfo);
+        }
+
         public void LinkToDataLayout(DataLayoutControl _dataLayout, XPCollection ds)
         {
             XPClassInfo _classInfo = ds.ObjectClassInfo;
@@ -203,7 +208,7 @@ namespace CoreModelWin.AppLists
             lookupGrd.DataSource = DataMemberXPCollection;
             lookupGrd.DisplayMember = DisplayMember;
             lookupGrd.ValueMember = string.IsNullOrEmpty(_valueMember) ? ValueMember : _valueMember;
-            
+            //if (_valueMember.IsNotNull()) lookupGrd.KeyMember = _valueMember;
             col.ColumnEdit = lookupGrd;
             
             ActiveColumnLinks.Add(col);
@@ -309,8 +314,7 @@ namespace CoreModelWin.AppLists
                 XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
             }
         }
-
-
+        
         public void SetupGridView(DevExpress.XtraGrid.Views.Grid.GridView targetGV, XPBaseCollection _listXPC)
         {
             //DevExpress.XtraGrid.Views.Grid.GridView targetGV = col.Properties.View;

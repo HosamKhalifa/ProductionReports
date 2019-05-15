@@ -42,6 +42,17 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colpwdCol = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colhashCol = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.searchLookUpEdit1 = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.treeListLookUpEdit1 = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hashTxt.Properties)).BeginInit();
@@ -50,11 +61,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(86, 24);
+            this.simpleButton1.Location = new System.Drawing.Point(18, 15);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 0;
@@ -62,21 +85,21 @@
             // 
             // passwordTxt
             // 
-            this.passwordTxt.Location = new System.Drawing.Point(246, 26);
+            this.passwordTxt.Location = new System.Drawing.Point(178, 17);
             this.passwordTxt.Name = "passwordTxt";
-            this.passwordTxt.Size = new System.Drawing.Size(231, 20);
+            this.passwordTxt.Size = new System.Drawing.Size(178, 20);
             this.passwordTxt.TabIndex = 1;
             // 
             // hashTxt
             // 
-            this.hashTxt.Location = new System.Drawing.Point(246, 53);
+            this.hashTxt.Location = new System.Drawing.Point(178, 44);
             this.hashTxt.Name = "hashTxt";
-            this.hashTxt.Size = new System.Drawing.Size(231, 20);
+            this.hashTxt.Size = new System.Drawing.Size(178, 20);
             this.hashTxt.TabIndex = 2;
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(86, 56);
+            this.simpleButton2.Location = new System.Drawing.Point(18, 47);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(75, 23);
             this.simpleButton2.TabIndex = 3;
@@ -114,10 +137,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.DataSource = this.bindingSource1;
-            this.gridControl1.Location = new System.Drawing.Point(12, 99);
+            this.gridControl1.Location = new System.Drawing.Point(18, 76);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(558, 200);
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemSearchLookUpEdit1});
+            this.gridControl1.Size = new System.Drawing.Size(621, 200);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -144,15 +170,110 @@
             this.colhashCol.Visible = true;
             this.colhashCol.VisibleIndex = 1;
             // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            // 
+            // repositoryItemSearchLookUpEdit1
+            // 
+            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
+            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
+            this.repositoryItemSearchLookUpEdit1.View = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
+            this.xtraTabControl1.Size = new System.Drawing.Size(664, 311);
+            this.xtraTabControl1.TabIndex = 5;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.lookUpEdit1);
+            this.xtraTabPage2.Controls.Add(this.treeListLookUpEdit1);
+            this.xtraTabPage2.Controls.Add(this.searchLookUpEdit1);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(658, 283);
+            this.xtraTabPage2.Text = "xtraTabPage2";
+            // 
+            // searchLookUpEdit1
+            // 
+            this.searchLookUpEdit1.Location = new System.Drawing.Point(183, 76);
+            this.searchLookUpEdit1.Name = "searchLookUpEdit1";
+            this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.searchLookUpEdit1.Properties.View = this.searchLookUpEdit1View;
+            this.searchLookUpEdit1.Size = new System.Drawing.Size(194, 20);
+            this.searchLookUpEdit1.TabIndex = 0;
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.simpleButton1);
+            this.xtraTabPage1.Controls.Add(this.gridControl1);
+            this.xtraTabPage1.Controls.Add(this.passwordTxt);
+            this.xtraTabPage1.Controls.Add(this.simpleButton2);
+            this.xtraTabPage1.Controls.Add(this.hashTxt);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(658, 283);
+            this.xtraTabPage1.Text = "xtraTabPage1";
+            // 
+            // treeListLookUpEdit1
+            // 
+            this.treeListLookUpEdit1.Location = new System.Drawing.Point(183, 119);
+            this.treeListLookUpEdit1.Name = "treeListLookUpEdit1";
+            this.treeListLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.treeListLookUpEdit1.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.treeListLookUpEdit1.Size = new System.Drawing.Size(194, 20);
+            this.treeListLookUpEdit1.TabIndex = 1;
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Location = new System.Drawing.Point(183, 162);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Size = new System.Drawing.Size(194, 20);
+            this.lookUpEdit1.TabIndex = 2;
+            // 
             // TestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(582, 311);
-            this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.hashTxt);
-            this.Controls.Add(this.passwordTxt);
-            this.Controls.Add(this.simpleButton1);
+            this.ClientSize = new System.Drawing.Size(664, 311);
+            this.Controls.Add(this.xtraTabControl1);
             this.Name = "TestFrm";
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordTxt.Properties)).EndInit();
@@ -162,6 +283,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -181,5 +314,16 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colpwdCol;
         private DevExpress.XtraGrid.Columns.GridColumn colhashCol;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraEditors.TreeListLookUpEdit treeListLookUpEdit1;
+        private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }
 }

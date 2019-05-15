@@ -21,6 +21,21 @@ namespace CoreModel
             TableId = TableBase.GetTable(Session, TableBase.TableEnum.Employee);
             base.AfterConstruction();
         }
+        DateTime fBirthDate;
+        [Persistent(@"BIRTH_DATE")]
+        public DateTime BirthDate
+        {
+            get { return fBirthDate; }
+            set { SetPropertyValue<DateTime>("BirthDate", ref fBirthDate, value); }
+        }
+        string fIdentityCard;
+        [Persistent(@"IDENT_CARD"),Size(30)]
+        public string IdentityCard
+        {
+            get { return fIdentityCard; }
+            set { SetPropertyValue<string>("IdentityCard", ref fIdentityCard, value); }
+        }
+
         MyEnums.Gender fGender;
         [Persistent("GENDER")]
         public MyEnums.Gender Gender

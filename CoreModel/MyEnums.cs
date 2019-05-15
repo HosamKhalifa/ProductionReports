@@ -8,6 +8,7 @@ namespace CoreModel
 {
    public class MyEnums
     {
+        public enum AppListPredefined { AccountGroupTree=3000,AccountRef1Tree=3001,AccountRef2Tree=3002}
         public enum MainAccountClass{ Total=0,Assets=1,Liabilities=2,Equity=3,Revenues=4,CostOfGoodsSold=5,Expenses=6}
         public enum BalanceControl {None=0,Debit=1,Credit=2 }
         public enum AccountClosingType { None=0,BalanceSheetAccounts=10,ResultAcounts=20,OwnershipAccounts=30}

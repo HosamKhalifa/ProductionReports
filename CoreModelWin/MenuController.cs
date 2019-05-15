@@ -134,6 +134,9 @@ namespace CoreModelWin
                 case CoreLib.MyEnums.FormEntityEnum.Customer:
                     MenuController.CustomerFormOpen(_args);
                     break;
+                case CoreLib.MyEnums.FormEntityEnum.Vendor:
+                    MenuController.VendorFormOpen(_args);
+                    break;
                 case CoreLib.MyEnums.FormEntityEnum.Country:
                     MenuController.CountryFormOpen(_args);
                     break;
@@ -228,6 +231,14 @@ namespace CoreModelWin
             _args.Caller = _args.Caller == null ? MdiParentForm : _args.Caller;
             _args.ParmEnumType = typeof(TableBase.TableEnum);
             _args.ParmEnumValue = (int)TableBase.TableEnum.Customer;
+            View.Shared.AccountBase frm = new View.Shared.AccountBase(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+        }
+        public static void VendorFormOpen(Args _args)
+        {
+            _args.Caller = _args.Caller == null ? MdiParentForm : _args.Caller;
+            _args.ParmEnumType = typeof(TableBase.TableEnum);
+            _args.ParmEnumValue = (int)TableBase.TableEnum.Vendor;
             View.Shared.AccountBase frm = new View.Shared.AccountBase(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
             frm.Show();
         }

@@ -109,7 +109,19 @@ namespace CoreModel
         public string City
         {
             get { return fCity; }
-            set { SetPropertyValue<string>("City", ref fCity, value); }
+            set
+            {
+                SetPropertyValue<string>("City", ref fCity, value);
+                if(!IsLoading && fCity != null)
+                {
+                    var city = Session.FindObject<City>(new BinaryOperator("CityCode", fCity, BinaryOperatorType.Equal));
+                    if(city != null)
+                    {
+                        Country = city.Province.ProvinceCountry.CountryCode;
+                    }
+                }
+            }
+
         }
         string fTaxFileNumber;
         [Persistent(@"TAX_FILE_NUM"), Size(20)]

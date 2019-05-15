@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
+            this.orgNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.countryLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.cityLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.acccountGroupLink = new DevExpress.XtraNavBar.NavBarItem();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
             this.fiscalCalenderYearLink = new DevExpress.XtraNavBar.NavBarItem();
@@ -49,9 +53,6 @@
             this.aPNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.aRNabGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.customerLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.orgNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
-            this.countryLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.cityLink = new DevExpress.XtraNavBar.NavBarItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
@@ -82,7 +83,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.acccountGroupLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.vendorLink = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -95,7 +96,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.orgNavGrp;
+            this.navBarControl1.ActiveGroup = this.aPNavGrp;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.SystemSetupNavGrp,
@@ -119,7 +120,8 @@
             this.countryLink,
             this.cityLink,
             this.testLink,
-            this.acccountGroupLink});
+            this.acccountGroupLink,
+            this.vendorLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
@@ -127,6 +129,34 @@
             this.navBarControl1.Size = new System.Drawing.Size(203, 367);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
+            // 
+            // orgNavGrp
+            // 
+            this.orgNavGrp.Caption = "Organization";
+            this.orgNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.countryLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.cityLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.acccountGroupLink)});
+            this.orgNavGrp.Name = "orgNavGrp";
+            this.orgNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("orgNavGrp.SmallImage")));
+            // 
+            // countryLink
+            // 
+            this.countryLink.Caption = "Country";
+            this.countryLink.Name = "countryLink";
+            this.countryLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("countryLink.SmallImage")));
+            // 
+            // cityLink
+            // 
+            this.cityLink.Caption = "City";
+            this.cityLink.Name = "cityLink";
+            this.cityLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("cityLink.SmallImage")));
+            // 
+            // acccountGroupLink
+            // 
+            this.acccountGroupLink.Caption = "Account grouping";
+            this.acccountGroupLink.Name = "acccountGroupLink";
+            this.acccountGroupLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("acccountGroupLink.SmallImage")));
             // 
             // SystemSetupNavGrp
             // 
@@ -229,6 +259,9 @@
             // aPNavGrp
             // 
             this.aPNavGrp.Caption = "Accounts payable";
+            this.aPNavGrp.Expanded = true;
+            this.aPNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.vendorLink)});
             this.aPNavGrp.Name = "aPNavGrp";
             this.aPNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("aPNavGrp.SmallImage")));
             // 
@@ -245,29 +278,6 @@
             this.customerLink.Caption = "Customer";
             this.customerLink.Name = "customerLink";
             this.customerLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("customerLink.SmallImage")));
-            // 
-            // orgNavGrp
-            // 
-            this.orgNavGrp.Caption = "Organization";
-            this.orgNavGrp.Expanded = true;
-            this.orgNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.countryLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.cityLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.acccountGroupLink)});
-            this.orgNavGrp.Name = "orgNavGrp";
-            this.orgNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("orgNavGrp.SmallImage")));
-            // 
-            // countryLink
-            // 
-            this.countryLink.Caption = "Country";
-            this.countryLink.Name = "countryLink";
-            this.countryLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("countryLink.SmallImage")));
-            // 
-            // cityLink
-            // 
-            this.cityLink.Caption = "City";
-            this.cityLink.Name = "cityLink";
-            this.cityLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("cityLink.SmallImage")));
             // 
             // barManager1
             // 
@@ -535,11 +545,11 @@
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // acccountGroupLink
+            // vendorLink
             // 
-            this.acccountGroupLink.Caption = "Account grouping";
-            this.acccountGroupLink.Name = "acccountGroupLink";
-            this.acccountGroupLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("acccountGroupLink.SmallImage")));
+            this.vendorLink.Caption = "Vendor";
+            this.vendorLink.Name = "vendorLink";
+            this.vendorLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("vendorLink.SmallImage")));
             // 
             // Form1
             // 
@@ -623,6 +633,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraNavBar.NavBarItem acccountGroupLink;
+        private DevExpress.XtraNavBar.NavBarItem vendorLink;
     }
 }
 

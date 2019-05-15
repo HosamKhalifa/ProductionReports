@@ -42,11 +42,11 @@
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colActive = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colReferenceNumber1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colReferenceNumber2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGroupId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGroupFullName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,22 +79,22 @@
             this.colTaxFileNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCommercialRegistry = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DisplayNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ReferenceNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ActiveCheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.ReferenceNumber1PopupContainerEdit = new DevExpress.XtraEditors.PopupContainerEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.ReferenceNumber2PopupContainerEdit = new DevExpress.XtraEditors.PopupContainerEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.GroupIdPopupContainerEdit = new DevExpress.XtraEditors.PopupContainerEdit();
+            this.ref1TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ref2TextEdit = new DevExpress.XtraEditors.TextEdit();
             this.GroupFullNameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ReferenceNumber1TreeListLookUpEdit = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.ReferenceNumber2TreeListLookUpEdit = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.GroupIdTreeListLookUpEdit = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeList2 = new DevExpress.XtraTreeList.TreeList();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForDescription = new DevExpress.XtraLayout.LayoutControlItem();
@@ -129,12 +129,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveCheckEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1PopupContainerEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2PopupContainerEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupIdPopupContainerEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ref1TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ref2TextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupFullNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1TreeListLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2TreeListLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdTreeListLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).BeginInit();
@@ -207,11 +210,11 @@
             this.colName,
             this.colDescription,
             this.colActive,
-            this.gridColumn1,
+            this.colReferenceNumber1,
             this.gridColumn2,
-            this.gridColumn3,
+            this.colReferenceNumber2,
             this.gridColumn4,
-            this.gridColumn5,
+            this.colGroupId,
             this.colGroupFullName,
             this.gridColumn6,
             this.gridColumn7,
@@ -286,12 +289,12 @@
             this.colActive.VisibleIndex = 5;
             this.colActive.Width = 46;
             // 
-            // gridColumn1
+            // colReferenceNumber1
             // 
-            this.gridColumn1.FieldName = "ReferenceNumber1!Key";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 8;
+            this.colReferenceNumber1.FieldName = "ReferenceNumber1!Key";
+            this.colReferenceNumber1.Name = "colReferenceNumber1";
+            this.colReferenceNumber1.Visible = true;
+            this.colReferenceNumber1.VisibleIndex = 8;
             // 
             // gridColumn2
             // 
@@ -301,12 +304,12 @@
             this.gridColumn2.VisibleIndex = 9;
             this.gridColumn2.Width = 156;
             // 
-            // gridColumn3
+            // colReferenceNumber2
             // 
-            this.gridColumn3.FieldName = "ReferenceNumber2!Key";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 10;
+            this.colReferenceNumber2.FieldName = "ReferenceNumber2!Key";
+            this.colReferenceNumber2.Name = "colReferenceNumber2";
+            this.colReferenceNumber2.Visible = true;
+            this.colReferenceNumber2.VisibleIndex = 10;
             // 
             // gridColumn4
             // 
@@ -316,12 +319,12 @@
             this.gridColumn4.VisibleIndex = 11;
             this.gridColumn4.Width = 135;
             // 
-            // gridColumn5
+            // colGroupId
             // 
-            this.gridColumn5.FieldName = "GroupId!Key";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 6;
+            this.colGroupId.FieldName = "GroupId!Key";
+            this.colGroupId.Name = "colGroupId";
+            this.colGroupId.Visible = true;
+            this.colGroupId.VisibleIndex = 6;
             // 
             // colGroupFullName
             // 
@@ -428,12 +431,12 @@
             this.dataLayoutControl1.Controls.Add(this.NameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DescriptionTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ActiveCheckEdit);
-            this.dataLayoutControl1.Controls.Add(this.ReferenceNumber1PopupContainerEdit);
-            this.dataLayoutControl1.Controls.Add(this.textEdit1);
-            this.dataLayoutControl1.Controls.Add(this.ReferenceNumber2PopupContainerEdit);
-            this.dataLayoutControl1.Controls.Add(this.textEdit2);
-            this.dataLayoutControl1.Controls.Add(this.GroupIdPopupContainerEdit);
+            this.dataLayoutControl1.Controls.Add(this.ref1TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ref2TextEdit);
             this.dataLayoutControl1.Controls.Add(this.GroupFullNameTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ReferenceNumber1TreeListLookUpEdit);
+            this.dataLayoutControl1.Controls.Add(this.ReferenceNumber2TreeListLookUpEdit);
+            this.dataLayoutControl1.Controls.Add(this.GroupIdTreeListLookUpEdit);
             this.dataLayoutControl1.DataSource = this.actBaseBS;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -476,11 +479,8 @@
             this.colTaxFileNumber,
             this.colTaxCardNumber,
             this.colCommercialRegistry,
-            this.gridColumn17,
             this.gridColumn18,
-            this.gridColumn19,
-            this.gridColumn20,
-            this.gridColumn21});
+            this.gridColumn20});
             this.addressBookGV.EnableAutoFormat = true;
             this.addressBookGV.EnableAutoSave = true;
             this.addressBookGV.GridControl = this.addressBookGC;
@@ -586,162 +586,167 @@
             this.colCommercialRegistry.Visible = true;
             this.colCommercialRegistry.VisibleIndex = 13;
             // 
-            // gridColumn17
-            // 
-            this.gridColumn17.FieldName = "TaxAgency!";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 14;
-            // 
             // gridColumn18
             // 
             this.gridColumn18.FieldName = "TaxAgency!Key";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 15;
-            // 
-            // gridColumn19
-            // 
-            this.gridColumn19.FieldName = "TaxGroup!";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 16;
+            this.gridColumn18.VisibleIndex = 14;
             // 
             // gridColumn20
             // 
             this.gridColumn20.FieldName = "TaxGroup!Key";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 17;
-            // 
-            // gridColumn21
-            // 
-            this.gridColumn21.FieldName = "ReferenceNumber1.RefNo1Name";
-            this.gridColumn21.Name = "gridColumn21";
-            this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 18;
+            this.gridColumn20.VisibleIndex = 15;
             // 
             // DisplayNumberTextEdit
             // 
             this.DisplayNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "DisplayNumber", true));
-            this.DisplayNumberTextEdit.Location = new System.Drawing.Point(181, 12);
+            this.DisplayNumberTextEdit.Location = new System.Drawing.Point(108, 12);
             this.DisplayNumberTextEdit.Name = "DisplayNumberTextEdit";
-            this.DisplayNumberTextEdit.Size = new System.Drawing.Size(271, 20);
+            this.DisplayNumberTextEdit.Size = new System.Drawing.Size(344, 20);
             this.DisplayNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.DisplayNumberTextEdit.TabIndex = 5;
             // 
             // ReferenceNumberTextEdit
             // 
             this.ReferenceNumberTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber", true));
-            this.ReferenceNumberTextEdit.Location = new System.Drawing.Point(625, 12);
+            this.ReferenceNumberTextEdit.Location = new System.Drawing.Point(552, 12);
             this.ReferenceNumberTextEdit.Name = "ReferenceNumberTextEdit";
-            this.ReferenceNumberTextEdit.Size = new System.Drawing.Size(145, 20);
+            this.ReferenceNumberTextEdit.Size = new System.Drawing.Size(218, 20);
             this.ReferenceNumberTextEdit.StyleController = this.dataLayoutControl1;
             this.ReferenceNumberTextEdit.TabIndex = 6;
             // 
             // NameTextEdit
             // 
             this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "Name", true));
-            this.NameTextEdit.Location = new System.Drawing.Point(181, 36);
+            this.NameTextEdit.Location = new System.Drawing.Point(108, 36);
             this.NameTextEdit.Name = "NameTextEdit";
-            this.NameTextEdit.Size = new System.Drawing.Size(271, 20);
+            this.NameTextEdit.Size = new System.Drawing.Size(344, 20);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 7;
             // 
             // DescriptionTextEdit
             // 
             this.DescriptionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "Description", true));
-            this.DescriptionTextEdit.Location = new System.Drawing.Point(181, 60);
+            this.DescriptionTextEdit.Location = new System.Drawing.Point(108, 60);
             this.DescriptionTextEdit.Name = "DescriptionTextEdit";
-            this.DescriptionTextEdit.Size = new System.Drawing.Size(589, 20);
+            this.DescriptionTextEdit.Size = new System.Drawing.Size(662, 20);
             this.DescriptionTextEdit.StyleController = this.dataLayoutControl1;
             this.DescriptionTextEdit.TabIndex = 8;
             // 
             // ActiveCheckEdit
             // 
             this.ActiveCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "Active", true));
-            this.ActiveCheckEdit.Location = new System.Drawing.Point(625, 36);
+            this.ActiveCheckEdit.Location = new System.Drawing.Point(552, 36);
             this.ActiveCheckEdit.Name = "ActiveCheckEdit";
             this.ActiveCheckEdit.Properties.Caption = "Active";
             this.ActiveCheckEdit.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.ActiveCheckEdit.Size = new System.Drawing.Size(145, 19);
+            this.ActiveCheckEdit.Size = new System.Drawing.Size(218, 19);
             this.ActiveCheckEdit.StyleController = this.dataLayoutControl1;
             this.ActiveCheckEdit.TabIndex = 9;
             // 
-            // ReferenceNumber1PopupContainerEdit
+            // ref1TextEdit
             // 
-            this.ReferenceNumber1PopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1!Key", true));
-            this.ReferenceNumber1PopupContainerEdit.Location = new System.Drawing.Point(181, 84);
-            this.ReferenceNumber1PopupContainerEdit.Name = "ReferenceNumber1PopupContainerEdit";
-            this.ReferenceNumber1PopupContainerEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.ReferenceNumber1PopupContainerEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ReferenceNumber1PopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ReferenceNumber1PopupContainerEdit.Properties.Mask.EditMask = "N0";
-            this.ReferenceNumber1PopupContainerEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.ReferenceNumber1PopupContainerEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ReferenceNumber1PopupContainerEdit.Size = new System.Drawing.Size(98, 20);
-            this.ReferenceNumber1PopupContainerEdit.StyleController = this.dataLayoutControl1;
-            this.ReferenceNumber1PopupContainerEdit.TabIndex = 10;
+            this.ref1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1.RefNo1Name", true));
+            this.ref1TextEdit.Location = new System.Drawing.Point(283, 84);
+            this.ref1TextEdit.Name = "ref1TextEdit";
+            this.ref1TextEdit.Size = new System.Drawing.Size(487, 20);
+            this.ref1TextEdit.StyleController = this.dataLayoutControl1;
+            this.ref1TextEdit.TabIndex = 11;
             // 
-            // textEdit1
+            // ref2TextEdit
             // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1.RefNo1Name", true));
-            this.textEdit1.Location = new System.Drawing.Point(452, 84);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(318, 20);
-            this.textEdit1.StyleController = this.dataLayoutControl1;
-            this.textEdit1.TabIndex = 11;
-            // 
-            // ReferenceNumber2PopupContainerEdit
-            // 
-            this.ReferenceNumber2PopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2!Key", true));
-            this.ReferenceNumber2PopupContainerEdit.Location = new System.Drawing.Point(181, 108);
-            this.ReferenceNumber2PopupContainerEdit.Name = "ReferenceNumber2PopupContainerEdit";
-            this.ReferenceNumber2PopupContainerEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.ReferenceNumber2PopupContainerEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ReferenceNumber2PopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ReferenceNumber2PopupContainerEdit.Properties.Mask.EditMask = "N0";
-            this.ReferenceNumber2PopupContainerEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.ReferenceNumber2PopupContainerEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ReferenceNumber2PopupContainerEdit.Size = new System.Drawing.Size(98, 20);
-            this.ReferenceNumber2PopupContainerEdit.StyleController = this.dataLayoutControl1;
-            this.ReferenceNumber2PopupContainerEdit.TabIndex = 12;
-            // 
-            // textEdit2
-            // 
-            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2.RefNo1Name", true));
-            this.textEdit2.Location = new System.Drawing.Point(452, 108);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(318, 20);
-            this.textEdit2.StyleController = this.dataLayoutControl1;
-            this.textEdit2.TabIndex = 13;
-            // 
-            // GroupIdPopupContainerEdit
-            // 
-            this.GroupIdPopupContainerEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "GroupId!Key", true));
-            this.GroupIdPopupContainerEdit.Location = new System.Drawing.Point(181, 132);
-            this.GroupIdPopupContainerEdit.Name = "GroupIdPopupContainerEdit";
-            this.GroupIdPopupContainerEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.GroupIdPopupContainerEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.GroupIdPopupContainerEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.GroupIdPopupContainerEdit.Properties.Mask.EditMask = "N0";
-            this.GroupIdPopupContainerEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.GroupIdPopupContainerEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.GroupIdPopupContainerEdit.Size = new System.Drawing.Size(98, 20);
-            this.GroupIdPopupContainerEdit.StyleController = this.dataLayoutControl1;
-            this.GroupIdPopupContainerEdit.TabIndex = 14;
+            this.ref2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2.RefNo1Name", true));
+            this.ref2TextEdit.Location = new System.Drawing.Point(283, 108);
+            this.ref2TextEdit.Name = "ref2TextEdit";
+            this.ref2TextEdit.Size = new System.Drawing.Size(487, 20);
+            this.ref2TextEdit.StyleController = this.dataLayoutControl1;
+            this.ref2TextEdit.TabIndex = 13;
             // 
             // GroupFullNameTextEdit
             // 
             this.GroupFullNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "GroupFullName", true));
-            this.GroupFullNameTextEdit.Location = new System.Drawing.Point(452, 132);
+            this.GroupFullNameTextEdit.Location = new System.Drawing.Point(283, 132);
             this.GroupFullNameTextEdit.Name = "GroupFullNameTextEdit";
-            this.GroupFullNameTextEdit.Size = new System.Drawing.Size(318, 20);
+            this.GroupFullNameTextEdit.Properties.ReadOnly = true;
+            this.GroupFullNameTextEdit.Properties.UseReadOnlyAppearance = false;
+            this.GroupFullNameTextEdit.Size = new System.Drawing.Size(487, 20);
             this.GroupFullNameTextEdit.StyleController = this.dataLayoutControl1;
             this.GroupFullNameTextEdit.TabIndex = 15;
+            // 
+            // ReferenceNumber1TreeListLookUpEdit
+            // 
+            this.ReferenceNumber1TreeListLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber1!Key", true));
+            this.ReferenceNumber1TreeListLookUpEdit.Location = new System.Drawing.Point(108, 84);
+            this.ReferenceNumber1TreeListLookUpEdit.Name = "ReferenceNumber1TreeListLookUpEdit";
+            this.ReferenceNumber1TreeListLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.ReferenceNumber1TreeListLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ReferenceNumber1TreeListLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ReferenceNumber1TreeListLookUpEdit.Properties.NullText = "";
+            this.ReferenceNumber1TreeListLookUpEdit.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.ReferenceNumber1TreeListLookUpEdit.Size = new System.Drawing.Size(171, 20);
+            this.ReferenceNumber1TreeListLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.ReferenceNumber1TreeListLookUpEdit.TabIndex = 10;
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            // 
+            // ReferenceNumber2TreeListLookUpEdit
+            // 
+            this.ReferenceNumber2TreeListLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "ReferenceNumber2!Key", true));
+            this.ReferenceNumber2TreeListLookUpEdit.Location = new System.Drawing.Point(108, 108);
+            this.ReferenceNumber2TreeListLookUpEdit.Name = "ReferenceNumber2TreeListLookUpEdit";
+            this.ReferenceNumber2TreeListLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.ReferenceNumber2TreeListLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ReferenceNumber2TreeListLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ReferenceNumber2TreeListLookUpEdit.Properties.NullText = "";
+            this.ReferenceNumber2TreeListLookUpEdit.Properties.TreeList = this.treeList1;
+            this.ReferenceNumber2TreeListLookUpEdit.Size = new System.Drawing.Size(171, 20);
+            this.ReferenceNumber2TreeListLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.ReferenceNumber2TreeListLookUpEdit.TabIndex = 12;
+            // 
+            // treeList1
+            // 
+            this.treeList1.Location = new System.Drawing.Point(0, 0);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.EnableFiltering = true;
+            this.treeList1.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeList1.Size = new System.Drawing.Size(400, 200);
+            this.treeList1.TabIndex = 0;
+            // 
+            // GroupIdTreeListLookUpEdit
+            // 
+            this.GroupIdTreeListLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.actBaseBS, "GroupId!Key", true));
+            this.GroupIdTreeListLookUpEdit.Location = new System.Drawing.Point(108, 132);
+            this.GroupIdTreeListLookUpEdit.Name = "GroupIdTreeListLookUpEdit";
+            this.GroupIdTreeListLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.GroupIdTreeListLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.GroupIdTreeListLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.GroupIdTreeListLookUpEdit.Properties.NullText = "";
+            this.GroupIdTreeListLookUpEdit.Properties.TreeList = this.treeList2;
+            this.GroupIdTreeListLookUpEdit.Size = new System.Drawing.Size(171, 20);
+            this.GroupIdTreeListLookUpEdit.StyleController = this.dataLayoutControl1;
+            this.GroupIdTreeListLookUpEdit.TabIndex = 14;
+            // 
+            // treeList2
+            // 
+            this.treeList2.Location = new System.Drawing.Point(0, 0);
+            this.treeList2.Name = "treeList2";
+            this.treeList2.OptionsBehavior.EnableFiltering = true;
+            this.treeList2.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeList2.Size = new System.Drawing.Size(400, 200);
+            this.treeList2.TabIndex = 0;
             // 
             // layoutControlGroup1
             // 
@@ -782,34 +787,34 @@
             this.ItemForDescription.Name = "ItemForDescription";
             this.ItemForDescription.Size = new System.Drawing.Size(762, 24);
             this.ItemForDescription.Text = "Description";
-            this.ItemForDescription.TextSize = new System.Drawing.Size(166, 13);
+            this.ItemForDescription.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.ReferenceNumber1PopupContainerEdit;
+            this.layoutControlItem1.Control = this.ReferenceNumber1TreeListLookUpEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem1.Name = "ItemForReferenceNumber1!Key";
             this.layoutControlItem1.Size = new System.Drawing.Size(271, 24);
             this.layoutControlItem1.Text = "ReferenceNumber1";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(166, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.ReferenceNumber2PopupContainerEdit;
+            this.layoutControlItem3.Control = this.ReferenceNumber2TreeListLookUpEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem3.Name = "ItemForReferenceNumber2!Key";
             this.layoutControlItem3.Size = new System.Drawing.Size(271, 24);
             this.layoutControlItem3.Text = "ReferenceNumber2";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(166, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.GroupIdPopupContainerEdit;
+            this.layoutControlItem5.Control = this.GroupIdTreeListLookUpEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem5.Name = "ItemForGroupId!Key";
             this.layoutControlItem5.Size = new System.Drawing.Size(271, 24);
             this.layoutControlItem5.Text = "GroupId";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(166, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(93, 13);
             // 
             // ItemForReferenceNumber
             // 
@@ -818,7 +823,7 @@
             this.ItemForReferenceNumber.Name = "ItemForReferenceNumber";
             this.ItemForReferenceNumber.Size = new System.Drawing.Size(318, 24);
             this.ItemForReferenceNumber.Text = "Reference Number";
-            this.ItemForReferenceNumber.TextSize = new System.Drawing.Size(166, 13);
+            this.ItemForReferenceNumber.TextSize = new System.Drawing.Size(93, 13);
             // 
             // ItemForName
             // 
@@ -827,7 +832,7 @@
             this.ItemForName.Name = "ItemForName";
             this.ItemForName.Size = new System.Drawing.Size(444, 24);
             this.ItemForName.Text = "Name";
-            this.ItemForName.TextSize = new System.Drawing.Size(166, 13);
+            this.ItemForName.TextSize = new System.Drawing.Size(93, 13);
             // 
             // ItemForDisplayNumber
             // 
@@ -836,25 +841,27 @@
             this.ItemForDisplayNumber.Name = "ItemForDisplayNumber";
             this.ItemForDisplayNumber.Size = new System.Drawing.Size(444, 24);
             this.ItemForDisplayNumber.Text = "Display Number";
-            this.ItemForDisplayNumber.TextSize = new System.Drawing.Size(166, 13);
+            this.ItemForDisplayNumber.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.textEdit1;
+            this.layoutControlItem2.Control = this.ref1TextEdit;
             this.layoutControlItem2.Location = new System.Drawing.Point(271, 72);
             this.layoutControlItem2.Name = "ItemForReferenceNumber1.RefNo1Name";
             this.layoutControlItem2.Size = new System.Drawing.Size(491, 24);
             this.layoutControlItem2.Text = "Reference Number1.Ref No1Name";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(166, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.textEdit2;
+            this.layoutControlItem4.Control = this.ref2TextEdit;
             this.layoutControlItem4.Location = new System.Drawing.Point(271, 96);
             this.layoutControlItem4.Name = "ItemForReferenceNumber2.RefNo1Name";
             this.layoutControlItem4.Size = new System.Drawing.Size(491, 24);
             this.layoutControlItem4.Text = "Reference Number2.Ref No1Name";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(166, 13);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // ItemForGroupFullName
             // 
@@ -863,7 +870,8 @@
             this.ItemForGroupFullName.Name = "ItemForGroupFullName";
             this.ItemForGroupFullName.Size = new System.Drawing.Size(491, 24);
             this.ItemForGroupFullName.Text = "Group Full Name";
-            this.ItemForGroupFullName.TextSize = new System.Drawing.Size(166, 13);
+            this.ItemForGroupFullName.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForGroupFullName.TextVisible = false;
             // 
             // ItemForActive
             // 
@@ -872,7 +880,7 @@
             this.ItemForActive.Name = "ItemForActive";
             this.ItemForActive.Size = new System.Drawing.Size(318, 24);
             this.ItemForActive.Text = "Active";
-            this.ItemForActive.TextSize = new System.Drawing.Size(166, 13);
+            this.ItemForActive.TextSize = new System.Drawing.Size(93, 13);
             // 
             // layoutControlItem6
             // 
@@ -882,7 +890,7 @@
             this.layoutControlItem6.Size = new System.Drawing.Size(762, 253);
             this.layoutControlItem6.Text = "Addresses";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(166, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(93, 13);
             // 
             // AccountBaseXUC
             // 
@@ -910,12 +918,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveCheckEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1PopupContainerEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2PopupContainerEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupIdPopupContainerEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ref1TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ref2TextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupFullNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber1TreeListLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReferenceNumber2TreeListLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupIdTreeListLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).EndInit();
@@ -948,11 +959,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colActive;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn colReferenceNumber1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn colReferenceNumber2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn colGroupId;
         private DevExpress.XtraGrid.Columns.GridColumn colGroupFullName;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
@@ -972,12 +983,8 @@
         private DevExpress.XtraEditors.TextEdit NameTextEdit;
         private DevExpress.XtraEditors.TextEdit DescriptionTextEdit;
         private DevExpress.XtraEditors.CheckEdit ActiveCheckEdit;
-        private DevExpress.XtraEditors.PopupContainerEdit ReferenceNumber1PopupContainerEdit;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.PopupContainerEdit ReferenceNumber2PopupContainerEdit;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.PopupContainerEdit GroupIdPopupContainerEdit;
-        private DevExpress.XtraEditors.TextEdit GroupFullNameTextEdit;
+        private DevExpress.XtraEditors.TextEdit ref1TextEdit;
+        private DevExpress.XtraEditors.TextEdit ref2TextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDescription;
@@ -1007,13 +1014,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTaxFileNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxCardNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colCommercialRegistry;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private System.Windows.Forms.BindingSource actBaseBS;
         private System.Windows.Forms.BindingSource actAddressBS;
+        private DevExpress.XtraEditors.TextEdit GroupFullNameTextEdit;
+        private DevExpress.XtraEditors.TreeListLookUpEdit ReferenceNumber1TreeListLookUpEdit;
+        private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
+        private DevExpress.XtraEditors.TreeListLookUpEdit ReferenceNumber2TreeListLookUpEdit;
+        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraEditors.TreeListLookUpEdit GroupIdTreeListLookUpEdit;
+        private DevExpress.XtraTreeList.TreeList treeList2;
     }
 }
