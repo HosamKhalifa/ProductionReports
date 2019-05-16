@@ -30,13 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountBaseXUC));
+            this.workflowImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.overviewTP = new DevExpress.XtraTab.XtraTabPage();
             this.overviewGC = new CoreLib.Grid.MyGridControl();
             this.actBaseBS = new System.Windows.Forms.BindingSource(this.components);
             this.actBaseXPC = new DevExpress.Xpo.XPCollection(this.components);
             this.overviewGV = new CoreLib.Grid.MyGridView();
-            this.colWorkflowStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWorkflowStatusInt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDisplayNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colReferenceNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -111,6 +112,7 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workflowImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.overviewTP.SuspendLayout();
@@ -154,9 +156,42 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
+            // persistentRepository1
+            // 
+            this.persistentRepository1.Items.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.workflowImageComboBox});
+            // 
             // imageCollectionMyXUC
             // 
             this.imageCollectionMyXUC.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollectionMyXUC.ImageStream")));
+            this.imageCollectionMyXUC.InsertGalleryImage("editname_16x16.png", "images/actions/editname_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/editname_16x16.png"), 0);
+            this.imageCollectionMyXUC.Images.SetKeyName(0, "editname_16x16.png");
+            this.imageCollectionMyXUC.InsertGalleryImage("bofileattachment_16x16.png", "images/business%20objects/bofileattachment_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/business%20objects/bofileattachment_16x16.png"), 1);
+            this.imageCollectionMyXUC.Images.SetKeyName(1, "bofileattachment_16x16.png");
+            this.imageCollectionMyXUC.InsertGalleryImage("previouscomment_16x16.png", "images/comments/previouscomment_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/comments/previouscomment_16x16.png"), 2);
+            this.imageCollectionMyXUC.Images.SetKeyName(2, "previouscomment_16x16.png");
+            this.imageCollectionMyXUC.InsertGalleryImage("apply_16x16.png", "images/actions/apply_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/apply_16x16.png"), 3);
+            this.imageCollectionMyXUC.Images.SetKeyName(3, "apply_16x16.png");
+            this.imageCollectionMyXUC.InsertGalleryImage("record_16x16.png", "images/arrows/record_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/arrows/record_16x16.png"), 4);
+            this.imageCollectionMyXUC.Images.SetKeyName(4, "record_16x16.png");
+            this.imageCollectionMyXUC.InsertGalleryImage("cancel_16x16.png", "office2013/actions/cancel_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/actions/cancel_16x16.png"), 5);
+            this.imageCollectionMyXUC.Images.SetKeyName(5, "cancel_16x16.png");
+            // 
+            // workflowImageComboBox
+            // 
+            this.workflowImageComboBox.AutoHeight = false;
+            this.workflowImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.workflowImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Draft", 10, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("ReadyForApprove", 20, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Approving..", 30, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Approved", 40, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Posted", 100, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Rejected", -1, 5)});
+            this.workflowImageComboBox.LargeImages = this.imageCollectionMyXUC;
+            this.workflowImageComboBox.Name = "workflowImageComboBox";
+            this.workflowImageComboBox.SmallImages = this.imageCollectionMyXUC;
             // 
             // xtraTabControl1
             // 
@@ -183,6 +218,7 @@
             // 
             this.overviewGC.DataSource = this.actBaseBS;
             this.overviewGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewGC.ExternalRepository = this.persistentRepository1;
             this.overviewGC.Location = new System.Drawing.Point(0, 0);
             this.overviewGC.MainView = this.overviewGV;
             this.overviewGC.Name = "overviewGC";
@@ -204,7 +240,7 @@
             // overviewGV
             // 
             this.overviewGV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colWorkflowStatus,
+            this.colWorkflowStatusInt,
             this.colDisplayNumber,
             this.colReferenceNumber,
             this.colName,
@@ -242,12 +278,14 @@
             this.overviewGV.OptionsView.ShowFooter = true;
             this.overviewGV.UnitOfWorkXpo = this.unitOfWork1;
             // 
-            // colWorkflowStatus
+            // colWorkflowStatusInt
             // 
-            this.colWorkflowStatus.FieldName = "WorkflowStatus";
-            this.colWorkflowStatus.Name = "colWorkflowStatus";
-            this.colWorkflowStatus.Visible = true;
-            this.colWorkflowStatus.VisibleIndex = 0;
+            this.colWorkflowStatusInt.Caption = "status";
+            this.colWorkflowStatusInt.FieldName = "WorkflowStatus";
+            this.colWorkflowStatusInt.Name = "colWorkflowStatusInt";
+            this.colWorkflowStatusInt.Visible = true;
+            this.colWorkflowStatusInt.VisibleIndex = 0;
+            this.colWorkflowStatusInt.Width = 49;
             // 
             // colDisplayNumber
             // 
@@ -900,6 +938,7 @@
             this.Size = new System.Drawing.Size(817, 476);
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workflowImageComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.overviewTP.ResumeLayout(false);
@@ -953,7 +992,6 @@
         private CoreLib.Grid.MyGridControl overviewGC;
         private CoreLib.Grid.MyGridView overviewGV;
         private DevExpress.Xpo.XPCollection actBaseXPC;
-        private DevExpress.XtraGrid.Columns.GridColumn colWorkflowStatus;
         private DevExpress.XtraGrid.Columns.GridColumn colDisplayNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colReferenceNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
@@ -1026,5 +1064,7 @@
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraEditors.TreeListLookUpEdit GroupIdTreeListLookUpEdit;
         private DevExpress.XtraTreeList.TreeList treeList2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox workflowImageComboBox;
+        private DevExpress.XtraGrid.Columns.GridColumn colWorkflowStatusInt;
     }
 }

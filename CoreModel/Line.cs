@@ -141,9 +141,9 @@ namespace CoreModel
             get { return fWorkflowStatus; }
             // set { SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, value); }
         }
-
+       
         #endregion
-      
+
         [NonPersistent]
         public bool IsEditable
         {
@@ -162,7 +162,8 @@ namespace CoreModel
         public virtual void SetWorkflowStatus(MyEnums.WorkflowStatus _wrkFlow)
         {
             //This should called by approve menu 
-            this.fWorkflowStatus = _wrkFlow;
+             SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, _wrkFlow);
+             
         }
 
         class Shadowinfo

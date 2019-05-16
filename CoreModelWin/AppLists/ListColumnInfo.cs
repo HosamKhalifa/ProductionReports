@@ -11,5 +11,6 @@ namespace CoreModelWin.AppLists
         public DevExpress.XtraGrid.Columns.GridColumn GridColumn { get; set; }
         public DevExpress.XtraEditors.LookUpEditBase LookUpEditor { get; set; }
         public DevExpress.XtraTreeList.Columns.TreeListColumn TreeListColumn { get; set; }
+        public DevExpress.XtraEditors.ImageComboBoxEdit ImageComboBoxEdit { get; set; }
     }
 }

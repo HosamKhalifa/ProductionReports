@@ -47,12 +47,13 @@
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.treeListLookUpEdit1 = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
             this.searchLookUpEdit1 = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.treeListLookUpEdit1 = new DevExpress.XtraEditors.TreeListLookUpEdit();
-            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.imageComboBoxEdit1 = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordTxt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hashTxt.Properties)).BeginInit();
@@ -67,12 +68,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -206,12 +208,41 @@
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.imageComboBoxEdit1);
             this.xtraTabPage2.Controls.Add(this.lookUpEdit1);
             this.xtraTabPage2.Controls.Add(this.treeListLookUpEdit1);
             this.xtraTabPage2.Controls.Add(this.searchLookUpEdit1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(658, 283);
             this.xtraTabPage2.Text = "xtraTabPage2";
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Location = new System.Drawing.Point(183, 162);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Size = new System.Drawing.Size(194, 20);
+            this.lookUpEdit1.TabIndex = 2;
+            // 
+            // treeListLookUpEdit1
+            // 
+            this.treeListLookUpEdit1.Location = new System.Drawing.Point(183, 119);
+            this.treeListLookUpEdit1.Name = "treeListLookUpEdit1";
+            this.treeListLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.treeListLookUpEdit1.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.treeListLookUpEdit1.Size = new System.Drawing.Size(194, 20);
+            this.treeListLookUpEdit1.TabIndex = 1;
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
             // 
             // searchLookUpEdit1
             // 
@@ -241,33 +272,14 @@
             this.xtraTabPage1.Size = new System.Drawing.Size(658, 283);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
-            // treeListLookUpEdit1
+            // imageComboBoxEdit1
             // 
-            this.treeListLookUpEdit1.Location = new System.Drawing.Point(183, 119);
-            this.treeListLookUpEdit1.Name = "treeListLookUpEdit1";
-            this.treeListLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.imageComboBoxEdit1.Location = new System.Drawing.Point(183, 202);
+            this.imageComboBoxEdit1.Name = "imageComboBoxEdit1";
+            this.imageComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.treeListLookUpEdit1.Properties.TreeList = this.treeListLookUpEdit1TreeList;
-            this.treeListLookUpEdit1.Size = new System.Drawing.Size(194, 20);
-            this.treeListLookUpEdit1.TabIndex = 1;
-            // 
-            // treeListLookUpEdit1TreeList
-            // 
-            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
-            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
-            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
-            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
-            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
-            this.treeListLookUpEdit1TreeList.TabIndex = 0;
-            // 
-            // lookUpEdit1
-            // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(183, 162);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(194, 20);
-            this.lookUpEdit1.TabIndex = 2;
+            this.imageComboBoxEdit1.Size = new System.Drawing.Size(194, 20);
+            this.imageComboBoxEdit1.TabIndex = 3;
             // 
             // TestFrm
             // 
@@ -289,12 +301,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,5 +338,6 @@
         private DevExpress.XtraEditors.TreeListLookUpEdit treeListLookUpEdit1;
         private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.ImageComboBoxEdit imageComboBoxEdit1;
     }
 }

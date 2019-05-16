@@ -13,6 +13,9 @@ using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
 using CoreLib.Label;
 using DevExpress.XtraTreeList.Columns;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraEditors.Controls;
+using CoreModel;
 
 namespace CoreModelWin.AppLists
 {
@@ -22,10 +25,7 @@ namespace CoreModelWin.AppLists
         {
             InitializeComponent();
         }
-        public void AddImageToWorkflowCombo()
-        {
-
-        }
+       
         public void LinkList(ListColumnInfo _col ,CoreModel.MyEnums.AppListPredefined _appList, CriteriaOperator _whereCO = null)
         {
             switch (_appList)
@@ -38,17 +38,21 @@ namespace CoreModelWin.AppLists
                     break;
                 case CoreModel.MyEnums.AppListPredefined.AccountRef2Tree:
                     LinkAccountRef2(_col, _whereCO);
-                    
+                    break;
+                case CoreModel.MyEnums.AppListPredefined.WorkflowStatusCombo:
+                    LinkWorkflow(_col);
                     break;
                 default:
                     break;
             }
         }
-        
+
+
         #region Constants
         const string ACCOUNT_GROUPING = "accountGroupTreeList";
         const string ACCOUNT_REF1 = "accountRef1TreeList";
         const string ACCOUNT_REF2 = "accountRef2TreeList";
+        const string WFLOW_STATUS = "workflowStatusImageComboBox";
         #endregion
         #region Methods
         private void LinkAccountGroup(ListColumnInfo _col, CriteriaOperator _whereCO = null)
@@ -116,6 +120,35 @@ namespace CoreModelWin.AppLists
             if (_col.TreeListColumn != null) { _col.TreeListColumn.ColumnEdit = SharedPR.Items[ACCOUNT_REF2]; }
 
 
+        }
+        private void LinkWorkflow(ListColumnInfo _col)
+        {
+            if(_col.GridColumn != null){_col.GridColumn.ColumnEdit = BuildWorkflowImgCombo();}
+            if (_col.ImageComboBoxEdit != null)
+            {
+                _col.ImageComboBoxEdit.Properties.Items.Clear();
+                _col.ImageComboBoxEdit.Properties.SmallImages = workflowImgList;
+                _col.ImageComboBoxEdit.Properties.LargeImages = workflowImgList;
+                var cmbo = BuildWorkflowImgCombo();
+                foreach (DevExpress.XtraEditors.Controls.ImageComboBoxItem item in cmbo.Items)
+                {
+                    _col.ImageComboBoxEdit.Properties.Items.Add(item);
+                } 
+            }
+            if(_col.TreeListColumn != null) { _col.TreeListColumn.ColumnEdit = BuildWorkflowImgCombo(); }
+        }
+        private RepositoryItemImageComboBox BuildWorkflowImgCombo()
+        {
+            var ed = new RepositoryItemImageComboBox();
+            ed.SmallImages = workflowImgList;
+            ed.LargeImages = workflowImgList;
+            ed.Items.Add(new ImageComboBoxItem(MyEnums.WorkflowStatus.Draft.ToString(), MyEnums.WorkflowStatus.Draft, 0));
+            ed.Items.Add(new ImageComboBoxItem(MyEnums.WorkflowStatus.ReadyForApprove.ToString(), MyEnums.WorkflowStatus.ReadyForApprove, 1));
+            ed.Items.Add(new ImageComboBoxItem(MyEnums.WorkflowStatus.Approving.ToString(), MyEnums.WorkflowStatus.Approving, 2));
+            ed.Items.Add(new ImageComboBoxItem(MyEnums.WorkflowStatus.Approved.ToString(), MyEnums.WorkflowStatus.Approved, 3));
+            ed.Items.Add(new ImageComboBoxItem(MyEnums.WorkflowStatus.Posted.ToString(), MyEnums.WorkflowStatus.Posted, 4));
+            ed.Items.Add(new ImageComboBoxItem(MyEnums.WorkflowStatus.Rejected.ToString(), MyEnums.WorkflowStatus.Rejected, 5));
+            return ed;
         }
         #endregion
     }

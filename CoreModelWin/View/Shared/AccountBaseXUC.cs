@@ -20,8 +20,6 @@ namespace CoreModelWin.View.Shared
             InitializeComponent();
             
         }
-
-
         #region Methods
         public void InitObj(UnitOfWork _uOW,Type _accountClassType)
         {
@@ -45,9 +43,11 @@ namespace CoreModelWin.View.Shared
             preAppList.LinkList(new ListColumnInfo() {GridColumn= colGroupId , LookUpEditor = GroupIdTreeListLookUpEdit}, MyEnums.AppListPredefined.AccountGroupTree, grpWhere);
             preAppList.LinkList(new ListColumnInfo() { GridColumn = colReferenceNumber1, LookUpEditor=ReferenceNumber1TreeListLookUpEdit }, MyEnums.AppListPredefined.AccountRef1Tree, grpWhere);
             preAppList.LinkList(new ListColumnInfo() { GridColumn = colReferenceNumber2 ,LookUpEditor=ReferenceNumber2TreeListLookUpEdit}, MyEnums.AppListPredefined.AccountRef2Tree, grpWhere);
+            preAppList.LinkList(new ListColumnInfo() { GridColumn = colWorkflowStatusInt }, MyEnums.AppListPredefined.WorkflowStatusCombo);
             l.LinkListToColumn(colCountry, typeof(CoreModel.Country),_valueMember: "CountryCode");
             l.LinkListToColumn(colCity, typeof(CoreModel.City),_valueMember: "CityCode");
 
+           
 
         }
 
