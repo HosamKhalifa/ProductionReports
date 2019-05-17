@@ -21,7 +21,8 @@ namespace CoreLib
         {
             None=0,TestForm=1, FieldsSetting=2, Sequence=3, UILabel=4, TableBase=5, FiscalCalender=6, Currency=7, CurrencySetup=8,
             FiscalCalenderYear=9, LedgerChartOfAccounts=10,Ledger=11,MainAccountType=12,MainAccount=13,Customer=14,Vendor = 15,
-            Employee=16,Equipment=17,Purpose=18,Country=19,City=20,Province=21,AccountGrouping=22
+            Employee=16,Equipment=17,Purpose=18,Country=19,City=20,Province=21,AccountGrouping=22,
+            SecurityPrincipalUser=23, SecurityPrincipalRole=24
         }
         //this enum should assigned to general tool bar item.tag property 
         public enum MainFunction

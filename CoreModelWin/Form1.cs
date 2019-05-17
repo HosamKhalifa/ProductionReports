@@ -69,6 +69,8 @@ namespace CoreModelWin
             testLink.Tag = CoreLib.MyEnums.FormEntityEnum.TestForm;
             acccountGroupLink.Tag = CoreLib.MyEnums.FormEntityEnum.AccountGrouping;
             vendorLink.Tag = CoreLib.MyEnums.FormEntityEnum.Vendor;
+            usersLink.Tag = CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalUser;
+            rolesLink.Tag = CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalRole;
         }
 
         private void InitBarButtons()

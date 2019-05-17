@@ -46,8 +46,7 @@ namespace CoreModelWin.View.Shared
             preAppList.LinkList(new ListColumnInfo() { GridColumn = colWorkflowStatusInt }, MyEnums.AppListPredefined.WorkflowStatusCombo);
             l.LinkListToColumn(colCountry, typeof(CoreModel.Country),_valueMember: "CountryCode");
             l.LinkListToColumn(colCity, typeof(CoreModel.City),_valueMember: "CityCode");
-
-           
+                      
 
         }
 

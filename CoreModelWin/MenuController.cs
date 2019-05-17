@@ -92,6 +92,12 @@ namespace CoreModelWin
             
             switch (_linkTag)
             {
+                case CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalUser:
+                    MenuController.SecurityPrincipalUserFormOpen(_args);
+                    break;
+                case CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalRole:
+                    MenuController.SecurityPrincipalRoleFormOpen(_args);
+                    break;
                 case CoreLib.MyEnums.FormEntityEnum.AccountGrouping:
                     MenuController.AccountGroupingFormOpen();
                     break;
@@ -149,7 +155,7 @@ namespace CoreModelWin
 
         }
 
-     
+       
 
         public static void BuildFunctionLinks(BarManager _barMgr)
         {
@@ -200,6 +206,17 @@ namespace CoreModelWin
             frm.Show();
         }
         #region Open Methods
+        public static void SecurityPrincipalRoleFormOpen(Args _args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void SecurityPrincipalUserFormOpen(Args _args)
+        {
+            _args.Caller = _args.Caller == null ? MdiParentForm : _args.Caller;
+            var frm = new View.Sys.SecurityPrincipalUserFrm(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+        }
         public static void CityFormOpen(Args _args)
         {
             //Curreny will use runtime Master - Details form
