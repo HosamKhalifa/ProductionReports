@@ -19,7 +19,13 @@ namespace CoreModel
             base.AfterConstruction();
         }
 
-
+        MyEnums.SecurityRoleType fRoleType;
+        [Persistent(@"ROLE_TYPE")]
+        public MyEnums.SecurityRoleType RoleType
+        {
+            get { return fRoleType; }
+            set { SetPropertyValue<MyEnums.SecurityRoleType>("RoleType", ref fRoleType, value); }
+        }
 
 
     }

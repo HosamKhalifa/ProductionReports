@@ -7,24 +7,26 @@ using DevExpress.Xpo;
 
 namespace CoreModel
 {
-    [MapInheritance(MapInheritanceType.ParentTable)]
-    public class SecuriyPrincipalRoleMaster : SecurityPrincipalRole
+    [Persistent(@"SEC_PRINCIPAL_ROLE_MAST_MEM_TB")]
+    [MapInheritance(MapInheritanceType.OwnTable)]
+    public class SecurityPrincipalRoleMasterMembers : Line
     {
-        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalRoleMaster;
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalRoleMasterMembers;
         public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
-        public SecuriyPrincipalRoleMaster(Session session) : base(session)
+        public SecurityPrincipalRoleMasterMembers(Session session) : base(session)
         {
         }
         public override void AfterConstruction()
         {
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.SecurityPrincipalRoleMasterMembers);
             base.AfterConstruction();
         }
-        TableBase fMasterTable;
-        [Persistent(@"MASTER_TABLE")]
-        public TableBase MasterTable
+        SecurityPrincipalRoleMaster fRoleMaster;
+        [Persistent(@"ROLE_MASTER")]
+        public SecurityPrincipalRoleMaster RoleMaster
         {
-            get { return fMasterTable; }
-            set { SetPropertyValue<TableBase>("MasterTable", ref fMasterTable, value); }
+            get { return fRoleMaster; }
+            set { SetPropertyValue<SecurityPrincipalRoleMaster>("RoleMaster", ref fRoleMaster, value); }
         }
         MyEnums.DefinitionType fDefinitionType;
         [Persistent("DEFINITION_TYPE")]
@@ -40,6 +42,13 @@ namespace CoreModel
         {
             get { return fLineRef; }
             set { SetPropertyValue<Line>("LineRef", ref fLineRef, value); }
+        }
+        SecurityPrincipal fPrincipalId;
+        [Persistent(@"PRINCIPAL_ID")]
+        public SecurityPrincipal PrincipalId
+        {
+            get { return fPrincipalId; }
+            set { SetPropertyValue<SecurityPrincipal>("PrincipalId", ref fPrincipalId, value); }
         }
         MyEnums.SecurityPrivilegeMaster fSecurityPrivilege;
         [Persistent("SEC_PRIV")]

@@ -99,10 +99,13 @@
     <Compile Include="Province.cs" />
     <Compile Include="SecurityAccessType.cs" />
     <Compile Include="SecurityPrincipalRoleJournal.cs" />
+    <Compile Include="SecurityPrincipalRoleJournalMembers.cs" />
+    <Compile Include="SecurityPrincipalRoleMasterMembers.cs" />
     <Compile Include="SecurityPrincipalRoleSimple.cs" />
+    <Compile Include="SecurityPrincipalRoleSimpleMembers.cs" />
     <Compile Include="SecurityPrincipalUser.cs" />
     <Compile Include="SecurityUser.cs" />
-    <Compile Include="SecuriyPrincipalRoleMaster.cs" />
+    <Compile Include="SecurityPrincipalRoleMaster.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="SequenceRegistry.cs" />
     <Compile Include="SequenceValues.cs" />

@@ -71,6 +71,7 @@ namespace CoreModelWin
             vendorLink.Tag = CoreLib.MyEnums.FormEntityEnum.Vendor;
             usersLink.Tag = CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalUser;
             rolesLink.Tag = CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalRole;
+            journalBaseLink.Tag = CoreLib.MyEnums.FormEntityEnum.JournalBase;
         }
 
         private void InitBarButtons()
@@ -86,9 +87,16 @@ namespace CoreModelWin
             MenuController.ApproveMenuSetup(unitOfWork1, approvePopupMenu);
             approveBI.ItemClick += (s, e) => 
             {
-                if(CoreLib.FormRecord.CurrentRecord != null && CoreLib.FormRecord.CurrentRecord is Line)
+                try
                 {
-                    MenuController.ApproveMenuActivated(approvePopupMenu);
+                    if(CoreLib.FormRecord.CurrentRecord != null && CoreLib.FormRecord.CurrentRecord is Line)
+                    {
+                        MenuController.ApproveMenuActivated(approvePopupMenu);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.GetFullExceptionErrMessage());
                 }
             };
 

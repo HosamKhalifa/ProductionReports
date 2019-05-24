@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.aPNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
-            this.vendorLink = new DevExpress.XtraNavBar.NavBarItem();
             this.SystemSetupNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.fiscalCalenderLink = new DevExpress.XtraNavBar.NavBarItem();
             this.fiscalCalenderYearLink = new DevExpress.XtraNavBar.NavBarItem();
@@ -44,10 +42,14 @@
             this.currencyCodeLink = new DevExpress.XtraNavBar.NavBarItem();
             this.currencySetupLink = new DevExpress.XtraNavBar.NavBarItem();
             this.testLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.usersLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.rolesLink = new DevExpress.XtraNavBar.NavBarItem();
             this.gLNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.cOALink = new DevExpress.XtraNavBar.NavBarItem();
             this.mainAccountsTypeLink = new DevExpress.XtraNavBar.NavBarItem();
             this.mainAccountsLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.aPNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
+            this.vendorLink = new DevExpress.XtraNavBar.NavBarItem();
             this.aRNabGrp = new DevExpress.XtraNavBar.NavBarGroup();
             this.customerLink = new DevExpress.XtraNavBar.NavBarItem();
             this.orgNavGrp = new DevExpress.XtraNavBar.NavBarGroup();
@@ -84,8 +86,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.usersLink = new DevExpress.XtraNavBar.NavBarItem();
-            this.rolesLink = new DevExpress.XtraNavBar.NavBarItem();
+            this.journalBaseLink = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -125,7 +126,8 @@
             this.acccountGroupLink,
             this.vendorLink,
             this.usersLink,
-            this.rolesLink});
+            this.rolesLink,
+            this.journalBaseLink});
             this.navBarControl1.Location = new System.Drawing.Point(0, 51);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 203;
@@ -133,20 +135,6 @@
             this.navBarControl1.Size = new System.Drawing.Size(203, 367);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-            // 
-            // aPNavGrp
-            // 
-            this.aPNavGrp.Caption = "Accounts payable";
-            this.aPNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.vendorLink)});
-            this.aPNavGrp.Name = "aPNavGrp";
-            this.aPNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("aPNavGrp.SmallImage")));
-            // 
-            // vendorLink
-            // 
-            this.vendorLink.Caption = "Vendor";
-            this.vendorLink.Name = "vendorLink";
-            this.vendorLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("vendorLink.SmallImage")));
             // 
             // SystemSetupNavGrp
             // 
@@ -163,10 +151,11 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.currencySetupLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.testLink),
             new DevExpress.XtraNavBar.NavBarItemLink(this.usersLink),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.rolesLink)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.rolesLink),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.journalBaseLink)});
             this.SystemSetupNavGrp.Name = "SystemSetupNavGrp";
             this.SystemSetupNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("SystemSetupNavGrp.SmallImage")));
-            this.SystemSetupNavGrp.TopVisibleLinkIndex = 7;
+            this.SystemSetupNavGrp.TopVisibleLinkIndex = 8;
             // 
             // fiscalCalenderLink
             // 
@@ -222,6 +211,18 @@
             this.testLink.Caption = "Test";
             this.testLink.Name = "testLink";
             // 
+            // usersLink
+            // 
+            this.usersLink.Caption = "Users";
+            this.usersLink.Name = "usersLink";
+            this.usersLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("usersLink.SmallImage")));
+            // 
+            // rolesLink
+            // 
+            this.rolesLink.Caption = "Roles";
+            this.rolesLink.Name = "rolesLink";
+            this.rolesLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("rolesLink.SmallImage")));
+            // 
             // gLNavGrp
             // 
             this.gLNavGrp.Caption = "General Ledger";
@@ -249,6 +250,20 @@
             this.mainAccountsLink.Caption = "Main accounts";
             this.mainAccountsLink.Name = "mainAccountsLink";
             this.mainAccountsLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("mainAccountsLink.SmallImage")));
+            // 
+            // aPNavGrp
+            // 
+            this.aPNavGrp.Caption = "Accounts payable";
+            this.aPNavGrp.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.vendorLink)});
+            this.aPNavGrp.Name = "aPNavGrp";
+            this.aPNavGrp.SmallImage = ((System.Drawing.Image)(resources.GetObject("aPNavGrp.SmallImage")));
+            // 
+            // vendorLink
+            // 
+            this.vendorLink.Caption = "Vendor";
+            this.vendorLink.Name = "vendorLink";
+            this.vendorLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("vendorLink.SmallImage")));
             // 
             // aRNabGrp
             // 
@@ -558,17 +573,11 @@
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // usersLink
+            // journalBaseLink
             // 
-            this.usersLink.Caption = "Users";
-            this.usersLink.Name = "usersLink";
-            this.usersLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("usersLink.SmallImage")));
-            // 
-            // rolesLink
-            // 
-            this.rolesLink.Caption = "Roles";
-            this.rolesLink.Name = "rolesLink";
-            this.rolesLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("rolesLink.SmallImage")));
+            this.journalBaseLink.Caption = "Journal names";
+            this.journalBaseLink.Name = "journalBaseLink";
+            this.journalBaseLink.SmallImage = ((System.Drawing.Image)(resources.GetObject("journalBaseLink.SmallImage")));
             // 
             // Form1
             // 
@@ -655,6 +664,7 @@
         private DevExpress.XtraNavBar.NavBarItem vendorLink;
         private DevExpress.XtraNavBar.NavBarItem usersLink;
         private DevExpress.XtraNavBar.NavBarItem rolesLink;
+        private DevExpress.XtraNavBar.NavBarItem journalBaseLink;
     }
 }
 

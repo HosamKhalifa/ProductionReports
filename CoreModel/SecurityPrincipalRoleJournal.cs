@@ -22,19 +22,14 @@ namespace CoreModel
 
         JournalBase fJournal;
         [Persistent("JOURNAL")]
+        [Indexed(Name ="ROLE_JOURNAL_PRIV_UQ",Unique =true)]
         public JournalBase Journal
         {
             get { return fJournal; }
             set { SetPropertyValue<JournalBase>("Journal", ref fJournal, value); }
         }
 
-        MyEnums.SecurityPrivilegeJournal fSecurityPrivilege;
-        [Persistent("SEC_PRIV") ]
-        public MyEnums.SecurityPrivilegeJournal SecurityPrivilege
-        {
-            get { return fSecurityPrivilege; }
-            set { SetPropertyValue<MyEnums.SecurityPrivilegeJournal>("SecurityPrivilege", ref fSecurityPrivilege, value); }
-        }
+        
 
 
     }

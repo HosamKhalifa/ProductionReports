@@ -8,28 +8,25 @@ using DevExpress.Xpo;
 namespace CoreModel
 {
     [MapInheritance(MapInheritanceType.ParentTable)]
-    public class SecurityPrincipalRoleSimple : SecurityPrincipalRole
+    public class SecurityPrincipalRoleMaster : SecurityPrincipalRole
     {
-        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalRoleSimple;
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalRoleMaster;
         public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
-        public SecurityPrincipalRoleSimple(Session session) : base(session)
+        public SecurityPrincipalRoleMaster(Session session) : base(session)
         {
         }
         public override void AfterConstruction()
         {
             base.AfterConstruction();
         }
-        //Simple table like setup forms 
         TableBase fMasterTable;
         [Persistent(@"MASTER_TABLE")]
-        [Indexed("ROLE_SIMPLE_TABLE_PRIV_UQ", Unique = true)]
+        [Indexed("ROLE_MASTER_TABLE_PRIV_UQ",Unique =true)]
         public TableBase MasterTable
         {
             get { return fMasterTable; }
             set { SetPropertyValue<TableBase>("MasterTable", ref fMasterTable, value); }
         }
-      
-
-
+     
     }
 }

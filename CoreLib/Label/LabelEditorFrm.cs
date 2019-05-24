@@ -94,6 +94,7 @@ namespace CoreLib.Label
         private void BuildObjectName(string[] assemblyNameList)
         {
             XPDictionary dict = new ReflectionDictionary();
+            var lst = new XPCollection<CoreLib.Label.UIObjectBase>(unitOfWork1).ToList();
            
             foreach (string assebly in assemblyNameList)
             {
@@ -115,10 +116,13 @@ namespace CoreLib.Label
                     {
                         if(!(item.FullName.Contains("XPLiteObjectExt") || item.FullName.Contains("XPLiteObject") || item.FullName.Contains("XPObject")))
                         {
-                            var obj = unitOfWork1.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", item.FullName));
-                            if (obj == null)
+                            //var obj = unitOfWork1.FindObject<UIObjectBase>(CriteriaOperator.Parse("[ObjectName] = ? ", item.FullName));
+
+                            //var obj = lst.Where(x => x.ObjectName == item.FullName).FirstOrDefault();
+                            int counter = int.Parse(unitOfWork1.ExecuteScalar($"SELECT count(*) FROM dbo.UIObjectBase WHERE ObjectName = '{item.FullName}'").ToString());
+                            if (counter == 0)
                             {
-                                obj = new UIObjectBase(unitOfWork1) { ObjectName = item.FullName, AssemblyName =item.AssemblyName};
+                                var obj = new UIObjectBase(unitOfWork1) { ObjectName = item.FullName, AssemblyName =item.AssemblyName};
                                 obj.Save();
                                 
                             }

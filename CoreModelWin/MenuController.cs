@@ -92,6 +92,9 @@ namespace CoreModelWin
             
             switch (_linkTag)
             {
+                case CoreLib.MyEnums.FormEntityEnum.JournalBase:
+                    MenuController.JournalBaseFormOpen(_args);
+                    break;
                 case CoreLib.MyEnums.FormEntityEnum.SecurityPrincipalUser:
                     MenuController.SecurityPrincipalUserFormOpen(_args);
                     break;
@@ -206,6 +209,12 @@ namespace CoreModelWin
             frm.Show();
         }
         #region Open Methods
+        public static void JournalBaseFormOpen(Args _args)
+        {
+            _args.Caller = _args.Caller == null ? MdiParentForm : _args.Caller;
+            var frm = new View.Sys.JournalBaseFrm(_args) { MdiParent = MdiParentForm, WindowState = FormWindowState.Maximized };
+            frm.Show();
+        }
         public static void SecurityPrincipalRoleFormOpen(Args _args)
         {
             throw new NotImplementedException();

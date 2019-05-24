@@ -22,6 +22,21 @@ namespace CoreModel
             base.AfterConstruction();
         }
         #region Fields
+        string fJournalCode;
+        [Persistent(@"JOURNAL_CODE"),Size(30)]//This code will be used to create Seurity role with same code value 
+        [Indexed(Name ="JOURNAL_CODE_UQ",Unique =true)]
+        public string JournalCode
+        {
+            get { return fJournalCode; }
+            set { SetPropertyValue<string>("JournalCode", ref fJournalCode, value); }
+        }
+        string fJournalName;
+        [Persistent(@"JOURNAL_NAME"),Size(120)]
+        public string JournalName
+        {
+            get { return fJournalName; }
+            set { SetPropertyValue<string>("JournalName", ref fJournalName, value); }
+        }
         MyEnums.JournalType fJournalType;
         [Persistent(@"JOURNAL_TYPE")]
         public MyEnums.JournalType JournalType

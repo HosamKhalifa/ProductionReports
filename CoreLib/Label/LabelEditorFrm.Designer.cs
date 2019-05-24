@@ -41,7 +41,7 @@
             this.colLookupMember = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLookupMemberCharWidth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.myGridControl1 = new CoreLib.Grid.MyGridControl();
-            this.xpCollectionExt1 = new CoreLib.Xpo.XPCollectionExt();
+            this.xpCollectionExt1 = new DevExpress.Xpo.XPCollection();
             this.objectMyGV = new CoreLib.Grid.MyGridView();
             this.colOid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colObjectName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -286,7 +286,7 @@
 
         private Grid.MyGridControl myGridControl1;
         private Grid.MyGridView objectMyGV;
-        private Xpo.XPCollectionExt xpCollectionExt1;
+        private DevExpress.Xpo.XPCollection xpCollectionExt1;
        
         private DevExpress.XtraEditors.SimpleButton syuncBtn;
         private Grid.MyGridView labelsMyGV;
