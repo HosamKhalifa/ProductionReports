@@ -17,11 +17,12 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
+            this.RoleType = MyEnums.SecurityRoleType.Master;
             base.AfterConstruction();
         }
         TableBase fMasterTable;
         [Persistent(@"MASTER_TABLE")]
-        [Indexed("ROLE_MASTER_TABLE_PRIV_UQ",Unique =true)]
+        [Indexed("RoleType", Name ="ROLE_MASTER_TABLE_PRIV_UQ",Unique =true)]
         public TableBase MasterTable
         {
             get { return fMasterTable; }

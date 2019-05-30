@@ -54,7 +54,8 @@ namespace CoreModelWin.AppLists
         const string ACCOUNT_REF2 = "accountRef2TreeList";
         const string WFLOW_STATUS = "workflowStatusImageComboBox";
         #endregion
-        #region Methods
+
+        #region LinkMethods
         private void LinkAccountGroup(ListColumnInfo _col, CriteriaOperator _whereCO = null)
         {
 
@@ -137,6 +138,9 @@ namespace CoreModelWin.AppLists
             }
             if(_col.TreeListColumn != null) { _col.TreeListColumn.ColumnEdit = BuildWorkflowImgCombo(); }
         }
+        #endregion
+
+        #region Methods
         private RepositoryItemImageComboBox BuildWorkflowImgCombo()
         {
             var ed = new RepositoryItemImageComboBox();

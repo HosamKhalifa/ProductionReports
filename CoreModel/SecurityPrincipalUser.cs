@@ -56,5 +56,10 @@ namespace CoreModel
             }
         }
 
+        #region Associations
+        [Association(@"SEC_PRINCIPAL_USER_MEMBERS_FK")]
+        public XPCollection<SecurityPrincipalRoleOUMembers> Members { get { return GetCollection<SecurityPrincipalRoleOUMembers>("Members"); } }
+        #endregion
+
     }
 }

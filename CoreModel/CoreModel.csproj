@@ -101,6 +101,8 @@
     <Compile Include="SecurityPrincipalRoleJournal.cs" />
     <Compile Include="SecurityPrincipalRoleJournalMembers.cs" />
     <Compile Include="SecurityPrincipalRoleMasterMembers.cs" />
+    <Compile Include="SecurityPrincipalRoleOU.cs" />
+    <Compile Include="SecurityPrincipalRoleOUMembers.cs" />
     <Compile Include="SecurityPrincipalRoleSimple.cs" />
     <Compile Include="SecurityPrincipalRoleSimpleMembers.cs" />
     <Compile Include="SecurityPrincipalUser.cs" />

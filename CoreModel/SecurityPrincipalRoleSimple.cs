@@ -17,12 +17,13 @@ namespace CoreModel
         }
         public override void AfterConstruction()
         {
+            this.RoleType = MyEnums.SecurityRoleType.Simple;
             base.AfterConstruction();
         }
         //Simple table like setup forms 
         TableBase fMasterTable;
         [Persistent(@"MASTER_TABLE")]
-        [Indexed("ROLE_SIMPLE_TABLE_PRIV_UQ", Unique = true)]
+        [Indexed("RoleType", Name ="ROLE_SIMPLE_TABLE_PRIV_UQ", Unique = true)]
         public TableBase MasterTable
         {
             get { return fMasterTable; }

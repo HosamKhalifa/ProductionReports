@@ -24,7 +24,7 @@ namespace CoreModel
         public MyEnums.SecurityRoleType RoleType
         {
             get { return fRoleType; }
-            set { SetPropertyValue<MyEnums.SecurityRoleType>("RoleType", ref fRoleType, value); }
+            protected set { SetPropertyValue<MyEnums.SecurityRoleType>("RoleType", ref fRoleType, value); }
         }
 
 

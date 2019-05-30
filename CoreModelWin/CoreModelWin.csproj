@@ -176,6 +176,12 @@
     <Compile Include="View\Sys\SecurityPrincipalUserFrm.Designer.cs">
       <DependentUpon>SecurityPrincipalUserFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Sys\SecurityRoleJournalXUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Sys\SecurityRoleJournalXUC.Designer.cs">
+      <DependentUpon>SecurityRoleJournalXUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sys\SequenceEditXUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SecurityPrincipalUserFrm.resx">
       <DependentUpon>SecurityPrincipalUserFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sys\SecurityRoleJournalXUC.resx">
+      <DependentUpon>SecurityRoleJournalXUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Sys\SequenceEditXUC.resx">
       <DependentUpon>SequenceEditXUC.cs</DependentUpon>

@@ -78,6 +78,6 @@ namespace CoreModel
         public enum SecurityAccessEnum { Deny=0,Read=1,Update=2,Create=3,Delete=4}
         public enum SecurityPrivilegeJournal { Query=100,Create=110,ApproveReject=120,Post=130,CreateApproveReject=140,CreateApproveRejectPost=150}
         public enum SecurityPrivilegeMaster { Query = 200, Create = 210, Approve = 220, Reopen = 230, CreateApproveReopen = 240 }
-        public enum SecurityRoleType { Journal=10,Master=20,Simple=30}
+        public enum SecurityRoleType { Journal=10,Master=20,Simple=30,OU=40}
     }
 }
