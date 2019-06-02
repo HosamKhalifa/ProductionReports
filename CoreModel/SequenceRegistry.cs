@@ -1,4 +1,5 @@
-﻿using DevExpress.Xpo;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,32 @@ namespace CoreModel
             base.AfterConstruction();
         }
 
+        #region Methods
+        public static SequenceRegistry FindOrCreateSequ(Account _account)
+        {
+            var filter = new BinaryOperator(new OperandProperty("SequenceRegistry"), new OperandValue(_account), BinaryOperatorType.Equal);
+            SequenceRegistry squeVal = _account.Session.FindObject<SequenceRegistry>(filter);
+            if (squeVal == null)
+            {
+                Sequence appliedSequ = Sequence
+                if (dimBase != null)
+                {
+                    squeVal = new DimensionHeader(_account.Session, _account)
+                    {
+                        DimensionBase = dimBase,
+                        DimensionKey = dimBase.NextDimKey()
+                    };
+                    squeVal.Save();
+
+
+                }
+            }
+            return squeVal;
+        }
+        #endregion
+        #region Fields
+
+        #endregion
         SequenceValues fSequValueKey;
         [Persistent(@"SEQU_VAL_KEY")]
         public SequenceValues SequValueKey

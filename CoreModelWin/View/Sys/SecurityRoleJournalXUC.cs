@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
 
 namespace CoreModelWin.View.Sys
 {
@@ -23,15 +24,20 @@ namespace CoreModelWin.View.Sys
         private void InitObj()
         {
             roleJournalGV.ClassInfo = typeof(CoreModel.SecurityPrincipalRoleJournalMembers);
+            AppLists.AppListInfo l = new AppLists.AppListInfo(unitOfWork1);
+            l.LinkLookupsToGrid(roleJournalGV, RoleJournalXPC);
 
         }
 
-        public void RetrieveRoleMembers(CoreModel.JournalBase _journal)
+        public void RetrieveRoleMembers(UnitOfWork _uOW,CoreModel.JournalBase _journal)
         {
+            unitOfWork1 = _uOW;
+            InitObj();//Setup grid lookups and labels
+
             CoreModel.SecurityPrincipalRoleJournal roleJour = CoreModel.SecurityPrincipalRoleJournal.FindOrCreateJournal(unitOfWork1,_journal);
             if(roleJour == null)
             {
-                throw new Exception("Role journal could not found or create new one");
+                throw new Exception("Role journal could not found or create new one has been failed");
             }
             roleJournalGV.InitNewRow += (s, e) =>
             {
@@ -40,6 +46,7 @@ namespace CoreModelWin.View.Sys
             };
 
             var crt = new BinaryOperator("RoleJournal", roleJour, BinaryOperatorType.Equal);
+            RoleJournalXPC.Session = _uOW;
             RoleJournalXPC.Criteria = crt;
             RoleJournalXPC.LoadingEnabled = true;
         }

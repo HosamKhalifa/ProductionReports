@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoreModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace CoreModelWin.View.Sys
         public JournalBaseFrm()
         {
             InitializeComponent();
+
         }
         public JournalBaseFrm(CoreLib.Args _args):base(_args)
         {
@@ -29,6 +31,17 @@ namespace CoreModelWin.View.Sys
             preList.LinkList(new AppLists.ListColumnInfo(colWorkflowStatus) , CoreModel.MyEnums.AppListPredefined.WorkflowStatusCombo);
             preList.LinkList(new AppLists.ListColumnInfo(colSequenceWorkflowStatus), CoreModel.MyEnums.AppListPredefined.WorkflowStatusCombo);
 
+            xtraTabControl1.SelectedPageChanged += (s, e) => 
+            {
+                if(e.Page.Name == detailsPage.Name)//Retrieve current role 
+                {
+                    var currJour = (JournalBase)journalGV.GetFocusedRow();
+                    if(currJour != null)
+                    {
+                        securityRoleJournalXUC1.RetrieveRoleMembers(unitOfWork1,currJour);
+                    }
+                }
+            };
         }
     }
 }

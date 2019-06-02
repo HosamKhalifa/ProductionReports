@@ -25,6 +25,9 @@ namespace CoreModelWin.View.Sys
         {
             AppLists.AppListInfo l = new AppLists.AppListInfo(unitOfWork1);
             l.LinkLookupsToGrid(userGV, userXPC);
+            l.LinkLookupsToGrid(userGroupsGV,typeof(CoreModel.SecurityPrincipalRoleOUMembers));
+            l.LinkLookupsToGrid(groupGV, groupXPC);
+            l.LinkLookupsToGrid(groupUsersGV, typeof(CoreModel.SecurityPrincipalRoleOUMembers));
 
             userGV.ClassInfo = typeof(CoreModel.SecurityPrincipalUser);
             groupGV.ClassInfo = typeof(CoreModel.SecurityPrincipalRoleOU);

@@ -38,7 +38,8 @@ namespace CoreModel
             SecurityPrincipalUser=1151, SecurityPrincipalRoleMaster=1152, SecurityPrincipalRoleSimple=1153,
             SecurityPrincipalRoleJournal=1154, SecurityPrincipalRoleJournalMembers=1155,
             SecurityPrincipalRoleMasterMembers=1156, SecurityPrincipalRoleSimpleMembers=1157,
-            SecurityPrincipalRoleOU=1158
+            SecurityPrincipalRoleOU=1158, SecurityPrincipalRoleOUMembers=1159,
+            AccountSequenceRule=1160
         }
         #endregion
 

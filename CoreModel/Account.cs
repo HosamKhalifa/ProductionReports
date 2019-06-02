@@ -21,7 +21,19 @@ namespace CoreModel
         }
 
         #region Methods
-        
+        public override void PostSetWorkflowStatus()
+        {
+            if (WorkflowStatus == MyEnums.WorkflowStatus.Approved && TableId != null)
+            {
+                var dimBase = Session.GetObjectByKey<DimensionBase>(TableId.TableId);//Test if TableId has Dimension 
+                if (dimBase != null)
+                {
+                    DimensionHeader = DimensionBase.FindOrCreateDimHeader(this);
+                }
+            }
+            base.PostSetWorkflowStatus();
+        }
+
         public virtual string GetDefaultDisplayNumber()
         {
             var sequ =  GLParms.GLParameters(Session).TempAccountSequ;
@@ -159,6 +171,7 @@ namespace CoreModel
         }
 
         #endregion
+
         #region ComputedFields
         [NonPersistent]
         public string GroupFullName { get { return GroupId != null? $"{GroupId.GroupNum} {GroupId.GroupName}":""; } }
@@ -168,16 +181,16 @@ namespace CoreModel
 
         protected override void OnSaving()
         {
-            if (Session.IsNewObject(this))
+            if (Session.IsNewObject(this) )
             {
-                if (TableId != null)
-                {
-                    var dimBase = Session.GetObjectByKey<DimensionBase>(TableId.TableId);//Test if TableId has Dimension 
-                    if (dimBase != null)
-                    {
-                        DimensionHeader = DimensionBase.FindOrCreateDimHeader(this);
-                    }
-                }
+                //if (TableId != null)
+                //{
+                //    var dimBase = Session.GetObjectByKey<DimensionBase>(TableId.TableId);//Test if TableId has Dimension 
+                //    if (dimBase != null)
+                //    {
+                //        DimensionHeader = DimensionBase.FindOrCreateDimHeader(this);
+                //    }
+                //}
 
             }
             else

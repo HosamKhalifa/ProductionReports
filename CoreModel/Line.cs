@@ -43,8 +43,10 @@ namespace CoreModel
         }
         protected override void OnSaving()
         {
-            this.ModifiedBy = SecurityUser.CurrentUser.UserId;
-            this.ModifiedAt = DateTime.Now;
+            this.fModifiedBy = SecurityUser.CurrentUser.UserId;
+            this.fModifiedAt = DateTime.Now;
+            OnChanged("ModifiedBy");
+            OnChanged("ModifiedAt");
             if (Validate())
             {
                 BuildTreeNodes();
@@ -61,11 +63,19 @@ namespace CoreModel
             return SetPropertyValue<T>(propertyName, ref propertyValueHolder, newValue);
            
         }
+        protected bool SetPropertyValueReadOnly<T>(string propertyName, ref T propertyValueHolder, T newValue)
+        {
+            if (!IsLoading )
+            {
+                return false;
+            }
+            return SetPropertyValue<T>(propertyName, ref propertyValueHolder, newValue);
 
+        }
         //Definition
         //====================================================================
         #region Fields
-        
+
         long fLineId;
         [Key]
         [Persistent(@"LINE_ID")]
@@ -79,27 +89,27 @@ namespace CoreModel
         public string CreatedBy
         {
             get { return fCreatedBy; }
-            set { SetPropertyValue<string>("CreatedBy", ref fCreatedBy, value); }
+            set { SetPropertyValueReadOnly<string>("CreatedBy", ref fCreatedBy, value); }
         }
         DateTime fCreatedAt;
        
         public DateTime CreatedAt
         {
             get { return fCreatedAt; }
-            set { SetPropertyValue<DateTime>("CreatedAt", ref fCreatedAt, value); }
+            set { SetPropertyValueReadOnly<DateTime>("CreatedAt", ref fCreatedAt, value); }
         }
         string fModifiedBy;
         [Size(30)]
         public string ModifiedBy
         {
             get { return fModifiedBy; }
-            set { SetPropertyValue<string>("ModifiedBy", ref fModifiedBy, value); }
+            set { SetPropertyValueReadOnly<string>("ModifiedBy", ref fModifiedBy, value); }
         }
         DateTime fModifiedAt;
         public DateTime ModifiedAt
         {
             get { return fModifiedAt; }
-            set { SetPropertyValue<DateTime>("ModifiedAt", ref fModifiedAt, value); }
+            set { SetPropertyValueReadOnly<DateTime>("ModifiedAt", ref fModifiedAt, value); }
         }
 
         Line fParentLine;
@@ -139,7 +149,16 @@ namespace CoreModel
         public MyEnums.WorkflowStatus WorkflowStatus
         {
             get { return fWorkflowStatus; }
-            // set { SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, value); }
+            set {
+                if (IsLoading)
+                {
+                    SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, value);
+                }
+                else 
+                {
+                    throw new Exception("Read only field");
+                }
+                }
         }
        
         #endregion
@@ -159,11 +178,24 @@ namespace CoreModel
         #endregion
 
         #region Methods
+        public virtual bool PreSetWorkflowStatus(MyEnums.WorkflowStatus _wrkFlow)
+        {
+            //This method should override to add pre Workflow action logic and return true to contine 
+            return true;
+        }
         public virtual void SetWorkflowStatus(MyEnums.WorkflowStatus _wrkFlow)
         {
             //This should called by approve menu 
-             SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, _wrkFlow);
-             
+            if (!PreSetWorkflowStatus(_wrkFlow)) return;//Calling pre Method
+            // SetPropertyValue<MyEnums.WorkflowStatus>("WorkflowStatus", ref fWorkflowStatus, _wrkFlow);
+            this.fWorkflowStatus = _wrkFlow;
+            OnChanged("WorkflowStatus");
+            this.Session.Save(this);
+            PostSetWorkflowStatus();//Calling post method
+        }
+        public virtual void PostSetWorkflowStatus()
+        {
+            //Attach extra post Workflow action logic 
         }
 
         class Shadowinfo

@@ -61,6 +61,7 @@
     <Compile Include="AccountRef1.cs" />
     <Compile Include="AccountRef2.cs" />
     <Compile Include="AccountGroup.cs" />
+    <Compile Include="AccountSequenceRule.cs" />
     <Compile Include="AddressBook.cs" />
     <Compile Include="LineShadow.cs" />
     <Compile Include="SecurityPrincipalRole.cs" />

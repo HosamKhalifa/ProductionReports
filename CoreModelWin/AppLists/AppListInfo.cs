@@ -141,7 +141,11 @@ namespace CoreModelWin.AppLists
             XPClassInfo _classInfo = ds.ObjectClassInfo;
             LinkLookupsToGrid(_gridView, _classInfo);
         }
-
+        public void LinkLookupsToGrid(CoreLib.Grid.MyGridView _gridView, Type _type)
+        {
+            XPClassInfo _classInfo = AppListSession.GetClassInfo(_type);
+            LinkLookupsToGrid(_gridView, _classInfo);
+        }
         public void LinkToDataLayout(DataLayoutControl _dataLayout, XPCollection ds)
         {
             XPClassInfo _classInfo = ds.ObjectClassInfo;

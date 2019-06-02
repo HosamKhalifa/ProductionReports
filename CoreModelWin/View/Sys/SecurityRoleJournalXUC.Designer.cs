@@ -68,7 +68,7 @@
             this.roleJournalGC.Location = new System.Drawing.Point(0, 0);
             this.roleJournalGC.MainView = this.roleJournalGV;
             this.roleJournalGC.Name = "roleJournalGC";
-            this.roleJournalGC.Size = new System.Drawing.Size(541, 300);
+            this.roleJournalGC.Size = new System.Drawing.Size(650, 365);
             this.roleJournalGC.TabIndex = 0;
             this.roleJournalGC.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.roleJournalGV});
@@ -130,7 +130,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Journal";
-            this.gridColumn1.FieldName = "RoleJournal!Key";
+            this.gridColumn1.FieldName = "RoleJournal.PrincipalId";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsColumn.ReadOnly = true;
@@ -168,7 +168,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.roleJournalGC);
             this.Name = "SecurityRoleJournalXUC";
-            this.Size = new System.Drawing.Size(541, 300);
+            this.Size = new System.Drawing.Size(650, 365);
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionMyXUC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoleJournalXPC)).EndInit();

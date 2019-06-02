@@ -24,6 +24,7 @@ namespace CoreModel
 
         SecurityPrincipalRoleJournal fRoleJournal;
         [Persistent(@"ROLE_JOURNAL")]
+        [Association(@"ROLE_JOURNAL_MEMBERS_FK")]
         [Indexed(additionalFields:"PrincipalId",Name="ROLE_JOUR_PRINCIPALS_UQ",Unique=true)]
         public SecurityPrincipalRoleJournal RoleJournal
         {

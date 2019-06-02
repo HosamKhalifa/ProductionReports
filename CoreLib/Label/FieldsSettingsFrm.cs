@@ -71,6 +71,7 @@ namespace CoreLib.Label
 
             myGridView2.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Default;
             myGridView1.OptionsView.ColumnAutoWidth = true;
+            myGridView1.ClassInfo = typeof(CoreLib.Label.UIObjectBase);
             myGridView1.FocusedRowChanged += (s, e) => 
             {
                 if (e.FocusedRowHandle < 0) return;

@@ -11,13 +11,15 @@ namespace CoreModel
     [MapInheritance(MapInheritanceType.OwnTable)]
     public class SecurityPrincipalRoleOUMembers : Line
     {
+        public static TableBase.TableEnum TableName = TableBase.TableEnum.SecurityPrincipalRoleOUMembers;
+        public static MyEnums.TableType TableType = MyEnums.TableType.Setup;
         public SecurityPrincipalRoleOUMembers(Session session) : base(session)
         {
         }
         public override void AfterConstruction()
         {
-
-            base.AfterConstruction();
+            TableId = TableBase.GetTable(Session, TableBase.TableEnum.SecurityPrincipalRoleOUMembers);
+           base.AfterConstruction();
         }
 
         SecurityPrincipalRoleOU fRoleOU;

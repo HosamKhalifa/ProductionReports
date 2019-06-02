@@ -47,6 +47,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSequenceWorkflowStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.detailsPage = new DevExpress.XtraTab.XtraTabPage();
+            this.securityRoleJournalXUC1 = new CoreModelWin.View.Sys.SecurityRoleJournalXUC();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -55,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.journalBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journalXPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.journalGV)).BeginInit();
+            this.detailsPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -199,9 +201,18 @@
             // 
             // detailsPage
             // 
+            this.detailsPage.Controls.Add(this.securityRoleJournalXUC1);
             this.detailsPage.Name = "detailsPage";
             this.detailsPage.Size = new System.Drawing.Size(576, 283);
             this.detailsPage.Text = "Details";
+            // 
+            // securityRoleJournalXUC1
+            // 
+            this.securityRoleJournalXUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.securityRoleJournalXUC1.Location = new System.Drawing.Point(0, 0);
+            this.securityRoleJournalXUC1.Name = "securityRoleJournalXUC1";
+            this.securityRoleJournalXUC1.Size = new System.Drawing.Size(576, 283);
+            this.securityRoleJournalXUC1.TabIndex = 0;
             // 
             // JournalBaseFrm
             // 
@@ -218,6 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.journalBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.journalXPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.journalGV)).EndInit();
+            this.detailsPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -242,5 +254,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colJournalType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn colSequenceWorkflowStatus;
+        private SecurityRoleJournalXUC securityRoleJournalXUC1;
     }
 }

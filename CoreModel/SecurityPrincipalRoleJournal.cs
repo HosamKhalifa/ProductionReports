@@ -61,7 +61,11 @@ namespace CoreModel
         }
 
         #endregion
-        
+
+        #region Assiciations
+        [Association(@"ROLE_JOURNAL_MEMBERS_FK")]
+        public XPCollection<SecurityPrincipalRoleJournalMembers> Members { get { return GetCollection<SecurityPrincipalRoleJournalMembers>("Members"); } }
+        #endregion
 
 
     }
