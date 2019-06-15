@@ -26,18 +26,12 @@ namespace CoreModel
             SequenceRegistry squeVal = _account.Session.FindObject<SequenceRegistry>(filter);
             if (squeVal == null)
             {
-                Sequence appliedSequ = Sequence
-                if (dimBase != null)
+                Sequence appliedSequ = AccountSequenceRule.GetAppliedSequence(_account.Session, _account);
+                squeVal = new SequenceRegistry(_account.Session)
                 {
-                    squeVal = new DimensionHeader(_account.Session, _account)
-                    {
-                        DimensionBase = dimBase,
-                        DimensionKey = dimBase.NextDimKey()
-                    };
-                    squeVal.Save();
-
-
-                }
+                    
+                };
+            
             }
             return squeVal;
         }

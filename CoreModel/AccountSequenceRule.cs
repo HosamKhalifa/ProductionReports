@@ -7,6 +7,7 @@ using DevExpress.Xpo;
 
 namespace CoreModel
 {
+    [Persistent(@"ACT_SEQU_RULE_TB")]
     public class AccountSequenceRule : Line
     {
         public static TableBase.TableEnum TableName = TableBase.TableEnum.AccountSequenceRule;
@@ -21,10 +22,35 @@ namespace CoreModel
         }
 
         #region Methods
-        public static Sequence GetAppliedSequence(Session _uOW,Account _account)
+        public static List<Line> DeAssemblyDefinitionId(Session _uOW, MyEnums.DefinitionType _defType)
+        {
+            List<Line> lst = new List<Line>();
+            var rules = new XPCollection<AccountSequenceRule>(_uOW).Where(x => x.DefinitionType == _defType).ToList<AccountSequenceRule>();
+            foreach (var r in rules)
+            {
+                foreach (Line l in r.DefinitionId.GetLineShadowLines())
+                {
+                    lst.Add(l);
+                }
+            }
+            return lst;
+        }
+        public static Sequence GetAppliedSequence(Session _uOW, Account _account)
         {
             //Check for primary group 
-            _account.GroupId.LineShadowLines
+            if (_account.GroupId != null)
+            {
+                
+                var ruleLines = AccountSequenceRule.DeAssemblyDefinitionId(_uOW, MyEnums.DefinitionType.Group);
+                var rLine = ruleLines.Where(x => x.LineId.Equals(_account.GroupId)).FirstOrDefault();
+                if(rLine != null)
+                {
+                    var rule = _uOW.GetObjectByKey<AccountSequenceRule>(rLine.LineId);
+                    return rule.AccountSequence;
+                }
+              
+            }
+            return null;
         }
         #endregion
 

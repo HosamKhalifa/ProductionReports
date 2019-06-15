@@ -21,11 +21,15 @@ namespace CoreModel
         public Line(Session session) : base(session) { }
         public override void AfterConstruction()
         {
-            this.CreatedBy = SecurityUser.CurrentUser.UserId;
-            this.CreatedAt = DateTime.Now;
+            this.fCreatedBy = SecurityUser.CurrentUser.UserId;
+            this.fCreatedAt = DateTime.Now;
 
-            this.ModifiedBy = SecurityUser.CurrentUser.UserId;
-            this.ModifiedAt = DateTime.Now;
+            this.fModifiedBy = SecurityUser.CurrentUser.UserId;
+            this.fModifiedAt = DateTime.Now;
+            OnChanged("CreatedBy");
+            OnChanged("CreatedAt");
+            OnChanged("ModifiedBy");
+            OnChanged("ModifiedAt");
 
             this.LineId = SysSequence.NextVal(Session,MyEnums.SysSequence.LINE_ID_SEQU,(10 * 1000 * 1000));
 
@@ -34,9 +38,9 @@ namespace CoreModel
         protected virtual bool Validate()
         {
             //Not null column
-            if (string.IsNullOrEmpty(ModifiedBy.Trim())) return false;
+            if (string.IsNullOrEmpty(ModifiedBy)) return false;
             if (ModifiedAt == null) return false;
-            if (string.IsNullOrEmpty(CreatedBy.Trim())) return false;
+            if (string.IsNullOrEmpty(CreatedBy)) return false;
             if (ModifiedAt == null) return false;
 
             return true;
@@ -243,7 +247,7 @@ namespace CoreModel
             this.LineShadow = lineShadow;
         }
 
-        private List<Line> GetLineShadowLines()
+        public List<Line> GetLineShadowLines()
         {
             List<Line> retList = new List<Line>();
             var lst = LineShadow.Split('-');
